@@ -1,483 +1,113 @@
 <!DOCTYPE html>
-
-<html lang="en">
-    <header>
-        <title>Triple L Shop</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!--Bootstrap 4-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-        <!--Icon-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-      <!--MyCSs-->  
-        <link rel="stylesheet" href="./Home.css">
-    </header>
+<html>
+    <head lang="en-US">
+      <title>Triple Long Store</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <!--BOOTSTRAP HERE-->
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- Popper JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <!--Font Awesome-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--MY CSS AND JS-->
+      <link rel="stylesheet" href="Home.css">
+      
+    
+    </head>
     <body>
-    
-         <!--NAV BAR-->
-    
-          <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center sticky-top m-auto ">
+      <!--HEADER-->
+      <div class="header container-fluid d-none d-md-block m-0">
+        <ul class="menu">
+          <li>
+            <a href="#"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+          </li>
+        </ul>
+      </div>
+      <!--NAV-->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand " href="#">
+          <img src="img/Logo.png" alt="3L" width="100px" height="100px">
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center " id="navbarNavDropdown">
+          <ul class="navbar-nav flex-nowrap">
+            <li class="nav-item dropdown  pt-4 pb-4">
+              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               |SẢN PHẨM
+              </a>
+              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown pt-4 pb-4">
+              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               |NAM
+              </a>
+              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown  pt-4 pb-4">
+              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               |NỮ
+              </a>
+              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown  pt-4 pb-4">
+              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               |PHỤ KIỆN
+              </a>
+              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>  
+        </div>
+        <div class="d-none d-lg-block ">
+          <form class="form-inline flex-nowrap">
            
-            <!--LINK AND SEARCH-->
-          
-            <ul class="navbar-nav nav-fill col-4">
-              
-              <li class="nav-item">
-                <a href="#" class="nav-link ">Khuyen Mai</a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link  ">San Pham</a>
-              </li>
-            </ul>
-            
-            <a class="navbar-brand " href="Home.html">3L SHOP</a>
-            
-            <ul class="navbar-nav nav-fill col-4">
-              <li class="nav-item  ">
-                <a href="#" class="nav-link  ">Gio Hang</a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link ">Bao Hanh</a>
-              </li>
-            </ul>
-
-         
-    
-          </nav>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">S</button>
+          </form>
+        </div>
        
-        <!--Carousel--> 
-        
-        <div class="container-fluid justify-content-center m-auto bg-dark">
-          <div class="container-fluid  badge badge-warning mt-3 mb-3">
-            <h1>NEW ITEMS</h1>
-          </div>
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          
-            <!-- Indicators -->
-            <ul class="carousel-indicators ">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ul>
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                
-                <img src="img/Batman_Black_BW_knight_comics_movies_1920x1080.jpg" alt="Los Angeles" width="1100" height="250">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-               
-              </div>
-              <div class="carousel-item">
-                <img src="img/cosmonaut_space_suit_art_123372_1920x1200.jpg" alt="Chicago" width="1100" height="250">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="img/crystal_ball_ball_sphere_144891_1920x1200.jpg" alt="New York" width="1100" height="250">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-              </div>
-            </div>
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-              <span class="carousel-control-next-icon"></span>
-            </a>
-          </div>
-        </div>
-        <!--Noi bat-->
-        <div class="container-fluid  badge badge-warning mt-3 mb-3">
-          <h1>HOT ITEMS</h1>
-        </div>
-        <div class="bg-dark">
-
-       
-          <div class="container-fluid justify-content-center m-auto">
-            <div id="Hot" class="carousel slide" data-ride="carousel">
-            
-              <!-- Indicators -->
-              <ul class="carousel-indicators ">
-                <li data-target="#Hot" data-slide-to="0" class="active"></li>
-                <li data-target="#Hot" data-slide-to="1"></li>
+      </nav>
+      
     
-              </ul>
-              <!-- The slideshow -->
-              <div class="carousel-inner">
-                <!--Slide 1-->
-                <div class="carousel-item active">
-                  <div class="container m-auto row justify-content-between">
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                      
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                  
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-                  </div>
-                
-                </div>
-                  <!--Slide 2-->
-                <div class="carousel-item">
-                  <div class="container m-auto row justify-content-between">
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                      
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                  
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-                  </div>
-                
-                </div>
-              </div>
-              <!-- Left and right controls -->
-              <a class="carousel-control-prev" href="#Hot" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-              </a>
-              <a class="carousel-control-next" href="#Hot" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-              </a>
-            </div>
-          </div>
-          
-          <!--Noi bat 2-->
-          <div class="container-fluid justify-content-center m-auto">
-            <div id="Hot2" class="carousel slide" data-ride="carousel">
-            
-              <!-- Indicators -->
-              <ul class="carousel-indicators ">
-                <li data-target="#Hot2" data-slide-to="0" class="active"></li>
-                <li data-target="#Hot2" data-slide-to="1"></li>
-            
-              </ul>
-              <!-- The slideshow -->
-              <div class="carousel-inner">
-                <!--Slide 1-->
-                <div class="carousel-item active">
-                  <div class="container m-auto row justify-content-between">
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                      
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                  
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-                  </div>
-                
-                </div>
-                  <!--Slide 2-->
-                <div class="carousel-item">
-                  <div class="container m-auto row justify-content-between">
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                      
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-          
-                    <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                      <img class="card-img-top" src="..." alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                  
-                        <a href="#" class="btn btn-dark">GotIt</a>
-                      </div>
-                    </div>
-                  </div>
-                
-                </div>
-              </div>
-              <!-- Left and right controls -->
-              <a class="carousel-control-prev" href="#Hot2" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-              </a>
-              <a class="carousel-control-next" href="#Hot2" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!--BRANDS-->
-        <div class="container-fluid  badge badge-warning mt-3 mb-3">
-          <h1>BRAND</h1>
-        </div>
-        <div class="container-fluid justify-content-center m-auto bg-dark">
-          <div id="Brand" class="carousel slide" data-ride="carousel">
-          
-            <!-- Indicators -->
-            <ul class="carousel-indicators ">
-              <li data-target="#Brand" data-slide-to="0" class="active"></li>
-              <li data-target="#Brand" data-slide-to="1"></li>
-   
-            </ul>
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-              <!--Slide 1-->
-              <div class="carousel-item active">
-                <div class="container m-auto row justify-content-between">
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-        
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-        
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                     
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-        
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
-                <!--Slide 2-->
-              <div class="carousel-item">
-                <div class="container m-auto row justify-content-between">
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-        
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-        
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                     
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-        
-                  <div class="card m-2 col-2" style="width: 20%; height: 300px;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                
-                      <a href="#" class="btn btn-dark">GotIt</a>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
-            </div>
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#Brand" data-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#Brand" data-slide="next">
-              <span class="carousel-control-next-icon"></span>
-            </a>
-          </div>
-        </div>
-        <!--UPDATE-->
-        <div class="container-fluid  badge badge-warning mt-3 mb-3">
-          <h1>UPDATE </h1>
-        </div>
-        
-     
-        <!-- Footer -->
-        <footer class="page-footer font-small bg-dark text-light pt-4">
-
-          <!-- Footer Links -->
-          <div class="container-fluid text-center text-md-left">
-            <!--Col 1-->
-            <div class="row">
-              <div class="col-md-6 mt-md-0 mt-3">
-                <h5 class="text-uppercase">Footer Content</h5>
-                <p>Here you can use rows and columns to organize your footer content.</p>
-              </div>
-                <!--Col 2-->
-              <hr class="clearfix w-100 d-md-none pb-3">
-              <div class="col-md-3 mb-md-0 mb-3">
-                <h5 class="text-uppercase">Links</h5>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="#!">Link 1</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 2</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 3</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 4</a>
-                  </li>
-                </ul>
-              </div>
-            <!--Col 2-->
-              <div class="col-md-3 mb-md-0 mb-3">
-                <h5 class="text-uppercase">Links</h5>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="#!">Link 1</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 2</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 3</a>
-                  </li>
-                  <li>
-                    <a href="#!">Link 4</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- Copyright -->
-          <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-          </div>
-          <!-- Copyright -->
-
-        </footer>
-        <!-- Footer -->
     </body>
-</html>
+    
