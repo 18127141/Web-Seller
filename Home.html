@@ -21,92 +21,118 @@
       
     
     </head>
-    <body>
+    <body >
       <!--HEADER-->
-      <div class="header container-fluid d-none d-md-block m-0">
-        <ul class="menu">
-          <li>
-            <a href="#"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
-          </li>
-        </ul>
-      </div>
-      <!--NAV-->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand " href="#">
-          <img src="img/Logo.png" alt="3L" width="100px" height="100px">
-
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center " id="navbarNavDropdown">
-          <ul class="navbar-nav flex-nowrap">
-            <li class="nav-item dropdown  pt-4 pb-4">
-              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               |SẢN PHẨM
-              </a>
-              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+      <header class="fixed-top">
+        <div class="header container-fluid d-none d-md-block m-0">
+          <ul class="menu">
+            <li>
+              <a href="#"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
             </li>
-
-            <li class="nav-item dropdown pt-4 pb-4">
-              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               |NAM
-              </a>
-              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+            <li>
+              <a href="#"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
             </li>
-
-            <li class="nav-item dropdown  pt-4 pb-4">
-              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               |NỮ
-              </a>
-              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+            <li>
+              <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
             </li>
-
-            <li class="nav-item dropdown  pt-4 pb-4">
-              <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               |PHỤ KIỆN
-              </a>
-              <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+            <li>
+              <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
             </li>
-          </ul>  
+            <li>
+              <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+            </li>
+          </ul>
         </div>
-        <div class="d-none d-lg-block ">
-          <form class="form-inline flex-nowrap">
-           
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">S</button>
-          </form>
-        </div>
+        <!--NAV-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark pl-5 pr-5 ">
+          
+          <a class="navbar-brand " href="#">
+            <img src="img/Logo.png" alt="3L" width="100px" height="100px">
+          </a>
+          <div class="d-md-block  d-none d-lg-none">
+            <form class="form-inline flex-nowrap search">
+              <button class="btn my-2 my-sm-0 icon-search" type="submit"><i class="fa fa-search"></i></button>
+              <input class="form-control mr-sm-2 search-text" type="search" placeholder="Search" aria-label="Search">
+            </form>
+          </div>
+          <div class="d-sm-block d-lg-none d-md-none d-inline-block ">
+            
+              <a class="box-link" href="#"><i class="fa fa-truck"></i> </a>
+            
        
-      </nav>
+              <a class="box-link" href="#"><i class="fa fa-map-marker"></i> </a>
+   
+
+              <a class="box-link" href="#"><i class="fa fa-heart"></i> </a>
+      
+
+              <a class="box-link" href="#"><i class="fa fa-shopping-cart"></i> </a>
+            
+         
+              <a  class="box-link" href="#"><i class="fa fa-user"></i></a>
+      
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center " id="navbarNavDropdown">
+            <ul class="navbar-nav flex-nowrap">
+              <li class="nav-item dropdown  pt-3 pb-3">
+                <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 |SẢN PHẨM 
+                </a>
+                <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+  
+              <li class="nav-item dropdown pt-3 pb-3">
+                <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 |NAM 
+                </a>
+                <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+  
+              <li class="nav-item dropdown  pt-3 pb-3">
+                <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 |NỮ 
+                </a>
+                <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+  
+              <li class="nav-item dropdown  pt-3 pb-3">
+                <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 |PHỤ KIỆN 
+                </a>
+                <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            </ul>  
+          </div>
+          <div class="d-none d-lg-block">
+            <form class="form-inline flex-nowrap search">
+              <button class="btn my-2 my-sm-0 icon-search" type="submit"><i class="fa fa-search"></i></button>
+              <input class="form-control mr-sm-2 search-text" type="search" placeholder="Search" aria-label="Search">
+            </form>
+          </div> 
+        </nav>
+          
+  
+      </header>
+      
       
     
     </body>

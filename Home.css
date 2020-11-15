@@ -32,7 +32,7 @@ body{
     color: white;
 }
 .header a:hover{
-    color: red;
+    color: orangered;
 }
 ul{ 
     display: block;
@@ -51,6 +51,7 @@ ul, ol {
 .dropdown{
     display: inline-block;
     position: relative;
+
     height: 100%;
 }
 .dropdown-content{
@@ -86,4 +87,29 @@ ul, ol {
 .dropdown-menu, .dropdown-item{
     position: relative;
 }
-
+.search, .search-text, .btn{
+    border: none;
+    background-color: white;
+    border-radius: 20px;
+}
+.icon-search:hover{
+    background-color: gray;
+}
+.box-link{
+    height: 50px;
+    width: 100px;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    margin  : 0 10px;
+}
+.box-link{
+    color: whitesmoke;
+}
+.box-link:link{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.box-link:hover{
+    color: orange;
+}
