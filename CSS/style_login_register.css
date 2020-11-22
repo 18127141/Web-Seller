@@ -1,9 +1,147 @@
-body{
-    display: block;
-    color: #555;
+
+.container
+{
+    position: relative;
+    /*top:50vw;
+    left:50%;
+    transform: translate(-50%,-50%);
+    transform: translateY(10vh);*/
+    top: calc(20ch );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    padding:40px;
+    box-sizing: border-box;
     
+
+        
     
 }
+form
+{
+    width: 100%;
+}
+
+.container h1
+{
+    color: black;
+    text-align: center;
+    margin:30px auto;
+    font-size: 40px;
+}
+.container .inputbox
+{
+    position: relative;
+    padding-left:30px;
+}
+.container .inputbox input
+{
+    border:none;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid blue;
+    outline:none;
+}
+.container .inputbox label
+{
+    position: absolute;
+    top:0;
+    left:30px;
+    padding: 10px 0;
+    font-size: 16px;
+    transition: .5s;
+    pointer-events: none;
+}
+.container .inputbox input:focus+label,.container .inputbox input:valid+label
+{
+    top:-18px;
+    left:30px;
+    color: #03a9f4;
+    font-size:14px;
+}
+div.icon
+{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width:20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.user
+{
+    background-image: url("../img/Username_icon.png");
+    background-size: cover;
+    
+}
+.password
+{
+    background-image: url("../img/P_WORD_icon.png");
+    background-size: cover;
+}
+.email
+{
+    background-image: url("../img/Email_icon.png");
+    background-size: cover;
+}
+.phone
+{
+    background-image: url("../img/Phone_icon.png");
+    background-size: cover;
+}
+.container a, .container input[type="checkbox"]
+{
+    cursor: pointer;
+}
+.container input[type="submit"]
+{
+    border:none;
+    outline: none;
+    cursor: pointer;    
+    padding: 10px 30px 10px 30px;
+    border: 1px solid black;
+}
+
+.inputbox span
+{
+    position: absolute;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+#eye2
+{
+    display: none;
+}
+#eye1
+{
+    display: block;
+}
+
+/*HOME.CSS*/
+/* 
+
+
+
+
+
+HEHE
+
+
+
+
+
+
+
+
+
+
+*/
+
 /*HEADER ZONE*/
 .header{
     background-color: black;
@@ -184,5 +322,9 @@ ul, ol {
         padding-left: 1rem!important;
         padding-right: 1rem!important;
 
+    }
+    /*  */
+    .container{
+        top: 10vw;
     }
   }
