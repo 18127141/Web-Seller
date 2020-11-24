@@ -1,12 +1,13 @@
 
 .container
 {
-    position: relative;
+    position: static;
     /*top:50vw;
     left:50%;
     transform: translate(-50%,-50%);
     transform: translateY(10vh);*/
-    top: calc(20ch );
+    /* top: calc(20ch ); */
+    
     display: flex;
     justify-content: center;
     align-items: center;

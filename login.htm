@@ -18,7 +18,7 @@
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--MY CSS AND JS-->
-    
+
     <link rel="stylesheet" href="CSS/style_login_register.css">
 
 
@@ -27,7 +27,7 @@
 
 <body>
     <!--HEADER-->
-    <header class="fixed-top">
+    <header class="fixed-top" id="head">
         <div class="header container-fluid d-none d-md-block m-0">
             <ul class="menu">
                 <li>
@@ -158,7 +158,7 @@
     </header>
 
 
-    <div class="container">
+    <div class="container" id="cont">
         <form action="action_page.htm" method="POST">
             <h1>Login</h1>
             <div class="inputbox">
@@ -207,6 +207,20 @@
             <input type="checkbox">Remember Password<br>
             <p>Don't have an account? <a href="register.htm">Sign Up</a></p>
             <input type="submit" value="Sign in">
+            <script>
+
+                var ele = document.getElementById("head");
+                var con = document.getElementById("cont");
+                con.style.marginTop = ele.offsetHeight + 'px'
+                
+                $(window).resize(function () {
+
+                    con.style.marginTop = ele.offsetHeight + 'px'
+                    
+
+                    //resize just happened, pixels changed
+                });
+            </script>
 
 
 </body>

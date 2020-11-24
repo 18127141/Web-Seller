@@ -28,7 +28,7 @@
 
 <body>
     <!--HEADER-->
-    <header class="fixed-top">
+    <header class="fixed-top" id="head">
         <div class="header container-fluid d-none d-md-block m-0">
             <ul class="menu">
                 <li>
@@ -160,7 +160,7 @@
 
 
     
-    <div class="container">
+    <div class="container" id="cont"> 
         <form action="action_page.htm" method="POST">
             <h1>Register</h1>
             <div class="inputbox">
@@ -218,6 +218,20 @@
 
 
             <input type="submit" value="Sign in">
+            <script>
+
+                var ele = document.getElementById("head");
+                var con = document.getElementById("cont");
+                con.style.marginTop = ele.offsetHeight + 'px'
+                
+                $(window).resize(function () {
+
+                    con.style.marginTop = ele.offsetHeight + 'px'
+                    
+
+                    //resize just happened, pixels changed
+                });
+            </script>
         
 </body>
 
