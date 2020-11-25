@@ -23,9 +23,9 @@
 
 </head>
 
-<body  class="bg-dark" >
+<body class="bg-dark">
   <!--HEADER-->
-  <header  class="bg-light"  id="head">
+  <header class="bg-light" id="head">
     <div class="header container-fluid d-none d-md-block m-0">
       <ul class="menu">
         <li>
@@ -93,10 +93,10 @@
             <a class="nav-link dropdown-toggle" href="#" id="Nam" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               |NAM
-             
+
             </a>
             <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-            
+
 
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
@@ -105,12 +105,13 @@
           </li>
 
           <li class="nav-item dropdown pb-4 pt-4 ">
-            <div class="arrow dropdown-content " ></div>
-            <a class="nav-link dropdown-toggle" href="#" id="Nu" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">
+            <div class="arrow dropdown-content "></div>
+            <a class="nav-link dropdown-toggle" href="#" id="Nu" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
               |NỮ
             </a>
             <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-             
+
 
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
@@ -126,7 +127,7 @@
               |PHỤ KIỆN
             </a>
             <div class="dropdown-content dropdown-menu text-center " aria-labelledby="SanPham">
-             
+
 
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
@@ -151,55 +152,55 @@
       </div>
     </nav>
     <!--         New of the days               -->
-  <div class="container-fluid text-center m-0 p-2 bg-secondary text-white font-weight-bold" id="cont">
-    <div id="carouselExampleControls" class="carousel slide container" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <span class="d-block w-100 "> FREE SHIP HOA DON TO 500K ! </span>
+    <div class="container-fluid text-center m-0 p-2 bg-secondary text-white font-weight-bold" id="cont">
+      <div id="NewOftheday" class="carousel slide container" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <span class="d-block w-100 "> FREE SHIP HOA DON TO 500K ! </span>
+          </div>
+          <div class="carousel-item">
+            <span class="d-block w-100"> YOUR HAPPINESS IS OUR PASSION! </span>
+          </div>
+          <div class="carousel-item">
+            <span class="d-block w-100"> SIEU SALE 12.12 </span>
+          </div>
         </div>
-        <div class="carousel-item">
-          <span class="d-block w-100"> YOUR HAPPINESS IS OUR PASSION! </span>
-        </div>
-        <div class="carousel-item">
-          <span class="d-block w-100"> SIEU SALE 12.12 </span>
-        </div>
+        <a class="carousel-control-prev" href="#NewOftheday" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#NewOftheday" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-  </div>
 
-  <script>
+    <script>
 
-    var ele = document.getElementById("head");
-    var con = document.getElementById("cont");
+      var ele = document.getElementById("head");
+      var con = document.getElementById("cont");
 
-
-    con.style.marginTop = ele.offsetHeight + 'px'
-
-    $(window).resize(function () {
 
       con.style.marginTop = ele.offsetHeight + 'px'
 
+      $(window).resize(function () {
 
-      //resize just happened, pixels changed
-    });
-  </script>
+        con.style.marginTop = ele.offsetHeight + 'px'
+
+
+        //resize just happened, pixels changed
+      });
+    </script>
 
   </header>
-  
+
   <!-- POSTER -->
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div id="POSTER" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#POSTER" data-slide-to="0" class="active"></li>
+      <li data-target="#POSTER" data-slide-to="1"></li>
+      <li data-target="#POSTER" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" id="slide">
       <div class="carousel-item active">
@@ -212,11 +213,11 @@
         <img class="d-block w-100 " src="img/carousel3.jpg" alt="Third slide">
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#POSTER" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#POSTER" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
@@ -224,102 +225,104 @@
   <!--------------------------------------------------NEWS--------------------------------------------------------------------->
   <div class="container mt-5">
     <div class="row">
-    
-        <div id="Brand1" class="carousel slide col" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#Brand1" data-slide-to="0" class="active"></li>
-            <li data-target="#Brand1" data-slide-to="1"></li>
-            <li data-target="#Brand1" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner " id="slide">
-            <div class="carousel-item  active"> 
-              <img class="d-block w-100 " src="img/carousel1.jpg" alt="First slide">
-              <div class="text-center  LBorder">
-                <a><h1>ADIDAPHAS</h1></a>
-                <p class="m-0">Một sản phẩm đến từ phương Tây, toát lên vẻ huyền bí và ảo diệu mê hoặc người nhìn.</p>  
-              </div>
-          
-            </div>
-          
-            <div class="carousel-item">
-              <img class="d-block w-100 " src="img/carousel2.jpg" alt="Second slide">
-              <div class="text-center LBorder ">
-                <h1>NiceSeeKe</h1>
-                <p class="m-0">Một sản phẩm đến từ phương Bắc, toát lên vẻ cứng cáp và mạnh mẽ áp bức kẻ địch.</p>
-              </div>
-              
+
+      <div id="Brand1" class="carousel slide col" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#Brand1" data-slide-to="0" class="active"></li>
+          <li data-target="#Brand1" data-slide-to="1"></li>
+          <li data-target="#Brand1" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner " id="slide">
+          <div class="carousel-item  active">
+            <img class="d-block w-100 " src="img/carousel1.jpg" alt="First slide">
+            <div class="text-center  LBorder">
+              <a>
+                <h1>ADIDAPHAS</h1>
+              </a>
+              <p class="m-0">Một sản phẩm đến từ phương Tây, toát lên vẻ huyền bí và ảo diệu mê hoặc người nhìn.</p>
             </div>
 
-            <div class="carousel-item">
-              <img class="d-block w-100" src="img/carousel3.jpg" alt="Third slide">
-              <div class= "text-center  LBorder">
-                <h1>BullMaMa</h1>
-                <p class="m-0">Một sản phẩm đến từ phương Nam, toát lên vẻ thông thái và tri thức tạo sự tin tưởng.</p>
-              </div>
-          
-            
+          </div>
+
+          <div class="carousel-item">
+            <img class="d-block w-100 " src="img/carousel2.jpg" alt="Second slide">
+            <div class="text-center LBorder ">
+              <h1>NiceSeeKe</h1>
+              <p class="m-0">Một sản phẩm đến từ phương Bắc, toát lên vẻ cứng cáp và mạnh mẽ áp bức kẻ địch.</p>
             </div>
+
+          </div>
+
+          <div class="carousel-item">
+            <img class="d-block w-100" src="img/carousel3.jpg" alt="Third slide">
+            <div class="text-center  LBorder">
+              <h1>BullMaMa</h1>
+              <p class="m-0">Một sản phẩm đến từ phương Nam, toát lên vẻ thông thái và tri thức tạo sự tin tưởng.</p>
+            </div>
+
+
           </div>
         </div>
-   
+      </div>
+
       <!------------------------------------------------------------------------------------------------------------------------->
       <div class="col">
         <img class="d-block w-100" src="img/carousel1.jpg" alt="First slide">
         <div class="text-center LBorder ">
           <h1>SALE OFF</h1>
-          <p class="m-0" >Những sản phẩm đang nằm trong sự kiện giảm giá của cửa hàng với chất lượng đảm bảo nhất</p>  
+          <p class="m-0">Những sản phẩm đang nằm trong sự kiện giảm giá của cửa hàng với chất lượng đảm bảo nhất</p>
         </div>
-      
+
       </div>
-    
+
     </div>
   </div>
-    <!------------------------------------------------------------------------------------------------------------------------->
+  <!------------------------------------------------------------------------------------------------------------------------->
   <h1 class="container-fluid text-center bg-warning mt-5 mb-5">DANH MỤC SẢN PHẨM </h1>
   <div class="containter text-center text-light">
- 
+
     <div class="card-columns d-none d-md-block font-weight-bold ">
-      <div class="card" >
+      <div class="card">
         <img class="card-img-bottom" src="img/carousel3.jpg" alt="Card image">
         <div class="card-img-overlay">
           <h2 class="card-title"><a href="">NAM</a></h2>
           <ul class="align-content-around">
             <li>
-              <a href="#" >QUẦN</a>
-            </li>
-            <li>
-              <a href="#" >ÁO</a>
-            </li>
-            <li>
-              <a href="#" >GIÀY</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card"  >
-        <img class="card-img-top" src="img/carousel3.jpg" alt="Card image">
-        <div class="card-img-overlay">
-          <h2 class="card-title"> <a href="">NỮ</a> </h2>
-          <ul>
-            <li>
-              <a href="#"  >QUẦN</a>
+              <a href="#">QUẦN</a>
             </li>
             <li>
               <a href="#">ÁO</a>
             </li>
             <li>
-              <a href="#" >GIÀY</a>
+              <a href="#">GIÀY</a>
             </li>
           </ul>
         </div>
       </div>
-      <div class="card" >
-        <img class="card-img-top" src="img/carousel3.jpg" alt="Card image" >
+      <div class="card">
+        <img class="card-img-top" src="img/carousel3.jpg" alt="Card image">
+        <div class="card-img-overlay">
+          <h2 class="card-title"> <a href="">NỮ</a> </h2>
+          <ul>
+            <li>
+              <a href="#">QUẦN</a>
+            </li>
+            <li>
+              <a href="#">ÁO</a>
+            </li>
+            <li>
+              <a href="#">GIÀY</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/carousel3.jpg" alt="Card image">
         <div class="card-img-overlay  ">
           <h2 class="card-title"> <a href=""> THƯƠNG HIỆU </a> </h2>
           <ul>
             <li>
-              <a href="#" >ADIDAPHAS</a>
+              <a href="#">ADIDAPHAS</a>
             </li>
             <li>
               <a href="#">NiceSeeKe</a>
@@ -329,109 +332,182 @@
             </li>
           </ul>
         </div>
-      </div> 
-  </div>
- 
-  <div class="container-fluid text-center d-block d-md-none">
-    <ul>
-      <li class="container bg-warning "> <h1 class=>NAM<h1></li>
-      <li class="container bg-warning "> <h1>NỮ<h1></li>
-      <li class="container bg-warning"> <h1>THƯƠNG HIỆU</h1></li>
-    </ul>
-  </div>
-
-    
-
-
-
-<!-- footer -->
-<div class="container-fluid bg-secondary text-center py-5" id="footer">
-  <div class="row">
-    <div class="col-md-3 text-center pl-0 pr-0">
-      <img class="rounded-circle" src="img/Logo.png " alt="3L" width="150px" height="150px">
+      </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="container-fluid text-center d-block d-md-none">
       <ul>
-        <li>
-          <a class="footer-head" href="#">SẢN PHẨM</a>
+        <li class="container bg-warning ">
+          <h1 class=>NAM<h1>
         </li>
-        <li>
-          <a href="#">Nam</a>
+        <li class="container bg-warning ">
+          <h1>NỮ<h1>
         </li>
-        <li>
-          <a href="#">Nữ</a>
-        </li>
-        <li>
-          <a href="#">Thời trang & Phụ kiện</a>
-        </li>
-        <li>
-          <a href="#">Sale-Off</a>
+        <li class="container bg-warning">
+          <h1>THƯƠNG HIỆU</h1>
         </li>
       </ul>
     </div>
-    <div class="col-md-3">
-      <ul>
-        <li>
-          <a href="#" class="footer-head">HỖ TRỢ </a>
-        </li>
-        <li>
-          <a href="#">Tra cứu đơn hàng</a>
-        </li>
-        <li>
-          <a href="#">Về TripleL Shop</a>
-        </li>
 
-      </ul>
-    </div>
-    <div class="col-md-3">
-      <ul>
-        <li>
-          <a href="#" class="footer-head">LIÊN HỆ</a>
-        </li>
-        <li>
-          <a href="#">Email liên hệ</a>
-        </li>
-        <li>
-          <a href="#">TripleLshop@gmail.com</a>
-        </li>
-        <li>
-          <a href="#">Hotline</a>
-        </li>
-        <li>
-          <a href="#">0932 234 123</a>
-        </li>
-
-      </ul>
-    </div>
   </div>
-  <div class="row">
-    <div class="col-md-3 text-center mt-5 py-3 align-self-center" style="background-color:#f15e2c;">
-      <a href="#" style="font-size: 20px;color:white"> TÌM CỬA HÀNG</a>
-    </div>
-    <div class="col-md-3 mt-0 ">
-      <p class="footer-head">SOCIAL</p>
-      <ul class="d-inline-flex">
-        <li>
-          <a class="mr-4" href="#" style="font-size: 40px;background: transparent;color: white"><i class="fa fa-facebook-f"></i></a>
-        </li>
-        <li>
-          <a class="mr-4" href="#" style="font-size: 40px;background: transparent;color: white"><i class="fa fa-instagram"></i></a>
-        </li>
-        <li>
-          <a  class=""href="#" style="font-size: 40px;background: transparent;color: white"><i class="fa fa-twitter"></i></a>
-        </li>
-      </ul>
+  <!-- BEST SELLER -->
+  <h1 class="container-fluid text-center bg-warning mt-5 mb-5">BEST SELLER</h1>
 
+  <div id="BestSeller" class="carousel slide text-center mb-5" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row justify-content-center">
+          <div class="col-2">
+            <img src="img/product1.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+            <img src="img/product2.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
 
+            <img src="img/product3.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+            <img src="img/product4.jpg" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-2">
+            <img src="img/product8.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+            <img src="img/product5.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+
+            <img src="img/product6.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+            <img src="img/product7.jpg" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-2">
+            <img src="img/product1.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+            <img src="img/product2.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+
+            <img src="img/product3.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-2">
+            <img src="img/product4.jpg" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
     </div>
-    
+    <a class="carousel-control-prev" href="#BestSeller" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#BestSeller" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <p class="text-center" style="font-size: 30px;color: white">
-    Copyright
-          <i class="fa fa-copyright" aria-hidden="true"></i>
-    2020
-  </p>
 
-</div>
+  <!-- footer -->
+  <div class="container-fluid bg-secondary text-center py-5" id="footer">
+    <div class="row">
+      <div class="col-md-3 text-center pl-0 pr-0">
+        <img class="rounded-circle" src="img/Logo.png " alt="3L" width="150px" height="150px">
+      </div>
+
+      <div class="col-md-3">
+        <ul>
+          <li>
+            <a class="footer-head" href="#">SẢN PHẨM</a>
+          </li>
+          <li>
+            <a href="#">Nam</a>
+          </li>
+          <li>
+            <a href="#">Nữ</a>
+          </li>
+          <li>
+            <a href="#">Thời trang & Phụ kiện</a>
+          </li>
+          <li>
+            <a href="#">Sale-Off</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li>
+            <a href="#" class="footer-head">HỖ TRỢ </a>
+          </li>
+          <li>
+            <a href="#">Tra cứu đơn hàng</a>
+          </li>
+          <li>
+            <a href="#">Về TripleL Shop</a>
+          </li>
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li>
+            <a href="#" class="footer-head">LIÊN HỆ</a>
+          </li>
+          <li>
+            <a href="#">Email liên hệ</a>
+          </li>
+          <li>
+            <a href="#">TripleLshop@gmail.com</a>
+          </li>
+          <li>
+            <a href="#">Hotline</a>
+          </li>
+          <li>
+            <a href="#">0932 234 123</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-center mt-5 py-3 align-self-center" style="background-color:#f15e2c;">
+        <a href="#" style="font-size: 20px;color:white"> TÌM CỬA HÀNG</a>
+      </div>
+      <div class="col-md-3 mt-0 ">
+        <p class="footer-head">SOCIAL</p>
+        <ul class="d-inline-flex">
+          <li>
+            <a class="mr-4" href="#" style="font-size: 40px;background: transparent;color: white"><i
+                class="fa fa-facebook-f"></i></a>
+          </li>
+          <li>
+            <a class="mr-4" href="#" style="font-size: 40px;background: transparent;color: white"><i
+                class="fa fa-instagram"></i></a>
+          </li>
+          <li>
+            <a class="" href="#" style="font-size: 40px;background: transparent;color: white"><i
+                class="fa fa-twitter"></i></a>
+          </li>
+        </ul>
+
+
+      </div>
+
+    </div>
+    <p class="text-center" style="font-size: 30px;color: white">
+      Copyright
+      <i class="fa fa-copyright" aria-hidden="true"></i>
+      2020
+    </p>
+
+  </div>
 </body>
