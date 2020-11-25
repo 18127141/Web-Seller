@@ -4,6 +4,16 @@ body{
     
     
 }
+a:hover{
+    color: rgb(255, 166, 0);
+    text-decoration: none;
+}
+a{
+    color: white;
+}
+ul{
+    list-style: none;
+}
 /*HEADER ZONE*/
 .header{
     background-color: black;
@@ -88,6 +98,9 @@ ul, ol {
     .dropdown:hover>a {
         color: orange;
     }
+    .dropdown-item:hover  {
+        background-color: gray;
+    }
     .dropdown a{
         font-weight: bolder;
         color: whitesmoke;
@@ -105,7 +118,9 @@ ul, ol {
     
     .dropdown-menu, .dropdown-item{
         position: relative;
+        
     }
+   
 @media only screen and (min-width: 768px){
     
     .arrow
@@ -183,7 +198,6 @@ ul, ol {
 
 .icon-search:hover{
     background-color: gray;
-    
 }
 
 
@@ -224,8 +238,89 @@ ul, ol {
     height: 100px;
 }
 
-.carousel-caption{
-    position: absolute;
-    bottom: -100;
-    left: 0;
+
+.LBorder{
+    border: 0px solid white !important;
+    background-color: rgb(0, 0, 0, 0) ;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    min-height: 150px !important;
+}
+.LBorder *{ 
+  color: white;
+}
+@media only screen and (min-width: 768px) {
+    #Brand1 .carousel-indicators {
+        bottom: 40% !important;
+    }
+    .LBorder h1{
+    font-size: 3vw;
+    }
+    .LBorder p{
+    font-size: calc(1vw + 10px) ;
+    }
+    .card-title *{
+    font-size:  3vw   !important;
+    font-weight: bolder;
+    }
+    .card a{
+    font-size: calc(3vw - 10px);
+    }
+    .card{
+        min-height: 200px;
+        max-height: 400px;
+        background-color: black;
+    }
+}
+@media only screen and (min-width: 578px) and (max-width: 768px){
+    #Brand1 .carousel-indicators {
+        bottom: 50% !important;
+    }
+   
+}
+@media only screen and (max-width: 578px) {
+    #Brand1 .carousel-indicators {
+        bottom: 50% !important;
+    }
+    .LBorder{
+        min-height: 100px !important;
+    }
+    .LBorder h1{
+        font-size: 3vw;
+    }
+    .LBorder p{
+        font-size: calc(3vw + 10px) ;
+    }
+    .card-title *{
+        font-size: 4vw  !important;
+        font-weight: bolder;
+      
+    }
+    .card a{
+        font-size: 5vw;
+        }
+    }
+
+
+.card-title{
+    margin-bottom: 20px;
+}
+
+.card h2{
+  background-color: rgb(0, 0, 0, 0.7); 
+}
+
+.card-columns{
+ 
+    column-gap:  5%;
+}
+
+#footer ul
+{
+    list-style-type: none;
+}
+#footer .footer-head
+{
+    font-size: 36px;
+    color:white;
 }
