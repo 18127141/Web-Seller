@@ -2,226 +2,211 @@
 <html>
 
 <head lang="en-US">
-    <title>Triple Long Store</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triple Long Store</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--BOOTSTRAP HERE-->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--MY CSS AND JS-->
+  <!--BOOTSTRAP HERE-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--MY CSS AND JS-->
 
-    <link rel="stylesheet" href="CSS/style_login_register.css">
+  <link rel="stylesheet" href="CSS/style_login_register.css">
 
 
 
 </head>
 
 <body>
-    <!--HEADER-->
-    <header class="fixed-top" id="head">
-        <div class="header container-fluid d-none d-md-block m-0">
-          <ul class="menu">
-            <li>
-              <a href="#"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
-            </li>
-            <li>
-              <a href="login.htm"><i class="fa fa-user"></i> Đăng nhập</a>
-            </li>
-          </ul>
-        </div>
-        <!--NAV-->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark pl-5 pr-5 pb-0 pt-0" >
-    
-          <a class="navbar-brand m-0 " href="Home.html">
-            <img class="rounded-circle" src="img/Logo.png " alt="3L" width="100px" height="100px">
-          </a>
-    
-          <div class="d-sm-block d-lg-none d-md-none d-inline-block text-left">
-    
-            <a class="box-link" href="#"><i class="fa fa-truck"></i> </a>
-    
-    
-            <a class="box-link" href="#"><i class="fa fa-map-marker"></i> </a>
-    
-    
-            <a class="box-link" href="#"><i class="fa fa-heart"></i> </a>
-    
-    
-            <a class="box-link" href="#"><i class="fa fa-shopping-cart"></i> </a>
-    
-    
-            <a class="box-link" href="login.htm"><i class="fa fa-user"></i></a>
-    
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-start" id="navbarNavDropdown">
-            <ul class="navbar-nav flex-nowrap">`
-              <li class="nav-item dropdown  pb-4 pt-4 ">
-                <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  |SẢN PHẨM
-                </a>
-                <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-                  <div class="arrow sp"></div>
-    
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-    
-              <li class="nav-item dropdown pb-4 pt-4">
-                <a class="nav-link dropdown-toggle" href="#" id="Nam" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  <div class="arrow nam bg-danger">|NAM</div>
-                  
-                </a>
-                <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-                  <div class="arrow nam"></div>
-    
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-    
-    
-    
-    
-                </div>
-              </li>
-    
-              <li class="nav-item dropdown pb-4 pt-4 ">
-                <a class="nav-link dropdown-toggle" href="#" id="Nu" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  |NỮ
-                </a>
-                <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
-                  <div class="arrow nu "></div>
-    
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-    
-                </div>
-              </li>
-    
-              <li class="nav-item dropdown  pb-4 pt-4 ">
-                <a class="nav-link dropdown-toggle" href="#" id="PhuKien" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  |PHỤ KIỆN
-                </a>
-                <div class="dropdown-content dropdown-menu text-center " aria-labelledby="SanPham">
-                  <div class="arrow pk"></div>
-    
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown pb-4 pt-4 ">
-                <a class="nav-link " href="#">
-                  |TripleL
-                </a>
-              </li>
-            </ul>
-          </div>
-    
-          <div class="d-none d-lg-block  d-md-block container justify-content-center pr-0 ">
-            <form class="form-inline search ">
-              <button class="btn my-2 my-sm-0 icon-search p-0 " type="submit"><i class="fa fa-search"></i></button>
-              <input class="form-control mr-sm-2 search-text shadow-none" type="search" placeholder="Search"
-                aria-label="Search">
-            </form>
-          </div>
-        </nav>
-    
-    
-      </header>
+  <!--HEADER-->
+  <header class="bg-light" id="head">
+    <div class="header container-fluid d-none d-md-block m-0">
+      <ul class="menu">
+        <li>
+          <a href="#"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
+        </li>
+        <li>
+          <a href="login.htm"><i class="fa fa-user"></i> Đăng nhập</a>
+        </li>
+      </ul>
+    </div>
+    <!--NAV-->
+    <nav class="navbar navbar-expand-md navbar-light text-dark mt-2 mb-2 ">
+
+      <a class="navbar-brand m-0  " href="Home.html">
+        <img class="rounded-circle" src="img/Logo.png " alt="3L" width="100px" height="100px">
+      </a>
+
+      <div class="d-sm-block d-lg-none d-md-none d-inline-block text-left">
+
+        <a class="box-link" href="#"><i class="fa fa-truck"></i> </a>
 
 
-    <div class="container" id="cont">
+        <a class="box-link" href="#"><i class="fa fa-map-marker"></i> </a>
+
+
+        <a class="box-link" href="#"><i class="fa fa-heart"></i> </a>
+
+
+        <a class="box-link" href="#"><i class="fa fa-shopping-cart"></i> </a>
+
+
+        <a class="box-link" href="login.htm"><i class="fa fa-user"></i></a>
+
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+        <ul class="navbar-nav flex-nowrap ">`
+          <li class="nav-item dropdown  pb-4 pt-4 ">
+            <div class="arrow dropdown-content "></div>
+            <a class="nav-link dropdown-toggle" href="#" id="SanPham" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              |SẢN PHẨM
+            </a>
+            <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown pb-4 pt-4">
+            <div class="arrow dropdown-content "></div>
+            <a class="nav-link dropdown-toggle" href="#" id="Nam" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              |NAM
+
+            </a>
+            <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+
+
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown pb-4 pt-4 ">
+            <div class="arrow dropdown-content "></div>
+            <a class="nav-link dropdown-toggle" href="#" id="Nu" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              |NỮ
+            </a>
+            <div class="dropdown-content dropdown-menu" aria-labelledby="SanPham">
+
+
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+
+            </div>
+          </li>
+
+          <li class="nav-item dropdown  pb-4 pt-4 ">
+            <div class="arrow dropdown-content  "></div>
+            <a class="nav-link dropdown-toggle" href="#" id="PhuKien" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              |PHỤ KIỆN
+            </a>
+            <div class="dropdown-content dropdown-menu text-center " aria-labelledby="SanPham">
+
+
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+
+          <li class="nav-item  dropdown pb-4 pt-4 ">
+            <a class="nav-link " href="#">
+              TripleL
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="d-none d-lg-block  d-md-block  justify-content-center  pr-0 ">
+        <form class="form-inline search ">
+          <button class="btn my-2 my-sm-0 icon-search p-0 " type="submit"><i class="fa fa-search"></i></button>
+          <input class="form-control mr-sm-2 search-text shadow-none" type="search" placeholder="Search"
+            aria-label="Search">
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid bg-dark ">
+      <div class="container " id="cont">
         <form action="action_page.htm" method="POST">
-            <h1>Login</h1>
-            <div class="inputbox">
-                <div class="icon user">
+          <h1>Login</h1>
+          <div class="inputbox">
+            <div class="icon ">
+              <i class="fa fa-user"></i>
+            </div>
+            <input type="text" name="User" required class="bg-dark">
+            <label>Username</label>
+          </div>
 
-                </div>
-                <input type="text" name="User" required>
-                <label>Username</label>
+          <div class="inputbox">
+            <div class="icon">
+              <i class="fa fa-lock"></i>
             </div>
 
-            <div class="inputbox">
-                <div class="icon password"></div>
+            <input type="password" name="P_WORD" id="Password" class="bg-dark" required>
+            <label>Password</label>
+            <span onclick="Myfunction()">
+              <i id="eye1" class="fa fa-eye-slash"></i>
+              <i id="eye2" class="fa fa-eye"></i>
 
-                <input type="password" name="P_WORD" id="Password" required>
-                <label>Password</label>
-                <span onclick="Myfunction()">
-                    <i id="eye1" class="fa fa-eye-slash"></i>
-                    <i id="eye2" class="fa fa-eye"></i>
-
-                </span>
-                <script>
-                    const pass = document.getElementById('Password');
-                    const icon1 = document.getElementById("eye1");
-                    const icon2 = document.getElementById("eye2");
-
-                    function Myfunction() {
-                        if (pass.type === 'password') {
-                            pass.setAttribute('type', 'text');
-                            icon1.style.display = "none";
-                            icon2.style.display = "block";
-
-                        }
-                        else {
-                            pass.setAttribute('type', 'password');
-                            icon2.style.display = "none";
-                            icon1.style.display = "block";
-
-                        }
-
-                    }
-                </script>
-
-
-
-            </div>
-            <input type="checkbox">Remember Password<br>
-            <p>Don't have an account? <a href="register.htm">Sign Up</a></p>
-            <input type="submit" value="Sign in">
+            </span>
             <script>
+              const pass = document.getElementById('Password');
+              const icon1 = document.getElementById("eye1");
+              const icon2 = document.getElementById("eye2");
 
-                var ele = document.getElementById("head");
-                var con = document.getElementById("cont");
-                con.style.marginTop = ele.offsetHeight + 'px'
-                
-                $(window).resize(function () {
+              function Myfunction() {
+                if (pass.type === 'password') {
+                  pass.setAttribute('type', 'text');
+                  icon1.style.display = "none";
+                  icon2.style.display = "block";
 
-                    con.style.marginTop = ele.offsetHeight + 'px'
-                    
+                }
+                else {
+                  pass.setAttribute('type', 'password');
+                  icon2.style.display = "none";
+                  icon1.style.display = "block";
 
-                    //resize just happened, pixels changed
-                });
+                }
+
+              }
             </script>
+
+
+
+          </div>
+          <input type="checkbox">Remember Password<br>
+          <p>Don't have an account? <a href="register.htm" style="color:blue;">Sign Up</a></p>
+          <input type="submit" value="Sign in">
+    </div>
 
 
 </body>
