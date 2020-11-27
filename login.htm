@@ -145,6 +145,7 @@
         </ul>
       </div>
 
+
       <div class="d-none d-lg-block  d-md-block  justify-content-center  pr-0 ">
         <form class="form-inline search ">
           <button class="btn my-2 my-sm-0 icon-search p-0 " type="submit"><i class="fa fa-search"></i></button>
@@ -153,60 +154,65 @@
         </form>
       </div>
     </nav>
+  </header>
 
-    <div class="container-fluid bg-dark ">
-      <div class="container " id="cont">
-        <form action="action_page.htm" method="POST">
-          <h1>Login</h1>
-          <div class="inputbox">
-            <div class="icon ">
-              <i class="fa fa-user"></i>
-            </div>
-            <input type="text" name="User" required class="bg-dark">
-            <label>Username</label>
+  <div class=" bg_login p-0 ">
+
+    <div class="container " id="cont" style="border: 1px solid black;border-radius: 10px;">
+      <form action="action_page.htm" method="POST">
+        <h1>Login</h1>
+        <div class="inputbox">
+          <div class="icon ">
+            <i class="fa fa-user"></i>
+          </div>
+          <input type="text" name="User" required class="">
+          <label>Username</label>
+        </div>
+
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-lock"></i>
           </div>
 
-          <div class="inputbox">
-            <div class="icon">
-              <i class="fa fa-lock"></i>
-            </div>
+          <input type="password" name="P_WORD" id="Password" class="" required>
+          <label>Password</label>
+          <span onclick="Myfunction()">
+            <i id="eye1" class="fa fa-eye-slash"></i>
+            <i id="eye2" class="fa fa-eye"></i>
 
-            <input type="password" name="P_WORD" id="Password" class="bg-dark" required>
-            <label>Password</label>
-            <span onclick="Myfunction()">
-              <i id="eye1" class="fa fa-eye-slash"></i>
-              <i id="eye2" class="fa fa-eye"></i>
+          </span>
+          <script>
+            const pass = document.getElementById('Password');
+            const icon1 = document.getElementById("eye1");
+            const icon2 = document.getElementById("eye2");
 
-            </span>
-            <script>
-              const pass = document.getElementById('Password');
-              const icon1 = document.getElementById("eye1");
-              const icon2 = document.getElementById("eye2");
-
-              function Myfunction() {
-                if (pass.type === 'password') {
-                  pass.setAttribute('type', 'text');
-                  icon1.style.display = "none";
-                  icon2.style.display = "block";
-
-                }
-                else {
-                  pass.setAttribute('type', 'password');
-                  icon2.style.display = "none";
-                  icon1.style.display = "block";
-
-                }
+            function Myfunction() {
+              if (pass.type === 'password') {
+                pass.setAttribute('type', 'text');
+                icon1.style.display = "none";
+                icon2.style.display = "block";
 
               }
-            </script>
+              else {
+                pass.setAttribute('type', 'password');
+                icon2.style.display = "none";
+                icon1.style.display = "block";
+
+              }
+
+            }
+          </script>
 
 
 
-          </div>
-          <input type="checkbox">Remember Password<br>
-          <p>Don't have an account? <a href="register.htm" style="color:blue;">Sign Up</a></p>
-          <input type="submit" value="Sign in">
+        </div>
+        <input type="checkbox">Remember Password<br>
+        <p>Don't have an account? <a href="register.htm" style="color:blue;">Sign Up</a></p>
+        <input type="submit" value="Sign in" >
+      </form>
     </div>
+  </div>
+
 
 
 </body>

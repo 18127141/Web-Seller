@@ -1,12 +1,24 @@
 
+.bg_login
+{
+    
+    height:100%;
+    width: 100%;
+    background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/login_bg.jpg');
+    background-position: center;
+    background-size:cover;
+    position:absolute;
+  
+}
+
 .container
 {
-    position: static;
-    /*top:50vw;
+    position: relative;
+    /* top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    transform: translateY(10vh);*/
-    /* top: calc(20ch ); */
+     */
+    top: calc(20ch );
     
     display: flex;
     justify-content: center;
@@ -14,7 +26,7 @@
     width: 400px;
     padding:40px;
     box-sizing: border-box;
-    
+    background-color: rgba(255,255,255,0.4)   ;
 
         
     
@@ -48,8 +60,10 @@ form
     padding: 10px 0;
     font-size: 16px;
     margin-bottom: 20px;
-    border-bottom: 1px solid orange;
+    border-bottom: 1px solid blue;
     outline:none;
+    background-color: rgba(255,255,255,0.4)   ;
+
 }
 .container .inputbox label
 {
@@ -60,7 +74,7 @@ form
     font-size: 16px;
     transition: .5s;
     pointer-events: none;
-    color: rgb(241,94,44);
+    color: black;
 }
 .container .inputbox input:focus+label,.container .inputbox input:valid+label
 {
@@ -78,7 +92,7 @@ div.icon
     height: 20px;
     font-size:20px;
     margin-right: 10px;
-    color: rgb(241,94,44);
+    color: black;
 }
 
 
@@ -88,11 +102,16 @@ div.icon
 }
 .container input[type="submit"]
 {
-    border:none;
+    border:1px solid black;
+    border-radius: 10px;
     outline: none;
     cursor: pointer;    
-    padding: 10px 30px 10px 30px;
+    padding: 10px 134px 10px 134px;
     border: 1px solid black;
+    
+
+    
+    
 }
 
 .inputbox span
