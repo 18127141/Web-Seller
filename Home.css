@@ -305,6 +305,10 @@ ul, ol {
 .card-title{
     margin-bottom: 20px;
 }
+.card li{
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
 
 .card h2{
   background-color: rgb(0, 0, 0, 0.7); 
