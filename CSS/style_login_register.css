@@ -103,7 +103,7 @@ div.icon
 .container input[type="submit"]
 {
     border:1px solid black;
-    border-radius: 10px;
+    border-radius: 20px;
     outline: none;
     cursor: pointer;    
     padding: 10px 134px 10px 134px;
@@ -384,7 +384,14 @@ ul, ol {
         margin-top:0px!important ;
    
     }
-  }
+    .container{
+        padding:20px;
+    }
+    .container input[type="submit"]
+    {
+      
+    padding: 10px 155px 10px 155px;
+    }
 
 .navbar
 {

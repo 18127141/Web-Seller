@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +20,6 @@
   <!--Font Awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--MY CSS AND JS-->
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="CSS/style_login_register.css">
 
@@ -146,6 +147,7 @@
         </ul>
       </div>
 
+
       <div class="d-none d-lg-block  d-md-block  justify-content-center  pr-0 ">
         <form class="form-inline search ">
           <button class="btn my-2 my-sm-0 icon-search p-0 " type="submit"><i class="fa fa-search"></i></button>
@@ -154,76 +156,78 @@
         </form>
       </div>
     </nav>
+  </header>
 
+  <div class=" bg_login p-0 ">
 
-    <div class="container-fluid bg-dark" >
-      <div class="container" id="cont">
-        <form action="action_page.htm" method="POST">
-          <h1>Register</h1>
-          <div class="inputbox">
-            <div class="icon">
-              <i class="fa fa-user"></i>
+    <div class="container " id="cont" style="border: 1px solid black;border-radius: 20px;">
+      <form action="action_page.htm" method="POST">
+        <h1>Login</h1>
+        <div class="inputbox">
+          <div class="icon ">
+            <i class="fa fa-user"></i>
+          </div>
+          <input type="text" name="User" required class="">
+          <label>Username</label>
+        </div>
 
-            </div>
-            <input type="text" name="User" required class="bg-dark">
-            <label >Username</label>
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-lock"></i>
           </div>
 
-          <div class="inputbox">
-            <div class="icon">
-              <i class="fa fa-lock"></i>
+          <input type="password" name="P_WORD" id="Password" class="" required>
+          <label>Password</label>
+          <span onclick="Myfunction()">
+            <i id="eye1" class="fa fa-eye-slash"></i>
+            <i id="eye2" class="fa fa-eye"></i>
 
-            </div>
+          </span>
+          <script>
+            const pass = document.getElementById('Password');
+            const icon1 = document.getElementById("eye1");
+            const icon2 = document.getElementById("eye2");
 
-            <input type="password" name="P_WORD" id="Password" class="bg-dark" required>
-            <label>Password</label>
-            <span onclick="Myfunction()">
-              <i id="eye1" class="fa fa-eye-slash"></i>
-              <i id="eye2" class="fa fa-eye"></i>
-
-            </span>
-            <script>
-              const pass = document.getElementById('Password');
-              const icon1 = document.getElementById("eye1");
-              const icon2 = document.getElementById("eye2");
-
-              function Myfunction() {
-                if (pass.type === 'password') {
-                  pass.setAttribute('type', 'text');
-                  icon1.style.display = "none";
-                  icon2.style.display = "block";
-
-                }
-                else {
-                  pass.setAttribute('type', 'password');
-                  icon2.style.display = "none";
-                  icon1.style.display = "block";
-
-                }
+            function Myfunction() {
+              if (pass.type === 'password') {
+                pass.setAttribute('type', 'text');
+                icon1.style.display = "none";
+                icon2.style.display = "block";
 
               }
-            </script>
+              else {
+                pass.setAttribute('type', 'password');
+                icon2.style.display = "none";
+                icon1.style.display = "block";
 
-          </div>
-          <div class="inputbox">
-            <div class="icon">
-              <i class="fa fa-envelope"></i>
-            </div>
-            <input type="text" name="Email" class="bg-dark" required>
-            <label>Email</label>
-          </div>
-          <div class="inputbox">
-            <div class="icon">
-              <i class="fa fa-mobile"></i>
-            </div>
-            <input type="text" name="Phone" class="bg-dark" required>
-            <label>Cellphone</label>
-          </div>
+              }
+
+            }
+          </script>
 
 
-          <input type="submit" value="Sign in">
-        </form>
-      </div>
+
+        </div>
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-envelope"></i>
+          </div>
+          <input type="text" name="Email" class="" required>
+          <label>Email</label>
+        </div>
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-mobile"></i>
+          </div>
+          <input type="text" name="Phone" class="" required>
+          <label>Cellphone</label>
+        </div>
+        <input type="submit" value="Sign in" >
+      </form>
+    </div>
+  </div>
+
+
 
 </body>
 
