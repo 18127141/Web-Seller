@@ -256,6 +256,11 @@ ul, ol {
         margin-top:0px!important ;
    
     }
+    #BestSeller h5
+    {
+        font-size: 2rem;
+        /* best seller */
+    }
   }
 
 .navbar
