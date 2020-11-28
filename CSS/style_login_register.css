@@ -11,7 +11,7 @@
   
 }
 
-.container
+#cont
 {
     position: relative;
     /* top:50%;
@@ -32,28 +32,25 @@
     
 }
 
-.navbar
-{
-    height: 100px;
-}
+
 form
 {
     width: 100%;
 }
 
-.container h1
+#cont h1
 {
     color: black;
     text-align: center;
     margin:30px auto;
     font-size: 40px;
 }
-.container .inputbox
+#cont .inputbox
 {
     position: relative;
     padding-left:30px;
 }
-.container .inputbox input
+#cont .inputbox input
 {
     border:none;
     width: 100%;
@@ -65,7 +62,7 @@ form
     background-color: rgba(255,255,255,0.4)   ;
 
 }
-.container .inputbox label
+#cont .inputbox label
 {
     position: absolute;
     top:0;
@@ -76,7 +73,7 @@ form
     pointer-events: none;
     color: black;
 }
-.container .inputbox input:focus+label,.container .inputbox input:valid+label
+#cont .inputbox input:focus+label,#cont .inputbox input:valid+label
 {
     top:-18px;
     left:30px;
@@ -96,11 +93,11 @@ div.icon
 }
 
 
-.container a, .container input[type="checkbox"]
+#cont a, #cont input[type="checkbox"]
 {
     cursor: pointer;
 }
-.container input[type="submit"]
+#cont input[type="submit"]
 {
     border:1px solid black;
     border-radius: 20px;
@@ -151,7 +148,7 @@ HEHE
 */
 
 /*HEADER ZONE*/
-body{
+/* body{
     display: block;
     color: #555;
     
@@ -167,7 +164,8 @@ a{
 ul{
     list-style: none;
 }
-/*HEADER ZONE*/
+
+
 .header{
     background-color: black;
     margin-bottom: 0px;
@@ -211,9 +209,12 @@ ul{
 ul, ol {
     margin-top: 0px;
     margin-bottom: 0px;
-}
+} */
 /*NAV*/
-
+/* .navbar
+{
+    height: 100px;
+}
 .navbar{
     padding-left: 10%;
     padding-right: 10%;
@@ -326,8 +327,7 @@ ul, ol {
 {
     width: 16vw;
     position: relative;
-    /* right: 50px;
-    bottom: 43px; */
+
     padding-left: 10px;
     padding-right: 10px;
     margin-left: auto;
@@ -387,13 +387,13 @@ ul, ol {
     .container{
         padding:20px;
     }
-    .container input[type="submit"]
-    {
+    #cont input[type="submit"]  {
       
     padding: 10px 155px 10px 155px;
     }
+}
 
 .navbar
 {
     height: 100px;
-}
+} */
