@@ -5,6 +5,7 @@ body{
     
     
 }
+
 a:hover{
     color: rgb(255, 166, 0);
     text-decoration: none;
@@ -142,6 +143,8 @@ ul, ol {
         position: relative;
         
     }
+    
+    
    
 @media only screen and (min-width: 768px){
     
@@ -358,7 +361,6 @@ ul, ol {
 }
 
 
-
 #footer ul
 {
     list-style-type: none;
@@ -367,4 +369,14 @@ ul, ol {
 {
     font-size: 36px;
     color:white;
+}
+#InsteadNav .card-link{
+    font-size: 40px !important;
+    font-weight: bolder;
+}
+#InsteadNav {
+ 
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0
 }
