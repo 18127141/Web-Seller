@@ -9,13 +9,36 @@ body{
 a:hover{
     color: rgb(255, 166, 0);
     text-decoration: none;
+
 }
 .vl {
-    border-left: 2px dotted black;
+    border-left: 2px dashed grey;
+    
+    height: 100%;
+  }
+.box-dash{
+    border: 3px dashed black;
+  
+    height: 100%;
+}
+.hldash {
+    border-bottom: 2px dashed grey;
+  
+    height: 100%;
+}
+.hl2dash{
+    border-top: 3px dashed gray;
+    border-bottom: 3px dashed grey;
+    height: 100%;
+}
+.hl {
+    border-bottom: 2px solid white;
     height: 100%;
   }
 a{
     color: white;
+    -webkit-transition: color .25s ease-in-out;
+    -moz-transition: color .25s ease-in-out;
 
 }
 ul{
@@ -73,11 +96,13 @@ ul, ol {
 }
 .NavContentDropdown1 img { 
     opacity: 0.4; 
-
+    -webkit-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
   } 
 
 .NavContentDropdown1 div.col-3:hover img { 
     opacity: 1; 
+    
   }
 
 .navbar{
@@ -99,12 +124,17 @@ ul, ol {
  
     padding: 0px 0px 12px 16px;
     width: 100%;
-    border:none
-  
+    border:none;
+   
   
   }
   .dropdown:hover>.dropdown-content {
     display:block!important;
+     -webkit-transition:max-height 500ms ease;
+    -moz-transition:max-height 500ms ease;
+    -o-transition:max-height 500ms ease;
+    transition:max-height 500ms ease;
+  
 }
 .dropdown:hover>.dropdown-toggle::after
     {
@@ -285,10 +315,10 @@ ul, ol {
     }
  
     .LBorder h1{
-        font-size: 3vw;
+        font-size: 6vw;
     }
     .LBorder p{
-        font-size: calc(3vw + 10px) ;
+        font-size: calc(3vw) ;
     }
     .card-title *{
         font-size: 4vw  !important;
@@ -372,10 +402,7 @@ ul, ol {
     font-size: 36px;
     color:white;
 }
-#InsteadNav .card-link{
-    font-size: 40px !important;
-    font-weight: bolder;
-}
+
 #InsteadNav {
  
     position: -webkit-sticky !important;
