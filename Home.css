@@ -16,8 +16,7 @@ a:hover{
   }
 a{
     color: white;
-    -moz-transition: color .15s ;
-     -webkit-transition: color .15s;
+
 }
 ul{
     list-style: none;
@@ -74,8 +73,7 @@ ul, ol {
 }
 .NavContentDropdown1 img { 
     opacity: 0.4; 
-    -moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
+
   } 
 
 .NavContentDropdown1 div.col-3:hover img { 
@@ -125,8 +123,7 @@ ul, ol {
     .dropdown a{
         font-weight: bolder;
         color: whitesmoke;
-        -moz-transition: color .2s ;
-        -webkit-transition: color .2s;
+
         font-size: 2vw;
     }
     .dropdown>a:link{

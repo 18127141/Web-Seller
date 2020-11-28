@@ -31,10 +31,10 @@
     <div class="header container-fluid d-none d-md-block m-0">
       <ul class="menu">
         <li>
-          <a href="check_Order.htm"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
+          <a href="#"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
         </li>
         <li>
-          <a href="#"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
+          <a href="Find_Us.htm"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
         </li>
         <li>
           <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
@@ -178,9 +178,53 @@
       </div>
     </div>
   </header>
+  
 
   <!--  -->
-  <iframe width="100%" height="1000" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8Ssm_BsvdTERNQGQ8pc4hE4&key=AIzaSyCLpu3_Q3aJSFK6kN-WVWGYJZ55sOj24Nk" allowfullscreen></iframe>
+<style>
 
+</style>
+<div class="card " >
+  <img src="/img/delivery.jpg" alt="" class="card-img" id="Card">
+
+  <div class="card-img-overlay container ">
+    
+    <form action="/action_page.php" id="input"
+    <h1 class="text-dark text-center"  style="font-size: 36px;" >TRA CỨU ĐƠN HÀNG</h1>
+      <div class="form-group my-5">
+  
+        <input type="text" class="form-control" id="usr" name="username" placeholder="MÃ ĐƠN HÀNG" required>
+      </div>
+      <div class="form-group my-5">
+
+        <input type="password" class="form-control" id="pwd" name="password" placeholder="Email/Số Điện Thoại" required>
+      </div>
+      <button type="submit" class="btn btn-primary bg-info "style="padding: 10px 100px 10px 100px">Submit</button>
+    </form>
+  </div>
+</div>
+<script>
+  setTimeout(function(){ var tmp=document.getElementById("Card");
+  console.log(tmp);
+  console.log(tmp.clientHeight);
+  var tmp1=document.getElementById("input");
+  // console.log(Math.floor(tmp.offsetHeight/2));
+
+  tmp1.style.marginTop= (Math.floor(tmp.clientHeight/6)) +"px";
+  
+  $(window).resize(function () {
+    
+
+  console.log(Math.floor(tmp.offsetHeight/2));
+  tmp1.style.marginTop= (Math.floor(tmp.clientHeight/6)) +"px";
+
+  
+  
+
+
+//resize just happened, pixels changed
+}); }, 50);
+  
+</script>
 </body>
 </html>
