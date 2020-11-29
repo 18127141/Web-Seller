@@ -1,0 +1,25 @@
+.ITEM{
+    font-size: 16px;
+}
+.ITEM a{
+   color: black !important;
+   font-weight: bold;
+}
+.ITEM:hover{
+    font-size: 130%;
+}
+.ITEM a:hover{
+    color: orange !important;
+
+     
+ }
+.ITEM .Price{
+    font-weight: bold;
+
+}
+.ITEM h5{
+    
+    color: orange;
+    font-weight: bold;
+    border-bottom: 2px dashed grey;
+}
