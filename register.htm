@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 
@@ -30,256 +28,337 @@
 
 <body>
   <!--HEADER-->
-  <body >
-    <!--HEADER-->
-    <header class="bg-light" id="head">
-      <div class="header container-fluid d-none d-md-block m-0">
-        <ul class="menu">
-          <li>
-            <a href="check_Order.htm"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
+
+  <!--HEADER-->
+  <header class="bg-light" id="head">
+    <div class="header container-fluid d-none d-md-block m-0">
+      <ul class="menu">
+        <li>
+          <a href="check_Order.htm"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
+        </li>
+        <li>
+          <a href="Find_Us.htm"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
+        </li>
+        <li>
+          <a href="login.htm"><i class="fa fa-user"></i> Đăng nhập</a>
+        </li>
+      </ul>
+    </div>
+    <!--NAV-->
+    <nav class="navbar navbar-expand-md navbar-light text-dark mt-2 mb-2 ">
+
+      <a class="navbar-brand m-0  " href="Home.html">
+        <img class="rounded-circle" src="img/Logo.png " alt="3L" width="100px" height="100px">
+      </a>
+
+      <div class="d-sm-block d-lg-none d-md-none d-inline-block text-left">
+
+        <a class="box-link" href="check_Order.htm"><i class="fa fa-truck"></i> </a>
+
+
+        <a class="box-link" href="Find_Us.htm"><i class="fa fa-map-marker"></i> </a>
+
+
+        <!--<a class="box-link" href="#"><i class="fa fa-heart"></i> </a>-->
+
+
+        <a class="box-link" href="#"><i class="fa fa-shopping-cart"></i> </a>
+
+
+        <!--<a class="box-link" href="login.htm"><i class="fa fa-user"></i></a>-->
+
+      </div>
+      <button onclick="myFunction()" class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <script>
+        function myFunction() {
+          var element = document.getElementsByClassName("fixed");
+          console.log(element)
+
+          if (element.length == 0) {
+            element = document.getElementsByTagName("header");
+            console.log(element[0])
+            element[0].classList.add("fixed")
+
+          }
+          else {
+            element = document.getElementsByTagName("header");
+            console.log(element[0])
+            element[0].classList.remove("fixed")
+          }
+
+
+        }
+      </script>
+
+
+      <div class="collapse navbar-collapse justify-content-center">
+        <ul class="navbar-nav flex-nowrap ">`
+          <li class="nav-item dropdown  pb-4 pt-4 ">
+            <div class="arrow dropdown-content "></div>
+            <a href="#" class="nav-link dropdown-toggle" id="SanPham" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              SẢN PHẨM
+            </a>
+            <div class="dropdown-content dropdown-menu pr-5 pl-5 text-center " aria-labelledby="SanPham">
+
+              <div class="NavContentDropdown1 row pl-5 pr-5 ml-5 mr-5 mt-3 mb-3">
+                <div class="col-3 text-center">
+                  <div>
+                    <a>
+                      <img src="img/Male.jpg" alt="Men" width="100%" height="px" style="cursor: pointer" ;>
+                    </a>
+                  </div>
+
+                  <a href=""> NAM</a>
+                </div>
+                <div class="col-3 text-center">
+                  <div>
+                    <img src="img/Female.jpg" alt="Female" width="100%" height="px" style="cursor: pointer">
+                  </div>
+
+                  <a href=""> NỮ</a>
+                </div>
+                <div class="col-3 text-center">
+                  <div>
+                    <img src="img/Menu_Sale-off.jpg" alt="Sale off" width="100%" height="px" style="cursor: pointer">
+                  </div>
+
+                  <a href=""> SALE OFF</a>
+                </div>
+                <div class="col-3 text-center">
+                  <div>
+                    <img src="img/Phukien.jpg" alt="Phu kien" width="100%" height="px" style="cursor: pointer">
+                  </div>
+                  <a href="">PHỤ KIỆN</a>
+                </div>
+              </div>
+
+              <p>HÃY MUA THEO CÁCH CỦA BẠN</p>
+            </div>
           </li>
-          <li>
-            <a href="Find_Us.htm"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
+
+          <li class="nav-item dropdown pb-4 pt-4">
+            <div class="arrow dropdown-content "></div>
+            <a class="nav-link dropdown-toggle" href="#" id="Nam" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              NAM
+
+            </a>
+            <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
+              <div class="pl-5 pr-5 ml-5 mr-5">
+                <ul class=" container justify-content-between p-3">
+                  <li class=" pl-5 ">
+                    <h6 class="row"><a href="">NỔI BẬT</a></h6>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+
+
+                  </li>
+                  <li class="vl pl-5 ">
+                    <h6 class="row"><a href="">ÁO</a> </h6>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+
+
+                  </li>
+                  <li class="vl pl-5 ">
+                    <h6 class="row"><a href="">QUẦN</a> </h6>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+
+                  </li>
+
+                </ul>
+              </div>
+            </div>
           </li>
-          <li>
-            <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
+
+          <li class="nav-item dropdown pb-4 pt-4 ">
+            <div class="arrow dropdown-content "></div>
+            <a class="nav-link dropdown-toggle" href="#" id="Nu" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              NỮ
+            </a>
+            <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
+              <div class="pl-5 pr-5 ml-5 mr-5">
+                <ul class=" container justify-content-between p-3">
+                  <li class=" pl-5 ">
+                    <h6 class="row"><a href="">NỔI BẬT</a></h6>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+
+
+                  </li>
+                  <li class="vl pl-5 ">
+                    <h6 class="row"><a href="">ÁO</a> </h6>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+
+
+                  </li>
+                  <li class="vl pl-5 ">
+                    <h6 class="row"><a href="">QUẦN</a> </h6>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <br>
+
+
+                  </li>
+
+                </ul>
+              </div>
+            </div>
           </li>
-          <li>
-            <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
+
+          <li class="nav-item dropdown  pb-4 pt-4 ">
+
+            <a class="nav-link " href="#" id="PhuKien" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              SALE OFF
+            </a>
           </li>
-          <li>
-            <a href="login.htm"><i class="fa fa-user"></i> Đăng nhập</a>
-          </li>
+
+
         </ul>
       </div>
-      <!--NAV-->
-      <nav class="navbar navbar-expand-md navbar-light text-dark mt-2 mb-2 ">
-  
-        <a class="navbar-brand m-0  " href="Home.html">
-          <img class="rounded-circle" src="img/Logo.png " alt="3L" width="100px" height="100px">
-        </a>
-  
-        <div class="d-sm-block d-lg-none d-md-none d-inline-block text-left">
-  
-          <a class="box-link" href="check_Order.htm"><i class="fa fa-truck"></i> </a>
-  
-  
-          <a class="box-link" href="Find_Us.htm"><i class="fa fa-map-marker"></i> </a>
-  
-  
-          <!--<a class="box-link" href="#"><i class="fa fa-heart"></i> </a>-->
-  
-  
-          <a class="box-link" href="#"><i class="fa fa-shopping-cart"></i> </a>
-  
-  
-          <!--<a class="box-link" href="login.htm"><i class="fa fa-user"></i></a>-->
-  
+
+      <div class="d-none d-lg-block  d-md-block  justify-content-center  pr-0 ">
+        <form class="form-inline search ">
+          <button class="btn my-2 my-sm-0 icon-search p-0 " type="submit"><i class="fa fa-search"></i></button>
+          <input class="form-control mr-sm-2 search-text shadow-none" type="search" placeholder="Search"
+            aria-label="Search">
+        </form>
+      </div>
+
+
+    </nav>
+    <div class="collapse" id="navbarNavDropdown">
+      <div id="InsteadNav" class="d-md-none d-sm-block">
+        <div class="text-center card bg-dark border-0">
+          <div class="card-header hldash mb-3" data-toggle="collapse" href="#MENCARDNAV">
+            <a class="card-link ">
+              <h3>SẢN PHẨM </h3>
+            </a>
+          </div>
+          <div id="MENCARDNAV" class="collapse " data-parent="#InsteadNav">
+            <div class="card-body text-dark">
+              <ul class="align-content-around">
+                <li>
+                  <a href="#">NAM</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">NỮ</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">SALE-OFF</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">PHỤ KIỆN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-header hldash  mb-3" data-toggle="collapse" href="#WOMENCARDNAV">
+            <a class="card-link ">
+              <h3>NAM </h3>
+            </a>
+          </div>
+          <div id="WOMENCARDNAV" class="collapse " data-parent="#InsteadNav">
+            <div class="card-bod y  text-dark">
+              <ul class="align-content-around">
+                <li>
+                  <a href="#">NỔI BẬT</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">ÁO</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">QUẦN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-header hldash  mb-3" data-toggle="collapse" href="#BRANDNAV">
+            <a class="card-link  ">
+              <h3>NỮ </h3>
+            </a>
+          </div>
+          <div id="BRANDNAV" class="collapse " data-parent="#InsteadCard">
+            <div class="card-body bg-dark text-dark">
+              <ul class="align-content-around">
+                <li>
+                  <a href="#">NỔI BẬT</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">ÁO</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">QUẦN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a class="card-header mb-3 hl   " href="">
+            <h3>SALE-OFF </h3>
+          </a>
+
+          <a class="card-header mb-3 hldash " href="">
+            <h3>YÊU THÍCH</h3>
+          </a>
+
+          <a class="card-header  mb-3  hldash" href="">
+            <h3>ĐĂNG NHẬP</h3>
+          </a>
+
+
         </div>
-        <button onclick="myFunction()" class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <script>
-          function myFunction() {
-            var element = document.getElementsByClassName("fixed");
-            console.log(element)
-  
-            if (element.length == 0) {
-              element = document.getElementsByTagName("header");
-              console.log(element[0])
-              element[0].classList.add("fixed")
-  
-            }
-            else {
-              element = document.getElementsByTagName("header");
-              console.log(element[0])
-              element[0].classList.remove("fixed")
-            }
-  
-  
-          }
-        </script>
-  
-  
-        <div class="collapse navbar-collapse justify-content-center">
-          <ul class="navbar-nav flex-nowrap ">`
-            <li class="nav-item dropdown  pb-4 pt-4 ">
-              <div class="arrow dropdown-content "></div>
-              <a href="#" class="nav-link dropdown-toggle" id="SanPham" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                SẢN PHẨM
-              </a>
-              <div class="dropdown-content dropdown-menu pr-5 pl-5 text-center " aria-labelledby="SanPham">
-  
-                <div class="NavContentDropdown1 row pl-5 pr-5 ml-5 mr-5 mt-3 mb-3">
-                  <div class="col-3 text-center">
-                    <div>
-                      <a>
-                        <img src="img/Male.jpg" alt="Men" width="100%" height="px" style="cursor: pointer" ;>
-                      </a>
-                    </div>
-  
-                    <a href=""> NAM</a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <div>
-                      <img src="img/Female.jpg" alt="Female" width="100%" height="px" style="cursor: pointer">
-                    </div>
-  
-                    <a href=""> NỮ</a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <div>
-                      <img src="img/Menu_Sale-off.jpg" alt="Sale off" width="100%" height="px" style="cursor: pointer">
-                    </div>
-  
-                    <a href=""> SALE OFF</a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <div>
-                      <img src="img/Phukien.jpg" alt="Phu kien" width="100%" height="px" style="cursor: pointer">
-                    </div>
-                    <a href="">PHỤ KIỆN</a>
-                  </div>
-                </div>
-  
-                <p>HÃY MUA THEO CÁCH CỦA BẠN</p>
-              </div>
-            </li>
-  
-            <li class="nav-item dropdown pb-4 pt-4">
-              <div class="arrow dropdown-content "></div>
-              <a class="nav-link dropdown-toggle" href="#" id="Nam" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                NAM
-  
-              </a>
-              <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
-                <div class="pl-5 pr-5 ml-5 mr-5">
-                  <ul class=" container justify-content-between p-3">
-                    <li class=" pl-5 ">
-                      <h6 class="row"><a href="">NỔI BẬT</a></h6>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-  
-  
-                    </li>
-                    <li class="vl pl-5 ">
-                      <h6 class="row"><a href="">ÁO</a> </h6>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-  
-  
-                    </li>
-                    <li class="vl pl-5 ">
-                      <h6 class="row"><a href="">QUẦN</a> </h6>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-  
-                    </li>
-  
-                  </ul>
-                </div>
-              </div>
-            </li>
-  
-            <li class="nav-item dropdown pb-4 pt-4 ">
-              <div class="arrow dropdown-content "></div>
-              <a class="nav-link dropdown-toggle" href="#" id="Nu" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                NỮ
-              </a>
-              <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
-                <div class="pl-5 pr-5 ml-5 mr-5">
-                  <ul class=" container justify-content-between p-3">
-                    <li class=" pl-5 ">
-                      <h6 class="row"><a href="">NỔI BẬT</a></h6>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-  
-  
-                    </li>
-                    <li class="vl pl-5 ">
-                      <h6 class="row"><a href="">ÁO</a> </h6>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-  
-  
-                    </li>
-                    <li class="vl pl-5 ">
-                      <h6 class="row"><a href="">QUẦN</a> </h6>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <a href="" class="row item-dropdown">Link to somewhere1</a>
-                      <br>
-  
-  
-                    </li>
-  
-                  </ul>
-                </div>
-              </div>
-            </li>
-  
-            <li class="nav-item dropdown  pb-4 pt-4 ">
-  
-              <a class="nav-link " href="#" id="PhuKien" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                SALE OFF
-              </a>
-            </li>
-  
-    
-          </ul>
-        </div>
-  
-        <div class="d-none d-lg-block  d-md-block  justify-content-center  pr-0 ">
-          <form class="form-inline search ">
-            <button class="btn my-2 my-sm-0 icon-search p-0 " type="submit"><i class="fa fa-search"></i></button>
-            <input class="form-control mr-sm-2 search-text shadow-none" type="search" placeholder="Search"
-              aria-label="Search">
-          </form>
-        </div>
-  
-  
-      </nav>
-  
+      </div>
+
   </header>
 
   <div class=" bg_login p-0 ">
@@ -346,7 +425,7 @@
           <input type="text" name="Phone" class="" required>
           <label>Cellphone</label>
         </div>
-        <input type="submit" value="Sign in" >
+        <input type="submit" value="Sign in">
       </form>
     </div>
   </div>
