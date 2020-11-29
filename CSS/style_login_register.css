@@ -18,7 +18,7 @@
     left:50%;
     transform: translate(-50%,-50%);
      */
-    top: calc(10ch );
+    top: calc(5ch );
     
     display: flex;
     justify-content: center;
@@ -130,6 +130,7 @@ div.icon
     #cont
     {
         width: 300px;
+     
     }
     #cont input[type="submit"]
     {

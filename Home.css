@@ -156,6 +156,12 @@ ul, ol {
 
         font-size: 2vw;
     }
+    .item-dropdown
+    {
+        /* Font size of Dropdown NAM NU */
+        font-size: 1vw!important;
+        
+    }
     .dropdown>a:link{
         text-decoration: none;
         color: whitesmoke;

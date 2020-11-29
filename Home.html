@@ -69,74 +69,76 @@
         <!--<a class="box-link" href="login.htm"><i class="fa fa-user"></i></a>-->
 
       </div>
-      <button   onclick= "myFunction()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button onclick="myFunction()" class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <script>
         function myFunction() {
-           var element = document.getElementsByClassName("fixed");
-           console.log(element)
+          var element = document.getElementsByClassName("fixed");
+          console.log(element)
 
-           if (element.length ==0)
-           {
-             element = document.getElementsByTagName("header");
-             console.log(element[0])
-             element[0].classList.add("fixed")
-          
-           }
-           else{
-             element = document.getElementsByTagName("header");
-             console.log(element[0])
-             element[0].classList.remove("fixed")
-           }
-      
-          
+          if (element.length == 0) {
+            element = document.getElementsByTagName("header");
+            console.log(element[0])
+            element[0].classList.add("fixed")
+
+          }
+          else {
+            element = document.getElementsByTagName("header");
+            console.log(element[0])
+            element[0].classList.remove("fixed")
+          }
+
+
         }
-        </script>
-        
-      
-      <div class="collapse navbar-collapse justify-content-center" >
+      </script>
+
+
+      <div class="collapse navbar-collapse justify-content-center">
         <ul class="navbar-nav flex-nowrap ">`
           <li class="nav-item dropdown  pb-4 pt-4 ">
             <div class="arrow dropdown-content "></div>
-            <a href="#" class="nav-link dropdown-toggle"  id="SanPham" data-toggle="dropdown" aria-haspopup="true"
+            <a href="#" class="nav-link dropdown-toggle" id="SanPham" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               SẢN PHẨM
             </a>
             <div class="dropdown-content dropdown-menu pr-5 pl-5 text-center " aria-labelledby="SanPham">
-             
-                <div  class="NavContentDropdown1 row pl-5 pr-5 ml-5 mr-5 mt-3 mb-3" >
-                  <div  class="col-3 text-center">
-                    <div>
-                      <img src="img/Logo.png" alt="Men" width="100%" height="px">
-                    </div>
-                      
-                      <a  href=""> NAM</a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <div>
-                      <img src="img/Logo.png" alt="Men" width="100%" height="px">
-                    </div>
 
-                    <a  href=""> NAM</a>
+              <div class="NavContentDropdown1 row pl-5 pr-5 ml-5 mr-5 mt-3 mb-3">
+                <div class="col-3 text-center">
+                  <div>
+                    <a>
+                      <img src="img/Male.jpg" alt="Men" width="100%" height="px" style="cursor: pointer" ;>
+                    </a>
                   </div>
-                  <div class="col-3 text-center">
-                    <div>
-                      <img src="img/Logo.png" alt="Men" width="100%" height="px">
-                    </div>
-                    
-                    <a  href=""> NAM</a>
-                  </div>
-                  <div class="col-3 text-center">
-                    <div>
-                      <img src="img/Logo.png" alt="Men" width="100%" height="px">
-                    </div>
-                    <a  href=""> NAM</a>  
-                  </div>
+
+                  <a href=""> NAM</a>
                 </div>
-        
-                <p>HÃY MUA THEO CÁCH CỦA BẠN</p>
+                <div class="col-3 text-center">
+                  <div>
+                    <img src="img/Female.jpg" alt="Female" width="100%" height="px" style="cursor: pointer">
+                  </div>
+
+                  <a href=""> NỮ</a>
+                </div>
+                <div class="col-3 text-center">
+                  <div>
+                    <img src="img/Menu_Sale-off.jpg" alt="Sale off" width="100%" height="px" style="cursor: pointer">
+                  </div>
+
+                  <a href=""> SALE OFF</a>
+                </div>
+                <div class="col-3 text-center">
+                  <div>
+                    <img src="img/Phukien.jpg" alt="Phu kien" width="100%" height="px" style="cursor: pointer">
+                  </div>
+                  <a href="">PHỤ KIỆN</a>
+                </div>
+              </div>
+
+              <p>HÃY MUA THEO CÁCH CỦA BẠN</p>
             </div>
           </li>
 
@@ -148,47 +150,47 @@
 
             </a>
             <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
-              <div  class="pl-5 pr-5 ml-5 mr-5" >
+              <div class="pl-5 pr-5 ml-5 mr-5">
                 <ul class=" container justify-content-between p-3">
                   <li class=" pl-5 ">
                     <h6 class="row"><a href="">NỔI BẬT</a></h6>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
- 
-                    
+
+
                   </li>
                   <li class="vl pl-5 ">
                     <h6 class="row"><a href="">ÁO</a> </h6>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-        
-                    
+
+
                   </li>
                   <li class="vl pl-5 ">
                     <h6 class="row"><a href="">QUẦN</a> </h6>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-              
+
                   </li>
-                 
+
                 </ul>
               </div>
             </div>
@@ -201,66 +203,62 @@
               NỮ
             </a>
             <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
-              <div  class="pl-5 pr-5 ml-5 mr-5" >
+              <div class="pl-5 pr-5 ml-5 mr-5">
                 <ul class=" container justify-content-between p-3">
                   <li class=" pl-5 ">
                     <h6 class="row"><a href="">NỔI BẬT</a></h6>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
 
-                    
+
                   </li>
                   <li class="vl pl-5 ">
                     <h6 class="row"><a href="">ÁO</a> </h6>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-         
-                    
+
+
                   </li>
                   <li class="vl pl-5 ">
                     <h6 class="row"><a href="">QUẦN</a> </h6>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
-                    <a href="" class="row" >Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
+                    <a href="" class="row item-dropdown">Link to somewhere1</a>
                     <br>
-    
-                    
+
+
                   </li>
-                  
+
                 </ul>
               </div>
             </div>
           </li>
 
           <li class="nav-item dropdown  pb-4 pt-4 ">
-            
+
             <a class="nav-link " href="#" id="PhuKien" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
-              SAFE OFF
+              SALE OFF
             </a>
           </li>
 
-          <li class="nav-item  dropdown pb-4 pt-4 ">
-            <a class="nav-link " href="#">
-              TripleL
-            </a>
-          </li>
+          
         </ul>
       </div>
 
@@ -272,10 +270,10 @@
         </form>
       </div>
 
- 
+
     </nav>
-  
-  
+
+
     <!--         New of the days               -->
     <div class="container-fluid text-center m-0 p-2 bg-secondary text-white font-weight-bold" id="cont">
       <div id="NewOftheday" class="carousel slide container" data-ride="carousel">
@@ -317,87 +315,91 @@
         //resize just happened, pixels changed
       });
     </script>
-       <div class="collapse" id ="navbarNavDropdown">
-        <div id="InsteadNav"  class="d-md-none d-sm-block">
-          <div class="text-center card bg-dark border-0">
-            <div class="card-header hldash mb-3" data-toggle="collapse" href="#MENCARDNAV">
-              <a class="card-link " >
-                <h3>SẢN PHẨM </h3> 
-              </a>
-            </div>
-            <div id="MENCARDNAV" class="collapse " data-parent="#InsteadNav">
-              <div class="card-body text-dark">
-                <ul class="align-content-around" >
-                  <li>
-                    <a href="#">NAM</a> <br><br>
-                  </li>
-                  <li>
-                    <a href="#">NỮ</a> <br><br>
-                  </li>
-                  <li>
-                    <a href="#">SAFE-OFF</a> <br><br>
-                  </li>
-                  <li>
-                    <a href="#">PHỤ KIỆN</a> 
-                  </li>
-                </ul>
-              </div>
-            </div>  
-            <div class="card-header hldash  mb-3"  data-toggle="collapse" href="#WOMENCARDNAV">
-              <a class="card-link ">
-                <h3>NAM </h3> 
-              </a>
-            </div>
-            <div id="WOMENCARDNAV" class="collapse " data-parent="#InsteadNav">
-              <div class="card-bod y  text-dark">
-                <ul class="align-content-around" >
-                  <li>
-                    <a href="#">NỔI BẬT</a> <br><br>
-                  </li>
-                  <li>
-                    <a href="#">ÁO</a> <br><br>
-                  </li>
-                  <li>
-                    <a href="#">QUẦN</a> 
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="card-header hldash  mb-3" data-toggle="collapse" href="#BRANDNAV">
-              <a class="card-link  " >
-                <h3>NỮ </h3> 
-              </a>
-            </div>
-            <div id="BRANDNAV" class="collapse " data-parent="#InsteadCard">
-              <div class="card-body bg-dark text-dark">
-                <ul class="align-content-around" >
-                  <li>
-                    <a href="#">NỔI BẬT</a> <br><br>
-                  </li>
-                  <li>
-                    <a href="#">ÁO</a> <br><br>
-                  </li>
-                  <li>
-                    <a href="#">QUẦN</a> 
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <a class="card-header mb-3 hl   " href="">
-              <h3>SAFE-OFF </h3> 
+    <div class="collapse" id="navbarNavDropdown">
+      <div id="InsteadNav" class="d-md-none d-sm-block">
+        <div class="text-center card bg-dark border-0">
+          <div class="card-header hldash mb-3" data-toggle="collapse" href="#MENCARDNAV">
+            <a class="card-link ">
+              <h3>SẢN PHẨM </h3>
             </a>
-    
-            <a class="card-header mb-3 hldash " href="">    <h3>YÊU THÍCH</h3> </a>
-         
-            <a class="card-header  mb-3  hldash" href="">    <h3>ĐĂNG NHẬP</h3>  </a>
-            
-           
           </div>
+          <div id="MENCARDNAV" class="collapse " data-parent="#InsteadNav">
+            <div class="card-body text-dark">
+              <ul class="align-content-around">
+                <li>
+                  <a href="#">NAM</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">NỮ</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">SALE-OFF</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">PHỤ KIỆN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-header hldash  mb-3" data-toggle="collapse" href="#WOMENCARDNAV">
+            <a class="card-link ">
+              <h3>NAM </h3>
+            </a>
+          </div>
+          <div id="WOMENCARDNAV" class="collapse " data-parent="#InsteadNav">
+            <div class="card-bod y  text-dark">
+              <ul class="align-content-around">
+                <li>
+                  <a href="#">NỔI BẬT</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">ÁO</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">QUẦN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-header hldash  mb-3" data-toggle="collapse" href="#BRANDNAV">
+            <a class="card-link  ">
+              <h3>NỮ </h3>
+            </a>
+          </div>
+          <div id="BRANDNAV" class="collapse " data-parent="#InsteadCard">
+            <div class="card-body bg-dark text-dark">
+              <ul class="align-content-around">
+                <li>
+                  <a href="#">NỔI BẬT</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">ÁO</a> <br><br>
+                </li>
+                <li>
+                  <a href="#">QUẦN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a class="card-header mb-3 hl   " href="">
+            <h3>SALE-OFF </h3>
+          </a>
+
+          <a class="card-header mb-3 hldash " href="">
+            <h3>YÊU THÍCH</h3>
+          </a>
+
+          <a class="card-header  mb-3  hldash" href="">
+            <h3>ĐĂNG NHẬP</h3>
+          </a>
+
+
         </div>
-  
       </div>
+
+    </div>
   </header>
-    
+
   <!-- POSTER -->
   <div class="container-fluid">
     <div id="POSTER" class="carousel slide" data-ride="carousel">
@@ -427,7 +429,7 @@
       </a>
     </div>
   </div>
- 
+
   <!--------------------------------------------------NEWS--------------------------------------------------------------------->
   <h1 class=" text-center bg-warning mt-5 mb-5"> NEWS </h1>
   <div class="container mt-5">
@@ -474,7 +476,7 @@
 
       <!------------------------------------------------------------------------------------------------------------------------->
       <div class="col">
-        <img class="d-block w-100" src="img/Safe off.jpg" alt="First slide">
+        <img class="d-block w-100" src="img/Sale off.jpg" alt="First slide">
         <div class="text-center LBorder ">
           <h1>SALE OFF</h1>
           <p class="m-0">Những sản phẩm đang nằm trong sự kiện giảm giá của cửa hàng với chất lượng đảm bảo nhất</p>
@@ -492,10 +494,12 @@
       <div class="card bg-danger ">
         <img class="card-img-bottom" src="img/Men.jpg" alt="Card image">
         <div class="card-img-overlay">
-          
-          <a  class="card-title" href=""><h2>MEN</h2></a>
-          <br class="d-none d-lg-block"> <br class="d-none d-lg-block"> 
-          <ul class="align-content-around" >
+
+          <a class="card-title" href="">
+            <h2>MEN</h2>
+          </a>
+          <br class="d-none d-lg-block"> <br class="d-none d-lg-block">
+          <ul class="align-content-around">
             <li>
               <a href="#">QUẦN</a> <br><br>
             </li>
@@ -503,7 +507,7 @@
               <a href="#">ÁO</a> <br><br>
             </li>
             <li>
-              <a href="#">GIÀY</a> 
+              <a href="#">GIÀY</a>
             </li>
           </ul>
         </div>
@@ -512,8 +516,10 @@
         <img class="card-img-top" src="img/Women.jpg" alt="Card image">
         <div class="card-img-overlay">
 
-          <a  class="card-title" href=""><h2>LADY</h2></a>
-          <br class="d-none d-lg-block"> <br class="d-none d-lg-block"> 
+          <a class="card-title" href="">
+            <h2>LADY</h2>
+          </a>
+          <br class="d-none d-lg-block"> <br class="d-none d-lg-block">
           <ul>
             <li>
               <a href="#">QUẦN</a> <br><br>
@@ -522,7 +528,7 @@
               <a href="#">ÁO</a> <br><br>
             </li>
             <li>
-              <a href="#">GIÀY</a> 
+              <a href="#">GIÀY</a>
             </li>
           </ul>
         </div>
@@ -531,8 +537,10 @@
         <img class="card-img-top" src="img/BRAND.jpg" alt="Card image">
         <div class="card-img-overlay  ">
 
-          <a  class="card-title" href=""><h2>BRAND</h2></a>
-          <br class="d-none d-lg-block"> <br class="d-none d-lg-block"> 
+          <a class="card-title" href="">
+            <h2>BRAND</h2>
+          </a>
+          <br class="d-none d-lg-block"> <br class="d-none d-lg-block">
           <ul>
             <li>
               <a href="#">ADIDAPHAS</a> <br><br>
@@ -541,13 +549,13 @@
               <a href="#">NiceSeeKe</a> <br><br>
             </li>
             <li>
-              <a href="#">BullMaMa</a> 
+              <a href="#">BullMaMa</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-   
+
     <div id="InsteadCard" class=" d-block d-md-none ">
       <div class="m-3 card bg-dark box-dash" style="border-color:grey;">
         <div class="card-header bg-warning  mb-3 " data-toggle="collapse" href="#MENCARD">
@@ -558,27 +566,7 @@
 
         <div id="MENCARD" class="collapse mb-3 " data-parent="#InsteadCard">
           <div class="card-body text-dark hl2dash">
-            <ul >
-              <li >
-                <a  href="#">QUẦN</a> <br><br>
-              </li>
-              <li>
-                <a href="#">ÁO</a> <br><br>
-              </li>
-              <li>
-                <a href="#">GIÀY</a> 
-              </li>
-            </ul>
-          </div>
-        </div>  
-        <div class="card-header bg-warning mb-3 "  data-toggle="collapse" href="#WOMENCARD">
-          <a class="card-link text-dark font-weight-bold m-0 p-0 " style="cursor: pointer;">
-            NỮ
-          </a>
-        </div>
-        <div id="WOMENCARD" class="collapse mb-3  " data-parent="#InsteadCard">
-          <div class="card-body  text-dark hl2dash">
-            <ul class="align-content-around" >
+            <ul>
               <li>
                 <a href="#">QUẦN</a> <br><br>
               </li>
@@ -586,7 +574,27 @@
                 <a href="#">ÁO</a> <br><br>
               </li>
               <li>
-                <a href="#">GIÀY</a> 
+                <a href="#">GIÀY</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-header bg-warning mb-3 " data-toggle="collapse" href="#WOMENCARD">
+          <a class="card-link text-dark font-weight-bold m-0 p-0 " style="cursor: pointer;">
+            NỮ
+          </a>
+        </div>
+        <div id="WOMENCARD" class="collapse mb-3  " data-parent="#InsteadCard">
+          <div class="card-body  text-dark hl2dash">
+            <ul class="align-content-around">
+              <li>
+                <a href="#">QUẦN</a> <br><br>
+              </li>
+              <li>
+                <a href="#">ÁO</a> <br><br>
+              </li>
+              <li>
+                <a href="#">GIÀY</a>
               </li>
             </ul>
           </div>
@@ -600,7 +608,7 @@
         <div id="BRAND" class="collapse " data-parent="#InsteadCard">
 
           <div class="card-body bg-dark text-dark hl2dash">
-            <ul class="align-content-around" >
+            <ul class="align-content-around">
               <li>
                 <a href="#">ADIDAPHAS</a> <br><br>
               </li>
@@ -608,12 +616,12 @@
                 <a href="#">NiceSeeKe</a> <br><br>
               </li>
               <li>
-                <a href="#">BullMaMa</a> 
+                <a href="#">BullMaMa</a>
               </li>
             </ul>
           </div>
         </div>
-     
+
       </div>
     </div>
   </div>
@@ -734,13 +742,13 @@
 
 
   <!-- footer -->
-  <div class="container-fluid bg-secondary "> 
+  <div class="container-fluid bg-secondary ">
     <div class="container text-center py-5" id="footer">
       <div class="row c">
         <div class="col-md-3 text-center pl-0 pr-0">
           <img class="rounded-circle" src="img/Logo.png " alt="3L" width="150px" height="150px">
         </div>
-  
+
         <div class="col-md-3">
           <ul>
             <li>
@@ -771,7 +779,7 @@
             <li>
               <a href="#">Về TripleL Shop</a>
             </li>
-  
+
           </ul>
         </div>
         <div class="col-md-3">
@@ -791,7 +799,7 @@
             <li>
               <a href="#">0932 234 123</a>
             </li>
-  
+
           </ul>
         </div>
       </div>
@@ -815,19 +823,19 @@
                   class="fa fa-twitter"></i></a>
             </li>
           </ul>
-  
-  
+
+
         </div>
-  
+
       </div>
       <p class="text-center" style="font-size: 30px;color: white">
         Copyright
         <i class="fa fa-copyright" aria-hidden="true"></i>
         2020
       </p>
-  
+
     </div>
   </div>
-  
-  
+
+
 </body>
