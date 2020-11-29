@@ -18,7 +18,7 @@
     left:50%;
     transform: translate(-50%,-50%);
      */
-    top: calc(20ch );
+    top: calc(10ch );
     
     display: flex;
     justify-content: center;
@@ -75,7 +75,7 @@ form
 }
 #cont .inputbox input:focus+label,#cont .inputbox input:valid+label
 {
-    top:-18px;
+    top:-30px;
     left:30px;
     color: #03a9f4;
     font-size:14px;
@@ -125,6 +125,17 @@ div.icon
 #eye1
 {
     display: block;
+}
+@media only screen and (max-width: 768px) {
+    #cont
+    {
+        width: 300px;
+    }
+    #cont input[type="submit"]
+    {
+        padding: 10px 100px 10px 80px;
+
+    }
 }
 
 /*HOME.CSS*/
