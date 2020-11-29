@@ -23,3 +23,6 @@
     font-weight: bold;
     border-bottom: 2px dashed grey;
 }
+#NAV_LEFT {
+    font-size: 20px !important;
+}
