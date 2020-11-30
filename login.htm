@@ -284,8 +284,6 @@
       var con = document.getElementById("cont");
 
 
-      con.style.marginTop = ele.offsetHeight + 'px'
-
       $(window).resize(function () {
 
         con.style.marginTop = ele.offsetHeight + 'px'
@@ -401,7 +399,7 @@
           <div class="icon ">
             <i class="fa fa-user"></i>
           </div>
-          <input type="text" name="User" required class="">
+          <input type="text" name="User" id="Username" required class="">
           <label>Username</label>
         </div>
 
@@ -417,40 +415,22 @@
             <i id="eye2" class="fa fa-eye"></i>
 
           </span>
-          <script>
-            const pass = document.getElementById('Password');
-            const icon1 = document.getElementById("eye1");
-            const icon2 = document.getElementById("eye2");
-
-            function Myfunction() {
-              if (pass.type === 'password') {
-                pass.setAttribute('type', 'text');
-                icon1.style.display = "none";
-                icon2.style.display = "block";
-
-              }
-              else {
-                pass.setAttribute('type', 'password');
-                icon2.style.display = "none";
-                icon1.style.display = "block";
-
-              }
-
-            }
-          </script>
+          
 
 
 
         </div>
         <input type="checkbox">Remember Password<br>
         <p>Don't have an account? <a href="register.htm" style="color:blue;">Sign Up</a></p>
-        <input type="submit" value="Sign in">
+        <input type="submit" id = "submit" value="Sign in">
       </form>
     </div>
   </div>
 
 
-
+  <script type = "text/JavaScript" src = "Login.js"></script>
+           
+</script>
 </body>
 
 </html>
