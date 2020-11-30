@@ -19,8 +19,3 @@ function Myfunction() {
     }
 
 }
-// submit.addEventListener("click", function () {
-//     if (pass.value != "" && username.value != "") {
-//         window.open("./Home.html")
-//     }
-// })
