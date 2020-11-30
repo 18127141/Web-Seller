@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en-US">
+    <title>Triple Long Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--BOOTSTRAP HERE-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--MY CSS AND JS-->
+    <link rel="stylesheet" href="Home.css">
+
+
+</head>
+
+<body class="bg-dark">
+    <!--HEADER-->
+    <header class="bg-light" id="head">
+        <div class="header container-fluid d-none d-md-block m-0">
+            <ul class="menu">
+                <li>
+                    <a href="check_Order.htm"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
+                </li>
+                <li>
+                    <a href="Find_Us.htm"><i class="fa fa-map-marker"></i> Tìm cửa hàng</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-heart"></i> Yêu thích</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
+                </li>
+                <li>
+                    <a href="login.htm"><i class="fa fa-user"></i> Đăng nhập</a>
+                </li>
+            </ul>
+        </div>
+        <!--NAV-->
+        <nav class="navbar navbar-expand-md navbar-light text-dark mt-2 mb-2 ">
+
+            <a class="navbar-brand m-0  " href="Home.html">
+                <img class="rounded-circle" src="img/Logo.png " alt="3L" width="100px" height="100px">
+            </a>
+
+            <div class="d-sm-block d-lg-none d-md-none d-inline-block text-left">
+
+                <a class="box-link" href="#"><i class="fa fa-truck"></i> </a>
+
+
+                <a class="box-link" href="#"><i class="fa fa-map-marker"></i> </a>
+
+
+                <!--<a class="box-link" href="#"><i class="fa fa-heart"></i> </a>-->
+
+
+                <a class="box-link" href="#"><i class="fa fa-shopping-cart"></i> </a>
+
+
+                <!--<a class="box-link" href="login.htm"><i class="fa fa-user"></i></a>-->
+
+            </div>
+            <button onclick="myFunction()" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <script>
+                function myFunction() {
+                    var element = document.getElementsByClassName("fixed");
+                    console.log(element)
+
+                    if (element.length == 0) {
+                        element = document.getElementsByTagName("header");
+                        console.log(element[0])
+                        element[0].classList.add("fixed")
+
+                    }
+                    else {
+                        element = document.getElementsByTagName("header");
+                        console.log(element[0])
+                        element[0].classList.remove("fixed")
+                    }
+
+
+                }
+            </script>
+
+
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav flex-nowrap ">`
+                    <li class="nav-item dropdown  pb-4 pt-4 ">
+                        <div class="arrow dropdown-content "></div>
+                        <a href="#" class="nav-link dropdown-toggle" id="SanPham" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            SẢN PHẨM
+                        </a>
+                        <div class="dropdown-content dropdown-menu pr-5 pl-5 text-center " aria-labelledby="SanPham">
+
+                            <div class="NavContentDropdown1 row pl-5 pr-5 ml-5 mr-5 mt-3 mb-3">
+                                <a class="col-3 text-center" href="ShowItem.html">
+                                    <div class=" mb-3">
+                                        <img src="img/Male.jpg" alt="Men" width="100%" height="px"
+                                            style="cursor: pointer" ;>
+                                    </div>
+                                    <p>CHO NAM</p>
+                                </a>
+                                <a class="col-3 text-center" href="ShowItem.html">
+                                    <div class=" mb-3">
+                                        <img src="img/Female.jpg" alt="Female" width="100%" height="px"
+                                            style="cursor: pointer">
+                                    </div>
+
+                                    <p>CHO NỮ</p>
+                                </a>
+                                <a class="col-3 text-center" href="ShowItem.html">
+                                    <div class=" mb-3">
+                                        <img src="img/Menu_Sale-off.jpg" alt="Sale off" width="100%" height="px"
+                                            style="cursor: pointer">
+                                    </div>
+                                    <p>SALE OFF</p>
+
+                                </a>
+                                <a class="col-3 text-center" href="ShowItem.html">
+                                    <div class=" mb-3">
+                                        <img src="img/Phukien.jpg" alt="Phu kien" width="100%" height="px"
+                                            style="cursor: pointer">
+                                    </div>
+                                    <p style="font-size: 2vw;">PHỤ KIỆN</p>
+                                </a>
+                            </div>
+
+                            <p class="mt-5 text-light font-italic">HÃY MUA THEO CÁCH CỦA BẠN</p>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown pb-4 pt-4">
+                        <div class="arrow dropdown-content "></div>
+                        <a class="nav-link dropdown-toggle" href="#" id="Nam" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            NAM
+
+                        </a>
+                        <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
+                            <div class="pl-5 pr-5 ml-5 mr-5">
+                                <ul class=" container justify-content-around p-5">
+                                    <li class=" pl-5 ">
+                                        <h6 class="row justify-content-center hldash"><a href="ShowItem.html">NỔI
+                                                BẬT</a></h6>
+                                        <a href="" class="row item-dropdown pt-3">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+
+
+                                    </li>
+                                    <li class=" pl-5 ">
+                                        <h6 class="row justify-content-center hldash"><a href="ShowItem.html">ÁO</a>
+                                        </h6>
+                                        <a href="" class="row item-dropdown pt-3">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+
+
+                                    </li>
+                                    <li class=" pl-5 ">
+                                        <h6 class="row justify-content-center hldash"><a href="ShowItem.html">QUẦN</a>
+                                        </h6>
+                                        <a href="" class="row item-dropdown pt-3">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown pb-4 pt-4 ">
+                        <div class="arrow dropdown-content "></div>
+                        <a class="nav-link dropdown-toggle" href="#" id="Nu" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            NỮ
+                        </a>
+                        <div class="dropdown-content dropdown-menu pr-5 pl-5 " aria-labelledby="SanPham">
+                            <div class="pl-5 pr-5 ml-5 mr-5">
+                                <ul class=" container justify-content-around p-5">
+                                    <li class=" pl-5 ">
+                                        <h6 class="row justify-content-center hldash"><a href="ShowItem.html">NỔI
+                                                BẬT</a></h6>
+                                        <a href="" class="row item-dropdown pt-3">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+
+
+                                    </li>
+                                    <li class=" pl-5 ">
+                                        <h6 class="row justify-content-center hldash"><a href="ShowItem.html">ÁO</a>
+                                        </h6>
+                                        <a href="" class="row item-dropdown pt-3">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+
+
+                                    </li>
+                                    <li class=" pl-5 ">
+                                        <h6 class="row justify-content-center hldash"><a href="ShowItem.html">QUẦN</a>
+                                        </h6>
+                                        <a href="" class="row item-dropdown pt-3">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <a href="" class="row item-dropdown">Link to somewhere1</a>
+                                        <br>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown  pb-4 pt-4 ">
+
+                        <a class="nav-link " href="#" id="PhuKien" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            SALE OFF
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="d-none d-lg-block  d-md-block  justify-content-center  pr-0 ">
+                <form class="form-inline search ">
+                    <button class="btn my-2 my-sm-0 icon-search p-0 " type="submit"><i
+                            class="fa fa-search"></i></button>
+                    <input class="form-control mr-sm-2 search-text shadow-none" type="search" placeholder="Search"
+                        aria-label="Search">
+                </form>
+            </div>
+
+
+        </nav>
+
+
+        <!--         New of the days               -->
+        <div class="container-fluid text-center m-0 p-2 bg-secondary text-white font-weight-bold" id="cont">
+            <div id="NewOftheday" class="carousel slide container" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <span class="d-block w-100 "> FREE SHIP HOA DON TO 500K ! </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="d-block w-100"> YOUR HAPPINESS IS OUR PASSION! </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="d-block w-100"> SIEU SALE 12.12 </span>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#NewOftheday" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#NewOftheday" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <script>
+
+            var ele = document.getElementById("head");
+            var con = document.getElementById("cont");
+
+
+            con.style.marginTop = ele.offsetHeight + 'px'
+
+            $(window).resize(function () {
+
+                con.style.marginTop = ele.offsetHeight + 'px'
+
+
+                //resize just happened, pixels changed
+            });
+        </script>
+        <div class="collapse" id="navbarNavDropdown">
+            <div id="InsteadNav" class="d-md-none d-sm-block">
+                <div class="text-center card bg-dark border-0">
+                    <div class="card-header hldash " data-toggle="collapse" href="#BRANDNAV">
+                        <a class="card-link ">
+                            <h3>SẢN PHẨM </h3>
+                        </a>
+                    </div>
+                    <div id="BRANDNAV" class="collapse  " data-parent="#BRANDNAV">
+                        <div class="card-body  text-dark hldash">
+                            <ul>
+                                <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">
+                                        NAM
+                                    </a>
+                                </li>
+                                <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">
+                                        NỮ
+                                    </a>
+                                </li>
+                                <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">
+                                        SALE-OFF
+                                    </a>
+                                </li>
+                                <li class="font-weight-bolder p-3 m-0  align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">
+                                        PHỤ KIỆN
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="card-header hldash  " data-toggle="collapse" href="#MENCARDNAV">
+                        <a class="card-link ">
+                            <h3>NAM </h3>
+                        </a>
+                    </div>
+                    <div id="MENCARDNAV" class="collapse " data-parent="#MENCARDNAV">
+                        <div class="card-body  text-dark ">
+                            <ul>
+                                <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">
+                                        QUẦN
+                                    </a>
+                                </li>
+                                <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">ÁO</a>
+                                </li>
+                                <li class="font-weight-bolder p-3 m-0  align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">GIÀY</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-header hldash  " data-toggle="collapse" href="#WOMENCARDNAV">
+                        <a class="card-link  ">
+                            <h3>NỮ </h3>
+                        </a>
+                    </div>
+                    <div id="WOMENCARDNAV" class="collapse " data-parent="#WOMENCARDNAV">
+                        <div class="card-body  text-dark hldash">
+                            <ul>
+                                <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">
+                                        QUẦN
+                                    </a>
+                                </li>
+                                <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">ÁO</a>
+                                </li>
+                                <li class="font-weight-bolder p-3 m-0  align-content-between ">
+                                    <a href="#" class="m-0 p-0  justify-content-center row">GIÀY</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="card-header mb-3 hl   " href="ShowItem.html">
+                        <h3>SALE-OFF </h3>
+                    </a>
+
+                    <a class="card-header mb-3 hldash " href="ShowItem.html">
+                        <h3>YÊU THÍCH</h3>
+                    </a>
+
+                    <a class="card-header  mb-3  hldash" href="login.htm">
+                        <h3>ĐĂNG NHẬP</h3>
+                    </a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">THÔNG TIN SẢN PHẨM </h1>
+
+    <div class="container-fluid hldash">
+        <div class="contaier-fluid container-lg pt-4  ">
+            <div class="row bg-dark ">
+                <div class="col-lg mr-3">
+                    <div class="row"><img src="img/showProduct.jpg" class="img-fluid" alt="giay">
+                    </div>
+                    <!--  -->
+                    <div class="row">
+                        <div id="BestSeller" class="carousel slide text-center mt-5" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active mb-5">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-2 col-3 bg-dark " style="border:none">
+                                            <img src="img/showProduct_Aspect1.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                        <div class="col-md-2 col-3  bg-dark" style="border:none">
+                                            <img src="img/showProduct_Aspect2.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                        <div class="col-md-2 col-3  bg-dark" style="border:none">
+
+                                            <img src="img/showProduct_Aspect3.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                        <div class="col-md-2 col-3  bg-dark  d-none d-md-block " style="border:none">
+                                            <img src="img/showProduct_Aspect4.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item mb-5">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-2 col-3   bg-dark " style="border:none">
+                                            <img src="img/showProduct_Aspect2.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                        <div class="col-md-2 col-3   bg-dark" style="border:none">
+                                            <img src="img/showProduct_Aspect3.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                        <div class="col-md-2 col-3  bg-dark" style="border:none">
+
+                                            <img src="img/showProduct_Aspect4.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                        <div class="col-md-2 col-3 bg-dark  d-none d-md-block " style="border:none">
+                                            <img src="img/showProduct_Aspect5.jpg" alt=""
+                                                class="img-fluid card-img-top">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <a class="carousel-control-prev" href="#BestSeller" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#BestSeller" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+                <div class="col-lg  h-100 text-white">
+                    <div class="row hldash flex-column">
+                        <div class="col">
+                            <h1 class="Product-name mb-5">
+                                URBAS UNSETTLING - LOW TOP - STARTLIGHT/LAVENDER
+                            </h1>
+                        </div>
+                        <div class="col d-inline-flex justify-content-between">
+                            <p class="mb-5">Mã sản phẩm: <strong>A61102</strong></p>
+                            <p class="mb-5">Tình trạng: <strong>New Arrival</strong></p>
+                        </div>
+                        <div class="col mb-5"><strong style="color:yellow">490.000 VND</strong>
+                        </div>
+                    </div>
+                    <div class="row hldash">
+                        <p class=" my-5 pl-3">Sở hữu công thức pha màu "khó chịu". Urbas Unsettling tạo nên điểm nhấn
+                            mạnh
+                            mẽ, gây kích thích thị giác thông qua sự đối lập trong từng gam màu. Điểm chốt hạ cho một
+                            outfit
+                            đặc biệt thú vị, tách biệt khỏi sự trùng lặp thông thường.</p>
+                    </div>
+                    <div class="row hldash flex-column mt-5">
+                        <div class="col d-inline-flex justify-content-between">
+                            <!--                         -->
+                            <div>
+                                <p>Size</p>
+                                <div class="dropdown ">
+                                    <button class="btn btn-secondary dropdown-toggle bg-danger" type="button" id="Size"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        style="width: 200px;border-radius: 0px;">
+                                        42
+                                    </button>
+                                    <div class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
+                                        style="width: 200px;border-radius: 0px;">
+                                        <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                            <button class="col p-0">35</button>
+                                            <button class="col p-0">36</button>
+                                            <button class="col p-0">37</button>
+                                            <button class="col p-0">38</button>
+                                        </div>
+                                        <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                            <button class="col p-0">39</button>
+                                            <button class="col p-0">40</button>
+                                            <button class="col p-0">41</button>
+                                            <button class="col p-0">42</button>
+                                        </div>
+                                        <div class="dropdown-item text-danger d-inline-flex p-0">
+                                            <button class="col p-0">43</button>
+                                            <button class="col p-0">44</button>
+                                            <button class="col p-0">45</button>
+                                            <button class="col p-0">46</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>So luong</p>
+                                <span>
+                                    <button style="width: 35px;height: 35px;">+</button>
+                                    <div class="dropdown ">
+                                        <button class="btn btn-secondary dropdown-toggle bg-danger" type="button"
+                                            id="Soluong" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" style="width: 200px;border-radius: 0px;">
+                                            1
+                                        </button>
+                                        <div class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
+                                            style="width: 200px;border-radius: 0px;">
+                                            <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                                <button class="col p-0">1</button>
+                                                <button class="col p-0">2</button>
+                                                <button class="col p-0">3</button>
+                                                <button class="col p-0">4</button>
+                                            </div>
+                                            <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                                <button class="col p-0">5</button>
+                                                <button class="col p-0">6</button>
+                                                <button class="col p-0">7</button>
+                                                <button class="col p-0">8</button>
+                                            </div>
+                                            <div class="dropdown-item text-danger d-inline-flex p-0">
+                                                <button class="col p-0">9</button>
+                                                <button class="col p-0">10</button>
+                                                <button class="col p-0">11</button>
+                                                <button class="col p-0">12</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                                <button style="width: 35px;height: 35px;">-</button>
+                            </div>
+                            <!--  -->
+
+                        </div>
+                        <div class="col d-inline-flex justify-content-between text-center">
+                            <div class="my-3 py-3 bg-info col-9 ">THÊM VÀO GIỎ HÀNG</div>
+                            <div class="my-3 py-3 bg-info col-2"><i class="fa fa-heart"></i></div>
+                        </div>
+                        <div class="col d-inline-flex justify-content-between text-center">
+                            <div class="col bg-danger py-3 mb-5">THANH TOÁN</div>
+                        </div>
+                    </div>
+                    <div class="row hldash flex-column my-5">
+                        <p>Gender: Unisex<br>
+                            Size run: 35 – 46<br>
+                            Upper: Storm Leather<br>
+                            Outsole: Rubber<br>
+                        </p>
+                        <!-- <p>Gender</p>
+                    <p>Size run</p>
+                    <p>Upper: Canvas</p>
+                    <p>Outsole: Rubber</p>
+                    <p>Size chart</p> -->
+                        <img src="img/Size-chart.jpg" class="img-fluid " alt="size chart">
+                    </div>
+                </div>
+
+            </div>
+   
+        </div>
+    </div>
+    <h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">SẢN PHẨM LIÊN QUAN</h1>
+
+
+</body>
