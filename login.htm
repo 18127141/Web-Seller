@@ -276,13 +276,37 @@
 
 
     <!--         New of the days               -->
-
+    <div class="container-fluid text-center m-0 p-2 bg-secondary text-white font-weight-bold" id="cont">
+      <div id="NewOftheday" class="carousel slide container" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <span class="d-block w-100 "> FREE SHIP HOA DON TO 500K ! </span>
+          </div>
+          <div class="carousel-item">
+            <span class="d-block w-100"> YOUR HAPPINESS IS OUR PASSION! </span>
+          </div>
+          <div class="carousel-item">
+            <span class="d-block w-100"> SIEU SALE 12.12 </span>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#NewOftheday" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#NewOftheday" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
 
     <script>
 
       var ele = document.getElementById("head");
       var con = document.getElementById("cont");
 
+
+      con.style.marginTop = ele.offsetHeight + 'px'
 
       $(window).resize(function () {
 
@@ -390,9 +414,9 @@
     </div>
   </header>
 
-  <div class=" bg_login p-0 ">
-
-    <div class="container " id="cont" style="border: 1px solid black;border-radius: 20px;">
+  <div class="position-relative ">
+    <img class="card-img-top " src="img/login_bg.jpg" alt="Card image" style="height: 1000px;">
+    <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
       <form action="action_page.htm" method="post">
         <h1>Login</h1>
         <div class="inputbox">
@@ -428,9 +452,108 @@
   </div>
 
 
+
+
+
   <script type="text/JavaScript" src="JS/Login.js"></script>
 
   </script>
+
+  <!--  footer-->
+  <div class="container-fluid bg-secondary ">
+    <div class="container text-center py-5" id="footer">
+      <div class="row c">
+        <div class="col-md-3 text-center pl-0 pr-0">
+          <div class="row justify-content-center">
+            <img class="rounded-circle " src="img/Logo.png " alt="3L" width="150px" height="150px">
+          </div>
+          <div class="row justify-content-center mt-2 mb-2 ">
+            <div class="text-center p-2 " style="background-color:#f15e2c; border-radius: 5px;">
+              <a href="Find_Us.htm" style="font-size: 20px;color:white"> TÌM CỬA HÀNG</a>
+            </div>
+
+          </div>
+          <ul class="d-inline-flex row">
+            <li>
+              <a class="mr-4" href="#" style="font-size: 40px;background: transparent;color: white"><i
+                  class="fa fa-facebook-f"></i></a>
+            </li>
+            <li>
+              <a class="mr-4" href="#" style="font-size: 40px;background: transparent;color: white"><i
+                  class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+              <a class="" href="#" style="font-size: 40px;background: transparent;color: white"><i
+                  class="fa fa-twitter"></i></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 ">
+          <ul>
+            <li class="font-weight-bolder hldash row justify-content-center m-3" style="border-color: white">
+              <a class="footer-head" href="#">SẢN PHẨM</a>
+            </li>
+            <li>
+            <li class="m-3">
+              <a href="#">Nam</a>
+            </li>
+            <li class="m-3">
+              <a href="#">Nữ</a>
+            </li>
+            <li class="m-3">
+              <a href="#">Thời trang & Phụ kiện</a>
+            </li>
+            <li class="m-3">
+              <a href="#">Sale-Off</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul>
+            <li class="font-weight-bolder hldash row justify-content-center m-3" style="border-color: white">
+              <a href="#" class="footer-head "> HỖ TRỢ </a>
+            </li>
+            <li class="m-3">
+              <a href="#">Tra cứu đơn hàng</a>
+            </li>
+            <li class="m-3">
+              <a href="#">Về TripleL Shop</a>
+            <li class="m-3">
+
+          </ul>
+        </div>
+        <div class="col-md-3 ">
+          <ul>
+            <li class="font-weight-bolder hldash row justify-content-center m-3" style="border-color: white">
+              <a href="#" class="footer-head">LIÊN HỆ</a>
+            </li>
+            <li class="m-3">
+              <a href="#">Email liên hệ</a>
+            </li>
+            <li class="m-3">
+              <a href="#">TripleLshop@gmail.com</a>
+            </li>
+            <li class="m-3">
+              <a href="#">Hotline</a>
+            </li>
+            <li class="m-3">
+              <a href="#">0932 234 123</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+
+      <p class="text-center mt-5" style="font-size: 20px;color: white">
+        Copyright
+        <i class="fa fa-copyright" aria-hidden="true"></i>
+        2020
+      </p>
+
+    </div>
+  </div>
 </body>
 
 </html>

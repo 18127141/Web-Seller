@@ -390,16 +390,16 @@
     </div>
   </header>
 
-  <div class=" bg_login p-0 ">
-
-    <div class="container " id="cont" style="border: 1px solid black;border-radius: 20px;">
-      <form action="action_page.htm" method="POST">
-        <h1>Register</h1>
+  <div class="position-relative ">
+    <img class="card-img-top " src="img/login_bg.jpg" alt="Card image" style="height: 1000px;">
+    <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
+      <form action="action_page.htm" method="post">
+        <h1>Login</h1>
         <div class="inputbox">
           <div class="icon ">
             <i class="fa fa-user"></i>
           </div>
-          <input type="text" name="User" required class="">
+          <input type="text" name="User" id="Username" required class="">
           <label>Username</label>
         </div>
 
@@ -415,27 +415,7 @@
             <i id="eye2" class="fa fa-eye"></i>
 
           </span>
-          <script>
-            const pass = document.getElementById('Password');
-            const icon1 = document.getElementById("eye1");
-            const icon2 = document.getElementById("eye2");
 
-            function Myfunction() {
-              if (pass.type === 'password') {
-                pass.setAttribute('type', 'text');
-                icon1.style.display = "none";
-                icon2.style.display = "block";
-
-              }
-              else {
-                pass.setAttribute('type', 'password');
-                icon2.style.display = "none";
-                icon1.style.display = "block";
-
-              }
-
-            }
-          </script>
 
 
 

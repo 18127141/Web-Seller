@@ -1,24 +1,14 @@
 
-.bg_login
-{
-    
-    height:100%;
-    width: 100%;
-    background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/login_bg.jpg');
-    background-position: center;
-    background-size:cover;
-    position:absolute;
-  
-}
 
-#cont
+
+#contt
 {
-    position: relative;
-    /* top:50%;
+    position: absolute;
+    top:40%;
     left:50%;
     transform: translate(-50%,-50%);
-     */
-    top: calc(5ch );
+    
+    /* top: calc(5ch ); */
     
     display: flex;
     justify-content: center;
@@ -38,19 +28,19 @@ form
     width: 100%;
 }
 
-#cont h1
+#contt h1
 {
     color: black;
     text-align: center;
     margin:30px auto;
     font-size: 40px;
 }
-#cont .inputbox
+#contt .inputbox
 {
     position: relative;
     padding-left:30px;
 }
-#cont .inputbox input
+#contt .inputbox input
 {
     border:none;
     width: 100%;
@@ -62,7 +52,7 @@ form
     background-color: rgba(255,255,255,0.4)   ;
 
 }
-#cont .inputbox label
+#contt .inputbox label
 {
     position: absolute;
     top:0;
@@ -73,7 +63,7 @@ form
     pointer-events: none;
     color: black;
 }
-#cont .inputbox input:focus+label,#cont .inputbox input:valid+label
+#contt .inputbox input:focus+label,#cont .inputbox input:valid+label
 {
     top:-30px;
     left:30px;
@@ -93,11 +83,11 @@ div.icon
 }
 
 
-#cont a, #cont input[type="checkbox"]
+#contt a, #cont input[type="checkbox"]
 {
     cursor: pointer;
 }
-#cont input[type="submit"]
+#contt input[type="submit"]
 {
     border:1px solid black;
     border-radius: 20px;
@@ -127,12 +117,12 @@ div.icon
     display: block;
 }
 @media only screen and (max-width: 768px) {
-    #cont
+    #contt
     {
         width: 300px;
      
     }
-    #cont input[type="submit"]
+    #contt input[type="submit"]
     {
         padding: 10px 100px 10px 80px;
 

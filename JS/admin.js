@@ -1,12 +1,12 @@
 // quan li san pham
 var map = new Map();
-let temp_img =[]
+let temp_img = []
 
 const list = document.getElementById("List_product");
 add_btn = document.getElementById("Add");
 add_menu = document.getElementById("add_product")
-function show_product(id,src,name,price) {
-  console.log(src)
+function show_product(id, src, name, price) {
+  
   const item = `
     <li class = "item"> 
         <img src = "img/${src[0]}",height = 200, width = 200>
@@ -16,7 +16,7 @@ function show_product(id,src,name,price) {
         <button type = "button" job = "update" id= "${id}">Update</button> 
     </li>
     `
-    list.insertAdjacentHTML("beforeend",item)
+  list.insertAdjacentHTML("beforeend", item)
 }
 function Add_new_product_GUI() {
   const item = `
@@ -44,22 +44,22 @@ function add_img() {
   let img_button = document.getElementById("Add_img");
   img_button.addEventListener("change", function (e) {
     let files = document.getElementById("Add_img").files;
-    for (let i = 0; i < files.length; i++){
+    for (let i = 0; i < files.length; i++) {
       temp_img[i] = files[i].name
     }
-    
+
     const img = new Image();
     img.src = `/img/${files[0].name}`
-    
+
     img.width = 200;
     img.height = 200;
     const temp = document.getElementById("img_container");
-      while (temp.hasChildNodes()) {
-        temp.removeChild(temp.firstChild);
-      }
-      temp.appendChild(img);
-      temp.insertAdjacentHTML("beforeend",
-        `<button id="Cancel_img" type="button" job = "Cancel_img">Cancel</button>`);
+    while (temp.hasChildNodes()) {
+      temp.removeChild(temp.firstChild);
+    }
+    temp.appendChild(img);
+    temp.insertAdjacentHTML("beforeend",
+      `<button id="Cancel_img" type="button" job = "Cancel_img">Cancel</button>`);
 
   });
 }
@@ -93,9 +93,9 @@ function cancel_add_product() {
 function Add_new_product() {
   if (temp_img.length == 0) {
     temp_img[0] = "Logo.png";
-    
+
   }
-  
+
   let temp_id = document.getElementById("Add_id")
   let temp_name = document.getElementById("Add_name")
   let temp_info = document.getElementById("Add_info")
@@ -105,10 +105,27 @@ function Add_new_product() {
 
   cancel_add_product();
   show_product(temp_id.value, temp_img, temp_name.value, temp_price.value);
-  map.set(temp_id.value,{
+  map.set(temp_id.value, {
     id: temp_id.value, img_src: temp_img, name: temp_name.value, info: temp_info.value,
     stock: temp_stock.value, price: temp_price.value, size: temp_size.value
   })
-  
-  
+
+
 }
+function delete_product(child){
+  child.parentNode.parentNode.removeChild(child.parentNode)
+}
+function update_product(child){
+
+}
+list.addEventListener("click", function (ToDo) {
+  const child = ToDo.target
+  const job = child.attributes.job.value
+  if (job == "delete") {
+    delete_product(child)
+  }
+  else {
+    update_product(child)
+  }
+
+})

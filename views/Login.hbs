@@ -1,0 +1,179 @@
+<script>
+
+  var ele = document.getElementById("head");
+  var con = document.getElementById("cont");
+
+
+  $(window).resize(function () {
+
+    con.style.marginTop = ele.offsetHeight + 'px'
+
+
+    //resize just happened, pixels changed
+  });
+</script>
+<link rel="stylesheet" href="/CSS/style_login_register.css">
+<div class="collapse" id="navbarNavDropdown">
+  <div id="InsteadNav" class="d-md-none d-sm-block">
+    <div class="text-center card bg-dark border-0">
+      <div class="card-header hldash " data-toggle="collapse" href="#BRANDNAV">
+        <a class="card-link ">
+          <h3 style="cursor:pointer">SẢN PHẨM </h3>
+        </a>
+      </div>
+      <div id="BRANDNAV" class="collapse  " data-parent="#BRANDNAV">
+        <div class="card-body  text-dark hldash">
+          <ul>
+            <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">
+                NAM
+              </a>
+            </li>
+            <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">
+                NỮ
+              </a>
+            </li>
+            <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">
+                SALE-OFF
+              </a>
+            </li>
+            <li class="font-weight-bolder p-3 m-0  align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">
+                PHỤ KIỆN
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="card-header hldash  " data-toggle="collapse" href="#MENCARDNAV">
+        <a class="card-link ">
+          <h3 style="cursor:pointer">NAM </h3>
+        </a>
+      </div>
+      <div id="MENCARDNAV" class="collapse " data-parent="#MENCARDNAV">
+        <div class="card-body  text-dark ">
+          <ul>
+            <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">
+                QUẦN
+              </a>
+            </li>
+            <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">ÁO</a>
+            </li>
+            <li class="font-weight-bolder p-3 m-0  align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">GIÀY</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-header hldash  " data-toggle="collapse" href="#WOMENCARDNAV">
+        <a class="card-link  ">
+          <h3 style="cursor:pointer">NỮ </h3>
+        </a>
+      </div>
+      <div id="WOMENCARDNAV" class="collapse " data-parent="#WOMENCARDNAV">
+        <div class="card-body  text-dark hldash">
+          <ul>
+            <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">
+                QUẦN
+              </a>
+            </li>
+            <li class="font-weight-bolder p-3 m-0 hldash align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">ÁO</a>
+            </li>
+            <li class="font-weight-bolder p-3 m-0  align-content-between ">
+              <a href="ShowItem.html" class="m-0 p-0  justify-content-center row">GIÀY</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a class="card-header mb-3 hl   " href="ShowItem.html">
+        <h3 style="cursor:pointer">SALE-OFF </h3>
+      </a>
+
+      <a class="card-header mb-3 hldash " href="ShowItem.html">
+        <h3 style="cursor:pointer">YÊU THÍCH</h3>
+      </a>
+
+      <a class="card-header  mb-3  hldash" href="login.htm">
+        <h3 style="cursor:pointer">ĐĂNG NHẬP</h3>
+      </a>
+
+
+    </div>
+  </div>
+
+</div>
+</header>
+{{!--  --}}
+<div class="position-relative ">
+    <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
+    <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
+      <form action="action_page.htm" method="post">
+        <h1>Login</h1>
+        <div class="inputbox">
+          <div class="icon ">
+            <i class="fa fa-user"></i>
+          </div>
+          <input type="text" name="User" id="Username" required class="">
+          <label>Username</label>
+        </div>
+
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-lock"></i>
+          </div>
+
+          <input type="password" name="P_WORD" id="Password" class="" required>
+          <label>Password</label>
+          <span onclick="Myfunction()">
+            <i id="eye1" class="fa fa-eye-slash"></i>
+            <i id="eye2" class="fa fa-eye"></i>
+
+          </span>
+
+
+
+
+        </div>
+        <input type="checkbox">Remember Password<br>
+        <p>Don't have an account? <a href="/User/Register" style="color:blue;">Sign Up</a></p>
+        <input type="submit" id="submit" value="Sign in">
+      </form>
+    </div>
+  </div>
+
+
+
+
+<script type="text/JavaScript">
+  const pass = document.getElementById('Password');
+  const icon1 = document.getElementById("eye1");
+  const icon2 = document.getElementById("eye2");
+  const username = document.getElementById("Username")
+  const submit = document.getElementById("submit")
+
+  function Myfunction() {
+    if (pass.type === 'password') {
+        pass.setAttribute('type', 'text');
+        icon1.style.display = "none";
+        icon2.style.display = "block";
+
+    }
+    else {
+        pass.setAttribute('type', 'password');
+        icon2.style.display = "none";
+        icon1.style.display = "block";
+
+    }
+
+}
+
+  </script>
+
+</script>

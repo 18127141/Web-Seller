@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/CSS/style_login_register.css">
+<div class="position-relative ">
+    <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
+    <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
+      <form action="action_page.htm" method="post">
+        <h1>Register</h1>
+        <div class="inputbox">
+          <div class="icon ">
+            <i class="fa fa-user"></i>
+          </div>
+          <input type="text" name="User" id="Username" required class="">
+          <label>Username</label>
+        </div>
+
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-lock"></i>
+          </div>
+
+          <input type="password" name="P_WORD" id="Password" class="" required>
+          <label>Password</label>
+          <span onclick="Myfunction()">
+            <i id="eye1" class="fa fa-eye-slash"></i>
+            <i id="eye2" class="fa fa-eye"></i>
+
+          </span>
+
+
+
+
+        </div>
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-envelope"></i>
+          </div>
+          <input type="text" name="Email" class="" required>
+          <label>Email</label>
+        </div>
+        <div class="inputbox">
+          <div class="icon">
+            <i class="fa fa-mobile"></i>
+          </div>
+          <input type="text" name="Phone" class="" required>
+          <label>Cellphone</label>
+        </div>
+        <input type="submit" value="Sign in">
+      </form>
+    </div>
+  </div>
