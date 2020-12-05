@@ -1,11 +1,10 @@
 var express = require('express')
 var app = express()
 
-app.get('/',function(req,res){
-    res.sendFile(__dirname + '/Home.html')
-    //res.render('Home')
-})
+
 app.use(express.static(__dirname))
+
+
 var hbs = require('express-handlebars')
 app.engine('hbs',hbs({
     extname:'hbs',
@@ -15,6 +14,9 @@ app.engine('hbs',hbs({
 }))
 app.set('view engine','hbs')
 app.set('port',(process.env.PORT|| 5000))
+app.get('/',function(req,res){
+    res.render('Home')
+})
 // user route
 var user_route = require('./Routes/User')
 app.use('/User',user_route)
