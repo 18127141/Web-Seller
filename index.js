@@ -2,7 +2,8 @@ var express = require('express')
 var app = express()
 
 app.get('/',function(req,res){
-    res.render('Home')
+    res.sendFile(__dirname + '/Home.html')
+    //res.render('Home')
 })
 app.use(express.static(__dirname))
 var hbs = require('express-handlebars')
