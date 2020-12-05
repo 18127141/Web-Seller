@@ -17,7 +17,9 @@ app.set('port',(process.env.PORT|| 5000))
 // user route
 var user_route = require('./Routes/User')
 app.use('/User',user_route)
-//
+// product route
+var product_route = require('./Routes/Product')
+app.use('/Product',product_route)
 app.listen(app.get('port'),function(){
     console.log("Listening ",+ app.get('port'))
 })
