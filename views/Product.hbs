@@ -14,13 +14,13 @@
             <div class="card-body ">
               <ul class=" justify-content-center  ">
                 <li class="row text-light bg-dark hl2dash justify-content-center">
-                  <a href="#">UNISET</a>
+                  <a href="/Product/?Gender=Male,Female">UNISET</a>
                 </li>
                 <li class="row text-dark bg-dark  justify-content-center">
-                  <a href="#">GENTELMENT</a>
+                  <a href="/Product/?Gender=Male">GENTELMENT</a>
                 </li>
                 <li class="row text-dark bg-dark  hl2dash  justify-content-center">
-                  <a href="#">LADY</a>
+                  <a href="/Product/?Gender=Female">LADY</a>
                 </li>
               </ul>
             </div>
@@ -93,62 +93,23 @@
             <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">TÊN THEO LOẠI TÌM KIẾM Ở ĐÂY</h2>
           </div>
         </div>
-
         <div class="row justify-content-center mt-2">
+          {{#each products}}
+          
           <div class="col-lg-3 col-md-3 col-sm-6 m-1 p-0  bg-light " style="border-radius: 10px;">
-            <a href="Show1Product.html"><img src="/img/product1.jpg" alt="" class="img-fluid card-img-top"></a>
+            <a href="/Show-product/{{id}}"><img src="/img/{{main_img_src}}" alt="" class="img-fluid card-img-top"></a> 
             <div class="card-body ITEM text-center  ">
               <div class=" text-center m-0">
-                <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                <p class="p-0 m-0">Low-top/Street</p>
+                <h5><a href="/Show-product/{{id}}">{{name}}</a></h5>
+                <p class="p-0 m-0">{{category}}</p>
               </div>
-              <p class="Price m-0">100.000 VND</p>
+              <p class="Price m-0">{{price}} VND</p>
               <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
               <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </div>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 m-1 p-0  bg-light " style="border-radius: 10px;">
-            <a href="Show1Product.html"><img src="/img/product1.jpg" alt="" class="img-fluid card-img-top"></a>
-            <div class="card-body ITEM text-center  ">
-              <div class=" text-center m-0">
-                <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                <p class="p-0 m-0">Low-top/Street</p>
-              </div>
-              <p class="Price m-0">100.000 VND</p>
-              <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-              <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 m-1 p-0  bg-light " style="border-radius: 10px;">
-            <a href="Show1Product.html"><img src="/img/product1.jpg" alt="" class="img-fluid card-img-top"></a>
-            <div class="card-body ITEM text-center  ">
-              <div class=" text-center m-0">
-                <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                <p class="p-0 m-0">Low-top/Street</p>
-              </div>
-              <p class="Price m-0">100.000 VND</p>
-              <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-              <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 m-2 p-0  bg-light " style="border-radius: 10px;">
-            <a href="Show1Product.html"><img src="/img/product1.jpg" alt="" class="img-fluid card-img-top"></a>
-            <div class="card-body ITEM text-center  ">
-              <div class=" text-center m-0">
-                <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                <p class="p-0 m-0">Low-top/Street</p>
-              </div>
-              <p class="Price m-0">100.000 VND</p>
-              <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-              <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </div>
-          </div>
+          {{/each}}
         </div>
-
-
-
-
-
       </div>
     </div>
   </div>

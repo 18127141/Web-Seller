@@ -1,0 +1,32 @@
+<div class="card " >
+  <img src="/img/delivery.jpg" alt="" class="card-img" id="Card">
+
+  <div class="card-img-overlay container ">
+    
+    <form action="/action_page.php" id="input">
+    <h1 class="text-dark text-center"  style="font-size: 36px;" >TRA CỨU ĐƠN HÀNG</h1>
+      <div class="form-group my-5">
+  
+        <input type="text" class="form-control" id="usr" name="username" placeholder="MÃ ĐƠN HÀNG" required>
+      </div>
+      <div class="form-group my-5">
+
+        <input type="password" class="form-control" id="pwd" name="password" placeholder="Email/Số Điện Thoại" required>
+      </div>
+      <button type="submit" class="btn btn-primary bg-info "style="padding: 10px 100px 10px 100px">TÌM KIẾM</button>
+    </form>
+  </div>
+</div>
+<script>
+  setTimeout(function(){ var tmp=document.getElementById("Card");
+
+  var tmp1=document.getElementById("input");
+  // console.log(Math.floor(tmp.offsetHeight/2));
+
+  tmp1.style.marginTop= (Math.floor(tmp.clientHeight/6)) +"px";
+  
+  $(window).resize(function () {
+    
+
+
+  tmp1.style.marginTop= (Math.floor(tmp.clientHeight/6)) +"px";

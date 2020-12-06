@@ -1,0 +1,358 @@
+<link rel="stylesheet" href="/Home.css">
+<link rel="stylesheet" href="/CSS/Sell.css">
+<link rel="stylesheet" href="/CSS/Show1Product.css">
+<h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">THÔNG TIN SẢN PHẨM </h1>
+
+<div class="container-fluid hldash" style="">
+    <div class="contaier-fluid container-lg pt-4  ">
+        <div class="row bg-dark ">
+            <div class="col-lg mr-3">
+
+                <div class="row"><img src="/img/{{product.main_img_src}}" class="img-fluid" alt="giay">
+                </div>
+                <!--  -->
+                <div class="row">
+                    <div id="product_aspect" class="carousel slide text-center mt-5" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active mb-5">
+                                <div id="Product_cal_1" class="row justify-content-center">
+                                    
+                                </div>
+                            </div>
+                            <div class="carousel-item mb-5">
+                                <div id="Product_cal_2" class="row justify-content-center">
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#product_aspect" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#product_aspect" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+            {{#with product}}
+            <div class="col-lg  h-100 text-white">
+                <div class="row hldash flex-column">
+                    <div class="col">
+                        <h1 class="Product-name mb-5">
+                            {{name}}
+                        </h1>
+                    </div>
+                    <div class="col d-inline-flex justify-content-between">
+                        <p class="mb-5">Mã sản phẩm: <strong>{{id}}</strong></p>
+                        <p class="mb-5">Tình trạng: <strong>New Arrival</strong></p>
+                    </div>
+                    <div id = "Money_format" class="col mb-5">
+                    
+                    </div>
+                </div>
+                <div class="row hldash">
+                    <p class=" my-5 pl-3">{{info}}</p>
+                </div>
+                <div class="row hldash flex-column mt-5">
+                    <div class="col d-inline-flex justify-content-between">
+                        <!--                         -->
+                        <div>
+                            <p>Size</p>
+                            <div class="dropdown ">
+                                <button class="btn btn-secondary dropdown-toggle bg-warning" type="button" id="Size"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="width: 100px;border-radius: 20px;color: black;">
+                                    42
+                                </button>
+                                <div class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
+                                    style="width: 100px;border-radius: 0px;">
+                                    <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                        <button class="col p-0">35</button>
+                                        <button class="col p-0">36</button>
+                                        <button class="col p-0">37</button>
+                                        <button class="col p-0">38</button>
+                                    </div>
+                                    <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                        <button class="col p-0">39</button>
+                                        <button class="col p-0">40</button>
+                                        <button class="col p-0">41</button>
+                                        <button class="col p-0">42</button>
+                                    </div>
+                                    <div class="dropdown-item text-danger d-inline-flex p-0">
+                                        <button class="col p-0">43</button>
+                                        <button class="col p-0">44</button>
+                                        <button class="col p-0">45</button>
+                                        <button class="col p-0">46</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p>SỐ LƯỢNG</p>
+                            <span>
+                                <button style="width: 35px;height: 35px;border-radius: 20px;">+</button>
+                                <div class="dropdown ">
+                                    <button class="btn btn-secondary dropdown-toggle bg-warning" type="button"
+                                        id="Soluong" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        style="width: 100px;border-radius: 20px;color: black;">
+                                        1
+                                    </button>
+                                    <div class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
+                                        style="width: 100px;border-radius: 0px;">
+                                        <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                            <button class="col p-0">1</button>
+                                            <button class="col p-0">2</button>
+                                            <button class="col p-0">3</button>
+                                            <button class="col p-0">4</button>
+                                        </div>
+                                        <div class="dropdown-item text-danger  d-inline-flex p-0">
+                                            <button class="col p-0">5</button>
+                                            <button class="col p-0">6</button>
+                                            <button class="col p-0">7</button>
+                                            <button class="col p-0">8</button>
+                                        </div>
+                                        <div class="dropdown-item text-danger d-inline-flex p-0">
+                                            <button class="col p-0">9</button>
+                                            <button class="col p-0">10</button>
+                                            <button class="col p-0">11</button>
+                                            <button class="col p-0">12</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                            <button style="width: 35px;height: 35px;border-radius: 20px;">-</button>
+                        </div>
+                        <!--  -->
+
+                    </div>
+                    <div class="col d-inline-flex justify-content-between text-center">
+                        <div class="my-3 py-3 bg-danger col-9 " style="border-radius:20px;">THÊM VÀO GIỎ HÀNG</div>
+                        <div class="my-3 py-3 bg-danger col-2" style="border-radius:20px;"><i class="fa fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="col d-inline-flex justify-content-between text-center">
+                        <div class="col bg-warning py-3 mb-5" style="border-radius:20px;color:black">THANH TOÁN</div>
+                    </div>
+                </div>
+                <div class="row hldash flex-column my-5">
+                    <p>Gender: {{gender}}<br>
+                        Size run: {{size_run_start}} – {{size_run_end}}<br>
+                        Upper: Storm Leather<br>
+                        Outsole: Rubber<br>
+                    </p>
+                    
+                    <img src="/img/Size-chart.jpg" class="img-fluid " alt="size chart">
+                </div>
+            </div>
+            {{/with}}
+        </div>
+
+    </div>
+</div>
+<h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">SẢN PHẨM LIÊN QUAN</h1>
+<div id="SPLIENQUAN" class="carousel slide text-center mb-5" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row justify-content-center">
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product1.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product2.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product3.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light d-none d-md-block" style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product4.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row justify-content-center">
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product5.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product6.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light" style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product7.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light d-none d-md-block" style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product8.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row justify-content-center">
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product2.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <a>
+                                <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                                <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product4.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product6.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-3 m-1 p-0  bg-light d-none d-md-block" style="border-radius: 10px;">
+                    <a href="Show1Product.html"><img src="/img/product8.jpg" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
+                            <p class="p-0 m-0">Low-top/Street</p>
+                        </div>
+                        <p class="Price m-0">100.000 VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#SPLIENQUAN" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#SPLIENQUAN" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<script>
+    var value = "{{product.img_src}}"
+    var image_url = value.split(",")
+  
+    
+    // show carousel1 ------------------------------------------------
+    var cal_1 = document.getElementById("Product_cal_1")
+    for (let i = 0; i < 4; i++) {
+        const item = `
+        <div class="col-md-2 col-3   bg-dark " style="border:none">
+            <img src="/img/${image_url[i]}" alt="" class="img-fluid card-img-top">
+        </div> `
+        cal_1.insertAdjacentHTML("beforeend",item)
+    }
+    // show carousel2 ------------------------------------------------
+      
+    var cal_2 = document.getElementById("Product_cal_2")
+    for (let i = 1; i < 5; i++) {
+        const item = `
+        <div class="col-md-2 col-3   bg-dark " style="border:none">
+            <img src="/img/${image_url[i]}" alt="" class="img-fluid card-img-top">
+        </div> `
+        cal_2.insertAdjacentHTML("beforeend",item)
+    }
+    // money format ----------------------------------------------------
+    var m_format = document.getElementById("Money_format")
+    var price = {{product.price}}
+    price = price.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})
+    const item = `
+        <strong style="color:yellow">${price} VND</strong> `
+    m_format.insertAdjacentHTML("beforeend",item)
+</script>

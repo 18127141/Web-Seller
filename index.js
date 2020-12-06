@@ -14,8 +14,17 @@ app.engine('hbs',hbs({
 }))
 app.set('view engine','hbs')
 app.set('port',(process.env.PORT|| 5000))
+//Home
 app.get('/',function(req,res){
     res.render('Home')
+})
+//Find us
+app.get('/Find-us',function(req,res){
+    res.render('Find_us')
+})
+//
+app.get('/Check-order',function(req,res){
+    res.render('Check_order')
 })
 // user route
 var user_route = require('./Routes/User')
@@ -23,6 +32,9 @@ app.use('/User',user_route)
 // product route
 var product_route = require('./Routes/Product')
 app.use('/Product',product_route)
+// show-product route
+var product_route = require('./Routes/Show_product')
+app.use('/Show-product',product_route)
 app.listen(app.get('port'),function(){
     console.log("Listening ",+ app.get('port'))
 })
