@@ -70,34 +70,21 @@
                         <div>
                             <p>Size</p>
                             <div class="dropdown ">
-                                <button class="btn btn-secondary dropdown-toggle bg-warning" type="button" id="Size"
+                                <button class="btn btn-secondary dropdown-toggle bg-warning" type="button" id="set_size"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     style="width: 100px;border-radius: 20px;color: black;">
-                                    42
+                                    
                                 </button>
-                                <div class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
+                                <div  class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
                                     style="width: 100px;border-radius: 0px;">
-                                    <div class="dropdown-item text-danger  d-inline-flex p-0">
-                                        <button class="col p-0">35</button>
-                                        <button class="col p-0">36</button>
-                                        <button class="col p-0">37</button>
-                                        <button class="col p-0">38</button>
+                                    <div id="size_menu" class="row dropdown-item text-danger mx-auto d-inline-flex p-0" >
+                
                                     </div>
-                                    <div class="dropdown-item text-danger  d-inline-flex p-0">
-                                        <button class="col p-0">39</button>
-                                        <button class="col p-0">40</button>
-                                        <button class="col p-0">41</button>
-                                        <button class="col p-0">42</button>
-                                    </div>
-                                    <div class="dropdown-item text-danger d-inline-flex p-0">
-                                        <button class="col p-0">43</button>
-                                        <button class="col p-0">44</button>
-                                        <button class="col p-0">45</button>
-                                        <button class="col p-0">46</button>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
+                        {{!-- <div id = "Show_stock" class ="align-self-end" >LOng</div> --}}
                         <div>
                             <p>SỐ LƯỢNG</p>
                             <span>
@@ -114,17 +101,17 @@
 
                     </div>
                     <div class="col d-inline-flex justify-content-between text-center">
-                        <div class="my-3 py-3 bg-danger col-9 " style="border-radius:20px;">THÊM VÀO GIỎ HÀNG</div>
-                        <div class="my-3 py-3 bg-danger col-2" style="border-radius:20px;"><i class="fa fa-heart"></i>
+                        <div id = "add_cart" class="confirm_btn my-3 py-3 bg-danger col-9 " style="border-radius:20px;">THÊM VÀO GIỎ HÀNG</div>
+                        <div class="confirm_btn my-3 py-3 bg-danger col-2" style="border-radius:20px;"><i class="fa fa-heart"></i>
                         </div>
                     </div>
                     <div class="col d-inline-flex justify-content-between text-center">
-                        <div class="col bg-warning py-3 mb-5" style="border-radius:20px;color:black">THANH TOÁN</div>
+                        <div id = "purchase" class="confirm_btn col bg-warning py-3 mb-5" style="border-radius:20px;color:black">THANH TOÁN</div>
                     </div>
                 </div>
                 <div class="row hldash flex-column my-5">
                     <p>Gender: {{gender}}<br>
-                        Size run: {{size_run_start}} – {{size_run_end}}<br>
+                        Size run: 35 – 46<br>
                         Upper: Storm Leather<br>
                         Outsole: Rubber<br>
                     </p>
@@ -313,8 +300,8 @@
 <script>
     var value = "{{product.img_src}}"
     var image_url = value.split(",")
-
-
+    var test = document.getElementById("tester")
+    value = "{{product.size_stock}}" 
     // show carousel1 ------------------------------------------------
     var cal_1 = document.getElementById("Product_cal_1")
     for (let i = 0; i < 4; i++) {
@@ -329,7 +316,7 @@
     // show carousel2 ------------------------------------------------
 
     var cal_2 = document.getElementById("Product_cal_2")
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i <5; i++) {
         const item = `
         <div class="col-md-2 col-3   bg-dark " style="border:none">
             
@@ -369,21 +356,60 @@
     close_btn.onclick = function(){
         modal.style.display = "none"
     }
+    // menu_size
+    var size_menu = document.getElementById("size_menu")
+</script>
+
+{{#each product.size_stock}}
+<script>
+    var size = "{{size}}"
+    var stock = "{{stock}}"
+    var item1 = `
+    <button value = "${stock}"class="col-lg-3 col-md-3 col-sm-6 m-1 p-0 ">${size}</button>`
+    size_menu.insertAdjacentHTML("beforeend",item1)
+</script>
+
+ {{/each}}
+<script>
+    var set_size = document.getElementById("set_size")
+    var set_stock = 0
+    var quantity = document.getElementById("quantity")
+    size_menu.addEventListener("click",function(ToDo){
+        const child = ToDo.target
+        const temp = child.innerHTML
+        set_stock = parseInt(child.attributes.value.value)
+        set_size.innerHTML = temp
+        quantity.innerHTML = 1
+        quantity.style.color = "black"
+    })
     // add and substract  quantity
     var add_quantity = document.getElementById("add_quantity")
     var subtract_quantity = document.getElementById("subtract_quantity")
-    var quantity = document.getElementById("quantity")
+    
     add_quantity.onclick = function(){
-        let temp = quantity.innerHTML
+        let temp = parseInt(quantity.innerHTML)
+        if (temp < set_stock){
+            temp++
+            quantity.innerHTML = temp
+            if (temp == set_stock){
+                quantity.style.color = "red"
+            }
+        }
         
-        temp++
-        quantity.innerHTML = temp
     }
     subtract_quantity.onclick = function(){
         let temp = quantity.innerHTML
-        if (temp != 0){
+        if (temp > 1 ){
         temp--
         quantity.innerHTML = temp
+        quantity.style.color = "black"
         }
     }
+    // purchase and add cart
+    var add_cart = document.getElementById("add_cart")
+    add_cart.onclick = function(){
+        
+    }
+    var purchase = document.getElementById("purchase")
+    //
 </script>

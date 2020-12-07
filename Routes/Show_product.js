@@ -8,6 +8,7 @@ router.get('/:id',function(req,res){
         return ele.id ===id
     })
     res.locals.product = pos_id
+   
     res.render('Show_product')
 })
 

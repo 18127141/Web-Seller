@@ -63,7 +63,7 @@ form
     pointer-events: none;
     color: black;
 }
-#contt .inputbox input:focus+label,#cont .inputbox input:valid+label
+#contt .inputbox input:focus+label,#contt .inputbox input:valid+label
 {
     top:-30px;
     left:30px;
