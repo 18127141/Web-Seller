@@ -1,6 +1,13 @@
 <link rel="stylesheet" href="/Home.css">
 <link rel="stylesheet" href="/CSS/Sell.css">
 <link rel="stylesheet" href="/CSS/Show1Product.css">
+
+{{!-- modal image --}}
+<div id ="img_modal">
+    <span id = "close">&times;</span>
+    <img id ="img_content" >  
+</div>
+
 <h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">THÔNG TIN SẢN PHẨM </h1>
 
 <div class="container-fluid hldash" style="">
@@ -8,20 +15,20 @@
         <div class="row bg-dark ">
             <div class="col-lg mr-3">
 
-                <div class="row"><img src="/img/{{product.main_img_src}}" class="img-fluid" alt="giay">
+                <div class="row"><img id="main_img"src="/img/{{product.main_img_src}}" class="img-fluid" alt="giay">
                 </div>
                 <!--  -->
                 <div class="row">
                     <div id="product_aspect" class="carousel slide text-center mt-5" data-ride="carousel">
-                        <div class="carousel-inner">
+                        <div id ="img_zone" class="carousel-inner">
                             <div class="carousel-item active mb-5">
                                 <div id="Product_cal_1" class="row justify-content-center">
-                                    
+
                                 </div>
                             </div>
                             <div class="carousel-item mb-5">
                                 <div id="Product_cal_2" class="row justify-content-center">
-                                    
+
                                 </div>
                             </div>
 
@@ -50,8 +57,8 @@
                         <p class="mb-5">Mã sản phẩm: <strong>{{id}}</strong></p>
                         <p class="mb-5">Tình trạng: <strong>New Arrival</strong></p>
                     </div>
-                    <div id = "Money_format" class="col mb-5">
-                    
+                    <div id="Money_format" class="col mb-5">
+
                     </div>
                 </div>
                 <div class="row hldash">
@@ -94,37 +101,14 @@
                         <div>
                             <p>SỐ LƯỢNG</p>
                             <span>
-                                <button style="width: 35px;height: 35px;border-radius: 20px;">+</button>
-                                <div class="dropdown ">
-                                    <button class="btn btn-secondary dropdown-toggle bg-warning" type="button"
-                                        id="Soluong" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                        style="width: 100px;border-radius: 20px;color: black;">
-                                        1
-                                    </button>
-                                    <div class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
-                                        style="width: 100px;border-radius: 0px;">
-                                        <div class="dropdown-item text-danger  d-inline-flex p-0">
-                                            <button class="col p-0">1</button>
-                                            <button class="col p-0">2</button>
-                                            <button class="col p-0">3</button>
-                                            <button class="col p-0">4</button>
-                                        </div>
-                                        <div class="dropdown-item text-danger  d-inline-flex p-0">
-                                            <button class="col p-0">5</button>
-                                            <button class="col p-0">6</button>
-                                            <button class="col p-0">7</button>
-                                            <button class="col p-0">8</button>
-                                        </div>
-                                        <div class="dropdown-item text-danger d-inline-flex p-0">
-                                            <button class="col p-0">9</button>
-                                            <button class="col p-0">10</button>
-                                            <button class="col p-0">11</button>
-                                            <button class="col p-0">12</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button id ="add_quantity" style="width: 35px;height: 35px;border-radius: 20px;">+</button>
+                                <span class="btn btn-secondary bg-warning" type="button" id="quantity"
+                                    style="width: 100px;border-radius: 20px;color: black;">
+                                    1
+                                </span>
+
                             </span>
-                            <button style="width: 35px;height: 35px;border-radius: 20px;">-</button>
+                            <button id ="subtract_quantity"style="width: 35px;height: 35px;border-radius: 20px;">-</button>
                         </div>
                         <!--  -->
 
@@ -144,7 +128,7 @@
                         Upper: Storm Leather<br>
                         Outsole: Rubber<br>
                     </p>
-                    
+
                     <img src="/img/Size-chart.jpg" class="img-fluid " alt="size chart">
                 </div>
             </div>
@@ -324,35 +308,82 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+
 <script>
     var value = "{{product.img_src}}"
     var image_url = value.split(",")
-  
-    
+
+
     // show carousel1 ------------------------------------------------
     var cal_1 = document.getElementById("Product_cal_1")
     for (let i = 0; i < 4; i++) {
         const item = `
         <div class="col-md-2 col-3   bg-dark " style="border:none">
-            <img src="/img/${image_url[i]}" alt="" class="img-fluid card-img-top">
+            
+            <img style ="cursor:pointer" src="/img/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
+            
         </div> `
-        cal_1.insertAdjacentHTML("beforeend",item)
+        cal_1.insertAdjacentHTML("beforeend", item)
     }
     // show carousel2 ------------------------------------------------
-      
+
     var cal_2 = document.getElementById("Product_cal_2")
     for (let i = 1; i < 5; i++) {
         const item = `
         <div class="col-md-2 col-3   bg-dark " style="border:none">
-            <img src="/img/${image_url[i]}" alt="" class="img-fluid card-img-top">
+            
+            <img style ="cursor:pointer"src="/img/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
+        
         </div> `
-        cal_2.insertAdjacentHTML("beforeend",item)
+        cal_2.insertAdjacentHTML("beforeend", item)
     }
     // money format ----------------------------------------------------
     var m_format = document.getElementById("Money_format")
-    var price = {{product.price}}
-    price = price.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})
+    var price = {{ product.price }}
+    price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
     const item = `
         <strong style="color:yellow">${price} VND</strong> `
-    m_format.insertAdjacentHTML("beforeend",item)
+    m_format.insertAdjacentHTML("beforeend", item)
+    
+    // img_carousel click
+    var img_zone = document.getElementById("img_zone")
+    img_zone.addEventListener("click",function(ToDo){
+        const child = ToDo.target
+        const img_src = child.attributes.src.value
+        let main_img = document.getElementById("main_img")
+        main_img.src = img_src
+        
+    })
+    // img modal -------------------------------------
+    var modal = document.getElementById("img_modal")
+    var main_img = document.getElementById("main_img")
+    var modal_img = document.getElementById("img_content")
+    
+    main_img.onclick = function(){
+        modal.style.display ="block"
+        modal_img.src = this.src;
+       
+    }
+    var close_btn = document.getElementById("close")
+    close_btn.onclick = function(){
+        modal.style.display = "none"
+    }
+    // add and substract  quantity
+    var add_quantity = document.getElementById("add_quantity")
+    var subtract_quantity = document.getElementById("subtract_quantity")
+    var quantity = document.getElementById("quantity")
+    add_quantity.onclick = function(){
+        let temp = quantity.innerHTML
+        
+        temp++
+        quantity.innerHTML = temp
+    }
+    subtract_quantity.onclick = function(){
+        let temp = quantity.innerHTML
+        if (temp != 0){
+        temp--
+        quantity.innerHTML = temp
+        }
+    }
 </script>

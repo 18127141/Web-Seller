@@ -9,7 +9,8 @@ function Myfunction() {
         pass.setAttribute('type', 'text');
         icon1.style.display = "none";
         icon2.style.display = "block";
-
+        
+        
     }
     else {
         pass.setAttribute('type', 'password');
