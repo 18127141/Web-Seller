@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en-US">
+  <title>Triple Long Store</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--BOOTSTRAP HERE-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--MY CSS AND JS-->
+
+  <link rel="stylesheet" href="Home.css">
+
+
+
+</head>
+
+<body>  
+        <div class="container">
+            <div class="row bg-dark" id="NAV_LEFT">
+              <div class="col-md-2 col-sm-12 justify-content-center bg-dark box-dash p-2 mb-3" style="border-color:white">
+                <div class=" card-header   text-center pb-0 ">
+                  <div class="row  bg-warning  hl2dash justify-content-center " data-toggle="collapse" href="#DT">
+                    <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Tài khoản của tôi </h3>
+                  </div>
+                  <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row text-light bg-dark hl2dash justify-content-center">
+                          <a href="/Product/?Gender=Male,Female">Hồ sơ</a>
+                        </li>
+                        <li class="row text-dark bg-dark  justify-content-center">
+                          <a href="/Product/?Gender=Male">Địa chỉ</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                          <a href="/Product/?Gender=Female">Thay đổi mật khẩu</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class=" card-header   text-dark text-center pb-0 ">
+                  <div class="row  bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
+                    <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Đơn mua </h3>
+                  </div>
+                  <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row text-dark bg-dark hl2dash justify-content-center">
+                          <a href="#">Tất cả</a>
+                        </li>
+                        <li class="row text-dark bg-dark  justify-content-center">
+                          <a href="#">Chờ xác nhận</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                          <a href="#">Chờ lấy hàng</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                            <a href="#">Đang giao</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                            <a href="#">Đã Giao</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                            <a href="#">Đã hủy</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class=" card-header   text-dark text-center pb-0  ">
+                  <div class="row   bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+                    <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">  Thông báo </h3>
+                  </div>
+                  <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row text-dark bg-dark hl2dash justify-content-center">
+                          <a href="#">Mã khuyễn mãi</a>
+                        </li>
+                        <li class="row text-dark bg-dark  justify-content-center">
+                          <a href="#">Thông tin đơn hàng</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-10 col-sm-12  ">
+                <div class="container-fluid justify-content-center">
+                  <div class="row  justify-content-center bg-warning " >
+                    <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">HỒ SƠ CỦA BẠN</h2>
+                  </div>  
+                </div>
+                <div class="container  bg-light p-5 ">
+                  <form action="/ChangeProfile" method="post">
+                  
+                    <div  class="row mt-3 mb-3 justify-content-center"> 
+                    <label  class = "col-3 "  for="id" >Tên Đăng Nhập:</label>
+                      <input type="text"  class = "col-3" name="User" id="id" value="Anhlavodich@gmail.com" required disabled>
+                  </div>
+
+                  <div  class="row mt-3 mb-3 justify-content-center">
+                    <label  class = "col-3"  for="username" >Họ và Tên:</label>
+                      <input type="text"  class = "col-3" name="User" id="username" value="TRUONG BAT GIOI" required disabled>
+                  </div>
+
+                  <div  class="row mt-3 mb-3 justify-content-center">
+                    <label class = "col-3" for="age" >Tuổi:</label>
+                      <input type="text"  class = "col-3" name="User" id="age" value="13" required disabled>
+                  </div>
+            
+                  <div  class="row mt-3 mb-3 justify-content-center">
+                    <div   class = "col-3 "  >Giới Tính:</div>
+                    
+                    <div class="col-3">
+                      <label for="Nam" class="">NAM</label> <input type="radio" name="User" id="Nam" value="Nam" checked disabled> 
+                      <label for="Nu" class="pl-5">NỮ</label> <input type="radio" name="User" id="Nu" value="Nu" disabled>
+                    </div>
+                  </div>
+
+                  <div  class="row mt-3 mb-3 justify-content-center">
+                    <label  class = "col-3"  for="phone" >Số Điện Thoại:</label>
+                     <input type="text"  class = "col-3" name="User" id="phone" value="0123654999" required disabled>
+                  </div>
+
+                  <div  class="row mt-3 mb-3 justify-content-center">
+                    <label  class = "col-3"   for="mail" >Email</label>
+                      <input type="text"  class = "col-3" name="User" id="mail" value="Anhlavodich@gmail.com" required disabled>
+                  </div>
+
+                  <div  class="row mt-3 mb-3 justify-content-center">
+                  
+                    <input type="submit"  class = " btn btn-primary" value="HOÀN TẤT" disabled>
+                  </div>
+                 
+                  </form>
+                  <div class="text-center">
+                    <button class="btn btn-primary bg-dark" onclick="OK()">THAY ĐỔI THÔNG TIN</button>
+                  </div>
+                  <script>
+                    function OK(){
+                      var Temp = document.getElementsByTagName('input');
+                      
+                      for(let i=0; i<Temp.length;i++){
+                        Temp[i].disabled = false  
+                      }
+                    }
+                 </script>
+                </div>
+              </div>
+            </div>
+          </div>
+
+</body>
+  
+
+
+
+</html>
