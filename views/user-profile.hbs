@@ -1,54 +1,52 @@
-
-                <div class="container-fluid justify-content-center">
-                  <div class="row  justify-content-center bg-warning " >
-                    <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">HỒ SƠ CỦA BẠN</h2>
-                  </div>  
-                </div>
+<div class="row  justify-content-center bg-warning " >
+<h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">HỒ SƠ CỦA BẠN</h2>
+  
+    </div>
                 <div class="container  bg-light p-5 ">
-                  <form action="/ChangeProfile" method="post">
+                  <form class="p-5" action="/ChangeProfile" method="post">
                   
                     <div  class="row mt-3 mb-3 justify-content-center"> 
-                    <label  class = "col-3 " >Tên Đăng Nhập:</label>
-                      <div  id="id" >Anhlavodich@gmail.com</div>
+                    <label  class = "col-lg-6 col-md-6 col-sm-6 text-left " >Tên Đăng Nhập:</label>
+                      <div  id="id" class="col-lg-6 col-md-6 col-sm-6 text-center font-weight-bolder">Anhlavodich@gmail.com</div>
                   </div>
 
                   <div  class="row mt-3 mb-3 justify-content-center">
-                    <label  class = "col-3"  for="username" >Họ và Tên:</label>
-                      <input type="text"  class = "col-3" name="User" id="username" value="TRUONG BAT GIOI" required disabled>
+                    <label  class = "col-lg-6 col-md-6 col-sm-6 text-left "  for="username" >Họ và Tên:</label>
+                      <input type="text"  class = "col-6" name="User" id="username" value="TRUONG BAT GIOI" required disabled>
                   </div>
 
                   <div  class="row mt-3 mb-3 justify-content-center">
-                    <label class = "col-3" for="age" >Tuổi:</label>
-                      <input type="text"  class = "col-3" name="User" id="age" value="13" required disabled>
+                    <label class ="col-lg-6 col-md-6 col-sm-6 text-left " for="age" >Tuổi:</label>
+                      <input type="text"  class = "col-6" name="User" id="age" value="13" required disabled>
                   </div>
             
                   <div  class="row mt-3 mb-3 justify-content-center">
-                    <div   class = "col-3 "  >Giới Tính:</div>
+                    <div   class = "col-lg-6 col-md-6 col-sm-6 text-left "  >Giới Tính:</div>
                     
-                    <div class="col-3">
+                    <div class="col-6">
                       <label for="Nam" class="">NAM</label> <input type="radio" name="User" id="Nam" value="Nam" checked disabled> 
                       <label for="Nu" class="pl-5">NỮ</label> <input type="radio" name="User" id="Nu" value="Nu" disabled>
                     </div>
                   </div>
 
                   <div  class="row mt-3 mb-3 justify-content-center">
-                    <label  class = "col-3"  for="Adress" >Địa chỉ:</label>
-                     <input type="text"  class = "col-3" name="User" id="Adress" value="215E - Trasarel - Miami" required disabled>
+                    <label  class ="col-lg-6 col-md-6 col-sm-6 text-left "  for="Adress" >Địa chỉ:</label>
+                     <input type="text"  class = "col-6" name="User" id="Adress" value="215E - Trasarel - Miami" required disabled>
                   </div>
 
                   <div  class="row mt-3 mb-3 justify-content-center">
-                    <label  class = "col-3"  for="phone" >Số Điện Thoại:</label>
-                     <input type="text"  class = "col-3" name="User" id="phone" value="0123654999" required disabled>
+                    <label  class ="col-lg-6 col-md-6 col-sm-6 text-left " for="phone" >Số Điện Thoại:</label>
+                     <input type="text"  class = "col-6" name="User" id="phone" value="0123654999" required disabled>
                   </div>
 
                   <div  class="row mt-3 mb-3 justify-content-center">
-                    <label  class = "col-3"   for="mail" >Email</label>
-                      <input type="text"  class = "col-3" name="User" id="mail" value="Anhlavodich@gmail.com" required disabled>
+                    <label  class ="col-lg-6 col-md-6 col-sm-6 text-left " for="mail" >Email</label>
+                      <input type="text"  class = "col-6" name="User" id="mail" value="Anhlavodich@gmail.com" required disabled>
                   </div>
 
-                  <div  class="row mt-3 mb-3 justify-content-center">
+                  <div  class="row mt-5  justify-content-center">
                   
-                    <input type="submit" id=submit  class = " btn btn-primary" value="HOÀN TẤT" disabled>
+                    <input type="submit"   class = " d-none btn btn-primary bg-primary" value="HOÀN TẤT" disabled >
                   </div>
                  
                   </form>
@@ -60,8 +58,10 @@
                       var Temp = document.getElementsByTagName('input');
                       
                       for(let i=0; i<Temp.length;i++){
-                        Temp[i].disabled = false  
+                        Temp[i].disabled = false                
                       }
+                      Temp[Temp.length-1].classList.remove('d-none')
+                      document.getElementsByTagName('button').classList.add('d-none')
                     }
                  </script>
                 </div>

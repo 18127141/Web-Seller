@@ -97,68 +97,45 @@
                 </div>
               </div>
 
-              <div class="col-md-10 col-sm-12  ">
-                <div class="container-fluid justify-content-center">
-                  <div class="row  justify-content-center bg-warning " >
-                    <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">HỒ SƠ CỦA BẠN</h2>
-                  </div>  
+              <div class="col-md-10 col-sm-12 bg-light  ">
+                <div class="row  justify-content-center bg-warning " >
+                  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">Mã Của Bạn</h2>
                 </div>
-                <div class="container  bg-light p-5 ">
-                  <form action="/ChangeProfile" method="post">
-                  
-                    <div  class="row mt-3 mb-3 justify-content-center"> 
-                    <label  class = "col-3 "  for="id" >Tên Đăng Nhập:</label>
-                      <input type="text"  class = "col-3" name="User" id="id" value="Anhlavodich@gmail.com" required disabled>
-                  </div>
-
-                  <div  class="row mt-3 mb-3 justify-content-center">
-                    <label  class = "col-3"  for="username" >Họ và Tên:</label>
-                      <input type="text"  class = "col-3" name="User" id="username" value="TRUONG BAT GIOI" required disabled>
-                  </div>
-
-                  <div  class="row mt-3 mb-3 justify-content-center">
-                    <label class = "col-3" for="age" >Tuổi:</label>
-                      <input type="text"  class = "col-3" name="User" id="age" value="13" required disabled>
-                  </div>
-            
-                  <div  class="row mt-3 mb-3 justify-content-center">
-                    <div   class = "col-3 "  >Giới Tính:</div>
-                    
-                    <div class="col-3">
-                      <label for="Nam" class="">NAM</label> <input type="radio" name="User" id="Nam" value="Nam" checked disabled> 
-                      <label for="Nu" class="pl-5">NỮ</label> <input type="radio" name="User" id="Nu" value="Nu" disabled>
-                    </div>
-                  </div>
-
-                  <div  class="row mt-3 mb-3 justify-content-center">
-                    <label  class = "col-3"  for="phone" >Số Điện Thoại:</label>
-                     <input type="text"  class = "col-3" name="User" id="phone" value="0123654999" required disabled>
-                  </div>
-
-                  <div  class="row mt-3 mb-3 justify-content-center">
-                    <label  class = "col-3"   for="mail" >Email</label>
-                      <input type="text"  class = "col-3" name="User" id="mail" value="Anhlavodich@gmail.com" required disabled>
-                  </div>
-
-                  <div  class="row mt-3 mb-3 justify-content-center">
-                  
-                    <input type="submit"  class = " btn btn-primary" value="HOÀN TẤT" disabled>
-                  </div>
-                 
-                  </form>
-                  <div class="text-center">
-                    <button class="btn btn-primary bg-dark" onclick="OK()">THAY ĐỔI THÔNG TIN</button>
-                  </div>
-                  <script>
-                    function OK(){
-                      var Temp = document.getElementsByTagName('input');
-                      
-                      for(let i=0; i<Temp.length;i++){
-                        Temp[i].disabled = false  
-                      }
-                    }
-                 </script>
-                </div>
+                <div class="container-fluid ">
+                  <table class="table">
+                      <thead>
+                          <th scope="col">Mã khuyến mãi</th>
+                          <th scope="col">Giá Trị</th>
+                          <th scope="col">Ngày áp dụng</th>
+                          <th scope="col">Này kết thúc</th>
+                          <th scope="col">Trạng thái</th>
+                          
+                      </thead>
+                      <tbody>
+                          <tr id ="111">
+                              <td><a>#VuiGiangSinh</a></td>
+                              <td>20%</td>
+                              <td>1/12</td>
+                              <td>31/12</td>
+                              <td>Đã Dùng</td>
+                          </tr>
+                          <tr id ="112">
+                            <td><a>#MungNamMoi</a></td>
+                            <td>10%</td>
+                            <td>1/1</td>
+                            <td>31/11</td>
+                            <td>Chưa Áp Dụng</td>
+                          </tr>
+                          <tr id ="111">
+                            <td><a>#MuaLanDau</a></td>
+                            <td>30%</td>
+                            <td>1/1</td>
+                            <td>31/12</td>
+                            <td>Có thể dùng</td>
+                           </tr>
+                      </tbody>
+                  </table>
+              </div>
               </div>
             </div>
           </div>

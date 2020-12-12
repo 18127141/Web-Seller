@@ -20,7 +20,11 @@
     <!--MY CSS AND JS-->
     <link rel="stylesheet" href="/Home.css">
     <link rel="stylesheet" href="/CSS/Sell.css">
-  
+    <style>
+      .tr a:link{
+        color: blue !important;
+      }
+    </style>
 </head>
 <body >
     <!--header-->
@@ -29,8 +33,8 @@
     <!--contain-->
 
         <div class="container">
-            <div class="row bg-dark" id="NAV_LEFT">
-              <div class="col-md-2 col-sm-12 justify-content-center bg-dark box-dash p-2 mb-3" style="border-color:white">
+            <div class="row" id="NAV_LEFT">
+              <div class="col-md-2 col-sm-12 justify-content-center bg-dark box-dash p-2 mb-3 " style="border-color:white ">
                 <div class=" card-header text-center pb-0 ">
                   <div class="row  bg-warning  hl2dash justify-content-center " data-toggle="collapse" href="#DT">
                     <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Tài khoản </h4>
@@ -42,7 +46,7 @@
                           <a href="/User/profile">Hồ sơ</a>
                         </li>
                         <li class="row   hl2dash  justify-content-center">
-                          <a href="/User/">Thay đổi mật khẩu</a>
+                          <a href="/User/changepass">Thay đổi mật khẩu</a>
                         </li>
                       </ul>
                     </div>
@@ -56,16 +60,16 @@
                     <div class="card-body ">
                       <ul class=" justify-content-center  ">
                         <li class="row hl2dash justify-content-center">
-                          <a href="#">Tất cả</a>
+                          <a href="/User/check-order">Tất cả</a>
                         </li>
                         <li class="row hl2dash  justify-content-center">
-                          <a href="#">Đã nhận</a>
+                          <a href="/User/check-order">Đã nhận</a>
                         </li>
                         <li class="row  hl2dash  justify-content-center">
-                          <a href="#">Chờ lấy hàng</a>
+                          <a href="/User/check-order">Chờ lấy hàng</a>
                         </li>
                         <li class="row  hl2dash  justify-content-center">
-                            <a href="#">Đã hủy</a>
+                            <a href="/User/check-order">Đã hủy</a>
                         </li>
                       </ul>
                     </div>
@@ -73,23 +77,30 @@
                 </div>
                 <div class=" card-header   text-dar text-center pb-0  ">
                   <div class="row   bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#TH">
-                    <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">  Thông báo </h4>
+                    <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Mã khuyến mãi </h4>
                   </div>
                   <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
                     <div class="card-body ">
                       <ul class=" justify-content-center  ">
                         <li class="row  hl2dash justify-content-center">
-                          <a href="#">Mã khuyễn mãi</a>
+                          <a href="/User/voucher">Tất cả</a>
                         </li>
-                        <li class="row justify-content-center">
-                          <a href="#">Thông tin đơn hàng</a>
+                            <li class="row  hl2dash justify-content-center">
+                          <a href="/User/voucher">Chưa dùng</a>
                         </li>
+                        <li class="row  hl2dash justify-content-center">
+                          <a href="/User/voucher">Chưa áp dụng</a>
+                        </li>
+                        <li class="row  hl2dash justify-content-center">
+                          <a href="/User/voucher">Đã dùng</a>
+                        </li>
+                        
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-10 col-sm-12   ">
+              <div class="col-md-10 col-sm-12 bg-light border border-dark " style="border-left-width: 3px !important;border-bottom-width: 3px !important;">
                 {{{body}}}
               </div>
             </div>
