@@ -10,13 +10,24 @@ app.engine('hbs',hbs({
     extname:'hbs',
     defaultLayout:'layout',
     layoutsDir: __dirname + '/views/layouts/',
-    partialsDir:__dirname + '/views/partials/'
+    partialsDir:__dirname + '/views/partials/',
+    runtimeOptions:{
+        allowProtoPropertiesByDefault: true
+    },
+
 }))
 app.set('view engine','hbs')
 app.set('port',(process.env.PORT|| 5000))
 //Home
 app.get('/',function(req,res){
     res.render('Home')
+})
+//sync
+var models = require("./models")
+app.get("/sync",function(req,res){
+    models.sequelize.sync().then(function(){
+        res.send("Complete")
+    })
 })
 //Find us
 app.get('/Find-us',function(req,res){

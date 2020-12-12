@@ -15,7 +15,7 @@
         <div class="row bg-dark ">
             <div class="col-lg mr-3">
 
-                <div class="row"><img id="main_img"src="/img/{{product.main_img_src}}" class="img-fluid" alt="giay">
+                <div class="row"><img id="main_img"src="/{{product.main_img}}" class="img-fluid" alt="giay">
                 </div>
                 <!--  -->
                 <div class="row">
@@ -295,20 +295,24 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-
 <script>
-    var value = "{{product.img_src}}"
-    var image_url = value.split(",")
-    var test = document.getElementById("tester")
-    value = "{{product.size_stock}}" 
+    var image_url =[]
+</script>
+{{#each img_src}}
+<script>
+    image_url.push('{{img_src}}')
+    console.log(image_url)
+</script>
+{{/each}}
+<script>
+   
     // show carousel1 ------------------------------------------------
     var cal_1 = document.getElementById("Product_cal_1")
     for (let i = 0; i < 4; i++) {
         const item = `
         <div class="col-md-2 col-3   bg-dark " style="border:none">
             
-            <img style ="cursor:pointer" src="/img/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
+            <img style ="cursor:pointer" src="/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
             
         </div> `
         cal_1.insertAdjacentHTML("beforeend", item)
@@ -320,7 +324,7 @@
         const item = `
         <div class="col-md-2 col-3   bg-dark " style="border:none">
             
-            <img style ="cursor:pointer"src="/img/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
+            <img style ="cursor:pointer"src="/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
         
         </div> `
         cal_2.insertAdjacentHTML("beforeend", item)
@@ -360,7 +364,7 @@
     var size_menu = document.getElementById("size_menu")
 </script>
 
-{{#each product.size_stock}}
+{{#each size_stock}}
 <script>
     var size = "{{size}}"
     var stock = "{{stock}}"
