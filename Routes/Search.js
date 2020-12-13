@@ -1,6 +1,5 @@
 var express = require('express')
 var router = express.Router()
-console.log("long")
 router.get('/',function(req,res){
     var search_word = req.query.search
     console.log(search_word)

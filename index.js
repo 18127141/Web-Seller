@@ -24,13 +24,6 @@ app.set('port',(process.env.PORT|| 5000))
 app.get('/',function(req,res){
     res.render('Home')
 })
-//sync
-var models = require("./models")
-app.get("/sync",function(req,res){
-    models.sequelize.sync().then(function(){
-        res.send("Complete")
-    })
-})
 //Find us
 app.get('/Find-us',function(req,res){
     res.render('Find_us')
