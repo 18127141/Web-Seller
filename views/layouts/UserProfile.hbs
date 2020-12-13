@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en-US">
+    <title>Triple Long Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--BOOTSTRAP HERE-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--MY CSS AND JS-->
+    <link rel="stylesheet" href="/Home.css">
+    <link rel="stylesheet" href="/CSS/Sell.css">
+    <style>
+      .tr a:link{
+        color: blue !important;
+      }
+    </style>
+</head>
+<body >
+    <!--header-->
+    {{> header}}
+    <!--/header-->
+    <!--contain-->
+
+        <div class="container">
+            <div class="row" id="NAV_LEFT">
+              <div class="col-md-2 col-sm-12 justify-content-center bg-dark box-dash p-2 mb-3 " style="border-color:white ">
+                <div class=" card-header text-center pb-0 ">
+                  <div class="row  bg-warning  hl2dash justify-content-center " data-toggle="collapse" href="#DT">
+                    <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Tài khoản </h4>
+                  </div>
+                  <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row hl2dash justify-content-center">
+                          <a href="/User/profile">Hồ sơ</a>
+                        </li>
+                        <li class="row   hl2dash  justify-content-center">
+                          <a href="/User/changepass">Thay đổi mật khẩu</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class=" card-header    text-center pb-0 ">
+                  <div class="row  bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
+                    <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Đơn mua </h4>
+                  </div>
+                  <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row hl2dash justify-content-center">
+                          <a href="/User/check-order">Tất cả</a>
+                        </li>
+                        <li class="row hl2dash  justify-content-center">
+                          <a href="/User/check-order">Đã nhận</a>
+                        </li>
+                        <li class="row  hl2dash  justify-content-center">
+                          <a href="/User/check-order">Chờ lấy hàng</a>
+                        </li>
+                        <li class="row  hl2dash  justify-content-center">
+                            <a href="/User/check-order">Đã hủy</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class=" card-header   text-dar text-center pb-0  ">
+                  <div class="row   bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+                    <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Mã khuyến mãi </h4>
+                  </div>
+                  <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row  hl2dash justify-content-center">
+                          <a href="/User/voucher">Tất cả</a>
+                        </li>
+                            <li class="row  hl2dash justify-content-center">
+                          <a href="/User/voucher">Chưa dùng</a>
+                        </li>
+                        <li class="row  hl2dash justify-content-center">
+                          <a href="/User/voucher">Chưa áp dụng</a>
+                        </li>
+                        <li class="row  hl2dash justify-content-center">
+                          <a href="/User/voucher">Đã dùng</a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10 col-sm-12 bg-light border border-dark " style="border-left-width: 3px !important;border-bottom-width: 3px !important;">
+                {{{body}}}
+              </div>
+            </div>
+          </div>
+    <!--/contain-->
+    <!--footer-->
+   {{> footer}}
+    <!--/footer-->
+</body>
+
+</html>

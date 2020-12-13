@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en-US">
+  <title>Triple Long Store</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--BOOTSTRAP HERE-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--MY CSS AND JS-->
+
+  <link rel="stylesheet" href="Home.css">
+
+
+
+</head>
+
+<body>  
+        <div class="container">
+            <div class="row bg-dark" id="NAV_LEFT">
+              <div class="col-md-2 col-sm-12 justify-content-center bg-dark box-dash p-2 mb-3" style="border-color:white">
+                <div class=" card-header   text-center pb-0 ">
+                  <div class="row  bg-warning  hl2dash justify-content-center " data-toggle="collapse" href="#DT">
+                    <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Tài khoản của tôi </h3>
+                  </div>
+                  <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row text-light bg-dark hl2dash justify-content-center">
+                          <a href="/Product/?Gender=Male,Female">Hồ sơ</a>
+                        </li>
+                        <li class="row text-dark bg-dark  justify-content-center">
+                          <a href="/Product/?Gender=Male">Địa chỉ</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                          <a href="/Product/?Gender=Female">Thay đổi mật khẩu</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class=" card-header   text-dark text-center pb-0 ">
+                  <div class="row  bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
+                    <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Đơn mua </h3>
+                  </div>
+                  <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row text-dark bg-dark hl2dash justify-content-center">
+                          <a href="#">Tất cả</a>
+                        </li>
+                        <li class="row text-dark bg-dark  justify-content-center">
+                          <a href="#">Chờ xác nhận</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                          <a href="#">Chờ lấy hàng</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                            <a href="#">Đang giao</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                            <a href="#">Đã Giao</a>
+                        </li>
+                        <li class="row text-dark bg-dark  hl2dash  justify-content-center">
+                            <a href="#">Đã hủy</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class=" card-header   text-dark text-center pb-0  ">
+                  <div class="row   bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+                    <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">  Thông báo </h3>
+                  </div>
+                  <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
+                    <div class="card-body ">
+                      <ul class=" justify-content-center  ">
+                        <li class="row text-dark bg-dark hl2dash justify-content-center">
+                          <a href="#">Mã khuyễn mãi</a>
+                        </li>
+                        <li class="row text-dark bg-dark  justify-content-center">
+                          <a href="#">Thông tin đơn hàng</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-10 col-sm-12 bg-light  ">
+                <div class="row  justify-content-center bg-warning " >
+                  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">Mã Của Bạn</h2>
+                </div>
+                <div class="container-fluid ">
+                  <table class="table">
+                      <thead>
+                          <th scope="col">Mã khuyến mãi</th>
+                          <th scope="col">Giá Trị</th>
+                          <th scope="col">Ngày áp dụng</th>
+                          <th scope="col">Này kết thúc</th>
+                          <th scope="col">Trạng thái</th>
+                          
+                      </thead>
+                      <tbody>
+                          <tr id ="111">
+                              <td><a>#VuiGiangSinh</a></td>
+                              <td>20%</td>
+                              <td>1/12</td>
+                              <td>31/12</td>
+                              <td>Đã Dùng</td>
+                          </tr>
+                          <tr id ="112">
+                            <td><a>#MungNamMoi</a></td>
+                            <td>10%</td>
+                            <td>1/1</td>
+                            <td>31/11</td>
+                            <td>Chưa Áp Dụng</td>
+                          </tr>
+                          <tr id ="111">
+                            <td><a>#MuaLanDau</a></td>
+                            <td>30%</td>
+                            <td>1/1</td>
+                            <td>31/12</td>
+                            <td>Có thể dùng</td>
+                           </tr>
+                      </tbody>
+                  </table>
+              </div>
+              </div>
+            </div>
+          </div>
+
+</body>
+  
+
+
+
+</html>
