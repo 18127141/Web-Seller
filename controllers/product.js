@@ -16,4 +16,15 @@ controller.getById = (ele) => {
         raw:true
     })
 }
+controller.searchByNameAndId = (ele) => {
+    return models.Product.findAll({
+      where: {
+        [Op.or]: [
+          { name: { [Op.iLike]: '%' + ele + '%' } },
+          { id: { [Op.iLike]: '%' + ele + '%' } },
+        ]
+      },
+      raw: true
+    })
+  }
 module.exports = controller

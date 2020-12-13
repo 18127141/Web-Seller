@@ -37,6 +37,11 @@ app.get('/Find-us',function(req,res){
 app.get('/Check-order',function(req,res){
     res.render('Check_order')
 })
+//Search
+var search_route = require('./Routes/Search')
+app.use('/Search',search_route)
+
+
 // user route
 var user_route = require('./Routes/User')
 app.use('/User',user_route)

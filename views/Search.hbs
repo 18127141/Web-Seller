@@ -105,15 +105,12 @@
               <p class="p-0 m-0">{{category}}</p>
             </div>
            
-            <p class ="Money_format"class="Price m-0"></p>
+            <p id ="Money_format"class="Price m-0"></p>
              <script>
-              //var m_format = document.getElementById("Money_format")
-              var m_format = document.getElementsByClassName("Money_format")
-              var index = {{@index}}
+              var m_format = document.getElementById("Money_format")
               var price = {{price}}
-              
               price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
-              m_format[index].innerHTML = price +" VND"
+              m_format.innerHTML = price +" VND"
             </script>
             <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
             <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>

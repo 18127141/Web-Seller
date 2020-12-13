@@ -1,17 +1,15 @@
 var express = require('express')
 var router = express.Router()
-// var data = require('../data.js')
-// var products = data.products
-
+console.log("long")
 router.get('/',function(req,res){
-    // res.locals.products = products
-    // res.render('Product')
+    var search_word = req.query.search
+    console.log(search_word)
     let product_controller = require('../controllers/product')
 
     getdata();
     async function getdata(){
-        var products = await product_controller.getAll()
-        res.render('Product',{products: products})
+        var products = await product_controller.searchByNameAndId(search_word)
+        res.render('Search',{products: products})
         
     }
 })

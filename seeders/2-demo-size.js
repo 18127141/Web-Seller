@@ -25,13 +25,27 @@ module.exports = {
         updatedAt: Sequelize.literal('NOW()'),
         ProductId: 'A12345',
       },
+      {
+        size: 44,
+        stock: 1,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61107',
+      },
+      {
+        size: 45,
+        stock: 5,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61107',
+      },
     ], {});
 
   },
 
   down: async (queryInterface, Sequelize) => {
 
-    await queryInterface.bulkDelete('People', null, {});
+    await queryInterface.bulkDelete('size_stocks', null, {});
 
   }
 };
