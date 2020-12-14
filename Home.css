@@ -2,7 +2,7 @@ body{
     display: block;
     color: #555!important;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #343a40!important;
+  
 
     
 }
@@ -15,17 +15,22 @@ a:hover{
 
 }
 .vl {
-    border-left: 2px dashed grey;
+    border-left: 3px dashed grey;
     
     height: 100%;
   }
+  .vl2 {
+    border-left: 3px dashed grey;
+    border-right: 3px dashed grey;
+    height: 100%;
+  } 
 .box-dash{
-    border: 3px dashed black;
+    border: 3px dashed grey;
   
     height: 100%;
 }
 .hldash {
-    border-bottom: 2px dashed grey;
+    border-bottom: 3px dashed grey;
   
     height: 100%;
 }
@@ -35,7 +40,7 @@ a:hover{
     height: 100%;
 }
 .hl {
-    border-bottom: 2px solid white;
+    border-bottom: 3px solid white;
     height: 100%;
   }
 a{

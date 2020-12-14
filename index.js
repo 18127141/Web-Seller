@@ -56,6 +56,13 @@ app.use('/Product',product_route)
 var Showproduct_route = require('./Routes/Show_product')
 app.use('/Show-product',Showproduct_route)
 
+app.get('/Cart',function(req,res){
+    res.render('Cart')
+})
+app.get('/Mark',function(req,res){
+    res.render('Mark')
+})
+
 //------------------------------------------------------------------------------------------------
 app.listen(app.get('port'),function(){
     console.log("Listening ",+ app.get('port'))

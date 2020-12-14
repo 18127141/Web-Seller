@@ -94,4 +94,8 @@ router.get('/voucher',function(req,res)
 {
     res.render('user-voucher',{layout:'UserProfile'})
 })
+router.get('/Admin',function(req,res)
+{
+    res.render('user-profile',{layout:'Admin'})
+})
 module.exports = router
