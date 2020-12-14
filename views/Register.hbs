@@ -2,7 +2,7 @@
 <div class="position-relative ">
     <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
     <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
-      <form action="action_page.htm" method="post">
+      <form action="/User/Login" method="post">
         <h1>Register</h1>
         <div class="inputbox">
           <div class="icon ">
@@ -40,6 +40,8 @@
           <input type="text" name="Phone" class="" required>
           <label>Cellphone</label>
         </div>
+        <p id="error" style="color: #C62828 ;margin: 0px;font-size:12px ;margin-bottom:10px">{{error_mess}}</p>
+
         <input type="submit" value="Sign in">
       </form>
     </div>

@@ -22,11 +22,14 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
+      address:{
+        type: Sequelize.TEXT
+      },
       isAdmin: {
         type: Sequelize.BOOLEAN
       },
-      main_img: {
-        type: Sequelize.STRING
+      age: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

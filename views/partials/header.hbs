@@ -1,6 +1,6 @@
 <header class="bg-light" id="head">
     <div class="header container-fluid d-none d-md-block m-0">
-      <ul class="menu">
+      <ul id ="Big-Top-nav" class="menu">
         <li>
           <a href="/Check-order"><i class="fa fa-truck"></i> Tra cứu đơn hàng</a>
         </li>
@@ -13,9 +13,7 @@
         <li>
           <a href="#"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
         </li>
-        <li>
-          <a href="/User/Login"><i class="fa fa-user"></i> Đăng nhập</a>
-        </li>
+        
       </ul>
     </div>
     <!--NAV-->
@@ -286,7 +284,7 @@
     </script>
     <div class="collapse" id="navbarNavDropdown">
       <div id="InsteadNav" class="d-md-none d-sm-block">
-        <div class="text-center card bg-dark border-0">
+        <div id ="Small-Top-nav" class="text-center card bg-dark border-0">
           <div class="card-header hldash " data-toggle="collapse" href="#BRANDNAV">
             <a class="card-link ">
               <h3 style="cursor:pointer">SẢN PHẨM </h3>
@@ -371,9 +369,7 @@
             <h3 style="cursor:pointer">YÊU THÍCH</h3>
           </a>
 
-          <a class="card-header  mb-3  hldash" href="/User/Login">
-            <h3 style="cursor:pointer">ĐĂNG NHẬP</h3>
-          </a>
+          
 
 
         </div>
@@ -381,3 +377,45 @@
 
     </div>
   </header>
+  <script>
+    var big_top_nav = document.getElementById('Big-Top-nav')
+    var small_top_nav = document.getElementById('Small-Top-nav')
+    var check ='{{usercheck}}'
+    
+    var item1,item2
+    if (check == ''){
+      item1 = `
+        <li>
+          <a href="/User/Login"><i class="fa fa-user"></i> Đăng nhập</a>
+        </li>
+      `
+      
+      item2 = `
+        <a class="card-header  mb-3  hldash" href="/User/Login">
+            <h3 style="cursor:pointer">ĐĂNG NHẬP</h3>
+          </a>
+        `
+    }
+    else{
+      item1 = `
+        <li>
+          <a href="/User/profile"><i class="fa fa-user"></i>Chào {{usercheck.id}}</a>
+        </li>
+        <li>
+          <a href="/User/Logout"><i class="fa fa-user"></i>Đăng xuất</a>
+        </li>
+      `
+      item2 = `
+        <a class="card-header  mb-3  hldash" href="/User/profile">
+            <h3 style="cursor:pointer">Chào {{usercheck.id}}</h3>
+          </a>
+          <a class="card-header  mb-3  hldash" href="/User/Logout">
+            <h3 style="cursor:pointer">Đăng xuất</h3>
+          </a>
+        `
+    }  
+      
+      big_top_nav.insertAdjacentHTML("beforeend",item1) 
+      small_top_nav.insertAdjacentHTML("beforeend",item2) 
+    
+  </script>
