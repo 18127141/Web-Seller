@@ -13,7 +13,7 @@ module.exports = {
         phone: '0902834151',
         address: '99/4a',
         isAdmin: true,
-        age: 20,
+        dob: '2000/02/10',
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
       },
@@ -26,7 +26,7 @@ module.exports = {
         phone: '0902834151',
         address: '99/4a',
         isAdmin: false,
-        age: 20,
+        dob: '2000/02/10',
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
       }

@@ -28,8 +28,8 @@ module.exports = {
       isAdmin: {
         type: Sequelize.BOOLEAN
       },
-      age: {
-        type: Sequelize.INTEGER
+      dob: {
+        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,
