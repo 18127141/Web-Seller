@@ -8,7 +8,8 @@ controller.checkLogin = (req,res,next) => {
         next()
     } 
     else{
-        res.redirect(`/User/Login?returnURL = ${req.originalURL}`)
+        
+        res.redirect(`/User/Login?returnURL=${req.originalUrl}`)
     }
 }
 controller.checkUserNameaAndPass = (username,password) => {
@@ -19,6 +20,8 @@ controller.checkUserNameaAndPass = (username,password) => {
         },
         raw:true,
     })
+
+    
 }
 controller.checkUserName = (username) => {
     return models.User.findAll({

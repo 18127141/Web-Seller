@@ -48,6 +48,11 @@
                         <li class="row   hl2dash  justify-content-center">
                           <a href="/User/changepass">Thay đổi mật khẩu</a>
                         </li>
+                        {{#if user.isAdmin }}
+                        <li class="row   hl2dash  justify-content-center">
+                          <a href="/User/Admin">Quyền admin</a>
+                        </li>
+                        {{/if}}
                       </ul>
                     </div>
                   </div>

@@ -17,15 +17,17 @@ app.engine('hbs',hbs({
 }))
 //Session
 var session = require('express-session')
+
 app.use(session({
     resave: true, 
     saveUninitialized: true, 
     secret: "user", 
-    cookie: { maxAge: 300000 }}));
+    cookie: { maxAge: 15*60*1000 }}));
 
 //Initial listen Port
 app.set('view engine','hbs')
 app.set('port',(process.env.PORT|| 5000))
+
 
 //------------------------------------------------------------------------------------------------
 //Home
@@ -55,10 +57,19 @@ app.use('/Product',product_route)
 // show-product route
 var Showproduct_route = require('./Routes/Show_product')
 app.use('/Show-product',Showproduct_route)
-
-app.get('/Cart',function(req,res){
-    res.render('Cart')
+//initilize cart
+var Cart = require('./controllers/cart')
+app.use(function(req,res,next){
+    var cart = new Cart(req.session.cart ? req.session.cart : {})
+    req.session.cart = cart
+    next()
 })
+
+//Cart route-------
+var Cart_route = require('./Routes/Cart')
+app.use('/Cart',Cart_route)
+
+
 app.get('/Mark',function(req,res){
     res.render('Mark')
 })

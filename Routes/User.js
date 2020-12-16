@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 let user_controller = require('../controllers/user')
 
+
 var checked
 //Login
 router.get('/Login', function (req, res) {
@@ -31,15 +32,21 @@ router.post('/', function (req, res) {
 
         } else {
             req.session.user = checked[0]
-            if (req.session.user.isAdmin == true) {
+            if (req.session.returnURL != undefined) {
+                res.redirect(req.session.returnURL)
+            }
+            else if (req.session.user.isAdmin == true) {
                 res.redirect('/User/Admin')
             }
-            res.render('user-profile', { layout: 'UserProfile', user: req.session.user,usercheck: req.session.user })
+            else {
+                res.render('user-profile', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user })
+            }
         }
 
     }
 
 })
+
 var models = require('../models')
 //check register -------------------------------
 router.post('/Login', function (req, res) {
@@ -48,7 +55,7 @@ router.post('/Login', function (req, res) {
     var email = req.body.Email
     var phone = req.body.Phone
     var dob = req.body.DOB
-    
+
     //var check_username
     getdata();
     async function getdata() {
@@ -83,9 +90,10 @@ router.get('/profile', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
-    res.render('user-profile', { layout: 'UserProfile', user: req.session.user,usercheck: req.session.user })
+
+    res.render('user-profile', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user })
 })
-router.post('/ChangeProfile',function(req,res){
+router.post('/ChangeProfile', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
@@ -93,33 +101,49 @@ router.post('/ChangeProfile',function(req,res){
     req.session.user.email = req.body.email
     req.session.user.phone = req.body.phone
     req.session.user.dob = req.body.dob
-    console.log(req.body.DOB)
     req.session.user.gender = req.body.gender
     req.session.user.address = req.body.address
     models.User.update({
-        name : req.session.user.name,
+        name: req.session.user.name,
         email: req.session.user.email,
         phone: req.session.user.phone,
         dob: req.session.user.dob,
         gender: req.session.user.gender,
         address: req.session.user.address,
     },
-    {
-        where:{ id :req.session.user.id }
-    })
+        {
+            where: { id: req.session.user.id }
+        })
     res.redirect('/User/profile')
-    
+
 })
 //change pass ---------------------------
 router.get('/changepass', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
-    res.render('user-changepass', { layout: 'UserProfile',user: req.session.user,usercheck: req.session.user })
+    res.render('user-changepass', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user })
 })
-router.post('/ChangePass',function(req,res){
+router.post('/ChangePass', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
+    }
+    if (req.body.old == req.body.new) {
+        res.redirect('/User/changepass')
+    }
+    else if (req.body.old != req.session.user.password) {
+        res.redirect('/User/changepass')
+    }
+    else {
+        req.session.user.password = req.body.new
+        models.User.update({
+            password: req.session.user.password
+        },
+            {
+                where: { id: req.session.user.id }
+
+            })
+        res.redirect('/User/profile')
     }
 
 })
@@ -136,16 +160,8 @@ router.get('/voucher', function (req, res) {
     }
     res.render('user-voucher', { layout: 'UserProfile' })
 })
-router.get('/Admin', function (req, res) {
-    if (req.session.user != undefined) {
-        if (req.session.user.isAdmin == true) {
-            res.render('user-profile', { layout: 'Admin',user: req.session.user,usercheck: req.session.user})
-        }
-        else{
-            res.redirect('/')
-        }
-    }else{
-        res.redirect('/')
-    }
-})
+//check Admin
+var Admin_route = require('./Admin')
+router.use('/Admin',Admin_route)
+
 module.exports = router

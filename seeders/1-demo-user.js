@@ -29,7 +29,21 @@ module.exports = {
         dob: '2000/02/10',
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
-      }
+      },
+      {
+        id: "admin",
+        gender: 'Male',
+        name: "Thanh Long",
+        email: 'ttlgame123@gmail.com',
+        password: 'admin',
+        phone: '0902834151',
+        address: '99/4a',
+        isAdmin: true,
+        dob: '2000/02/10',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+
     ], {});
 
   },

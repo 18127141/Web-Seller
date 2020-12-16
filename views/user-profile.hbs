@@ -17,7 +17,8 @@
 
     <div class="row mt-3 mb-3 justify-content-center">
       <label class="col-lg-6 col-md-6 col-sm-6 text-left " for="age">Tuổi:</label>
-      <input type="text" class="col-6" name="dob" id="dob" value="{{user.dob}}"  onfocus="(this.type='date')" onblur="(this.type='text')" required disabled>
+      <input type="text" class="col-6" name="dob" id="dob" value="{{user.dob}}" onfocus="(this.type='date')"
+        onblur="(this.type='text')" required disabled>
     </div>
 
     <div class="row mt-3 mb-3 justify-content-center">
@@ -46,20 +47,22 @@
 
     <div class="changing row mt-5  justify-content-center">
 
-      
+
     </div>
 
   </form>
-  <div  class="text-center">
+  <div class="text-center">
     <button class="changing btn btn-primary bg-dark " onclick="OK()">THAY ĐỔI THÔNG TIN</button>
   </div>
+  
   <script>
+   
     var male = document.getElementById('Male')
     var female = document.getElementById('Female')
-    if ('{{user.gender}}' == 'Male'){
+    if ('{{user.gender}}' == 'Male') {
       male.checked = true
     }
-    else{
+    else {
       female.checked = true
     }
     function OK() {
@@ -69,7 +72,7 @@
         Temp[i].disabled = false
       }
       var changing = document.getElementsByClassName('changing')
-      changing[0].insertAdjacentHTML('beforeend',`<input type="submit" class="btn btn-primary bg-primary" value="HOÀN TẤT" >`)
+      changing[0].insertAdjacentHTML('beforeend', `<input type="submit" class="btn btn-primary bg-primary" value="HOÀN TẤT" >`)
       changing[1].parentNode.removeChild(changing[1])
     }
   </script>
