@@ -10,4 +10,9 @@ controller.getById = (ele) => {
         raw:true
     })
 }
+controller.getAll = () =>{
+    return models.size_stock.findAll({
+        raw:true
+    })
+}
 module.exports = controller

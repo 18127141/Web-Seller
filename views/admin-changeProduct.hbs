@@ -1,26 +1,53 @@
-<h1 class="container text-center bg-warning  font-weight-bold p-2">GIỎ CỦA BẠN </h1>
+{{!-- add button --}}
+<button id="Add" type="button" onclick=Add_new_product_GUI()> Add</button>
+<div id="add_product">
+    <ul id="List_product">
+
+    </ul>
+</div>
+
 <div class="container mt-3 mb-3">
 
     <div class="row jusify-content-between">
         <div class="col-lg-12 mt-3 p-0">
             <!--ITEM-->
-            <div class="container mb-3 bg-light">
+            {{#each products}}
+            <div class="products container mb-3 bg-light" store ="{{id}}">
                 <div class="row">
                     <div class="col-md-4 text-center p-0 m-0">
-                        <img src="/img/pro_A61107_2.jpg" alt="Item" height="215px">
+                        <img src="/{{main_img}}" alt="Item" height="215px">
                     </div>
                     <div class="col">
                         <div class="row p-1 justify-content-center  ">
-                            <h5 class="col p-0 m-0 hldash text-center">GIÀY CƠ ĐỘNG</h5>
+                            <h5 class="col p-0 m-0 hldash text-center">{{name}}</h5>
 
                         </div>
                         <div class="row p-1">
-                            <p class="p-0 m-0">Tăng 10% tốc độ di chuyển, 50% sưc bền và 100% sự quyến rũ.</p>
+                            <p class="p-0 m-0">ID: {{id}} - {{category}}</p>
                         </div>
-                        <div class="row p-1 text-warning">
-                            <p class="p-0 m-0">Chỉ còn 12 sản phẩm</p>
+                        
+                        <div class="total row p-1 text-warning">
+                            
                         </div>
-
+                        <script>
+                            var index = {{@index}}
+                            
+                            var products_tagname = document.getElementsByClassName('products')
+                            var product_id = products_tagname[index].attributes.store.value
+                            var total_products = 0 
+                        </script>
+                        {{#each ../size_stock}}
+                        <script>
+                            
+                            if ("{{ProductId}}" == product_id){
+                                total_products += {{stock}}
+                            }
+                        </script>
+                        {{/each}}
+                        <script>
+                            var total = document.getElementsByClassName('total')
+                            total[index].insertAdjacentHTML('beforeend',`<p class="p-0 m-0">Chỉ còn ${total_products} sản phẩm</p>`)
+                        </script>
                         <div class="row p-1 justify-content-between ">
 
                             <div class="col p-0 m-0">
@@ -28,49 +55,36 @@
                                     <div class="col">
                                         <div class="row justify-content p-0 m-0">
                                             <button class="pr-2  bg-light text-primary font-weight-bolder p-0 pr-4"
-                                                onclick="" style="border:none">XÓA</button>
+                                                onclick="" style="border:none">Sửa</button>
                                             <button class="  bg-light text-primary  font-weight-bolder" onclick=""
-                                                style="border:none; ">MUA
-                                                SAU</button>
+                                                style="border:none; ">Xóa</button>
                                         </div>
                                     </div>
-
-
-                                    <p id="Number" class=" col-3 text-center align-content-center p-0 m-0"
-                                        style="border-radius:1000px; font-size: 15px;">250 000 VND</p>
+                                    <p class="Money_format col-3 text-center align-content-center p-0 m-0"
+                                        style="border-radius:1000px; font-size: 15px;"></p>
                                 </div>
-
-
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
             </div>
+            <script>
+                // money fommat
+                var m_format = document.getElementsByClassName("Money_format")
+                
+                var price = {{ price }}
+
+                price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                m_format[index].innerHTML = price + " VND"
+            </script>
+            {{/each}}
         </div>
     </div>
 </div>
 
-
-</div>
-
-
-</div>
-
-</div>
-
-
-{{!-- add button --}}
-<button id="Add" type="button" onclick=Add_new_product_GUI()> Add</button>
-<div id="add_product">
-
-</div>
-<ul id="List_product">
-
-</ul>
 <script>
+
+
     // quan li san pham
 
     var map = new Map();
@@ -119,12 +133,12 @@
         img_button.addEventListener("change", function (e) {
             let files = document.getElementById("Add_img").files;
             for (let i = 0; i < files.length; i++) {
-                temp_img[i] = "/img/" + files[i].name
+                temp_img[i] = "img/" + files[i].name
 
             }
 
             const img = new Image();
-            img.src = temp_img[0]
+            img.src = '/' + temp_img[0]
             console.log(img.src)
             img.width = 200;
             img.height = 200;
