@@ -1,0 +1,276 @@
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+
+    if ("{{warning}}" != "") {
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: '{{warning}}',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+</script>
+{{#with product}}
+<form action="/User/Admin/UpdatedProduct" method="POST">
+    <div id="add_product">
+        {{!-- Id and ReturnPath --}}
+        <input style="display:none" name="returnPath" type="text" id="Add_returnPath" value="{{../returnPath}}"
+            required>
+        <br>
+        <label class="text-dark">ID: {{id}}</label>
+        <input style="display:none" name="id" type="text" id="Add_id" value="{{id}}" required> <br>
+        {{!-- Image --}}
+        <div id="img_container">
+            <label for="Add_img">Enter URL</label>
+            <input type="file" id="Add_img" job="add_img" accept="image/*" multiple required>
+        </div>
+
+
+        {{!-- Name --}}
+        <label for="Add_name" class="text-dark">Tên sản phẩm:</label>
+        <input type="text" name="name" id="Add_name" placeholder="Name" value="{{name}}" required> <br>
+        {{!-- type --}}
+        <label for="Add_type" class="text-dark">Loại sản phẩm:</label>
+        <input type="text" name="type" id="Add_type" placeholder="Type" value="{{type}}" required> <br>
+        {{!-- info --}}
+        <label for="Add_info" class="text-dark">Thông tin:</label>
+        <textarea id="Add_info" name="info" required>{{info}}</textarea> <br>
+
+        {{!-- category --}}
+        <label for="Add_category" class="text-dark">Thể loại sản phẩm:</label>
+        <input type="text" name="category" id="Add_category" placeholder="Category" value="{{category}}" required> <br>
+        {{!-- gender --}}
+        <input type="checkbox" name="male" id="Add_male" name="Male" value="Male">
+        <label for="Add_male">Nam</label>
+        <input type="checkbox" name="female" id="Add_female" name="Female" value="Female">
+        <label for="Add_female">Nữ</label><br>
+        {{!-- brand --}}
+        <label for="Add_brand" class="text-dark">Hãng:</label>
+        <input type="text" name="brand" id="Add_brand" placeholder="Brand" value="{{brand}}" required> <br>
+        {{!-- price --}}
+        <label for="Add_price" class="text-dark">Giá tiền:</label>
+        <input type="text" name="price" id="Add_price" placeholder="price" value="{{price}}" required>VND <br>
+        {{!-- stock and size --}}
+        <div>--------------------------------------</div>
+        <div id="size_stock">
+            <div jobs="contain">
+                <label class="text-dark" jobs="add_size">Size:</label>
+                <input type="number" name="size" class="Add_size" placeholder="size" jobs="add_size" required> <br>
+                <label class="text-dark" jobs="add_stock">Stock:</label>
+                <input type="number" name="stock" class="Add_stock" placeholder="stock" jobs="add_stock" required> <br>
+            </div>
+        </div>
+
+
+        <button class=" p-3" type="button" id="Add_new_size" onclick=add_size_stock()>New size_stock</button><br>
+        <button type="submit">Confirm</button>
+        <button id="Cancel_new_product" class=" p-3" type="button" onclick=cancel_add_product()> Cancel</button>
+    </div>
+</form>
+{{/with}}
+{{#if existed_product}}
+<script>
+    //gender
+    var check_gender_male = document.getElementById("Add_male")
+    var check_gender_female = document.getElementById("Add_female")
+    var gender = "{{product.gender}}"
+    if (gender == "Male") {
+        check_gender_male.checked = true
+    } else if (gender == "Female") {
+        check_gender_female.checked = true
+    }
+    else {
+        check_gender_female.checked = true
+        check_gender_male.checked = true
+    }
+    //image
+    var img_menu = document.getElementById("img_container")
+    var temp_img = []
+    var item = ``
+</script>
+{{#each img}}
+<script>
+    var index = {{@index}}
+    index = parseInt(index)
+    temp_img[index] = "{{img_src}}"
+    item += `<input style="display:none" name="img" type="text" value="${temp_img[index]}" required>`
+</script>
+{{/each}}
+<script>
+    var img = new Image();
+    img.src = '/' + temp_img[0]
+   
+    img.width = 200;
+    img.height = 200;
+
+    while (img_menu.hasChildNodes()) {
+        img_menu.removeChild(img_menu.firstChild);
+    }
+    img_menu.appendChild(img);
+    img_menu.insertAdjacentHTML("beforeend", item)
+    img_menu.insertAdjacentHTML("beforeend",
+        `<button id="Cancel_img" type="button" job = "Cancel_img">Cancel</button>`);
+    //size_stock -------------------------------------
+    var size_container = document.getElementById("size_stock")
+</script>
+{{#each size_stock}}
+<script>
+
+    var size_input = document.getElementsByClassName("Add_size")
+    var stock_input = document.getElementsByClassName("Add_stock")
+    var index = {{@index}}
+    index = parseInt(index)
+    var existed_size = "{{size}}"
+    var existed_stock = "{{stock}}"
+    
+    if (index == 0) {
+
+        size_input[0].value = existed_size
+
+        stock_input[0].value = existed_stock
+    }
+    else {
+        
+        var item = `
+        <div jobs = "contain">
+            <label for="Add_size" class="text-dark" jobs ="add_size">Size:</label>
+            <input type="number" name="size" class="Add_size" placeholder="size" value = ${existed_size} jobs ="add_size" required> 
+            <button class ="delete_size" class=" p-3" type="button" jobs ="Delete_size"> Xóa</button><br>
+            <label for="Add_stock" class="text-dark" jobs ="add_stock">Stock:</label>
+            <input type="number" name ="stock" class="Add_stock" placeholder="stock" value = ${existed_stock}  jobs ="add_stock" required> <br>
+        </div>
+        `
+        
+        size_container.insertAdjacentHTML("beforeend", item)
+    }
+</script>
+{{/each}}
+{{/if}}
+<script>
+
+    // size and stock delete and add------------------------
+    var size_container = document.getElementById("size_stock")
+    //add ---------------
+    function add_size_stock() {
+        var size_input = document.getElementsByClassName("Add_size")
+        var stock_input = document.getElementsByClassName("Add_stock")
+        for (let i = 0; i < size_input.length - 1; i++) {
+            if (parseInt(size_input[i].value) == parseInt(size_input[size_input.length - 1].value)) {
+                size_input[size_input.length - 1].value = ""
+                stock_input[size_input.length - 1].value = ""
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'các kích cỡ không được trùng nhau',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                return;
+            }
+        }
+        
+        const item = `
+        <div jobs = "contain">
+            <label for="Add_size" class="text-dark" jobs ="add_size">Size:</label>
+            <input type="number" name ="size" class="Add_size" placeholder="size" jobs ="add_size" required> 
+            <button class ="delete_size" class=" p-3" type="button" jobs ="Delete_size"> Xóa</button><br>
+            <label for="Add_stock" class="text-dark" jobs ="add_stock">Stock:</label>
+            <input type="number" name ="stock" class="Add_stock" placeholder="stock" jobs ="add_stock" required> <br>
+        </div>
+        `
+
+        size_container.insertAdjacentHTML("beforeend", item)
+    }
+    //delete -------------
+    size_container.addEventListener("click", function (ToDo) {
+        const child = ToDo.target
+        const job = child.attributes.jobs.value
+        if (job == "Delete_size") {
+            child.parentNode.parentNode.removeChild(child.parentNode)
+        }
+
+    })
+    //cancel adding a product-------------------
+    function cancel_add_product() {
+        Swal.fire({
+            title: 'Bạn chắc chắn chưa?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Trở lại',
+            cancelButtonText: 'Hủy'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `/User/Admin`
+            }
+        })
+    }
+
+    add_menu = document.getElementById("add_product")
+    var map = new Map();
+    var temp_img = []
+    // work with image ---------------------
+    function add_img() {
+        let img_button = document.getElementById("Add_img");
+        var item = ``
+        img_button.addEventListener("change", function (e) {
+            let files = document.getElementById("Add_img").files;
+            for (let i = 0; i < files.length; i++) {
+                temp_img[i] = "img/" + files[i].name
+                item += `<input style="display:none" name ="img" type="text" value="${temp_img[i]}" required>`
+            }
+            var img = new Image();
+            img.src = '/' + temp_img[0]
+            img.width = 200;
+            img.height = 200;
+            const temp = document.getElementById("img_container");
+            while (temp.hasChildNodes()) {
+                temp.removeChild(temp.firstChild);
+            }
+            temp.appendChild(img);
+            temp.insertAdjacentHTML("beforeend", item)
+            temp.insertAdjacentHTML("beforeend",
+                `<button id="Cancel_img" type="button" job = "Cancel_img">Cancel</button>`);
+
+        });
+    }
+    function cancel_add_img() {
+        const temp = document.getElementById("img_container");
+        while (temp.hasChildNodes()) {
+            temp.removeChild(temp.firstChild);
+        }
+        temp.insertAdjacentHTML("afterbegin", `<label>Enter URL</label> <input type = "file" id = "Add_img" job = "add_img" accept="image/*" multiple><br>`)
+    }
+    add_menu.addEventListener("click", function (ToDo) {
+        const child = ToDo.target
+        if (child.attributes.job != undefined) {
+            const job = child.attributes.job.value;
+
+            if (job == "add_img") {
+                add_img()
+            }
+            else {
+                cancel_add_img();
+            }
+        }
+    })
+
+    function Add_new_product() {
+        if (temp_img.length == 0) {
+            temp_img[0] = "Logo.png";
+
+        }
+
+        let temp_id = document.getElementById("Add_id")
+        let temp_name = document.getElementById("Add_name")
+        let temp_info = document.getElementById("Add_info")
+        let temp_stock = document.getElementById("Add_stock")
+        let temp_price = document.getElementById("Add_price")
+        let temp_size = document.getElementById("Add_size")
+    }
+
+
+</script>

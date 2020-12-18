@@ -22,3 +22,15 @@
   </form>
 
 </div>
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+  if ("{{check}}" != "") {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '{{check}}',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+</script>

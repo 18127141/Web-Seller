@@ -1,11 +1,20 @@
 {{!-- add button --}}
-<button id="Add" type="button" onclick=Add_new_product_GUI()> Add</button>
+<button id="Add" type="button" onclick=Add_new_product_GUI_checkID() class="ml-5 mt-3 p-2 px-5 text-primary border-dark"
+    style="font-size: 32px;"> +</button>
 <div id="add_product">
-    <ul id="List_product">
-
-    </ul>
 </div>
-
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+     if ("{{congrats}}" != "") {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '{{congrats}}',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+</script>
 {{!-- container --}}
 <div class="container mt-3 mb-3">
 
@@ -13,7 +22,7 @@
         <div class="col-lg-12 mt-3 p-0">
             <!--ITEM-->
             {{#each products}}
-            <div class="products container mb-3 bg-light" store ="{{id}}">
+            <div class="products container mb-3 bg-light" store="{{id}}">
                 <div class="row">
                     <div class="col-md-4 text-center p-0 m-0">
                         <img src="/{{main_img}}" alt="Item" height="215px">
@@ -26,28 +35,28 @@
                         <div class="row p-1">
                             <p class="p-0 m-0">ID: {{id}} - {{category}}</p>
                         </div>
-                        
+
                         <div class="total row p-1 text-warning">
-                            
+
                         </div>
                         <script>
                             var index = {{@index}}
-                            
+
                             var products_tagname = document.getElementsByClassName('products')
                             var product_id = products_tagname[index].attributes.store.value
                             var total_products = 0 
                         </script>
                         {{#each ../size_stock}}
                         <script>
-                            
-                            if ("{{ProductId}}" == product_id){
-                                total_products += {{stock}}
+
+                            if ("{{ProductId}}" == product_id) {
+                                total_products += {{ stock }}
                             }
                         </script>
                         {{/each}}
                         <script>
                             var total = document.getElementsByClassName('total')
-                            total[index].insertAdjacentHTML('beforeend',`<p class="p-0 m-0">Chỉ còn ${total_products} sản phẩm</p>`)
+                            total[index].insertAdjacentHTML('beforeend', `<p class="p-0 m-0">Chỉ còn ${total_products} sản phẩm</p>`)
                         </script>
                         <div class="row p-1 justify-content-between ">
 
@@ -72,7 +81,7 @@
             <script>
                 // money fommat
                 var m_format = document.getElementsByClassName("Money_format")
-                
+
                 var price = {{ price }}
 
                 price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
@@ -84,95 +93,37 @@
 </div>
 
 <script>
-
-
     // quan li san pham
-
-    var map = new Map();
-    let temp_img = []
-
-    const list = document.getElementById("List_product");
     add_btn = document.getElementById("Add");
     add_menu = document.getElementById("add_product")
-    function show_product(id, src, name, price) {
+    function Add_new_product_GUI_checkID() {
 
         const item = `
-    <li class = "item"> 
-        <img src = "${src[0]}",height = 200, width = 200>
-        <p>${name}</p>
-        <p>${price}</p>
-        <button type = "button" job = "delete" id= "${id}">Delete</button>
-        <button type = "button" job = "update" id= "${id}">Update</button> 
-    </li>
-    `
-        list.insertAdjacentHTML("beforeend", item)
-    }
-    function Add_new_product_GUI() {
-        const item = `
-      <div id ="img_container">
-        <label>Enter URL</label> 
-        <input type = "file" id = "Add_img" job = "add_img" accept="image/*" multiple>
-      </div> 
-      Enter Id <input type = "text" id = "Add_id" placeholder="ID"> <br>
-      Enter name <input type = "text" id = "Add_name" placeholder="Name"> <br>
-      Enter info <input type = "text" id = "Add_info" placeholder="Info"> <br>
-      Enter stock <input type = "text" id = "Add_stock" placeholder="stock"> <br>
-      Enter price <input type = "text" id = "Add_price" placeholder="price">VND <br>
-      Enter size <input type = "text" id = "Add_size" placeholder="size"> <br>
-      <button id="Add_new_product" type="button" onclick=Add_new_product()> Confirm Add</button>
-      <button id="Cancel_new_product" type="button" onclick=cancel_add_product()> Cancel</button>
-    
+      <form action = '/User/Admin/UpdateProduct' method ="GET" class="ml-5 mt-4">
+      
+      <input style = "display:none" type = "text" name ="returnPath" id = "returnPath" value ="{{returnPath}}">
+      <label for="Add_id" class="text-dark">Nhập ID:</label>
+      <input type = "text" name ='Enter_id' id = "Add_id" placeholder="ID"required > <br>
+      
+      <button id="Add_new_product" type="submit" class=" p-3  " > Confirm Add</button>
+      <button id="Cancel_new_product" class=" p-3"  type="button" onclick=cancel_add_product()> Cancel</button>
+    </form>
     
     `;
         add_btn.disabled = true;
         add_menu.insertAdjacentHTML("beforeend", item);
 
     }
+    function Check_Id() {
+        var entered_id = document.getElementById('Add_id')
 
-    function add_img() {
-        let img_button = document.getElementById("Add_img");
-        img_button.addEventListener("change", function (e) {
-            let files = document.getElementById("Add_img").files;
-            for (let i = 0; i < files.length; i++) {
-                temp_img[i] = "img/" + files[i].name
-
-            }
-
-            const img = new Image();
-            img.src = '/' + temp_img[0]
-            console.log(img.src)
-            img.width = 200;
-            img.height = 200;
-            const temp = document.getElementById("img_container");
-            while (temp.hasChildNodes()) {
-                temp.removeChild(temp.firstChild);
-            }
-            temp.appendChild(img);
-            temp.insertAdjacentHTML("beforeend",
-                `<button id="Cancel_img" type="button" job = "Cancel_img">Cancel</button>`);
-
-        });
-    }
-    function cancel_add_img() {
-        const temp = document.getElementById("img_container");
-        while (temp.hasChildNodes()) {
-            temp.removeChild(temp.firstChild);
-        }
-        add_menu.insertAdjacentHTML("afterbegin", `<div id ="img_container"><label>Enter URL</label> <input type = "file" id = "Add_img" job = "add_img" accept="image/*" multiple></div> <br>`)
-    }
-    add_menu.addEventListener("click", function (ToDo) {
-        const child = ToDo.target
-        if (child.attributes.job != undefined) {
-            const job = child.attributes.job.value;
-
-            if (job == "add_img") {
-                add_img()
-            }
-            else {
-                cancel_add_img();
+        for (let i = 0; i < products_tagname.length; i++) {
+            if (products_tagname[i].attributes.store.value == entered_id.value) {
+                cancel_add_product()
             }
         }
-    })
+
+    }
     function cancel_add_product() {
         add_btn.disabled = false;
         while (add_menu.hasChildNodes()) {
@@ -180,43 +131,4 @@
         }
 
     }
-    function Add_new_product() {
-        if (temp_img.length == 0) {
-            temp_img[0] = "Logo.png";
-
-        }
-
-        let temp_id = document.getElementById("Add_id")
-        let temp_name = document.getElementById("Add_name")
-        let temp_info = document.getElementById("Add_info")
-        let temp_stock = document.getElementById("Add_stock")
-        let temp_price = document.getElementById("Add_price")
-        let temp_size = document.getElementById("Add_size")
-
-        cancel_add_product();
-        show_product(temp_id.value, temp_img, temp_name.value, temp_price.value);
-        map.set(temp_id.value, {
-            id: temp_id.value, img_src: temp_img, name: temp_name.value, info: temp_info.value,
-            stock: temp_stock.value, price: temp_price.value, size: temp_size.value
-        })
-
-
-    }
-    function delete_product(child) {
-        child.parentNode.parentNode.removeChild(child.parentNode)
-    }
-    function update_product(child) {
-
-    }
-    list.addEventListener("click", function (ToDo) {
-        const child = ToDo.target
-        const job = child.attributes.job.value
-        if (job == "delete") {
-            delete_product(child)
-        }
-        else {
-            update_product(child)
-        }
-
-    })
 </script>

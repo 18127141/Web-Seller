@@ -91,7 +91,8 @@ router.get('/profile', function (req, res) {
         res.redirect('/')
     }
 
-    res.render('user-profile', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user })
+    res.render('user-profile', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user, check: req.session.check })
+    req.session.check = undefined
 })
 router.post('/ChangeProfile', function (req, res) {
     if (req.session.user == undefined) {
@@ -114,6 +115,7 @@ router.post('/ChangeProfile', function (req, res) {
         {
             where: { id: req.session.user.id }
         })
+    req.session.check = 'Thay đổi thông tin thành công'
     res.redirect('/User/profile')
 
 })
@@ -122,16 +124,19 @@ router.get('/changepass', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
-    res.render('user-changepass', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user })
+    res.render('user-changepass', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user,check:req.session.check })
+    req.session.check = undefined
 })
 router.post('/ChangePass', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
     if (req.body.old == req.body.new) {
+        req.session.check = 'Mật khẩu mới phải khác mật khẩu cũ'
         res.redirect('/User/changepass')
     }
     else if (req.body.old != req.session.user.password) {
+        req.session.check = 'Nhập sai mật khẩu cũ'
         res.redirect('/User/changepass')
     }
     else {
@@ -143,6 +148,7 @@ router.post('/ChangePass', function (req, res) {
                 where: { id: req.session.user.id }
 
             })
+        req.session.check = 'Thay đổi mật khẩu thành công'
         res.redirect('/User/profile')
     }
 
@@ -162,6 +168,6 @@ router.get('/voucher', function (req, res) {
 })
 //check Admin
 var Admin_route = require('./Admin')
-router.use('/Admin',Admin_route)
+router.use('/Admin', Admin_route)
 
 module.exports = router

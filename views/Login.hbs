@@ -1,70 +1,40 @@
 <link rel="stylesheet" href="/CSS/style_login_register.css">
 
 <div class="position-relative ">
-    <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
-    <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
-      <form action="/User" method="post">
-        <h1>Login</h1>
-        <div class="inputbox">
-          <div class="icon ">
-            <i class="fa fa-user"></i>
-          </div>
-          <input type="text" name="User" id="Username" required class="">
-          <label>Username</label>
+  <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
+  <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
+    <form action="/User" method="post">
+      <h1>Login</h1>
+      <div class="inputbox">
+        <div class="icon ">
+          <i class="fa fa-user"></i>
+        </div>
+        <input type="text" name="User" id="Username" required class="">
+        <label>Username</label>
+      </div>
+
+      <div class="inputbox">
+        <div class="icon">
+          <i class="fa fa-lock"></i>
         </div>
 
-        <div class="inputbox">
-          <div class="icon">
-            <i class="fa fa-lock"></i>
-          </div>
+        <input type="password" name="P_WORD" id="Password" class="" required>
+        <label>Password</label>
+        <p id="error" style="color: #C62828 ;margin: 0px;font-size:12px ">{{error_mess}}</p>
 
-          <input type="password" name="P_WORD" id="Password" class="" required>
-          <label>Password</label>
-          <p id="error" style="color: #C62828 ;margin: 0px;font-size:12px ">{{error_mess}}</p>
+        {{!-- <span onclick="Myfunction()">
+          <i id="eye1" style="display:block" class="fa fa-eye-slash"></i>
+          <i id="eye2" style="display:none" class="fa fa-eye"></i>
 
-          <span onclick="Myfunction()">
-            <i id="eye1" class="fa fa-eye-slash"></i>
-            <i id="eye2" class="fa fa-eye"></i>
-            
-          </span>
-          
+        </span> --}}
 
 
 
-        </div>
-        <input type="checkbox">Remember Password<br>
-        <p>Don't have an account? <a href="/User/Register" style="color:blue;">Sign Up</a></p>
-        <input type="submit" id="submit" value="Sign in">
-      </form>
-    </div>
+
+      </div>
+      <input type="checkbox">Remember Password<br>
+      <p>Don't have an account? <a href="/User/Register" style="color:blue;">Sign Up</a></p>
+      <input type="submit" id="submit" value="Sign in">
+    </form>
   </div>
-
-
-
-
-<script type="text/JavaScript">
-  const pass = document.getElementById('Password');
-  const icon1 = document.getElementById("eye1");
-  const icon2 = document.getElementById("eye2");
-  const username = document.getElementById("Username")
-  const submit = document.getElementById("submit")
-
-  function Myfunction() {
-    if (pass.type === 'password') {
-        pass.setAttribute('type', 'text');
-        icon1.style.display = "none";
-        icon2.style.display = "block";
-
-    }
-    else {
-        pass.setAttribute('type', 'password');
-        icon2.style.display = "none";
-        icon1.style.display = "block";
-
-    }
-
-}
-
-  </script>
-
-</script>
+</div>

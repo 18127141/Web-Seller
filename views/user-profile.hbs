@@ -54,9 +54,18 @@
   <div class="text-center">
     <button class="changing btn btn-primary bg-dark " onclick="OK()">THAY ĐỔI THÔNG TIN</button>
   </div>
-  
+
+  <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
-   
+    if ("{{check}}" != "") {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '{{check}}',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
     var male = document.getElementById('Male')
     var female = document.getElementById('Female')
     if ('{{user.gender}}' == 'Male') {
@@ -66,6 +75,8 @@
       female.checked = true
     }
     function OK() {
+
+      //
       var Temp = document.getElementsByTagName('input');
 
       for (let i = 0; i < Temp.length; i++) {

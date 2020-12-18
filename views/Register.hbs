@@ -19,11 +19,11 @@
 
         <input type="password" name="P_WORD" id="Password" class="" required>
         <label>Password</label>
-        <span onclick="Myfunction()">
+        {{!-- <span onclick="Myfunction()">
           <i id="eye1" class="fa fa-eye-slash"></i>
           <i id="eye2" class="fa fa-eye"></i>
 
-        </span>
+        </span> --}}
 
       </div>
       <div class="inputbox">
@@ -35,14 +35,15 @@
       </div>
       <div class="inputbox">
         <div class="icon">
-          <i class="fa fa-envelope"></i>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
         </div>
         <input type="text" name="DOB" class="" onfocus="(this.type='date')" onblur="(this.type='text')" required>
         <label>Birthday</label>
       </div>
       <div class="inputbox">
         <div class="icon">
-          <i class="fa fa-mobile"></i>
+          {{!-- <i class="fa fa-mobile"></i> --}}
+          <i class="fa fa-phone" aria-hidden="true"></i>
         </div>
         <input type="text" name="Phone" class="" required>
         <label>Cellphone</label>

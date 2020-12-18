@@ -22,13 +22,15 @@ app.use(session({
     resave: true, 
     saveUninitialized: true, 
     secret: "user", 
-    cookie: { maxAge: 15*60*1000 }}));
+    cookie: { maxAge: 20*60*1000 }}));
 
 //Initial listen Port
 app.set('view engine','hbs')
 app.set('port',(process.env.PORT|| 5000))
 
-
+//sweetalert
+// var Swal = require('sweetalert2')
+// app.use(Swal())
 //------------------------------------------------------------------------------------------------
 //Home
 app.get('/',function(req,res){
