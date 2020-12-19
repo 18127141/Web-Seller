@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 
         if (req.session.user != undefined) {
             if (req.session.user.isAdmin == true) {
-                res.render('admin-changeProduct', { layout: 'Admin', user: req.session.user, usercheck: req.session.user, products: products, size_stock: sizes, returnPath: req.originalUrl, congrats:congrats })
+                res.render('admin-changeProduct', { layout: 'Admin', user: req.session.user, usercheck: req.session.user, products: products, size_stock: sizes, returnPath: req.originalUrl, congrats: congrats })
             }
             else {
                 res.redirect('/')
@@ -48,8 +48,11 @@ router.get('/UpdateProduct', function (req, res) {
                     }
                     res.render('admin-updateProduct', { layout: 'Admin', product: products, size_stock: sizes, img: img, usercheck: req.session.user, returnPath: req.query.returnPath })
                 }
-                else {
+                else if (req.query.NoWarning == undefined) {
                     res.render('admin-updateProduct', { layout: 'Admin', existed_product: true, product: products[0], size_stock: sizes, img: img, usercheck: req.session.user, returnPath: req.query.returnPath, warning: "Sản phẩm đã tồn tại, bạn vẫn có thể chỉnh sửa!" })
+                }
+                else {
+                    res.render('admin-updateProduct', { layout: 'Admin', existed_product: true, product: products[0], size_stock: sizes, img: img, usercheck: req.session.user, returnPath: req.query.returnPath })
                 }
             }
             else {
@@ -58,7 +61,6 @@ router.get('/UpdateProduct', function (req, res) {
         } else {
             res.redirect('/')
         }
-
     }
 })
 router.post('/UpdatedProduct', function (req, res) {
@@ -72,15 +74,15 @@ router.post('/UpdatedProduct', function (req, res) {
     var brand = req.body.brand
     var price = parseFloat(req.body.price)
     //size_stock
-    
+
     var size = req.body.size
     var stock = req.body.stock
-    if (Array.isArray(size) == false){
+    if (Array.isArray(size) == false) {
         var temp = size
         size = []
         size.push(temp)
         temp = stock
-        stock =[]
+        stock = []
         stock.push(temp)
     }
     var img = req.body.img
@@ -96,7 +98,7 @@ router.post('/UpdatedProduct', function (req, res) {
     // console.log(stock)
     // console.log(img)
 
-    
+
     if (male == "Male") {
         if (female == "Female") {
             gender = "Unisex"
@@ -116,8 +118,8 @@ router.post('/UpdatedProduct', function (req, res) {
     getdata()
     async function getdata() {
         var checked = await product_controller.getById(id)
-       
-    
+
+
         if (checked[0] == undefined) {
             models.Product.create({
                 id: id,
@@ -130,7 +132,7 @@ router.post('/UpdatedProduct', function (req, res) {
                 main_img: img[0],
                 gender: gender,
             })
-            for (let i = 0; i < img.length ; i++) {
+            for (let i = 0; i < img.length; i++) {
                 models.img_src.create({
                     ProductId: id,
                     img_src: img[i],
@@ -145,7 +147,7 @@ router.post('/UpdatedProduct', function (req, res) {
             }
             req.session.congrats = "Thêm sản phẩm thành công"
             res.redirect(req.body.returnPath)
-        } else{
+        } else {
             models.Product.update({
                 type: type,
                 category: category,
@@ -155,14 +157,14 @@ router.post('/UpdatedProduct', function (req, res) {
                 price: price,
                 main_img: img[0],
                 gender: gender,
-            },{
+            }, {
                 where: { id: id }
             })
             //img
             models.img_src.destroy({
-                where: {ProductId: id}
+                where: { ProductId: id }
             })
-            for (let i = 0; i < img.length ; i++) {
+            for (let i = 0; i < img.length; i++) {
                 models.img_src.create({
                     ProductId: id,
                     img_src: img[i],
@@ -170,7 +172,7 @@ router.post('/UpdatedProduct', function (req, res) {
             }
             // size
             models.size_stock.destroy({
-                where: {ProductId: id}
+                where: { ProductId: id }
             })
             for (let i = 0; i < size.length; i++) {
                 models.size_stock.create({
@@ -181,6 +183,50 @@ router.post('/UpdatedProduct', function (req, res) {
             }
             req.session.congrats = "Sửa sản phẩm thành công"
             res.redirect(req.body.returnPath)
+        }
+    }
+})
+router.get('/DeleteProduct', function (req, res) {
+    if (req.session.user != undefined) {
+        if (req.session.user.isAdmin == true) {
+
+            models.img_src.destroy({
+                where: { ProductId: req.query.Enter_id }
+            })
+            models.size_stock.destroy({
+                where: { ProductId: req.query.Enter_id }
+            })
+            models.Product.destroy({
+                where: { id: req.query.Enter_id }
+            })
+            req.session.congrats = "Xóa sản phẩm thành công"
+            res.redirect(req.query.returnPath)
+        }
+        else {
+            res.redirect('/')
+        }
+    } else {
+        res.redirect('/')
+    }
+
+})
+router.get('/OutofStock',function(req,res){
+    getdata();
+    async function getdata() {
+        var products = await product_controller.getAll()
+        var congrats = req.session.congrats
+        req.session.congrats = undefined
+        var sizes = await size_controller.getAll()
+
+        if (req.session.user != undefined) {
+            if (req.session.user.isAdmin == true) {
+                res.render('admin-outOfStock', { layout: 'Admin', user: req.session.user, usercheck: req.session.user, products: products, size_stock: sizes, returnPath: req.originalUrl, congrats: congrats })
+            }
+            else {
+                res.redirect('/')
+            }
+        } else {
+            res.redirect('/')
         }
     }
 })

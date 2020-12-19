@@ -204,7 +204,7 @@
 
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = `/User/Admin`
+                window.location.href = "{{returnPath}}"
             }
         })
     }
@@ -257,20 +257,5 @@
             }
         }
     })
-
-    function Add_new_product() {
-        if (temp_img.length == 0) {
-            temp_img[0] = "Logo.png";
-
-        }
-
-        let temp_id = document.getElementById("Add_id")
-        let temp_name = document.getElementById("Add_name")
-        let temp_info = document.getElementById("Add_info")
-        let temp_stock = document.getElementById("Add_stock")
-        let temp_price = document.getElementById("Add_price")
-        let temp_size = document.getElementById("Add_size")
-    }
-
 
 </script>
