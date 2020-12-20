@@ -39,6 +39,27 @@ module.exports = {
         updatedAt: Sequelize.literal('NOW()'),
         ProductId: 'A61107',
       },
+      {
+        size: 43,
+        stock: 0,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+      },
+      {
+        size: 44,
+        stock: 0,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+      },
+      {
+        size: 45,
+        stock: 0,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+      },
     ], {});
 
   },

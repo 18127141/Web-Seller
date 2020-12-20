@@ -13,6 +13,7 @@ router.get('/', function (req, res) {
     async function getdata() {
         var products = await product_controller.getAll()
         var congrats = req.session.congrats
+        console.log(req.session.congrats)
         req.session.congrats = undefined
         var sizes = await size_controller.getAll()
 
@@ -105,8 +106,11 @@ router.post('/UpdatedProduct', function (req, res) {
         } else {
             gender = "Male"
         }
-    } else {
+    } else if (female == "Female") {
         gender = "Female"
+    }
+    else{
+        gender = "Unisex"
     }
     if (req.session.user == undefined) {
         res.redirect('/')
@@ -214,13 +218,30 @@ router.get('/OutofStock',function(req,res){
     getdata();
     async function getdata() {
         var products = await product_controller.getAll()
+        var products_oos=[];
+        
+        for (let i = 0 ; i < products.length ; i++){
+            var sizes = await size_controller.getById(products[i].id)
+            console.log(sizes)
+            var stock_check = false
+            for (let j = 0; j < sizes.length; j++){
+                if (parseInt(sizes[j].stock) != 0){
+                   
+                    stock_check = true
+                    break
+                }
+            }
+            if ( stock_check == false){
+                products_oos.push(products[i])
+            }
+        }
+      
         var congrats = req.session.congrats
         req.session.congrats = undefined
-        var sizes = await size_controller.getAll()
 
         if (req.session.user != undefined) {
             if (req.session.user.isAdmin == true) {
-                res.render('admin-outOfStock', { layout: 'Admin', user: req.session.user, usercheck: req.session.user, products: products, size_stock: sizes, returnPath: req.originalUrl, congrats: congrats })
+                res.render('admin-outOfStock', { layout: 'Admin', user: req.session.user, usercheck: req.session.user, products:products_oos, returnPath: req.originalUrl, congrats: congrats })
             }
             else {
                 res.redirect('/')

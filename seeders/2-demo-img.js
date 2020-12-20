@@ -74,6 +74,41 @@ module.exports = {
         ProductId: 'A61107',
 
       },
+      {
+        img_src: 'img/pro_A61094_2.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+
+      },
+      {
+        img_src: 'img/pro_A61094_4.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+
+      },
+      {
+        img_src: 'img/pro_A61094_6.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+
+      },
+      {
+        img_src: 'img/pro_A61094_7.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+
+      },
+      {
+        img_src: 'img/pro_A61094_8.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61094',
+
+      },
     ], {});
 
   },

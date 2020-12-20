@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Product.hasMany(models.size_stock)
       Product.hasMany(models.img_src)
+      Product.hasMany(models.order_detail)
     }
   };
   Product.init({
