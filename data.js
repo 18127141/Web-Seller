@@ -1,7 +1,7 @@
 // 1 shoe
 // 2 cloth
 // 3 pant
-products = [{
+var products = [{
     id: 'A12345',
     type: 1,
     category: "Low-top/Street",

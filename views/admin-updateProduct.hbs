@@ -11,61 +11,139 @@
         })
     }
 </script>
+<div class="row  justify-content-center bg-warning ">
+  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">THÔNG TIN SẢN PHẨM</h2>
+</div>  
 {{#with product}}
+ 
 <form action="/User/Admin/UpdatedProduct" method="POST">
-    <div id="add_product">
+    
+    <div id="add_product" class="container pt-3">
+        <div class="row">
+            <h3 class="m-0 p-0 font-weight-bolder" >
+                Thông tin cơ bản
+            </h3>
+        </div>
         {{!-- Id and ReturnPath --}}
-        <input style="display:none" name="returnPath" type="text" id="Add_returnPath" value="{{../returnPath}}"
-            required>
-        <br>
-        <label class="text-dark">ID: {{id}}</label>
-        <input style="display:none" name="id" type="text" id="Add_id" value="{{id}}" required> <br>
+        <input style="display:none" name="returnPath" type="text" id="Add_returnPath" value="{{../returnPath}}"required>
+         <input style="display:none" name="id" type="text" id="Add_id" value="{{id}}" required>
+        <div class="row pt-3">
+            <label class="text-dark col-4 p-0 m-0">ID:</label>
+            <p class="col-8 p-0 m-0" > {{id}}</p>
+           
+        </div>
+       
+        
         {{!-- Image --}}
-        <div id="img_container">
-            <label for="Add_img">Enter URL</label>
-            <input type="file" id="Add_img" job="add_img" accept="image/*" multiple required>
+        <div id="img_container" class="row pt-3">
+            <label for="Add_img" class="text-dark col-4 m-0 p-0">Enter URL</label>
+            <input class="col-8 m-0 p-0" type="file" id="Add_img" job="add_img" accept="image/*" multiple required>
         </div>
 
 
         {{!-- Name --}}
-        <label for="Add_name" class="text-dark">Tên sản phẩm:</label>
-        <input type="text" name="name" id="Add_name" placeholder="Name" value="{{name}}" required> <br>
+        <div class="row pt-3">
+            <label for="Add_name" class="text-dark p-0 m-0 col-4">Tên sản phẩm:</label>
+            <input class="col-8 m-0 p-0" type="text" name="name" id="Add_name" placeholder="Name" value="{{name}}" required>
+        </div>
+       
         {{!-- type --}}
-        <label for="Add_type" class="text-dark">Loại sản phẩm:</label>
-        <input type="text" name="type" id="Add_type" placeholder="Type" value="{{type}}" required> <br>
+        <div class="row pt-3">
+            <label for="Add_type" class="text-dark  p-0 m-0 col-4">Loại sản phẩm:</label>
+            <input  class="col-8 m-0 p-0"  type="text" name="type" id="Add_type" placeholder="Type" value="{{type}}" required> 
+        </div>
+       
         {{!-- info --}}
-        <label for="Add_info" class="text-dark">Thông tin:</label>
-        <textarea id="Add_info" name="info" required>{{info}}</textarea> <br>
+        <div class="row pt-3">
+             <label for="Add_info" class="text-dark  p-0 m-0 col-4">Mô tả sản phẩm:</label>
+            <textarea class="col-8 m-0 p-0"  id="Add_info" name="info" required>{{info}}</textarea> 
+        </div>
+       
 
         {{!-- category --}}
-        <label for="Add_category" class="text-dark">Thể loại sản phẩm:</label>
-        <input type="text" name="category" id="Add_category" placeholder="Category" value="{{category}}" required> <br>
+        <div class="row pt-3">
+            <label for="Add_category" class="text-dark  p-0 m-0 col-4">Thể loại sản phẩm:</label>
+            <input class="col-8 m-0 p-0" type="text" name="category" id="Add_category" placeholder="Category" value="{{category}}" required> 
+        </div>
+       
         {{!-- gender --}}
-        <input type="checkbox" name="male" id="Add_male" name="Male" value="Male">
-        <label for="Add_male">Nam</label>
-        <input type="checkbox" name="female" id="Add_female" name="Female" value="Female">
-        <label for="Add_female">Nữ</label><br>
-        {{!-- brand --}}
-        <label for="Add_brand" class="text-dark">Hãng:</label>
-        <input type="text" name="brand" id="Add_brand" placeholder="Brand" value="{{brand}}" required> <br>
-        {{!-- price --}}
-        <label for="Add_price" class="text-dark">Giá tiền:</label>
-        <input type="text" name="price" id="Add_price" placeholder="price" value="{{price}}" required>VND <br>
-        {{!-- stock and size --}}
-        <div>--------------------------------------</div>
-        <div id="size_stock">
-            <div jobs="contain">
-                <label class="text-dark" jobs="add_size">Size:</label>
-                <input type="number" name="size" class="Add_size" placeholder="size" jobs="add_size" required> <br>
-                <label class="text-dark" jobs="add_stock">Stock:</label>
-                <input type="number" name="stock" class="Add_stock" placeholder="stock" jobs="add_stock" required> <br>
+        <div class="row pt-3">
+            <label for="" class="text-dark  p-0 m-0 col-4">Giới tính:</label>
+            <div class="col-8 justify-content-around">
+                <div class="row">
+                    <div class="col">
+                        <input type="checkbox" name="male" id="Add_male" name="Male" value="Male">
+                        <label for="Add_male">Nam</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" name="female" id="Add_female" name="Female" value="Female">
+                        <label for="Add_female">Nữ</label>
+                    </div>
+                </div>
+               
+               
             </div>
+        </div>
+       
+        {{!-- brand --}}
+        <div class="row pt-3">
+            <label for="Add_brand" class="text-dark p-0 m-0 col-4">Hãng:</label>
+            <input class="col-8 m-0 p-0" type="text" name="brand" id="Add_brand" placeholder="Brand" value="{{brand}}" required>
+        </div>
+        
+        {{!-- price --}}
+        <div class="row pt-3">
+            <label for="Add_price" class="text-dark p-0 m-0 col-4 ">Giá tiền:</label>
+            <input  class="col-8 m-0 p-0" type="number" name="price" id="Add_price" placeholder="VNĐ" value="{{price}}" required>
+        </div>
+       
+        {{!-- stock and size --}}
+        <div class="row mt-3 pt-3">
+            <h3 class="m-0 p-0 font-weight-bolder" >
+                Kích thước
+            </h3>
+        </div>
+        
+        <div id="size_stock" class="m-0 p-0 pt-3">
+            <div jobs="contain p-0 m-0" class="row p-0 m-0">
+                <div class="col-5 justify-content-around">
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="text-dark  p-0 m-0" jobs="add_size">Size:</label>
+                        </div>
+                        <div class="col">
+                            <input class = " p-0 m-0" type="number" name="size" class="Add_size" value="1" placeholder="size" jobs="add_size" required> <br>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+                <div class="col-5 justify-content-around">
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="text-dark  p-0 m-0" jobs="add_stock">Stock:</label>
+                        </div>
+                        <div class="col">
+                            <input  class = " p-0 m-0" type="number" name="stock" class="Add_stock" value="1" placeholder="stock" jobs="add_stock" required> <br>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+         
+        </div>
+        <div class="row justify-content-end  p-0 m-0 pt-1">
+            <button class="btn bg-primary p-1 m-0 text-light font-weight-bolder" type="button" id="Add_new_size" onclick=add_size_stock()>+Size</button><br>
         </div>
 
 
-        <button class=" p-3" type="button" id="Add_new_size" onclick=add_size_stock()>New size_stock</button><br>
-        <button type="submit">Confirm</button>
-        <button id="Cancel_new_product" class=" p-3" type="button" onclick=cancel_add_product()> Cancel</button>
+    
+    <div class="row justify-content-center m-5 ">
+        <button class="btn bg-success text-light font-weight-bolder mr-2" type="submit">Confirm</button>
+        
+        <button class="btn bg-warning text-light font-weight-bolder" id="Cancel_new_product" class=" p-3" type="button" onclick=cancel_add_product()> Cancel</button>
+    </div>
+       
     </div>
 </form>
 {{/with}}
@@ -133,12 +211,29 @@
     else {
         
         var item = `
-        <div jobs = "contain">
-            <label for="Add_size" class="text-dark" jobs ="add_size">Size:</label>
-            <input type="number" name="size" class="Add_size" placeholder="size" value = ${existed_size} jobs ="add_size" required> 
-            <button class ="delete_size" class=" p-3" type="button" jobs ="Delete_size"> Xóa</button><br>
-            <label for="Add_stock" class="text-dark" jobs ="add_stock">Stock:</label>
-            <input type="number" name ="stock" class="Add_stock" placeholder="stock" value = ${existed_stock}  jobs ="add_stock" required> <br>
+        <div jobs="contain p-0 m-0" class="row p-0 m-0 mt-2">
+                <div class="col-5 justify-content-around">
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="text-dark  p-0 m-0" jobs="add_size">Size:</label>
+                        </div>
+                        <div class="col">
+                            <input class = " p-0 m-0" type="number" name="size" class="Add_size" value=${existed_size} placeholder="size" jobs="add_size" required> <br>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+                <div class="col-5 justify-content-around">
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="text-dark  p-0 m-0" jobs="add_stock">Stock:</label>
+                        </div>
+                        <div class="col">
+                            <input  class = " p-0 m-0" type="number" name="stock" class="Add_stock" value= ${existed_size} placeholder="stock" jobs="add_stock" required> <br>
+                        </div>
+                    </div>
+                </div>
         </div>
         `
         
@@ -168,15 +263,34 @@
                 })
                 return;
             }
-        }
+        }   
         
         const item = `
-        <div jobs = "contain">
-            <label for="Add_size" class="text-dark" jobs ="add_size">Size:</label>
-            <input type="number" name ="size" class="Add_size" placeholder="size" jobs ="add_size" required> 
-            <button class ="delete_size" class=" p-3" type="button" jobs ="Delete_size"> Xóa</button><br>
-            <label for="Add_stock" class="text-dark" jobs ="add_stock">Stock:</label>
-            <input type="number" name ="stock" class="Add_stock" placeholder="stock" jobs ="add_stock" required> <br>
+        <div jobs="contain" class="row p-0 m-0 mt-2">
+                <div class="col-5 justify-content-around">
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="text-dark  p-0 m-0" jobs="add_size">Size:</label>
+                        </div>
+                        <div class="col">
+                            <input class = " p-0 m-0" type="number" name="size" class="Add_size" value="1" placeholder="size" jobs="add_size" required> <br>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+                <div class="col-5 justify-content-around">
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="text-dark  p-0 m-0" jobs="add_stock">Stock:</label>
+                        </div>
+                        <div class="col">
+                            <input  class = " p-0 m-0" type="number" name="stock" class="Add_stock" value="1" placeholder="stock" jobs="add_stock" required> <br>
+                        </div>
+                    </div>
+                </div>
+
+                <button class ="btn bg-danger p-1 m-0 text-light font-weight-bolder" class=" p-0" type="button" jobs ="Delete_size"> Xóa</button><br>
         </div>
         `
 

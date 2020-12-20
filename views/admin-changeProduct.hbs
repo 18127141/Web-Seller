@@ -1,8 +1,40 @@
-{{!-- add button --}}
-<button id="Add" type="button" onclick=Add_new_product_GUI_checkID() class="ml-5 mt-3 p-2 px-5 text-primary border-dark"
-    style="font-size: 32px;"> +</button>
-<div id="add_product">
+<div class="row  justify-content-center bg-warning ">
+  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">SẢN PHẨM</h2>
 </div>
+{{!-- add button --}}
+<div class="container p-3 ">
+  
+    <div class="container text-center  ">
+        <button id="Add" type="button" onclick=Add_new_product_GUI_checkID() class="btn text-light bg-primary border-dark m-0 p-2 " style="font-size: 20px; border-radius:100px;">
+                Thêm sản phẩm
+        </button>           
+        <div id="add_product" class="d-none container hl2dash p-2">
+            
+            <form action = '/User/Admin/UpdateProduct' method ="GET" class="ml-2 mt-2">
+      
+                <input style = "display:none" type = "text" name ="returnPath" id = "returnPath" value ="{{returnPath}}">
+                
+               <h3>Nhập ID cho sản phẩm mới</h3>
+                        <input type = "text" name ='Enter_id' id = "Add_id" placeholder="ID"required > <br>
+              
+                <div class="col mt-3">
+                    <button id="Add_new_product" type="submit" class=" p btn bg-primary text-light" > Confirm Add</button>
+                    <button id="Cancel_new_product" class=" btn bg-danger text-light"  type="button" onclick=cancel_add_product()> Cancel</button>
+                </div>
+           
+            </form>
+        </div>
+    </div>
+  <div class="row justify-content-end">
+        <form action="/Search" class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" > 
+            <input name = "search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search" aria-label="Search">
+            <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+
+
+
 <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script>
     if ("{{congrats}}" != "") {
@@ -15,9 +47,10 @@
         })
     }
 </script>
+
 {{!-- container --}}
 <div class="container mt-3 mb-3">
-
+   
     <div class="row jusify-content-between">
         <div id="product_contain" class=" col-lg-12 mt-3 p-0">
             <!--ITEM-->
@@ -95,11 +128,11 @@
 
 <script>
     // quan li san pham
-    add_btn = document.getElementById("Add");
-    add_menu = document.getElementById("add_product")
+    var add_btn = document.getElementById("Add");
+    var add_menu = document.getElementById("add_product")
     function Add_new_product_GUI_checkID() {
 
-        const item = `
+        const item =`
       <form action = '/User/Admin/UpdateProduct' method ="GET" class="ml-5 mt-4">
       
       <input style = "display:none" type = "text" name ="returnPath" id = "returnPath" value ="{{returnPath}}">
@@ -112,7 +145,8 @@
     
     `;
         add_btn.disabled = true;
-        add_menu.insertAdjacentHTML("beforeend", item);
+        add_btn.classList.add("d-none");
+        add_menu.classList.remove("d-none");
 
     }
     function Check_Id() {
@@ -126,10 +160,10 @@
 
     }
     function cancel_add_product() {
+        add_btn = document.getElementById("Add");
         add_btn.disabled = false;
-        while (add_menu.hasChildNodes()) {
-            add_menu.removeChild(add_menu.firstChild)
-        }
+        add_btn.classList.remove("d-none");
+        add_menu.classList.add("d-none");
 
     }
     var product_contain = document.getElementById('product_contain')
