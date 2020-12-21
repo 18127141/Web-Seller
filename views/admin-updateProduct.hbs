@@ -12,28 +12,29 @@
     }
 </script>
 <div class="row  justify-content-center bg-warning ">
-  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">THÔNG TIN SẢN PHẨM</h2>
-</div>  
+    <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">THÔNG TIN SẢN PHẨM</h2>
+</div>
 {{#with product}}
- 
+
 <form action="/User/Admin/UpdatedProduct" method="POST">
-    
+
     <div id="add_product" class="container pt-3">
         <div class="row">
-            <h3 class="m-0 p-0 font-weight-bolder" >
+            <h3 class="m-0 p-0 font-weight-bolder">
                 Thông tin cơ bản
             </h3>
         </div>
         {{!-- Id and ReturnPath --}}
-        <input style="display:none" name="returnPath" type="text" id="Add_returnPath" value="{{../returnPath}}"required>
-         <input style="display:none" name="id" type="text" id="Add_id" value="{{id}}" required>
+        <input style="display:none" name="returnPath" type="text" id="Add_returnPath" value="{{../returnPath}}"
+            required>
+        <input style="display:none" name="id" type="text" id="Add_id" value="{{id}}" required>
         <div class="row pt-3">
             <label class="text-dark col-4 p-0 m-0">ID:</label>
-            <p class="col-8 p-0 m-0" > {{id}}</p>
-           
+            <p class="col-8 p-0 m-0"> {{id}}</p>
+
         </div>
-       
-        
+
+
         {{!-- Image --}}
         <div id="img_container" class="row pt-3">
             <label for="Add_img" class="text-dark col-4 m-0 p-0">Enter URL</label>
@@ -44,28 +45,31 @@
         {{!-- Name --}}
         <div class="row pt-3">
             <label for="Add_name" class="text-dark p-0 m-0 col-4">Tên sản phẩm:</label>
-            <input class="col-8 m-0 p-0" type="text" name="name" id="Add_name" placeholder="Name" value="{{name}}" required>
+            <input class="col-8 m-0 p-0" type="text" name="name" id="Add_name" placeholder="Name" value="{{name}}"
+                required>
         </div>
-       
+
         {{!-- type --}}
         <div class="row pt-3">
             <label for="Add_type" class="text-dark  p-0 m-0 col-4">Loại sản phẩm:</label>
-            <input  class="col-8 m-0 p-0"  type="text" name="type" id="Add_type" placeholder="Type" value="{{type}}" required> 
+            <input class="col-8 m-0 p-0" type="text" name="type" id="Add_type" placeholder="Type" value="{{type}}"
+                required>
         </div>
-       
+
         {{!-- info --}}
         <div class="row pt-3">
-             <label for="Add_info" class="text-dark  p-0 m-0 col-4">Mô tả sản phẩm:</label>
-            <textarea class="col-8 m-0 p-0"  id="Add_info" name="info" required>{{info}}</textarea> 
+            <label for="Add_info" class="text-dark  p-0 m-0 col-4">Mô tả sản phẩm:</label>
+            <textarea class="col-8 m-0 p-0" id="Add_info" name="info" required>{{info}}</textarea>
         </div>
-       
+
 
         {{!-- category --}}
         <div class="row pt-3">
             <label for="Add_category" class="text-dark  p-0 m-0 col-4">Thể loại sản phẩm:</label>
-            <input class="col-8 m-0 p-0" type="text" name="category" id="Add_category" placeholder="Category" value="{{category}}" required> 
+            <input class="col-8 m-0 p-0" type="text" name="category" id="Add_category" placeholder="Category"
+                value="{{category}}" required>
         </div>
-       
+
         {{!-- gender --}}
         <div class="row pt-3">
             <label for="" class="text-dark  p-0 m-0 col-4">Giới tính:</label>
@@ -80,43 +84,44 @@
                         <label for="Add_female">Nữ</label>
                     </div>
                 </div>
-               
-               
+
+
             </div>
         </div>
-       
+
         {{!-- brand --}}
         <div class="row pt-3">
             <label for="Add_brand" class="text-dark p-0 m-0 col-4">Hãng:</label>
-            <input class="col-8 m-0 p-0" type="text" name="brand" id="Add_brand" placeholder="Brand" value="{{brand}}" required>
+            <input class="col-8 m-0 p-0" type="text" name="brand" id="Add_brand" placeholder="Brand" value="{{brand}}"
+                required>
         </div>
-        
+
         {{!-- price --}}
         <div class="row pt-3">
             <label for="Add_price" class="text-dark p-0 m-0 col-4 ">Giá tiền:</label>
-            <input  class="col-8 m-0 p-0" type="number" name="price" id="Add_price" placeholder="VNĐ" value="{{price}}" required>
+            <input class="col-8 m-0 p-0" type="number" name="price" id="Add_price" placeholder="VNĐ" value="{{price}}"
+                required>
         </div>
-       
+
         {{!-- stock and size --}}
         <div class="row mt-3 pt-3">
-            <h3 class="m-0 p-0 font-weight-bolder" >
+            <h3 class="m-0 p-0 font-weight-bolder">
                 Kích thước
             </h3>
         </div>
-        
+
         <div id="size_stock" class="m-0 p-0 pt-3">
-            <div jobs="contain p-0 m-0" class="row p-0 m-0">
+            <div jobs="contain" class="sizestock_content row p-0 m-0 mt-2">
                 <div class="col-5 justify-content-around">
                     <div class="row">
                         <div class="col-2">
                             <label class="text-dark  p-0 m-0" jobs="add_size">Size:</label>
                         </div>
                         <div class="col">
-                            <input class = " p-0 m-0" type="number" name="size" class="Add_size" value="1" placeholder="size" jobs="add_size" required> <br>
+                            <input class="Add_size p-0 m-0" type="number" name="size" placeholder="size" jobs="add_size"
+                                required> <br>
                         </div>
                     </div>
-                    
-                   
                 </div>
                 <div class="col-5 justify-content-around">
                     <div class="row">
@@ -124,26 +129,29 @@
                             <label class="text-dark  p-0 m-0" jobs="add_stock">Stock:</label>
                         </div>
                         <div class="col">
-                            <input  class = " p-0 m-0" type="number" name="stock" class="Add_stock" value="1" placeholder="stock" jobs="add_stock" required> <br>
+                            <input class="Add_stock p-0 m-0" type="number" name="stock" placeholder="stock"
+                                jobs="add_stock" required> <br>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-         
         </div>
+
         <div class="row justify-content-end  p-0 m-0 pt-1">
-            <button class="btn bg-primary p-1 m-0 text-light font-weight-bolder" type="button" id="Add_new_size" onclick=add_size_stock()>+Size</button><br>
+            <button class="btn bg-primary p-1 m-0 text-light font-weight-bolder" type="button" id="Add_new_size"
+                onclick=add_size_stock()>+Size</button><br>
         </div>
 
 
-    
-    <div class="row justify-content-center m-5 ">
-        <button class="btn bg-success text-light font-weight-bolder mr-2" type="submit">Confirm</button>
-        
-        <button class="btn bg-warning text-light font-weight-bolder" id="Cancel_new_product" class=" p-3" type="button" onclick=cancel_add_product()> Cancel</button>
-    </div>
-       
+
+        <div class="row justify-content-center m-5 ">
+            <button class="btn bg-success text-light font-weight-bolder mr-2" type="submit">Confirm</button>
+
+            <button class="btn bg-warning text-light font-weight-bolder" id="Cancel_new_product" class=" p-3"
+                type="button" onclick=cancel_add_product()> Cancel</button>
+        </div>
+
     </div>
 </form>
 {{/with}}
@@ -178,7 +186,7 @@
 <script>
     var img = new Image();
     img.src = '/' + temp_img[0]
-   
+
     img.width = 200;
     img.height = 200;
 
@@ -191,38 +199,37 @@
         `<button id="Cancel_img" type="button" job = "Cancel_img">Cancel</button>`);
     //size_stock -------------------------------------
     var size_container = document.getElementById("size_stock")
+    var check_size = false
 </script>
 {{#each size_stock}}
 <script>
-
     var size_input = document.getElementsByClassName("Add_size")
     var stock_input = document.getElementsByClassName("Add_stock")
+    var sizestock_content = document.getElementsByClassName("sizestock_content")
     var index = {{@index}}
     index = parseInt(index)
     var existed_size = "{{size}}"
     var existed_stock = "{{stock}}"
     
     if (index == 0) {
-
         size_input[0].value = existed_size
-
         stock_input[0].value = existed_stock
-    }
-    else {
-        
+    } else {
+        if (check_size == false){
+            check_size= true
+            sizestock_content[0].insertAdjacentHTML("beforeend",`<button class ="delete_sizestock btn bg-danger p-1 m-0 text-light font-weight-bolder p-0"  type="button" jobs ="Delete_size"> Xóa</button><br>`)
+        }
         var item = `
-        <div jobs="contain p-0 m-0" class="row p-0 m-0 mt-2">
+        <div jobs="contain" class="sizestock_content row p-0 m-0 mt-2">
                 <div class="col-5 justify-content-around">
                     <div class="row">
                         <div class="col-2">
                             <label class="text-dark  p-0 m-0" jobs="add_size">Size:</label>
                         </div>
                         <div class="col">
-                            <input class = " p-0 m-0" type="number" name="size" class="Add_size" value=${existed_size} placeholder="size" jobs="add_size" required> <br>
+                            <input class = "Add_size p-0 m-0" type="number" name="size"  value=${existed_size} placeholder="size" jobs="add_size" required> <br>
                         </div>
                     </div>
-                    
-                   
                 </div>
                 <div class="col-5 justify-content-around">
                     <div class="row">
@@ -230,15 +237,16 @@
                             <label class="text-dark  p-0 m-0" jobs="add_stock">Stock:</label>
                         </div>
                         <div class="col">
-                            <input  class = " p-0 m-0" type="number" name="stock" class="Add_stock" value= ${existed_size} placeholder="stock" jobs="add_stock" required> <br>
+                            <input  class = "Add_stock p-0 m-0" type="number" name="stock" value= ${existed_stock} placeholder="stock" jobs="add_stock" required> <br>
                         </div>
                     </div>
                 </div>
+                <button class ="delete_sizestock btn bg-danger p-1 m-0 text-light font-weight-bolder p-0"  type="button" jobs ="Delete_size"> Xóa</button><br>
         </div>
         `
-        
         size_container.insertAdjacentHTML("beforeend", item)
     }
+
 </script>
 {{/each}}
 {{/if}}
@@ -263,21 +271,20 @@
                 })
                 return;
             }
-        }   
-        
+        }
+
         const item = `
-        <div jobs="contain" class="row p-0 m-0 mt-2">
+        <div jobs="contain" class="sizestock_content row p-0 m-0 mt-2">
                 <div class="col-5 justify-content-around">
                     <div class="row">
                         <div class="col-2">
                             <label class="text-dark  p-0 m-0" jobs="add_size">Size:</label>
                         </div>
                         <div class="col">
-                            <input class = " p-0 m-0" type="number" name="size" class="Add_size" value="1" placeholder="size" jobs="add_size" required> <br>
+                            <input class = "Add_size p-0 m-0" type="number" name="size"   placeholder="size" jobs="add_size" required> <br>
                         </div>
                     </div>
                     
-                   
                 </div>
                 <div class="col-5 justify-content-around">
                     <div class="row">
@@ -285,23 +292,35 @@
                             <label class="text-dark  p-0 m-0" jobs="add_stock">Stock:</label>
                         </div>
                         <div class="col">
-                            <input  class = " p-0 m-0" type="number" name="stock" class="Add_stock" value="1" placeholder="stock" jobs="add_stock" required> <br>
+                            <input  class = "Add_stock p-0 m-0" type="number" name="stock"  placeholder="stock" jobs="add_stock" required> <br>
                         </div>
                     </div>
                 </div>
 
-                <button class ="btn bg-danger p-1 m-0 text-light font-weight-bolder" class=" p-0" type="button" jobs ="Delete_size"> Xóa</button><br>
+                <button class ="delete_sizestock btn bg-danger p-1 m-0 text-light font-weight-bolder p-0"  type="button" jobs ="Delete_size"> Xóa</button><br>
         </div>
         `
 
         size_container.insertAdjacentHTML("beforeend", item)
+        var sizestock_content = document.getElementsByClassName("sizestock_content")
+        if (sizestock_content.length == 2){
+            sizestock_content[0].insertAdjacentHTML("beforeend",`<button class ="delete_sizestock btn bg-danger p-1 m-0 text-light font-weight-bolder p-0"  type="button" jobs ="Delete_size"> Xóa</button><br>`)
+        }
     }
     //delete -------------
     size_container.addEventListener("click", function (ToDo) {
         const child = ToDo.target
         const job = child.attributes.jobs.value
-        if (job == "Delete_size") {
-            child.parentNode.parentNode.removeChild(child.parentNode)
+        
+        if (job != undefined) {
+            if (job == "Delete_size") {
+                child.parentNode.parentNode.removeChild(child.parentNode)
+            }
+        }
+        var sizestock_content = document.getElementsByClassName("sizestock_content")
+        if (sizestock_content.length == 1){
+            var delete_sizestock = document.getElementsByClassName('delete_sizestock')
+            delete_sizestock[0].parentNode.removeChild(delete_sizestock[0])
         }
 
     })

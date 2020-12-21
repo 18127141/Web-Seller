@@ -13,7 +13,6 @@ router.get('/', function (req, res) {
     async function getdata() {
         var products = await product_controller.getAll()
         var congrats = req.session.congrats
-        console.log(req.session.congrats)
         req.session.congrats = undefined
         var sizes = await size_controller.getAll()
 
@@ -222,7 +221,7 @@ router.get('/OutofStock',function(req,res){
         
         for (let i = 0 ; i < products.length ; i++){
             var sizes = await size_controller.getById(products[i].id)
-            console.log(sizes)
+            
             var stock_check = false
             for (let j = 0; j < sizes.length; j++){
                 if (parseInt(sizes[j].stock) != 0){
