@@ -315,8 +315,6 @@ ul, ol {
 .LBorder{
     border: 0px solid white !important;
     background-color: rgb(0, 0, 0, 0.7) ;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
     min-height: 190px !important;
     display: flex;
     justify-content: center;
@@ -333,14 +331,11 @@ ul, ol {
         top: 10px !important;
     }
     .LBorder{
-        min-height: 100px !important;
+        min-height: 50px !important;
     }
  
     .LBorder h1{
         font-size: 6vw;
-    }
-    .LBorder p{
-        font-size: calc(3vw) ;
     }
     .card-title *{
         font-size: 4vw  !important;
@@ -362,23 +357,14 @@ ul, ol {
         #Brand1 .carousel-indicators {
             bottom: 30% !important;
         }
-       
-        .LBorder h1{
-        font-size: 3vw;
-        }
-        .LBorder p{
-        font-size: calc(1vw + 10px) ;
-        }
         .card-title *{
-        font-size:  3vw   !important;
-        font-weight: bolder;
+        font-size:  30px   !important;
+        font-weight: bold;
         }
         .card a{
-        font-size: calc(3vw - 10px);
+        font-size: 20px;
         }
         .card{
-            min-height: 200px;
-            max-height: 400px;
             background-color: black;
         }
     }

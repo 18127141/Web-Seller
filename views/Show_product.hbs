@@ -12,7 +12,7 @@
 
 <div class="container-fluid hldash" style="">
     <div class="contaier-fluid container-lg pt-4  ">
-        <div class="row bg-dark ">
+        <div class="row  ">
             <div class="col-lg mr-3">
 
                 <div class="row"><img id="main_img" src="/{{product.main_img}}" class="img-fluid" alt="giay">
@@ -46,7 +46,7 @@
                 <!--  -->
             </div>
             {{#with product}}
-            <div class="col-lg  h-100 text-white">
+            <div class="col-lg  h-100 text-dark">
                 <div class="row hldash flex-column">
                     <div class="col">
                         <h1 class="Product-name mb-5">
@@ -57,7 +57,7 @@
                         <p class="mb-5">Mã sản phẩm: <strong>{{id}}</strong></p>
                         <p class="mb-5">Tình trạng: <strong>New Arrival</strong></p>
                     </div>
-                    <div id="Money_format" class="col mb-5">
+                    <div id="Money_format" class="col mb-5 text-primary font-weight-bolder" style="font-size:30px ;">
 
                     </div>
                 </div>
@@ -339,7 +339,7 @@
     var price = {{ product.price }}
     price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
     const item = `
-        <strong style="color:yellow">${price} VND</strong> `
+        <strong>${price} VND</strong> `
     m_format.insertAdjacentHTML("beforeend", item)
 
     // img_carousel click
