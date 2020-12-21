@@ -89,6 +89,7 @@
                         {{/each}}
                         <script>
                             var total = document.getElementsByClassName('total')
+                            
                             total[index].insertAdjacentHTML('beforeend', `<p class="p-0 m-0">Chỉ còn ${total_products} sản phẩm</p>`)
                         </script>
                         <div class="row p-1 justify-content-between ">
@@ -99,9 +100,9 @@
                                         <div class="row justify-content p-0 m-0">
                                             <button
                                                 class="update_pro pr-2  bg-light text-primary font-weight-bolder p-0 pr-4"
-                                                job="update_pro" store_id="{{id}}" style="border:none">Sửa</button>
+                                                jobs="update_pro" store_id="{{id}}" style="border:none">Sửa</button>
                                             <button class="delete_pro  bg-light text-primary  font-weight-bolder"
-                                                job="delete_pro" store_id="{{id}}" style="border:none; ">Xóa</button>
+                                                jobs="delete_pro" store_id="{{id}}" style="border:none; ">Xóa</button>
                                         </div>
                                     </div>
                                     <p class="Money_format col-3 text-center align-content-center p-0 m-0"
@@ -169,7 +170,8 @@
     var product_contain = document.getElementById('product_contain')
     product_contain.addEventListener("click", function (ToDo) {
         const child = ToDo.target
-        const job = child.attributes.job.value
+        const job = child.attributes.jobs.value
+        console.log(job)
         const store_id = child.attributes.store_id.value
         if (job != undefined) {
             if (job == "update_pro") {

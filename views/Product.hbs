@@ -15,7 +15,7 @@
             <ul class=" justify-content-center  ">
               <li class="row text-light bg-dark hl2dash justify-content-center">
                 <a href="/Product/?Gender=Male,Female">UNISET</a>
-                
+
               </li>
               <li class="row text-dark bg-dark  justify-content-center">
                 <a href="/Product/?Gender=Male">GENTELMENT</a>
@@ -99,49 +99,49 @@
 
         <div class="col-lg-3 col-md-3 col-sm-6 m-1 p-0  bg-light " style="border-radius: 10px;">
           <a href="/Show-product/{{id}}"><img src="/{{main_img}}" alt="" class="img-fluid card-img-top"></a>
-          <div class="card-body ITEM text-center  ">
+          <div class="product_item card-body ITEM text-center  ">
             <div class=" text-center m-0">
-              <h5><a href="/Show-product/{{id}}">{{name}}</a></h5>
+              <h5>
+                <a class="product_name" href="/Show-product/{{id}}">{{name}}</a>
+              </h5>
               <p class="p-0 m-0">{{category}}</p>
             </div>
-           
-            <p class ="Money_format"class="Price m-0"></p>
-             {{!-- Money fommat --}}
-             <script>
-              //var m_format = document.getElementById("Money_format")
+
+            <p class="Money_format" class="Price m-0"></p>
+            <script>
+              //Money fommat----------------------------------------------------- 
               var m_format = document.getElementsByClassName("Money_format")
               var index = {{@index}}
-              var price = {{price}}
-              
+              var price = {{ price }}
               price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
-              m_format[index].innerHTML = price +" VND"
+              m_format[index].innerHTML = price + " VND"
             </script>
             <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-            <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-          </div>
-        </div>
-        
-
-        <div class="col-lg-3 col-md-3 col-sm-6 m-1 p-0  bg-light " style="border-radius: 10px;">
-          <a href="/Show-product/{{id}}"><img src="/{{main_img}}" alt="" class="img-fluid card-img-top"></a>
-          <div class="card-body ITEM text-center  ">
-            <div class=" text-center m-0">
-              <h5><a href="/Show-product/{{id}}">{{name}}<span class="text-danger"> - Hết hàng</span></a></h5>
-              <p class="p-0 m-0">{{category}}</p>
-            </div>
-           
-            <p class ="Money_format"class="Price m-0"></p>
-             {{!-- Money fommat --}}
-             <script>
-              //var m_format = document.getElementById("Money_format")
-              var m_format = document.getElementsByClassName("Money_format")
-              var index = {{@index}}
-              var price = {{price}}
-              
-              price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
-              m_format[index].innerHTML = price +" VND"
+            <script>
+              //check out of stock---------------------------------------------
+              var product_item = document.getElementsByClassName('product_item')
+              var product_name = document.getElementsByClassName('product_name')
+              var product_id = '{{id}}'
+              var total_products = 0 
             </script>
-            <button type="button" class="btn" onclick=""><i class="fa fa-heart fa-2x"></i></button>
+            {{#each ../size_stock}}
+            <script>
+
+              if ("{{ProductId}}" == product_id) {
+                total_products += parseInt("{{ stock }}")
+              }
+            </script>
+            {{/each}}
+            <script>
+              if (total_products == 0){
+                
+                product_name[index].insertAdjacentHTML('beforeend',`<span class="text-danger"> - Hết hàng</span>`)
+              }
+              else{
+                product_item[index].insertAdjacentHTML('beforeend',`<a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>`)
+              }
+            </script>
+            
           </div>
         </div>
         {{/each}}
