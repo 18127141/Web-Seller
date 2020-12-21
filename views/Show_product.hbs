@@ -21,16 +21,7 @@
                 <div class="row">
                     <div id="product_aspect" class="carousel slide text-center mt-5" data-ride="carousel">
                         <div id="img_zone" class="carousel-inner">
-                            <div class="carousel-item active mb-5">
-                                <div id="Product_cal_1" class="row justify-content-center">
 
-                                </div>
-                            </div>
-                            <div class="carousel-item mb-5">
-                                <div id="Product_cal_2" class="row justify-content-center">
-
-                                </div>
-                            </div>
 
                         </div>
                         <a class="carousel-control-prev" href="#product_aspect" role="button" data-slide="prev">
@@ -306,13 +297,59 @@
 {{#each img_src}}
 <script>
     image_url.push('{{img_src}}')
-    console.log(image_url)
+
 </script>
 {{/each}}
 <script>
-
+    var img_zone = document.getElementById("img_zone")
     // show carousel1 ------------------------------------------------
-    var cal_1 = document.getElementById("Product_cal_1")
+    var check_cal = false
+    var count = 0
+    var product_left = -1
+    
+    
+    while (product_left < image_url.length - 1) {
+        if (check_cal == false){
+        img_zone.insertAdjacentHTML("beforeend", `<div class="carousel-item active mb-5">
+                                <div  class="Product_cal row justify-content-center">
+
+                                </div>
+                            </div>`)
+        }
+        else{
+             img_zone.insertAdjacentHTML("beforeend", `<div class="carousel-item mb-5">
+                                <div  class="Product_cal row justify-content-center">
+
+                                </div>
+                            </div>`)
+        }
+        var Product_cal = document.getElementsByClassName("Product_cal")
+        if (product_left + 4 >= image_url.length - 1) {
+            
+            if (check_cal == true) {
+                product_left = image_url.length - 5
+            }
+            for (let i = product_left + 1; i < image_url.length; i++) {
+                product_left ++
+                console.log(product_left)
+                Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3   bg-dark " style="border:none">
+                            <img style ="cursor:pointer" src="/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
+                        </div>`)
+            }
+        }
+        else {
+            for (let i =0; i < 4; i++) {
+                product_left++
+                console.log(product_left)
+                Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3   bg-dark " style="border:none">
+                            <img style ="cursor:pointer" src="/${image_url[product_left]}" alt="" class="img_carousel img-fluid card-img-top">
+                        </div>`)
+            }
+        }
+        count++
+        check_cal = true
+    }
+    {{!-- var cal_1 = document.getElementsByClassName('Product_cal')
     for (let i = 0; i < 4; i++) {
         const item = `
         <div class="col-md-2 col-3   bg-dark " style="border:none">
@@ -333,7 +370,7 @@
         
         </div> `
         cal_2.insertAdjacentHTML("beforeend", item)
-    }
+    } --}}
     // money format ----------------------------------------------------
     var m_format = document.getElementById("Money_format")
     var price = {{ product.price }}
@@ -343,7 +380,7 @@
     m_format.insertAdjacentHTML("beforeend", item)
 
     // img_carousel click
-    var img_zone = document.getElementById("img_zone")
+
     img_zone.addEventListener("click", function (ToDo) {
         const child = ToDo.target
         const img_src = child.attributes.src.value
