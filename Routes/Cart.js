@@ -13,22 +13,28 @@ router.get('/', function (req, res) {
 
         for (let i = 0; i < req.session.cart.length; i++) {
             var product = await product_controller.getById(req.session.cart[i].id)
-            var size = await size_controller.getStock(req.session.cart[i].id,req.session.cart[i].size)
+            var size = await size_controller.getStock(req.session.cart[i].id, req.session.cart[i].size)
             cart.push({
                 id: product[0].id,
-                name:product[0].name,
-                brand:product[0].brand,
-                price:product[0].price,
-                main_img:product[0].main_img,
-                size:size[0].size,
-                stock:size[0].stock,
-                quantity:req.session.cart[i].quantity,
+                name: product[0].name,
+                brand: product[0].brand,
+                price: product[0].price,
+                main_img: product[0].main_img,
+                size: size[0].size,
+                stock: size[0].stock,
+                quantity: req.session.cart[i].quantity,
                 info: product[0].info,
             })
 
         }
-        
-        res.render('Cart', {cart:cart,usercheck: req.session.user, cart_total: req.session.cart.length })
+
+        res.render('Cart',
+            {
+                cart: cart,
+                usercheck: req.session.user,
+                cart_total: req.session.cart.length,
+                returnPath: req.originalUrl,
+            })
     }
 })
 router.get("/UpdateCart", function (req, res) {
@@ -54,14 +60,14 @@ router.get("/UpdateCart", function (req, res) {
         }
         //set size and quantity if exist
         if (req.query.size != undefined && req.query.quantity != undefined) {
-            size = parseInt(req.query.size)
+            size = req.query.size
             quantity = parseInt(req.query.quantity)
         }
-        
+
         // check if the product is already in the cart
         var check = false
         for (let i = 0; i < req.session.cart.length; i++) {
-            if (req.session.cart[i].id == req.query.id && req.session.cart[i].size == size) {
+            if (req.session.cart[i].id == req.query.id && parseInt(req.session.cart[i].size) == size) {
                 check = true
                 if (quantity + req.session.cart[i].quantity >= stock) {
                     req.session.cart[i].quantity = stock
@@ -79,7 +85,6 @@ router.get("/UpdateCart", function (req, res) {
             })
         }
 
-
         if (req.query.submit == "Pay") {
             res.redirect("/Cart")
         }
@@ -89,5 +94,20 @@ router.get("/UpdateCart", function (req, res) {
 
         }
     }
+})
+router.get('/DeleteProduct', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    var id = req.query.id
+    var submit = req.query.submit
+    var returnPath = req.query.returnPath
+    for (let i = 0; i < req.session.cart.length; i++) {
+        if (req.session.cart[i].id == id) {
+            req.session.cart.splice(i, 1)
+            break
+        }
+    }
+    res.redirect(returnPath)
 })
 module.exports = router

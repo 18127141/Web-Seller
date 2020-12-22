@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   size_stock.init({
-    size: DataTypes.INTEGER,
+    size: DataTypes.STRING,
     stock: DataTypes.INTEGER
   }, {
     sequelize,
