@@ -60,14 +60,14 @@ router.get("/UpdateCart", function (req, res) {
         }
         //set size and quantity if exist
         if (req.query.size != undefined && req.query.quantity != undefined) {
-            size = parseInt(req.query.size)
+            size = req.query.size
             quantity = parseInt(req.query.quantity)
         }
 
         // check if the product is already in the cart
         var check = false
         for (let i = 0; i < req.session.cart.length; i++) {
-            if (req.session.cart[i].id == req.query.id && req.session.cart[i].size == size) {
+            if (req.session.cart[i].id == req.query.id && parseInt(req.session.cart[i].size) == size) {
                 check = true
                 if (quantity + req.session.cart[i].quantity >= stock) {
                     req.session.cart[i].quantity = stock
@@ -84,7 +84,6 @@ router.get("/UpdateCart", function (req, res) {
                 quantity: quantity
             })
         }
-
 
         if (req.query.submit == "Pay") {
             res.redirect("/Cart")
