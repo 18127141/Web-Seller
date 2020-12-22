@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       size: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       stock: {
         type: Sequelize.INTEGER
