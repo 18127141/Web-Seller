@@ -325,4 +325,9 @@ router.get("/ManageUser", function (req, res) {
         }
     }
 })
+
+router.get("/ProfileUser", function (req, res) {
+    res.render("admin-UserProfileView.hbs",{ layout: 'Admin'})
+})
 module.exports = router
+

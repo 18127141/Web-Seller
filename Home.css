@@ -420,7 +420,7 @@ ul, ol {
 .card{
     border: none;
 }
-.card:hover img{
+.Product-card .card:hover  img{
     opacity: 0.8; 
     -webkit-transition: opacity .1s ease-in-out;
     -moz-transition: opacity .1s ease-in-out;

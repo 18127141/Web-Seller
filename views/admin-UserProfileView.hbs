@@ -1,0 +1,131 @@
+<style>
+      tr a{
+        color: blue !important;
+      }
+</style>
+<div class="row  justify-content-center bg-warning ">
+  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">THÔNG TIN CỦA {{user.name}}</h2>
+
+</div>
+<div class="container  bg-light  ">
+  <form class=" pb-0" action="/User/ChangeProfile" method="post">
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <label class="col-lg-6 col-md-6 col-sm-6 text-left ">Tên Đăng Nhập:</label>
+      <div id="id" class="col-lg-6 col-md-6 col-sm-6 text-center font-weight-bolder">{{user.id}}</div>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <label class="col-lg-6 col-md-6 col-sm-6 text-left " for="name">Họ và Tên:</label>
+      <input type="text" class="col-6" name="name" id="name" value="{{user.name}}" required disabled>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <label class="col-lg-6 col-md-6 col-sm-6 text-left " for="age">Tuổi:</label>
+      <input type="text" class="col-6" name="dob" id="dob" value="{{user.dob}}" onfocus="(this.type='date')"
+        onblur="(this.type='text')" required disabled>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <div class="col-lg-6 col-md-6 col-sm-6 text-left ">Giới Tính:</div>
+
+      <div class="col-6">
+        <label for="Nam" class="">NAM</label> <input type="radio" name="gender" id="Male" value="Male" disabled>
+        <label for="Nu" class="pl-5">NỮ</label> <input type="radio" name="gender" id="Female" value="Female" disabled>
+      </div>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <label class="col-lg-6 col-md-6 col-sm-6 text-left " for="Adress">Địa chỉ:</label>
+      <input type="text" class="col-6" name="address" id="Adress" value="{{user.address}}" required disabled>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <label class="col-lg-6 col-md-6 col-sm-6 text-left " for="phone">Số Điện Thoại:</label>
+      <input type="text" class="col-6" name="phone" id="phone" value="{{user.phone}}" required disabled>
+    </div>
+
+    <div class="row mt-3 mb-3 justify-content-center">
+      <label class="col-lg-6 col-md-6 col-sm-6 text-left " for="mail">Email</label>
+      <input type="text" class="col-6" name="email" id="mail" value="{{user.email}}" required disabled>
+    </div>
+
+    <div class="changing row mt-5  justify-content-center">
+
+
+    </div>
+
+  </form>
+  <div class="text-center">
+    <button class="changing btn btn-primary bg-dark " onclick="OK()">THAY ĐỔI THÔNG TIN</button>
+  </div>
+
+<div class="row mt-3 mb-3 justify-content-center">
+      <h2 class="container-fluid p-0 m-0 text-center bg-warning text-dark font-weight-bolder ">HỒ SƠ GIAO DỊCH CỦA {{user.name}}</h2>
+       <table class="table">
+                      <thead>
+                          <th scope="col">Mã giao dịch</th>
+                          <th scope="col">Ngày giao dịch</th>
+                          <th scope="col">Sản Phẩm</th>
+                          <th scope="col">Tổng Tiền</th>
+                          <th scope="col">Trạng thái</th>
+                      </thead>
+                      <tbody>
+                          <tr id ="111">
+                              <td><a href="">111</a></td>
+                              <td>11/12</td>
+                              <td>Áo Choàng Lửa</td>
+                              <td>100.000 VND</td>
+                              <td>Đã giao</td>
+                          </tr>
+                          <tr id ="112">
+                            <td><a href="">112</a></td>
+                            <td>11/12</td>
+                            <td>Giày Ninja</td>
+                            <td>100.000 VND</td>
+                            <td>Đã giao</td>
+                          </tr>
+                          <tr id ="111">
+                            <td><a href="">113</a></td>
+                            <td>11/12</td>
+                            <td>Mũ Thích Nghi</td>
+                            <td>100.000 VND</td>
+                            <td>Đã giao</td>
+                           </tr>
+                      </tbody>
+                  </table>
+</div>
+
+  <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+  <script>
+    if ("{{check}}" != "") {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '{{check}}',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    var male = document.getElementById('Male')
+    var female = document.getElementById('Female')
+    if ('{{user.gender}}' == 'Male') {
+      male.checked = true
+    }
+    else {
+      female.checked = true
+    }
+    function OK() {
+
+      //
+      var Temp = document.getElementsByTagName('input');
+
+      for (let i = 0; i < Temp.length; i++) {
+        Temp[i].disabled = false
+      }
+      var changing = document.getElementsByClassName('changing')
+      changing[0].insertAdjacentHTML('beforeend', `<input type="submit" class="btn btn-primary bg-primary" value="HOÀN TẤT" >`)
+      changing[1].parentNode.removeChild(changing[1])
+    }
+  </script>
+</div>
