@@ -7,6 +7,7 @@ body{
     display: block;
     color: #555!important;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(248,249,250);
 }
 .overNav a{
     font-size: 14px;
@@ -49,10 +50,8 @@ a:hover{
     height: 100%;
   }
 a{
-    color: white;
     -webkit-transition: color .2s ease-in-out;
     -moz-transition: color .2s ease-in-out;
-
 }
 a:hover{
     color: orange !important;
@@ -114,14 +113,14 @@ ul, ol {
     font-size: 20px;
 }
 .NavContentDropdown1 img { 
-    opacity: 0.2; 
+    opacity: 1; 
     -webkit-transition: opacity .1s ease-in-out;
     -moz-transition: opacity .1s ease-in-out;
     min-width: 140px;
   } 
 
 .NavContentDropdown1 a.col-3:hover img { 
-    opacity: 1; 
+    opacity: 0.8; 
     
   }
 .NavContentDropdown1{
@@ -135,11 +134,10 @@ ul, ol {
     height: 100%;
 }
 .dropdown-content{
-
+    background-color: rgb(219, 219, 219);
     margin-top: -8px;    
     display: none!important;
     position: relative;
-    background-color: #555;
  
     padding: 0px 0px 12px 16px;
     width: 100%;
@@ -168,7 +166,7 @@ ul, ol {
     }
     .dropdown a{
         font-weight: bolder;
-        color: whitesmoke;
+        color: black;
 
     }
     .item-dropdown
@@ -179,7 +177,7 @@ ul, ol {
     }
     .dropdown>a:link{
         text-decoration: none;
-        color: whitesmoke;
+        color: black;
     }
     .dropdown a:hover{
         color: orange;
@@ -206,7 +204,7 @@ ul, ol {
     margin-left: auto;
     margin-right: auto;
     transform: rotate(45deg);
-    background-color: #555;
+    background-color: rgb(219, 219, 219);
     border-radius: 0px !important;
     }
     
@@ -364,26 +362,10 @@ ul, ol {
         .card a{
         font-size: 20px;
         }
-        .card{
-            background-color: black;
-        }
     }
 
 .card-title{
     margin-bottom: 20px;
-}
-.card ul{
-    background-color: rgb(0, 0, 0, 0.3);
-    border: 0px solid none;
-    border-radius: 10px;
-}
-
-
-.card h2{
-  background-color: rgb(0, 0, 0, 0.7); 
-  border: 0px solid none;
-  border-radius: 10px;
-
 }
 
 .card-columns{
@@ -397,7 +379,6 @@ ul, ol {
     flex-flow: row wrap;
     justify-content: center;
     width: 100%;
-    background-color: gray;
 }
 
 
@@ -405,10 +386,13 @@ ul, ol {
 {
     list-style-type: none;
 }
+#footer a{
+    color: whitesmoke;
+}
 #footer .footer-head
 {
-    font-size: 36px;
-    color:white;
+    font-size: 20px;
+    color:whitesmoke;
 }
 
 #InsteadNav {
@@ -416,5 +400,31 @@ ul, ol {
     position: -webkit-sticky !important;
     position: sticky !important;
     top: 0
+}
+
+.BtnSeeNow{
+    border: 1px solid black;
+    font-size: 20px;
+    font-weight: bold;
+}
+.News a{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card a{
+    color: black;
+    font-weight: bold;
+}
+.card{
+    border: none;
+}
+.card:hover img{
+    opacity: 0.8; 
+    -webkit-transition: opacity .1s ease-in-out;
+    -moz-transition: opacity .1s ease-in-out;
+    transform: scale(1.01);
+  
 }
 
