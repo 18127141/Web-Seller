@@ -7,12 +7,13 @@ var checked
 //Login
 router.get('/Login', function (req, res) {
     req.session.returnURL = req.query.returnURL
-    res.render('Login')
+
+    res.render('Login', { cart_total: req.session.cart.length })
 })
 
 //Register
 router.get('/Register', function (req, res) {
-    res.render('Register')
+    res.render('Register', { cart_total: req.session.cart.length })
 })
 
 //Check login---------------------------
@@ -28,7 +29,7 @@ router.post('/', function (req, res) {
         checked = await user_controller.checkUserNameaAndPass(username, password)
 
         if (checked[0] == undefined) {
-            res.render('Login', { error_mess: 'Unvalid username or password' })
+            res.render('Login', { cart_total: req.session.cart.length, error_mess: 'Unvalid username or password' })
 
         } else {
             req.session.user = checked[0]
@@ -39,7 +40,13 @@ router.post('/', function (req, res) {
                 res.redirect('/User/Admin')
             }
             else {
-                res.render('user-profile', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user })
+                res.render('user-profile',
+                    {
+                        layout: 'UserProfile',
+                        user: req.session.user,
+                        usercheck: req.session.user,
+                        cart_total: req.session.cart.length
+                    })
             }
         }
 
@@ -55,24 +62,26 @@ router.post('/Login', function (req, res) {
     var email = req.body.Email
     var phone = req.body.Phone
     var dob = req.body.DOB
-
+    var name = req.body.name
     //var check_username
     getdata();
     async function getdata() {
         checked = await user_controller.checkUserName(username)
         if (checked[0] != undefined) {
-            res.render('Register', { error_mess: 'Username is already been taken' })
+            res.render('Register', { error_mess: 'Username is already been taken', cart_total: req.session.cart.length })
 
         } else {
             models.User.create({
                 id: username,
                 password: password,
+                name: name,
                 email: email,
                 phone: phone,
                 dob: dob,
                 isAdmin: false
             })
-            res.render('Login')
+
+            res.render('Login', { cart_total: req.session.cart.length, congrats: "Đăng kí thành công, xin hãy đăng nhập!" })
         }
 
     }
@@ -91,7 +100,14 @@ router.get('/profile', function (req, res) {
         res.redirect('/')
     }
 
-    res.render('user-profile', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user, check: req.session.check })
+    res.render('user-profile',
+        {
+            layout: 'UserProfile',
+            user: req.session.user,
+            usercheck: req.session.user,
+            check: req.session.check,
+            cart_total: req.session.cart.length
+        })
     req.session.check = undefined
 })
 router.post('/ChangeProfile', function (req, res) {
@@ -124,7 +140,14 @@ router.get('/changepass', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
-    res.render('user-changepass', { layout: 'UserProfile', user: req.session.user, usercheck: req.session.user,check:req.session.check })
+    res.render('user-changepass',
+        {
+            layout: 'UserProfile',
+            user: req.session.user,
+            usercheck: req.session.user,
+            check: req.session.check,
+            cart_total: req.session.cart.length
+        })
     req.session.check = undefined
 })
 router.post('/ChangePass', function (req, res) {
@@ -158,13 +181,13 @@ router.get('/check-order', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
-    res.render('user-checkorder', { layout: 'UserProfile' })
+    res.render('user-checkorder', { layout: 'UserProfile', cart_total: req.session.cart.length })
 })
 router.get('/voucher', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
-    res.render('user-voucher', { layout: 'UserProfile' })
+    res.render('user-voucher', { layout: 'UserProfile', cart_total: req.session.cart.length })
 })
 //check Admin
 var Admin_route = require('./Admin')

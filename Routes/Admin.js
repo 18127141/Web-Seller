@@ -3,6 +3,7 @@ var router = express.Router()
 var product_controller = require('../controllers/product')
 var size_controller = require('../controllers/size')
 var img_controller = require('../controllers/img_src')
+var user_controller = require('../controllers/user')
 var models = require('../models')
 var bodyParser = require('body-parser')
 router.use(bodyParser.json())
@@ -14,11 +15,24 @@ router.get('/', function (req, res) {
         var products = await product_controller.getAll()
         var congrats = req.session.congrats
         req.session.congrats = undefined
+        if (req.query.search != undefined) {
+            products = await product_controller.searchByNameAndId(req.query.search)
+        }
         var sizes = await size_controller.getAll()
 
         if (req.session.user != undefined) {
             if (req.session.user.isAdmin == true) {
-                res.render('admin-changeProduct', { layout: 'Admin', user: req.session.user, usercheck: req.session.user, products: products, size_stock: sizes, returnPath: req.originalUrl, congrats: congrats })
+                res.render('admin-changeProduct',
+                    {
+                        layout: 'Admin',
+                        user: req.session.user,
+                        usercheck: req.session.user,
+                        products: products,
+                        size_stock: sizes,
+                        returnPath: req.originalUrl,
+                        congrats: congrats,
+                        cart_total: req.session.cart.length
+                    })
             }
             else {
                 res.redirect('/')
@@ -46,13 +60,43 @@ router.get('/UpdateProduct', function (req, res) {
                     }
                     img = {
                     }
-                    res.render('admin-updateProduct', { layout: 'Admin', product: products, size_stock: sizes, img: img, usercheck: req.session.user, returnPath: req.query.returnPath })
+                    res.render('admin-updateProduct',
+                        {
+                            layout: 'Admin',
+                            product: products,
+                            size_stock: sizes,
+                            img: img,
+                            usercheck: req.session.user,
+                            returnPath: req.query.returnPath,
+                            cart_total: req.session.cart.length
+                        })
                 }
                 else if (req.query.NoWarning == undefined) {
-                    res.render('admin-updateProduct', { layout: 'Admin', existed_product: true, product: products[0], size_stock: sizes, img: img, usercheck: req.session.user, returnPath: req.query.returnPath, warning: "Sản phẩm đã tồn tại, bạn vẫn có thể chỉnh sửa!" })
+                    res.render('admin-updateProduct',
+                        {
+                            layout: 'Admin',
+                            existed_product: true,
+                            product: products[0],
+                            size_stock: sizes,
+                            img: img,
+                            usercheck: req.session.user,
+                            returnPath: req.query.returnPath,
+                            warning: "Sản phẩm đã tồn tại, bạn vẫn có thể chỉnh sửa!",
+                            cart_total: req.session.cart.length
+                        })
                 }
                 else {
-                    res.render('admin-updateProduct', { layout: 'Admin', existed_product: true, product: products[0], size_stock: sizes, img: img, usercheck: req.session.user, returnPath: req.query.returnPath })
+                    res.render('admin-updateProduct',
+                        {
+                            layout: 'Admin',
+                            existed_product: true,
+                            product: products[0],
+                            size_stock: sizes,
+                            img: img,
+                            usercheck: req.session.user,
+                            returnPath: req.query.returnPath,
+                            cart_total: req.session.cart.length
+                        })
                 }
             }
             else {
@@ -87,18 +131,6 @@ router.post('/UpdatedProduct', function (req, res) {
     }
     var img = req.body.img
 
-    // console.log(id)
-    // console.log(Array.isArray(size))
-    // console.log(name)
-    // console.log(type)
-    // console.log(info)
-    // console.log(category)
-    // console.log(brand)
-    // console.log(size)
-    // console.log(stock)
-    // console.log(img)
-
-
     if (male == "Male") {
         if (female == "Female") {
             gender = "Unisex"
@@ -108,7 +140,7 @@ router.post('/UpdatedProduct', function (req, res) {
     } else if (female == "Female") {
         gender = "Female"
     }
-    else{
+    else {
         gender = "Unisex"
     }
     if (req.session.user == undefined) {
@@ -213,34 +245,77 @@ router.get('/DeleteProduct', function (req, res) {
     }
 
 })
-router.get('/OutofStock',function(req,res){
+router.get('/OutofStock', function (req, res) {
     getdata();
     async function getdata() {
         var products = await product_controller.getAll()
-        var products_oos=[];
-        
-        for (let i = 0 ; i < products.length ; i++){
+        if (req.query.search != undefined) {
+            products = await product_controller.searchByNameAndId(req.query.search)
+        }
+        var products_oos = [];
+
+        for (let i = 0; i < products.length; i++) {
             var sizes = await size_controller.getById(products[i].id)
-            
+
             var stock_check = false
-            for (let j = 0; j < sizes.length; j++){
-                if (parseInt(sizes[j].stock) != 0){
-                   
+            for (let j = 0; j < sizes.length; j++) {
+                if (parseInt(sizes[j].stock) != 0) {
+
                     stock_check = true
                     break
                 }
             }
-            if ( stock_check == false){
+            if (stock_check == false) {
                 products_oos.push(products[i])
             }
         }
-      
+
         var congrats = req.session.congrats
         req.session.congrats = undefined
 
         if (req.session.user != undefined) {
             if (req.session.user.isAdmin == true) {
-                res.render('admin-outOfStock', { layout: 'Admin', user: req.session.user, usercheck: req.session.user, products:products_oos, returnPath: req.originalUrl, congrats: congrats })
+                res.render('admin-outOfStock',
+                    {
+                        layout: 'Admin',
+                        user: req.session.user,
+                        usercheck: req.session.user,
+                        products: products_oos,
+                        returnPath: req.originalUrl,
+                        congrats: congrats,
+                        cart_total: req.session.cart.length
+                    })
+            }
+            else {
+                res.redirect('/')
+            }
+        } else {
+            res.redirect('/')
+        }
+    }
+})
+router.get("/ManageUser", function (req, res) {
+    getdata();
+    async function getdata() {
+        var users = await user_controller.getAll()
+        var congrats = req.session.congrats
+        req.session.congrats = undefined
+        if (req.query.search != undefined) {
+            products = await product_controller.searchByNameAndId(req.query.search)
+        }
+        var sizes = await size_controller.getAll()
+
+        if (req.session.user != undefined) {
+            if (req.session.user.isAdmin == true) {
+                res.render('admin-manageUser',
+                    {
+                        layout: 'Admin',
+                        user: req.session.user,
+                        usercheck: req.session.user,
+                        returnPath: req.originalUrl,
+                        congrats: congrats,
+                        cart_total: req.session.cart.length
+                    })
             }
             else {
                 res.redirect('/')

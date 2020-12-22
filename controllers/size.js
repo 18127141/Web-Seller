@@ -15,4 +15,13 @@ controller.getAll = () =>{
         raw:true
     })
 }
+controller.getStock = (id,size) => {
+    return models.size_stock.findAll({
+        where: {
+            ProductId: {[Op.like] : id},
+            size: size
+        },
+        raw:true
+    })
+}
 module.exports = controller

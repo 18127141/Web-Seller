@@ -310,7 +310,10 @@
     //delete -------------
     size_container.addEventListener("click", function (ToDo) {
         const child = ToDo.target
-        const job = child.attributes.jobs.value
+        var job = child.attributes.jobs
+        if (job != undefined){
+            job = job.value
+        }
         
         if (job != undefined) {
             if (job == "Delete_size") {

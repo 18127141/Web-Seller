@@ -3,22 +3,22 @@
 
   <div class="row jusify-content-between">
     <div class="col-lg-8 mt-3 p-0">
+      {{#each cart}}
       <!--ITEM-->
       <div class="container mb-3 bg-light">
         <div class="row">
           <div class="col-md-4 text-center p-0 m-0">
-            <img src="./img/pro_A61107_2.jpg" alt="Item" height="215px">
+            <img src="/{{main_img}}" alt="Item" height="215px">
           </div>
           <div class="col">
             <div class="row p-1 justify-content-center  ">
-              <h5 class="col p-0 m-0 hldash text-center">GIÀY CƠ ĐỘNG</h5>
-
+              <h5 class="col p-0 m-0 hldash text-center">{{name}}</h5>
             </div>
             <div class="row p-1">
-              <p class="p-0 m-0">Tăng 10% tốc độ di chuyển, 50% sưc bền và 100% sự quyến rũ.</p>
+              <p class="p-0 m-0">{{info}}</p>
             </div>
             <div class="row p-1 text-warning">
-              <p class="p-0 m-0">Chỉ còn 12 sản phẩm</p>
+              <p class="p-0 m-0">Hãng hiệu: {{brand}} - Kích cỡ: {{size}}</p>
             </div>
 
             <div class="row p-1 justify-content-between ">
@@ -38,16 +38,22 @@
                       <button class=" bg-primary text-light font-weight-bolder" onclick=""
                         style="border-radius:1000px; height: 25px;">-</button>
                       <p id="Number" class="text-center align-content-center p-0 m-0"
-                        style="border-radius:1000px; height: 15px; width: 15px;">1 </p>
+                        style="border-radius:1000px; height: 15px; width: 15px;">{{quantity}} </p>
                       <button class=" bg-primary text-light font-weight-bolder" onclick=""
                         style="border-radius:1000px; height: 25px;">+</button>
                     </div>
                   </div>
 
-                  <p id="Number" class=" col-3 text-center align-content-center p-0 m-0"
-                    style="border-radius:1000px; font-size: 15px;">250 000 VND</p>
+                  <p class="Money_format col-3 text-center align-content-center p-0 m-0"
+                    style="border-radius:1000px; font-size: 15px;"></p>
                 </div>
-
+                <script>
+                  var m_format = document.getElementsByClassName("Money_format")
+                  var index = {{@index}}
+                  var price = {{ price }}
+                  price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                  m_format[index].innerHTML = price + " VND"
+                </script>
 
               </div>
 
@@ -57,61 +63,7 @@
         </div>
 
       </div>
-
-      <div class="container mb-3 bg-light">
-        <div class="row">
-          <div class="col-md-4 text-center p-0 m-0">
-            <img src="./img/pro_A61107_2.jpg" alt="Item" height="215px">
-          </div>
-          <div class="col">
-            <div class="row p-1 justify-content-center  ">
-              <h5 class="col p-0 m-0 hldash text-center">GIÀY CƠ ĐỘNG</h5>
-
-            </div>
-            <div class="row p-1">
-              <p class="p-0 m-0">Tăng 10% tốc độ di chuyển, 50% sưc bền và 100% sự quyến rũ.</p>
-            </div>
-            <div class="row p-1 text-warning">
-              <p class="p-0 m-0">Chỉ còn 12 sản phẩm</p>
-            </div>
-
-            <div class="row p-1 justify-content-between ">
-
-              <div class="col p-0 m-0">
-                <div class="row">
-                  <div class="col">
-                    <div class="row justify-content p-0 m-0">
-                      <button class="pr-2  bg-light text-primary font-weight-bolder p-0 pr-4" onclick=""
-                        style="border:none">XÓA</button>
-                      <button class="  bg-light text-primary  font-weight-bolder" onclick="" style="border:none; ">MUA
-                        SAU</button>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="row">
-                      <button class=" bg-primary text-light font-weight-bolder" onclick=""
-                        style="border-radius:1000px; height: 25px;">-</button>
-                      <p id="Number" class="text-center align-content-center p-0 m-0"
-                        style="border-radius:1000px; height: 15px; width: 15px;">1 </p>
-                      <button class=" bg-primary text-light font-weight-bolder" onclick=""
-                        style="border-radius:1000px; height: 25px;">+</button>
-                    </div>
-                  </div>
-
-                  <p id="Number" class=" col-3 text-center align-content-center p-0 m-0"
-                    style="border-radius:1000px; font-size: 15px;">250 000 VND</p>
-                </div>
-
-
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
+      {{/each}}
     </div>
 
     <div class="col-lg-4 justify-content-center">
@@ -131,7 +83,7 @@
           </div>
         </div>
         <div class="row box-dash p-1" style="font-size: 16px;">
-          <p class="col p-1 m-0">112/15 Thành Thái, Quận Tân Bình, TpHCM  </p>
+          <p class="col p-1 m-0">112/15 Thành Thái, Quận Tân Bình, TpHCM </p>
         </div>
       </div>
       <div class="container mt-3">

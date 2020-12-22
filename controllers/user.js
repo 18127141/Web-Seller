@@ -31,4 +31,10 @@ controller.checkUserName = (username) => {
         raw:true,
     })
 }
+controller.getAll = () =>{
+    return models.Product.findAll({
+        raw:true
+    })
+}
+
 module.exports = controller

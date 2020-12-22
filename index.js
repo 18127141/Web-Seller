@@ -34,18 +34,22 @@ app.set('port', (process.env.PORT || 5000))
 
 //Home
 app.get('/', function (req, res) {
+    //initiate cart and favorites
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
-    res.render('Home', { usercheck: req.session.user })
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    res.render('Home', { usercheck: req.session.user,cart_total:req.session.cart.length })
 })
 //Find us
 app.get('/Find-us', function (req, res) {
-    res.render('Find_us')
+    res.render('Find_us',{usercheck: req.session.user,cart_total:req.session.cart.length})
 })
 //Check order
 app.get('/Check-order', function (req, res) {
-    res.render('Check_order')
+    res.render('Check_order',{usercheck: req.session.user,cart_total:req.session.cart.length})
 })
 //Search
 var search_route = require('./Routes/Search')
@@ -68,7 +72,7 @@ app.use('/Cart', Cart_route)
 
 
 app.get('/Mark', function (req, res) {
-    res.render('Mark')
+    res.render('Mark',{usercheck: req.session.user,cart_total:req.session.cart.length})
 })
 
 //------------------------------------------------------------------------------------------------

@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.TEXT,
     isAdmin: DataTypes.BOOLEAN,
     dob: DataTypes.DATEONLY,
+    point:DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'User',

@@ -1,6 +1,18 @@
 <link rel="stylesheet" href="/Home.css">
 <link rel="stylesheet" href="/CSS/Sell.css">
 <link rel="stylesheet" href="/CSS/Show1Product.css">
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+    if ("{{congrats}}" != "") {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '{{congrats}}',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+</script>
 
 {{!-- modal image --}}
 <div id="img_modal">
@@ -55,14 +67,15 @@
                 <div class="row hldash">
                     <p class=" my-5 pl-3">{{info}}</p>
                 </div>
+
                 <div class="row hldash flex-column mt-5">
                     <div class="col d-inline-flex justify-content-between">
-                        <!--                         -->
+                        <!-- Size and quantity                        -->
                         <div>
                             <p>Size</p>
                             <div class="dropdown ">
-                                <button class="btn btn-secondary dropdown-toggle bg-warning" type="button" id="set_size"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                <button class="btn btn-secondary dropdown-toggle bg-warning" type="button"
+                                    id="display_size" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     style="width: 100px;border-radius: 20px;color: black;">
 
                                 </button>
@@ -74,6 +87,7 @@
 
                                 </div>
                             </div>
+
                         </div>
                         {{!-- <div id="Show_stock" class="align-self-end">LOng</div> --}}
                         <div>
@@ -86,6 +100,7 @@
                                     0
                                 </span>
 
+
                             </span>
                             <button id="subtract_quantity"
                                 style="width: 35px;height: 35px;border-radius: 20px;">-</button>
@@ -93,18 +108,32 @@
                         <!--  -->
 
                     </div>
-                    <div class="col d-inline-flex justify-content-between text-center">
-                        <div id="add_cart" class="confirm_btn my-3 py-3 bg-danger col-9 " style="border-radius:20px;">
-                            THÊM VÀO GIỎ HÀNG</div>
-                        <div class="confirm_btn my-3 py-3 bg-danger col-2" style="border-radius:20px;"><i
-                                class="fa fa-heart"></i>
+
+                    <form action="/Cart/UpdateCart" method="GET" onsubmit="return check()">
+                        {{!-- returnPath and ID --}}
+                        <input style="display:none" name="returnPath" type="text" id="Add_returnPath"
+                            value="{{../returnPath}}" required>
+                        <input style="display:none" name="id" type="text" id="set_id" value="{{id}}" required>
+                        {{!-- size and quantity --}}
+                        <div id="size_quantity"></div>
+
+                        {{!-- submit button --}}
+                        <div class="col d-inline-flex justify-content-between text-center">
+                            <button type="submit" name="submit" value="Add_cart"
+                                class="confirm_btn my-3 py-3 bg-danger col-9 " style="border-radius:20px;">
+                                THÊM VÀO GIỎ HÀNG</button>
+                            <div class="confirm_btn my-3 py-3 bg-danger col-2" style="border-radius:20px;"><i
+                                    class="fa fa-heart"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col d-inline-flex justify-content-between text-center">
-                        <div id="purchase" class="confirm_btn col bg-warning py-3 mb-5"
-                            style="border-radius:20px;color:black">THANH TOÁN</div>
-                    </div>
+                        <div class="col d-inline-flex justify-content-between text-center">
+                            <button id="Pay" type="submit" name="submit" value="Pay"
+                                class="confirm_btn col bg-warning py-3 mb-5"
+                                style="border-radius:20px;color:black">THANH TOÁN</button>
+                        </div>
+                    </form>
                 </div>
+
                 <div class="row hldash flex-column my-5">
                     <p>Gender: {{gender}}<br>
                         Size run: 35 – 46<br>
@@ -302,22 +331,20 @@
 {{/each}}
 <script>
     var img_zone = document.getElementById("img_zone")
-    // show carousel1 ------------------------------------------------
+    // show carousel ------------------------------------------------
     var check_cal = false
     var count = 0
     var product_left = -1
-    
-    
     while (product_left < image_url.length - 1) {
-        if (check_cal == false){
-        img_zone.insertAdjacentHTML("beforeend", `<div class="carousel-item active mb-5">
+        if (check_cal == false) {
+            img_zone.insertAdjacentHTML("beforeend", `<div class="carousel-item active mb-5">
                                 <div  class="Product_cal row justify-content-center">
 
                                 </div>
                             </div>`)
         }
-        else{
-             img_zone.insertAdjacentHTML("beforeend", `<div class="carousel-item mb-5">
+        else {
+            img_zone.insertAdjacentHTML("beforeend", `<div class="carousel-item mb-5">
                                 <div  class="Product_cal row justify-content-center">
 
                                 </div>
@@ -325,22 +352,22 @@
         }
         var Product_cal = document.getElementsByClassName("Product_cal")
         if (product_left + 4 >= image_url.length - 1) {
-            
+
             if (check_cal == true) {
                 product_left = image_url.length - 5
             }
             for (let i = product_left + 1; i < image_url.length; i++) {
-                product_left ++
-                console.log(product_left)
+                product_left++
+
                 Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3   bg-dark " style="border:none">
                             <img style ="cursor:pointer" src="/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
                         </div>`)
             }
         }
         else {
-            for (let i =0; i < 4; i++) {
+            for (let i = 0; i < 4; i++) {
                 product_left++
-                console.log(product_left)
+
                 Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3   bg-dark " style="border:none">
                             <img style ="cursor:pointer" src="/${image_url[product_left]}" alt="" class="img_carousel img-fluid card-img-top">
                         </div>`)
@@ -349,28 +376,7 @@
         count++
         check_cal = true
     }
-    {{!-- var cal_1 = document.getElementsByClassName('Product_cal')
-    for (let i = 0; i < 4; i++) {
-        const item = `
-        <div class="col-md-2 col-3   bg-dark " style="border:none">
-            
-            <img style ="cursor:pointer" src="/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
-            
-        </div> `
-        cal_1.insertAdjacentHTML("beforeend", item)
-    }
-    // show carousel2 ------------------------------------------------
 
-    var cal_2 = document.getElementById("Product_cal_2")
-    for (let i = 1; i < 5; i++) {
-        const item = `
-        <div class="col-md-2 col-3   bg-dark " style="border:none">
-            
-            <img style ="cursor:pointer"src="/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
-        
-        </div> `
-        cal_2.insertAdjacentHTML("beforeend", item)
-    } --}}
     // money format ----------------------------------------------------
     var m_format = document.getElementById("Money_format")
     var price = {{ product.price }}
@@ -419,16 +425,19 @@
 
 {{/each}}
 <script>
-    var set_size = document.getElementById("set_size")
-    var set_stock = 0
+    var display_size = document.getElementById("display_size")
     var quantity = document.getElementById("quantity")
+    var set_stock = 0
+    var set_quanity
+    var set_size
     size_menu.addEventListener("click", function (ToDo) {
         const child = ToDo.target
         const temp = child.innerHTML
         set_stock = parseInt(child.attributes.value.value)
-        set_size.innerHTML = temp
+        display_size.innerHTML = temp
+        set_size = temp
         quantity.innerHTML = 1
-
+        set_quanity = 1
         quantity.style.color = "black"
 
     })
@@ -445,6 +454,7 @@
                 quantity.style.color = "red"
             }
         }
+        set_quanity = temp
 
     }
     subtract_quantity.onclick = function () {
@@ -454,12 +464,29 @@
             quantity.innerHTML = temp
             quantity.style.color = "black"
         }
-    }
-    // purchase and add cart
-    var add_cart = document.getElementById("add_cart")
-    add_cart.onclick = function () {
+        set_quanity = temp
 
     }
-    var purchase = document.getElementById("purchase")
-    //
+    function check() {
+        var size_quantity = document.getElementById("size_quantity")
+        if (set_quanity == undefined && set_size == undefined) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Xin hãy chọn số lượng và kích cỡ',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return false
+        }
+
+
+
+
+        size_quantity.insertAdjacentHTML("beforeend", `
+         <input style="display:none" name="size" type="text" id="set_size" value="${display_size.innerHTML}" required>
+        <input style="display:none" name="quantity" type="text" id="set_quantity" value="${quantity.innerHTML}" required>`)
+        return true
+    }
+
 </script>

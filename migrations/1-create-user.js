@@ -31,6 +31,9 @@ module.exports = {
       dob: {
         type: Sequelize.DATEONLY
       },
+      point: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

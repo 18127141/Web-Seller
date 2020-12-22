@@ -1,3 +1,16 @@
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+  if ("{{congrats}}" != "") {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: '{{congrats}}',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+</script>
+
 <div class="container-fluid pt-4">
   <div class="row bg-dark" id="NAV_LEFT">
     <div class="col-md-2 col-sm-12 justify-content-center bg-dark box-dash p-2 mb-3" style="border-color:white">
@@ -133,15 +146,15 @@
             </script>
             {{/each}}
             <script>
-              if (total_products == 0){
-                
-                product_name[index].insertAdjacentHTML('beforeend',`<span class="text-danger"> - Hết hàng</span>`)
+              if (total_products == 0) {
+
+                product_name[index].insertAdjacentHTML('beforeend', `<span class="text-danger"> - Hết hàng</span>`)
               }
-              else{
-                product_item[index].insertAdjacentHTML('beforeend',`<a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>`)
+              else {
+                product_item[index].insertAdjacentHTML('beforeend', `<a href="/Cart/UpdateCart?id={{id}}&returnPath={{../returnPath}}&submit=product_submit" class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>`)
               }
             </script>
-            
+
           </div>
         </div>
         {{/each}}

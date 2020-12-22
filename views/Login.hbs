@@ -1,5 +1,16 @@
 <link rel="stylesheet" href="/CSS/style_login_register.css">
-
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+    if ("{{congrats}}" != "") {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '{{congrats}}',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+</script>
 <div class="position-relative ">
   <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
   <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
