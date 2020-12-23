@@ -15,13 +15,13 @@
   <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
   <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
     <form action="/User" method="post">
-      <h1>Login</h1>
+      <h1>ĐĂNG NHẬP</h1>
       <div class="inputbox">
         <div class="icon ">
           <i class="fa fa-user"></i>
         </div>
         <input type="text" name="User" id="Username" required class="">
-        <label>Username</label>
+        <label>Tên đăng nhập</label>
       </div>
 
       <div class="inputbox">
@@ -30,7 +30,7 @@
         </div>
 
         <input type="password" name="P_WORD" id="Password" class="" required>
-        <label>Password</label>
+        <label>Mật khẩu</label>
         <p id="error" style="color: #C62828 ;margin: 0px;font-size:12px ">{{error_mess}}</p>
 
         {{!-- <span onclick="Myfunction()">
@@ -43,9 +43,9 @@
 
 
       </div>
-      <input type="checkbox">Remember Password<br>
-      <p>Don't have an account? <a href="/User/Register" style="color:blue;">Sign Up</a></p>
-      <input type="submit" id="submit" value="Sign in">
+      <input type="checkbox">Lưu mật khẩu<br>
+      <p>Chưa có tài khoản?<a href="/User/Register" style="color:blue;">Đăng kí</a></p>
+      <input type="submit" id="submit" value="Đăng nhập">
     </form>
   </div>
 </div>

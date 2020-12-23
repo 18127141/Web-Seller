@@ -149,167 +149,38 @@
 
     </div>
 </div>
+<script>
+    var relative_product = []
+</script>
+{{#each products}}
+<script>
+    var product_id = '{{id}}'
+    var total_products = 0 
+</script>
+{{#each ../size_stocks}}
+<script>
+
+    if ("{{ProductId}}" == product_id) {
+        total_products += parseInt("{{ stock }}")
+    }
+</script>
+{{/each}}
+<script>
+
+    relative_product.push({
+        id: "{{id}}",
+        name: "{{name}}",
+        category: "{{category}}",
+        price: "{{price}}",
+        main_img: "{{main_img}}",
+        stock: total_products
+    })
+</script>
+
+{{/each}}
 <h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">SẢN PHẨM LIÊN QUAN</h1>
 <div id="SPLIENQUAN" class="carousel slide text-center mb-5" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="row justify-content-center">
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product1.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product2.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product3.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light d-none d-md-block" style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product4.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="row justify-content-center">
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product5.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product6.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light" style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product7.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light d-none d-md-block" style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product8.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="row justify-content-center">
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product2.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <a>
-                                <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                                <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product4.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product6.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-3 m-1 p-0  bg-light d-none d-md-block" style="border-radius: 10px;">
-                    <a href="Show1Product.html"><img src="/img/product8.jpg" alt="" class="img-fluid card-img-top"></a>
-                    <div class="card-body ITEM text-center  ">
-                        <div class=" text-center m-0">
-                            <h5><a href="Show1Product.html">Nikas Street Fighter</a></h5>
-                            <p class="p-0 m-0">Low-top/Street</p>
-                        </div>
-                        <p class="Price m-0">100.000 VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
-                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="relative_carousel" class="carousel-inner">
     </div>
     <a class="carousel-control-prev" href="#SPLIENQUAN" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -376,7 +247,101 @@
         count++
         check_cal = true
     }
+    //show relavtive carousel-------------------------------------------
+    var relative_carousel = document.getElementById("relative_carousel")
+    var check_cal = false
+    var count = 0
+    var product_left = -1
+    while (product_left < relative_product.length - 1) {
+        if (check_cal == false) {
+            relative_carousel.insertAdjacentHTML("beforeend", ` <div class="carousel-item active">
+                                    <div class="relative_pro_cal row justify-content-center">
 
+                                </div>
+                            </div>`)
+        }
+        else {
+            relative_carousel.insertAdjacentHTML("beforeend", `<div class="carousel-item">
+                                    <div class="relative_pro_cal row justify-content-center">
+
+                                </div>
+                            </div>`)
+        }
+        var Product_cal = document.getElementsByClassName("relative_pro_cal")
+        if (product_left + 4 >= relative_product.length - 1) {
+            if (check_cal == true) {
+                product_left = relative_product.length - 5
+            }
+            for (let i = product_left + 1; i < relative_product.length; i++) {
+                product_left++
+                var price = parseFloat(relative_product[product_left].price)
+                price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                var relative_item = `
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="/Show-product/${relative_product[product_left].id}"><img src="/${relative_product[product_left].main_img}" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5>
+                                <a href="="/Show-product/${relative_product[product_left].id}">${relative_product[product_left].name}
+                        `
+                if (parseInt(relative_product[product_left].stock) == 0) {
+                    relative_item += `<span class="text-danger"> - Hết hàng</span>`
+                }
+                relative_item += `</a>
+                            </h5>
+                            <p class="p-0 m-0">${relative_product[product_left].category}</p>
+                        </div>
+                        <p class="Price m-0">${price} VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>`
+                if (parseInt(relative_product[product_left].stock) != 0) {
+                    relative_item += `
+                        <a class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>`
+                    relative_item += `
+                    </div>
+                </div>`
+                }
+
+                Product_cal[count].insertAdjacentHTML("beforeend", relative_item)
+            }
+        }
+        else {
+            for (let i = 0; i < 4; i++) {
+                product_left++
+                var price = parseFloat(relative_product[product_left].price)
+                price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                var relative_item = `
+                <div class="col-md-2 col-3 m-1 p-0  bg-light " style="border-radius: 10px;">
+                    <a href="/Show-product/${relative_product[product_left].id}"><img src="/${relative_product[product_left].main_img}" alt="" class="img-fluid card-img-top"></a>
+                    <div class="card-body ITEM text-center  ">
+                        <div class=" text-center m-0">
+                            <h5>
+                                <a href="="/Show-product/${relative_product[product_left].id}">${relative_product[product_left].name}
+                        `
+                if (parseInt(relative_product[product_left].stock) == 0) {
+                    relative_item += `<span class="text-danger"> - Hết hàng</span>`
+                }
+                relative_item += `</a>
+                            </h5>
+                            <p class="p-0 m-0">${relative_product[product_left].category}</p>
+                        </div>
+                        <p class="Price m-0">${price} VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>`
+                if (parseInt(relative_product[product_left].stock) != 0) {
+                    relative_item += `
+                        <a class="btn" href ="/Cart/UpdateCart?id=${relative_product[product_left].id}&returnPath={{returnPath}}&submit=product_submit"><i class="fa fa-shopping-cart fa-2x"></i></a>`
+                    relative_item += `
+                    </div>
+                </div>`
+                }
+
+                Product_cal[count].insertAdjacentHTML("beforeend", relative_item)
+            }
+        }
+        count++
+        console.log(count)
+        console.log(product_left)
+        check_cal = true
+    }
     // money format ----------------------------------------------------
     var m_format = document.getElementById("Money_format")
     var price = {{ product.price }}
@@ -410,6 +375,7 @@
     }
     // menu_size
     var size_menu = document.getElementById("size_menu")
+    
 </script>
 
 {{#each size_stock}}
@@ -479,10 +445,6 @@
             })
             return false
         }
-
-
-
-
         size_quantity.insertAdjacentHTML("beforeend", `
          <input style="display:none" name="size" type="text" id="set_size" value="${display_size.innerHTML}" required>
         <input style="display:none" name="quantity" type="text" id="set_quantity" value="${quantity.innerHTML}" required>`)

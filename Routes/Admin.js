@@ -10,6 +10,9 @@ router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
 
 router.get('/', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     getdata();
     async function getdata() {
         var products = await product_controller.getAll()
@@ -43,6 +46,9 @@ router.get('/', function (req, res) {
     }
 })
 router.get('/UpdateProduct', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     getdata();
     async function getdata() {
         var products = await product_controller.getById(req.query.Enter_id)
@@ -250,6 +256,9 @@ router.get('/DeleteProduct', function (req, res) {
 
 })
 router.get('/OutofStock', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     getdata();
     async function getdata() {
         var products = await product_controller.getAll()
@@ -300,6 +309,9 @@ router.get('/OutofStock', function (req, res) {
 })
 //Manage User
 router.get("/ManageUser", function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     getdata();
     async function getdata() {
         var users = await user_controller.getAll()
@@ -334,6 +346,9 @@ router.get("/ManageUser", function (req, res) {
 })
 
 router.get("/ProfileUser", function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     getdata();
     async function getdata() {
         

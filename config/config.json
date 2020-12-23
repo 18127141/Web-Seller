@@ -5,7 +5,6 @@
     "database": "TripleL",
     "host": "127.0.0.1",
     "dialect": "postgres"
-   
   },
   "test": {
     "username": "postgres",
@@ -20,7 +19,7 @@
     "database": "d7gdvmocjhs05c",
     "host": "ec2-3-220-98-137.compute-1.amazonaws.com",
     "dialect": "postgres",
-    "dialectOptions":{
+    "dialectOptions": {
       "ssl": {
         "rejectUnauthorized": false
       }

@@ -105,7 +105,8 @@ router.post('/Login', function (req, res) {
                 email: email,
                 phone: phone,
                 dob: dob,
-                isAdmin: false
+                isAdmin: false,
+                point:0,
             })
 
             res.render('Login', { cart_total: req.session.cart.length, congrats: "Đăng kí thành công, xin hãy đăng nhập!" })
@@ -126,7 +127,9 @@ router.get('/profile', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
-
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     res.render('user-profile',
         {
             layout: 'UserProfile',
@@ -141,6 +144,7 @@ router.post('/ChangeProfile', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
     }
+
     req.session.user.name = req.body.name
     req.session.user.email = req.body.email
     req.session.user.phone = req.body.phone
@@ -166,6 +170,9 @@ router.post('/ChangeProfile', function (req, res) {
 router.get('/changepass', function (req, res) {
     if (req.session.user == undefined) {
         res.redirect('/')
+    }
+    if (req.session.cart == undefined) {
+        req.session.cart = []
     }
     res.render('user-changepass',
         {

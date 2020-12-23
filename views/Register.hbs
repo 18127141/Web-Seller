@@ -3,13 +3,13 @@
   <img class="card-img-top " src="/img/login_bg.jpg" alt="Card image" style="height: 1000px;">
   <div class="container " id="contt" style="border: 1px solid black;border-radius: 20px;">
     <form action="/User/Login" method="post">
-      <h1>Register</h1>
+      <h1>ĐĂNG KÍ</h1>
       <div class="inputbox">
         <div class="icon ">
           <i class="fa fa-user"></i>
         </div>
         <input type="text" name="User" id="Username" required class="">
-        <label>Username</label>
+        <label>Tên đăng nhập</label>
       </div>
 
       <div class="inputbox">
@@ -18,7 +18,7 @@
         </div>
 
         <input type="password" name="P_WORD" id="Password" class="" required>
-        <label>Password</label>
+        <label>Mật khẩu</label>
         {{!-- <span onclick="Myfunction()">
           <i id="eye1" class="fa fa-eye-slash"></i>
           <i id="eye2" class="fa fa-eye"></i>
@@ -31,7 +31,7 @@
           <i class="fa fa-user"></i>
         </div>
         <input type="text" name="name" id="name" required class="">
-        <label>Username</label>
+        <label>Họ Tên</label>
       </div>
       <div class="inputbox">
         <div class="icon">
@@ -45,7 +45,7 @@
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </div>
         <input type="text" name="DOB" class="" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-        <label>Birthday</label>
+        <label>Ngày sinh</label>
       </div>
       <div class="inputbox">
         <div class="icon">
@@ -53,11 +53,11 @@
           <i class="fa fa-phone" aria-hidden="true"></i>
         </div>
         <input type="text" name="Phone" class="" required>
-        <label>Cellphone</label>
+        <label>Số điện thoại</label>
       </div>
       <p id="error" style="color: #C62828 ;margin: 0px;font-size:12px ;margin-bottom:10px">{{error_mess}}</p>
 
-      <input type="submit" value="Sign in">
+      <input type="submit" value="Đăng kí">
     </form>
   </div>
 </div>
