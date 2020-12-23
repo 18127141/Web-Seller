@@ -45,10 +45,16 @@ app.get('/', function (req, res) {
 })
 //Find us
 app.get('/Find-us', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     res.render('Find_us',{usercheck: req.session.user,cart_total:req.session.cart.length})
 })
 //Check order
 app.get('/Check-order', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     res.render('Check_order',{usercheck: req.session.user,cart_total:req.session.cart.length})
 })
 //Search
@@ -72,8 +78,22 @@ app.use('/Cart', Cart_route)
 
 
 app.get('/Mark', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     res.render('Mark',{usercheck: req.session.user,cart_total:req.session.cart.length})
 })
+//
+// var bcrypt = require('bcrypt')
+// bcrypt.genSalt(10,function(err,salt){
+//     bcrypt.hash("tlong123",salt,function(err,hash){
+//         console.log(hash)
+//         bcrypt.compare("tlong123",hash,function(err,res){
+//             console.log(res)
+//         })
+//     })
+// })
+
 
 //------------------------------------------------------------------------------------------------
 app.listen(app.get('port'), function () {

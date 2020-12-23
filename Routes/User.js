@@ -1,18 +1,23 @@
 var express = require('express')
 var router = express.Router()
 let user_controller = require('../controllers/user')
-
+var bcrypt = require('bcrypt')
 
 var checked
 //Login
 router.get('/Login', function (req, res) {
     req.session.returnURL = req.query.returnURL
-
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     res.render('Login', { cart_total: req.session.cart.length })
 })
 
 //Register
 router.get('/Register', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     res.render('Register', { cart_total: req.session.cart.length })
 })
 
@@ -22,32 +27,46 @@ router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
 
 router.post('/', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     var username = req.body.User
     var password = req.body.P_WORD
+
     getdata();
     async function getdata() {
-        checked = await user_controller.checkUserNameaAndPass(username, password)
+        checked = await user_controller.checkUserName(username)
 
         if (checked[0] == undefined) {
             res.render('Login', { cart_total: req.session.cart.length, error_mess: 'Unvalid username or password' })
 
         } else {
-            req.session.user = checked[0]
-            if (req.session.returnURL != undefined) {
-                res.redirect(req.session.returnURL)
-            }
-            else if (req.session.user.isAdmin == true) {
-                res.redirect('/User/Admin')
-            }
-            else {
-                res.render('user-profile',
-                    {
-                        layout: 'UserProfile',
-                        user: req.session.user,
-                        usercheck: req.session.user,
-                        cart_total: req.session.cart.length
-                    })
-            }
+
+            bcrypt.compare(password, checked[0].password, function (err, check_pass) {
+
+                if (check_pass == false) {
+                    res.render('Login', { cart_total: req.session.cart.length, error_mess: 'Unvalid username or password' })
+                }
+                else {
+                    req.session.user = checked[0]
+                    if (req.session.returnURL != undefined) {
+                        res.redirect(req.session.returnURL)
+                    }
+                    else if (req.session.user.isAdmin == true) {
+                        res.redirect('/User/Admin')
+                    }
+                    else {
+                        res.render('user-profile',
+                            {
+                                layout: 'UserProfile',
+                                user: req.session.user,
+                                usercheck: req.session.user,
+                                cart_total: req.session.cart.length
+                            })
+                    }
+                }
+            })
+
         }
 
     }
@@ -57,13 +76,21 @@ router.post('/', function (req, res) {
 var models = require('../models')
 //check register -------------------------------
 router.post('/Login', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
     var username = req.body.User
     var password = req.body.P_WORD
+    // bcrypt password
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(password, salt, function (err, hash) {
+            password = hash
+        })
+    })
     var email = req.body.Email
     var phone = req.body.Phone
     var dob = req.body.DOB
     var name = req.body.name
-    //var check_username
     getdata();
     async function getdata() {
         checked = await user_controller.checkUserName(username)
@@ -158,22 +185,36 @@ router.post('/ChangePass', function (req, res) {
         req.session.check = 'Mật khẩu mới phải khác mật khẩu cũ'
         res.redirect('/User/changepass')
     }
-    else if (req.body.old != req.session.user.password) {
-        req.session.check = 'Nhập sai mật khẩu cũ'
-        res.redirect('/User/changepass')
-    }
     else {
-        req.session.user.password = req.body.new
-        models.User.update({
-            password: req.session.user.password
-        },
-            {
-                where: { id: req.session.user.id }
+        bcrypt.compare(req.body.old, req.session.user.password, function (err, check) {
+            if (check == false) {
+                req.session.check = 'Nhập sai mật khẩu cũ'
+                res.redirect('/User/changepass')
+            }
+            else {
+                console.log(req.session.user.password)
+                bcrypt.genSalt(10, function (err, salt) {
+                    bcrypt.hash(req.body.new, salt, function (err, hash) {
+                        req.session.user.password = hash
+                        models.User.update({
+                            password: req.session.user.password
+                        },
+                            {
+                                where: { id: req.session.user.id }
 
-            })
-        req.session.check = 'Thay đổi mật khẩu thành công'
-        res.redirect('/User/profile')
+                            })
+                        req.session.check = 'Thay đổi mật khẩu thành công'
+                        res.redirect('/User/profile')
+                        console.log(req.session.user.password)
+
+                    })
+                })
+
+            }
+        })
+
     }
+
 
 })
 //

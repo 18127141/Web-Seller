@@ -2,7 +2,7 @@ const controller = {}
 const models = require('../models')
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-
+var bcrypt = require('bcrypt')
 controller.checkLogin = (req,res,next) => {
     if (req.session.user){
         next()
@@ -12,11 +12,10 @@ controller.checkLogin = (req,res,next) => {
         res.redirect(`/User/Login?returnURL=${req.originalUrl}`)
     }
 }
-controller.checkUserNameaAndPass = (username,password) => {
+controller.checkUserName = (username) => {
     return models.User.findAll({
         where:{
             id : {[Op.like] : username},
-            password : {[Op.like] : password}
         },
         raw:true,
     })
