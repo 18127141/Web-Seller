@@ -1,7 +1,7 @@
 <style>
-      tr a{
-        color: blue !important;
-      }
+  tr a {
+    color: blue !important;
+  }
 </style>
 <div class="row  justify-content-center bg-warning ">
   <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">THÔNG TIN CỦA {{user.name}}</h2>
@@ -56,57 +56,54 @@
     </div>
 
   </form>
-  <div class="text-center">
-    <button class="changing btn btn-primary bg-dark " onclick="OK()">THAY ĐỔI THÔNG TIN</button>
+  <div id="job" class="text-center">
+
   </div>
-
-<div class="row mt-3 mb-3 justify-content-center">
-      <h2 class="container-fluid p-0 m-0 text-center bg-warning text-dark font-weight-bolder ">HỒ SƠ GIAO DỊCH CỦA {{user.name}}</h2>
-       <table class="table">
-                      <thead>
-                          <th scope="col">Mã giao dịch</th>
-                          <th scope="col">Ngày giao dịch</th>
-                          <th scope="col">Sản Phẩm</th>
-                          <th scope="col">Tổng Tiền</th>
-                          <th scope="col">Trạng thái</th>
-                      </thead>
-                      <tbody>
-                          <tr id ="111">
-                              <td><a href="">111</a></td>
-                              <td>11/12</td>
-                              <td>Áo Choàng Lửa</td>
-                              <td>100.000 VND</td>
-                              <td>Đã giao</td>
-                          </tr>
-                          <tr id ="112">
-                            <td><a href="">112</a></td>
-                            <td>11/12</td>
-                            <td>Giày Ninja</td>
-                            <td>100.000 VND</td>
-                            <td>Đã giao</td>
-                          </tr>
-                          <tr id ="111">
-                            <td><a href="">113</a></td>
-                            <td>11/12</td>
-                            <td>Mũ Thích Nghi</td>
-                            <td>100.000 VND</td>
-                            <td>Đã giao</td>
-                           </tr>
-                      </tbody>
-                  </table>
-</div>
-
+  <script>
+    var job = document.getElementById("job")
+    if ("{{usercheck.id}}" != "{{user.id}}") {
+      job.insertAdjacentHTML("beforeend", `<button class="changing btn btn-primary bg-dark " onclick="DeleteUser()">XÓA NGƯỜI DÙNG</button>`)
+    }
+  </script>
+  <div class="row mt-3 mb-3 justify-content-center">
+    <h2 class="container-fluid p-0 m-0 text-center bg-warning text-dark font-weight-bolder ">HỒ SƠ GIAO DỊCH CỦA
+      {{user.name}}</h2>
+    <table class="table">
+      <thead>
+        <th scope="col">Mã giao dịch</th>
+        <th scope="col">Ngày giao dịch</th>
+        <th scope="col">Sản Phẩm</th>
+        <th scope="col">Tổng Tiền</th>
+        <th scope="col">Trạng thái</th>
+      </thead>
+      <tbody>
+        <tr id="111">
+          <td><a href="">111</a></td>
+          <td>11/12</td>
+          <td>Áo Choàng Lửa</td>
+          <td>100.000 VND</td>
+          <td>Đã giao</td>
+        </tr>
+        <tr id="112">
+          <td><a href="">112</a></td>
+          <td>11/12</td>
+          <td>Giày Ninja</td>
+          <td>100.000 VND</td>
+          <td>Đã giao</td>
+        </tr>
+        <tr id="111">
+          <td><a href="">113</a></td>
+          <td>11/12</td>
+          <td>Mũ Thích Nghi</td>
+          <td>100.000 VND</td>
+          <td>Đã giao</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
-    if ("{{check}}" != "") {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: '{{check}}',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    }
+
     var male = document.getElementById('Male')
     var female = document.getElementById('Female')
     if ('{{user.gender}}' == 'Male') {
@@ -115,17 +112,21 @@
     else {
       female.checked = true
     }
-    function OK() {
+    function DeleteUser() {
+      Swal.fire({
+        title: 'Bạn chắc chắn muốn xóa người dùng này không không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tiếp tục',
+        cancelButtonText: 'Hủy'
 
-      //
-      var Temp = document.getElementsByTagName('input');
-
-      for (let i = 0; i < Temp.length; i++) {
-        Temp[i].disabled = false
-      }
-      var changing = document.getElementsByClassName('changing')
-      changing[0].insertAdjacentHTML('beforeend', `<input type="submit" class="btn btn-primary bg-primary" value="HOÀN TẤT" >`)
-      changing[1].parentNode.removeChild(changing[1])
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `/User/Admin/DeleteUser?Enter_id={{user.id}}`
+        }
+      })
     }
   </script>
 </div>

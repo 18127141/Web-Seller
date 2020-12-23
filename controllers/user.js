@@ -30,8 +30,21 @@ controller.checkUserName = (username) => {
         raw:true,
     })
 }
+controller.searchByEverything = (ele) => {
+    return models.User.findAll({
+      where: {
+        [Op.or]: [
+          { name: { [Op.iLike]: '%' + ele + '%' } },
+          { id: { [Op.iLike]: '%' + ele + '%' } },
+          { phone: { [Op.iLike]: '%' + ele + '%' } },
+          { email: { [Op.iLike]: '%' + ele + '%' } },
+        ]
+      },
+      raw: true
+    })
+  }
 controller.getAll = () =>{
-    return models.Product.findAll({
+    return models.User.findAll({
         raw:true
     })
 }

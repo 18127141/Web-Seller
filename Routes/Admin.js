@@ -221,10 +221,14 @@ router.post('/UpdatedProduct', function (req, res) {
         }
     }
 })
+//delete Product
 router.get('/DeleteProduct', function (req, res) {
     if (req.session.user != undefined) {
         if (req.session.user.isAdmin == true) {
-
+            
+            models.order_detail.destroy({
+                where: { ProductId: req.query.Enter_id }
+            })
             models.img_src.destroy({
                 where: { ProductId: req.query.Enter_id }
             })
@@ -294,23 +298,26 @@ router.get('/OutofStock', function (req, res) {
         }
     }
 })
+//Manage User
 router.get("/ManageUser", function (req, res) {
     getdata();
     async function getdata() {
         var users = await user_controller.getAll()
+        
         var congrats = req.session.congrats
+       
         req.session.congrats = undefined
+        //seach
         if (req.query.search != undefined) {
-            products = await product_controller.searchByNameAndId(req.query.search)
+            users = await user_controller.searchByEverything(req.query.search)
         }
-        var sizes = await size_controller.getAll()
 
         if (req.session.user != undefined) {
             if (req.session.user.isAdmin == true) {
                 res.render('admin-manageUser',
                     {
                         layout: 'Admin',
-                        user: req.session.user,
+                        users: users,
                         usercheck: req.session.user,
                         returnPath: req.originalUrl,
                         congrats: congrats,
@@ -327,7 +334,43 @@ router.get("/ManageUser", function (req, res) {
 })
 
 router.get("/ProfileUser", function (req, res) {
-    res.render("admin-UserProfileView.hbs",{ layout: 'Admin'})
+    getdata();
+    async function getdata() {
+        
+        var user = await user_controller.checkUserName(req.query.id)
+       
+        res.render("admin-UserProfileView.hbs",
+            {
+                layout: 'Admin',
+                user: user[0],
+                cart_total: req.session.cart.length,
+                usercheck: req.session.user
+            })
+    }
+})
+router.get("/DeleteUser",function(req,res){
+    if (req.session.user != undefined) {
+        if (req.session.user.isAdmin == true) {
+            
+            
+            models.order.destroy({
+                where: { UserId: req.query.Enter_id }
+            })
+            models.order_address.destroy({
+                where: { UserId: req.query.Enter_id }
+            })
+            models.User.destroy({
+                where: { id: req.query.Enter_id }
+            })
+            req.session.congrats = "Xóa người dùng thành công"
+            res.redirect('/User/Admin/ManageUser')
+        }
+        else {
+            res.redirect('/')
+        }
+    } else {
+        res.redirect('/')
+    }
 })
 module.exports = router
 

@@ -1,47 +1,50 @@
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+
+    if ("{{congrats}}" != "") {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '{{congrats}}',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+</script>
 <h1 class="container-fluid text-center bg-warning  font-weight-bold">Khách hàng </h1>
 <div class="container">
     <div class="row justify-content-end">
-            <form action="/User/Admin" class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" method ="GET"> 
-                <input name = "search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search" aria-label="Search">
-                <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
-            </form>
+        <form action="/User/Admin/ManageUser"
+            class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" method="GET">
+            <input name="search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search"
+                aria-label="Search">
+            <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
 
     <!--DO DU LIEU VO DAY-->
-   <div class="container-fluid ">
-                  <table class="table">
-                      <thead>
-                          <th scope="col">ID</th>
-                          <th scope="col">TÊN</th>
-                          <th scope="col">Số Điện Thoại</th>
-                          <th scope="col">Email</th>
-                          <th scope="col"> </th>
-                          
-                      </thead>
-                      <tbody >
-                          <tr id ="111">
-                              <td>Anhlavodich</td>
-                              <td>Trần Phi Long</td>
-                              <td>09121231</td>
-                              <td>Anhlavodich@gmail.com</td>
-                              <td> <a href="/User/Admin/ProfileUser">Chi tiết</a> </td>
-                             
-                          </tr>
-                          <tr id ="112">
-                              <td>Anhlavodich</td>
-                              <td>Trần Phi Long</td>
-                              <td>09121231</td>
-                              <td>Anhlavodich@gmail.com</td>
-                              <td> <a href="">Chi tiết</a> </td>
-                          <tr id ="111">
-                              <td>Anhlavodich</td>
-                              <td>Trần Phi Long</td>
-                              <td>09121231</td>
-                              <td>Anhlavodich@gmail.com</td>
-                              <td>  </td>
-                           </tr>
-                      </tbody>
-                  </table>
-              </div>
-</div>
+    <div class="container-fluid ">
+        <table class="table">
+            <thead>
+                <th scope="col">ID</th>
+                <th scope="col">TÊN</th>
+                <th scope="col">Số Điện Thoại</th>
+                <th scope="col">Email</th>
+                <th scope="col"> </th>
 
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{phone}}</td>
+                    <td>{{email}}</td>
+                    <td> <a href="/User/Admin/ProfileUser?id={{id}}">Chi tiết</a> </td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
