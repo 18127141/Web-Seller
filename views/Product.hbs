@@ -11,12 +11,12 @@
   }
 </script>
 
-<div class="container-fluid pt-4">
+<div class="container">
   <div class="row bg-light" id="NAV_LEFT">
-    <div class="col-md-2 col-sm-12 justify-content-center  box-dash p-2 mb-3" style="border-color:white">
+    <div class="col-md-3 col-sm-12 justify-content-center  box-dash p-2 mb-3" style="border-color:white">
       <div class=" card-header   text-center pb-0 ">
-        <div class="row  vl2  hl2dash justify-content-center " data-toggle="collapse" href="#DT">
-          <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> ĐỐI TƯỢNG </h3>
+        <div class="row  vl2 hl2dash justify-content-center " data-toggle="collapse" href="#DT">
+          <h5 class=" p-0 m-0 font-weight-bold" style="cursor: pointer;"> ĐỐI TƯỢNG </h5>
         </div>
         <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
           <div class="card-body ">
@@ -37,7 +37,7 @@
       </div>
       <div class=" card-header   text-dark text-center pb-0 ">
         <div class="row  vl2  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
-          <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> LOAI </h3>
+          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> LOAI </h5>
         </div>
         <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
           <div class="card-body ">
@@ -57,7 +57,7 @@
       </div>
       <div class=" card-header    text-center pb-0  ">
         <div class="row  vl2   hl2dash justify-content-center" data-toggle="collapse" href="#TH">
-          <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> THƯƠNG HIỆU </h3>
+          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> THƯƠNG HIỆU </h5>
         </div>
         <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
           <div class="card-body ">
@@ -77,7 +77,7 @@
       </div>
       <div class=" card-header   text-dark text-center pb-0 ">
         <div class="row  vl2   hl2dash justify-content-center" data-toggle="collapse" href="#UPDATE">
-          <h3 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> UPDATE </h3>
+          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> UPDATE </h5>
         </div>
         <div id="UPDATE" class="collapse show  font-weight-bold" data-parent="#UPDATE">
           <div class="card-body ">
@@ -96,14 +96,12 @@
         </div>
       </div>
     </div>
-    <div class="col-md-10 col-sm-12  style="background-color: rgb(224, 227, 230);"  ">
-      <div class="container-fluid">
-          <h1 class="container-fluid text-center font-weight-bold p-0 m-0 mb-3">KẾT QUẢ TÌM KIẾM</h1>
-      </div>
+    <div class="col-md-9 col-sm-12"  >
+     
       <div class="row justify-content-center mt-2">
         {{#each products}}
 
-        <div class="col-6 col-md-4 col-lg-3 col-xl-2 ITEM ">
+        <div class="col-6 col-md-4 col-lg-4 col-xl-4 ITEM ">
           <a href="/Show-product/{{id}}"><img src="/{{main_img}}" alt="" class="img-fluid card-img-top "></a>
           <div class="product_item card-body  text-center  ">
             <div class=" text-center m-0">

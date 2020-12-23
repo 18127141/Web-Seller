@@ -1,9 +1,12 @@
-<div class="row  justify-content-center bg-warning ">
-  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">SẢN PHẨM</h2>
-</div>
+
 {{!-- add button --}}
 <div class="container p-3 ">
-  
+    <div class="row justify-content-end">
+        <form action="/User/Admin" class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" method ="GET"> 
+            <input name = "search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search" aria-label="Search">
+            <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
     <div class="container text-center  ">
         <button id="Add" type="button" onclick=Add_new_product_GUI_checkID() class="btn text-light bg-primary border-dark m-0 p-2 " style="font-size: 20px; border-radius:100px;">
                 Thêm sản phẩm
@@ -26,12 +29,7 @@
         </div>
     </div>
     {{!-- search --}}
-  <div class="row justify-content-end">
-        <form action="/User/Admin" class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" method ="GET"> 
-            <input name = "search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search" aria-label="Search">
-            <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
+  
 </div>
 
 
@@ -58,7 +56,7 @@
             {{#each products}}
             <div class="products container mb-3 bg-light" store="{{id}}">
                 <div class="row">
-                    <div class="col-md-4 text-center p-0 m-0">
+                    <div class="col-md-4 text-center p-0 m-0 d-flex justify-content-start">
                         <img src="/{{main_img}}" alt="Item" height="215px">
                     </div>
                     <div class="col">

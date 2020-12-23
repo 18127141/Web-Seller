@@ -1,0 +1,15 @@
+.travel{
+    font-size: 18px;
+    font-weight:300;
+}
+.travel a{
+    
+    color: black;
+}
+.travel a::after{
+    content:" |" ;
+    color: gray;
+}
+.travel{
+    border-bottom:3px solid black;
+}

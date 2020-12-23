@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="/Home.css">
+<link rel="stylesheet" href="/CSS/Home.css">
 <link rel="stylesheet" href="/CSS/Sell.css">
 <link rel="stylesheet" href="/CSS/Show1Product.css">
+<link rel="stylesheet" href="/CSS/Travel.css">
 <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script>
     if ("{{congrats}}" != "") {
@@ -19,29 +20,39 @@
     <span id="close">&times;</span>
     <img id="img_content">
 </div>
-
-<h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">THÔNG TIN SẢN PHẨM </h1>
-
+<div class="container travel hldash pt-3">
+    <ul class="d-inline-flex row ">
+      <li class="d-flex align-items-end">
+        <a class="mr-2" href="#">Trang chủ</a>
+      </li>
+      <li class="d-flex align-items-end">
+        <a class="mr-2" href="#">Link</a>
+      </li>
+      <li class="d-flex align-items-end font-weight-bold">
+        CÁI CUỐI LÀ
+      </li>
+    </ul>
+  </div>
 <div class="container-fluid hldash" style="">
     <div class="contaier-fluid container-lg pt-4  ">
-        <div class="row  ">
+        <div class="row ">
             <div class="col-lg mr-3">
 
-                <div class="row"><img id="main_img" src="/{{product.main_img}}" class="img-fluid" alt="giay">
+                <div class="row "><img id="main_img" src="/{{product.main_img}}" class="img-fluid" alt="giay">
                 </div>
                 <!--  -->
-                <div class="row">
-                    <div id="product_aspect" class="carousel slide text-center mt-5" data-ride="carousel">
-                        <div id="img_zone" class="carousel-inner">
+                <div class="row ">
+                    <div id="product_aspect" class="carousel slide text-center mt-5 " data-ride="carousel">
+                        <div id="img_zone" class="carousel-inner d-flex align-items-center">
 
 
                         </div>
-                        <a class="carousel-control-prev" href="#product_aspect" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <a class="carousel-control-prev text-dark" href="#product_aspect" role="button" data-slide="prev">
+                            <i class="fa fa-chevron-left" style="font-size: 30px;"></i>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#product_aspect" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <a class="carousel-control-next text-dark" href="#product_aspect" role="button" data-slide="next">
+                            <i class="fa fa-chevron-right" style="font-size: 30px;"></i>
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
@@ -71,12 +82,12 @@
                 <div class="row hldash flex-column mt-5">
                     <div class="col d-inline-flex justify-content-between">
                         <!-- Size and quantity                        -->
-                        <div>
-                            <p>Size</p>
-                            <div class="dropdown ">
-                                <button class="btn btn-secondary dropdown-toggle bg-warning" type="button"
+                        <div class=" text-center">
+                            <h4 class="font-weight-bold">Size</h4>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle text-light bg-dark" type="button"
                                     id="display_size" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    style="width: 100px;border-radius: 20px;color: black;">
+                                    style="width: 100px;">
 
                                 </button>
                                 <div class="dropdown-menu py-0 " aria-labelledby="dropdownMenuButton"
@@ -88,22 +99,23 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div >
                         {{!-- <div id="Show_stock" class="align-self-end">LOng</div> --}}
-                        <div>
-                            <p>SỐ LƯỢNG</p>
+                        <div class="text-center">
+                             <h4 class="font-weight-bold">Số lượng</h4>
                             <span>
-                                <button id="add_quantity"
-                                    style="width: 35px;height: 35px;border-radius: 20px;">+</button>
-                                <span class="btn btn-secondary bg-warning" type="button" id="quantity"
-                                    style="width: 100px;border-radius: 20px;color: black;">
+                                 <button id="subtract_quantity" class="text-light bg-dark"
+                                style="width: 35px;height: 35px; border-top-left-radius:20px; border-bottom-left-radius:20px;font-size:large">-</button>
+                               
+                                <span class=" text-dark font-weight-bolder border border-5 border-dark p-1" type="button" id="quantity"
+                                    style="width: 100px;">
                                     0
                                 </span>
 
-
+                                    <button id="add_quantity" class="text-light bg-dark"
+                                    style="width: 35px;height: 35px;border-top-right-radius:20px; border-bottom-right-radius:20px;font-size:larger;">+</button>
                             </span>
-                            <button id="subtract_quantity"
-                                style="width: 35px;height: 35px;border-radius: 20px;">-</button>
+                           
                         </div>
                         <!--  -->
 
@@ -120,16 +132,15 @@
                         {{!-- submit button --}}
                         <div class="col d-inline-flex justify-content-between text-center">
                             <button type="submit" name="submit" value="Add_cart"
-                                class="confirm_btn my-3 py-3 bg-danger col-9 " style="border-radius:20px;">
+                                class="confirm_btn my-3 py-3 bg-dark text-light col-9 font-weight-bolder ">
                                 THÊM VÀO GIỎ HÀNG</button>
-                            <div class="confirm_btn my-3 py-3 bg-danger col-2" style="border-radius:20px;"><i
+                            <div class="confirm_btn my-3 py-3 bg-dark text-light font-weight-bolder col-2" ><i
                                     class="fa fa-heart"></i>
                             </div>
                         </div>
                         <div class="col d-inline-flex justify-content-between text-center">
                             <button id="Pay" type="submit" name="submit" value="Pay"
-                                class="confirm_btn col bg-warning py-3 mb-5"
-                                style="border-radius:20px;color:black">THANH TOÁN</button>
+                                class="confirm_btn col text-light font-weight-bolder py-3 mb-5" style="background-color:rgb(241,94,44);">THANH TOÁN</button>
                         </div>
                     </form>
                 </div>
@@ -178,16 +189,16 @@
 </script>
 
 {{/each}}
-<h1 class="container-fluid text-center bg-warning mt-5 mb-5 font-weight-bold p-2">SẢN PHẨM LIÊN QUAN</h1>
+<h1 class="container-fluid text-center mt-5 mb-5 font-weight-bold p-2">SẢN PHẨM LIÊN QUAN</h1>
 <div id="SPLIENQUAN" class="carousel slide text-center mb-5" data-ride="carousel">
-    <div id="relative_carousel" class="carousel-inner">
+    <div id="relative_carousel" class="carousel-inner ">
     </div>
-    <a class="carousel-control-prev" href="#SPLIENQUAN" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <a class="carousel-control-prev text-dark" href="#SPLIENQUAN" role="button" data-slide="prev">
+        <i class="fa fa-chevron-left" style="font-size: 40px;"></i>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#SPLIENQUAN" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <a class="carousel-control-next text-dark" href="#SPLIENQUAN" role="button" data-slide="next">
+      <i class="fa fa-chevron-right" style="font-size: 40px;"></i>
         <span class="sr-only">Next</span>
     </a>
 </div>
@@ -230,7 +241,7 @@
             for (let i = product_left + 1; i < image_url.length; i++) {
                 product_left++
 
-                Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3   bg-dark " style="border:none">
+                Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3  " style="border:none">
                             <img style ="cursor:pointer" src="/${image_url[i]}" alt="" class="img_carousel img-fluid card-img-top">
                         </div>`)
             }
@@ -239,7 +250,7 @@
             for (let i = 0; i < 4; i++) {
                 product_left++
 
-                Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3   bg-dark " style="border:none">
+                Product_cal[count].insertAdjacentHTML("beforeend", ` <div class="col-md-2 col-3  " style="border:none">
                             <img style ="cursor:pointer" src="/${image_url[product_left]}" alt="" class="img_carousel img-fluid card-img-top">
                         </div>`)
             }

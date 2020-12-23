@@ -18,8 +18,10 @@
   <!--Font Awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--MY CSS AND JS-->
-  <link rel="stylesheet" href="/Home.css">
+  <link rel="stylesheet" href="/CSS/Home.css">
   <link rel="stylesheet" href="/CSS/Sell.css">
+  <link rel="stylesheet" href="/CSS/Travel.css">
+  <style>
   <style>
     .tr a:link {
       color: blue !important;
@@ -39,21 +41,21 @@
     <span id="close">&times;</span>
     <div id="modalcontent"></div>
   </div>
-
+  
   <div class="container">
     <div class="row" id="NAV_LEFT">
-      <div class="col-md-2 col-sm-12 justify-content-center bg-dark box-dash p-2 mb-3 " style="border-color:white ">
+      <div class="col-md-2 col-sm-12 justify-content-center  box-dash p-2 mb-3 " style="border-color:white ">
         <div class=" card-header text-center pb-0 ">
-          <div class="row  bg-warning  hl2dash justify-content-center " data-toggle="collapse" href="#DT">
+          <div class="row   hl2dash  justify-content-center " data-toggle="collapse" href="#DT">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">Sản phẩm </h4>
           </div>
           <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
             <div class="card-body ">
               <ul class=" justify-content-center  ">
-                <li class="row hl2dash justify-content-center">
+                <li class="row  justify-content-center">
                   <a href="/User/Admin">Tồn Kho </a>
                 </li>
-                <li class="row   hl2dash  justify-content-center">
+                <li class="row     justify-content-center">
                   <a href="/User/Admin/OutofStock">Hết hàng</a>
                 </li>
               </ul>
@@ -61,22 +63,22 @@
           </div>
         </div>
         <div class=" card-header    text-center pb-0 ">
-          <div class="row  bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
+          <div class="row  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Đơn hàng </h4>
           </div>
           <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
             <div class="card-body ">
               <ul class=" justify-content-center  ">
-                <li class="row hl2dash justify-content-center">
+                <li class="row  justify-content-center">
                   <a href="/User/Admin">Tất cả</a>
                 </li>
-                <li class="row hl2dash  justify-content-center">
+                <li class="row   justify-content-center">
                   <a href="/User/Admin">Tiếp nhận</a>
                 </li>
-                <li class="row  hl2dash  justify-content-center">
+                <li class="row    justify-content-center">
                   <a href="/User/Admin">Đã giao</a>
                 </li>
-                <li class="row  hl2dash  justify-content-center">
+                <li class="row    justify-content-center">
                   <a href="/User/Admin">Đã hủy</a>
                 </li>
               </ul>
@@ -84,19 +86,19 @@
           </div>
         </div>
         <div class=" card-header   text-dar text-center pb-0  ">
-          <div class="row   bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+          <div class="row hl2dash justify-content-center" data-toggle="collapse" href="#TH">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Mã khuyến mãi </h4>
           </div>
           <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
             <div class="card-body ">
               <ul class=" justify-content-center  ">
-                <li class="row  hl2dash justify-content-center">
+                <li class="row   justify-content-center">
                   <a href="/User/Admin">Thêm</a>
                 </li>
-                <li class="row  hl2dash justify-content-center">
+                <li class="row   justify-content-center">
                   <a href="/User/Admin">Chưa áp dụng</a>
                 </li>
-                <li class="row  hl2dash justify-content-center">
+                <li class="row   justify-content-center">
                   <a href="/User/Admin">Đang dụng</a>
                 </li>
 
@@ -106,19 +108,19 @@
           </div>
         </div>
         <div class=" card-header   text-dar text-center pb-0  ">
-          <div class="row   bg-warning  hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+          <div class="row hl2dash justify-content-center" data-toggle="collapse" href="#TH">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">Khách Hàng </h4>
           </div>
           <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
             <div class="card-body ">
               <ul class=" justify-content-center  ">
-                <li class="row  hl2dash justify-content-center">
+                <li class="row   justify-content-center">
                   <a href="/User/Admin/ManageUser">Tất cả</a>
                 </li>
-                <li class="row  hl2dash justify-content-center">
+                <li class="row   justify-content-center">
                   <a href="/User/Admin">VIP</a>
                 </li>
-                <li class="row  hl2dash justify-content-center">
+                <li class="row   justify-content-center">
                   <a href="/User/Admin">thường</a>
                 </li>
 
@@ -128,8 +130,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-10 col-sm-12 bg-light border border-dark "
-        style="border-left-width: 3px !important;border-bottom-width: 3px !important;">
+      <div class="col-md-10 col-sm-12 bg-light ">
         {{{body}}}
       </div>
     </div>
