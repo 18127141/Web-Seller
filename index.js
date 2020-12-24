@@ -22,7 +22,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: "user",
-    cookie: { maxAge: 20 * 60 * 1000 }
+    cookie: { maxAge: 40 * 60 * 1000 }
 }));
 
 //Initial listen Port
@@ -31,7 +31,8 @@ app.set('port', (process.env.PORT || 5000))
 
 
 //------------------------------------------------------------------------------------------------
-
+var product_controller = require('./controllers/product')
+var size_controller = require('./controllers/size')
 //Home
 app.get('/', function (req, res) {
     //initiate cart and favorites
@@ -41,21 +42,60 @@ app.get('/', function (req, res) {
     if (req.session.mark == undefined) {
         req.session.mark = []
     }
-    res.render('Home', { usercheck: req.session.user,cart_total:req.session.cart.length })
+    getdata();
+    async function getdata() {
+        var products
+        var size_stock = await size_controller.getAll()
+        if (req.query.type == undefined || parseInt(req.query.type) == 0) {
+            products = await product_controller.getAll()
+        }
+        else {
+            products = await product_controller.getByType(parseInt(req.query.type))
+        }
+        var count = 0
+        var temp = []
+
+        if (products.length > 6) {
+            while (count != 6) {
+                var random_index = Math.floor(Math.random() * products.length)
+
+                if (temp.find(ele => ele.id == products[random_index].id) == undefined) {
+                    temp.push(products[random_index])
+                    count++
+                }
+            }
+            products = temp
+        }
+
+        res.render('Home',
+            {
+                returnPath:req.originalUrl,
+                size_stock: size_stock,
+                usercheck: req.session.user,
+                cart_total: req.session.cart.length,
+                products: products,
+            })
+    }
 })
 //Find us
 app.get('/Find-us', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
-    res.render('Find_us',{usercheck: req.session.user,cart_total:req.session.cart.length})
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    res.render('Find_us', { usercheck: req.session.user, cart_total: req.session.cart.length })
 })
 //Check order
 app.get('/Check-order', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
-    res.render('Check_order',{usercheck: req.session.user,cart_total:req.session.cart.length})
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    res.render('Check_order', { usercheck: req.session.user, cart_total: req.session.cart.length })
 })
 //Search
 var search_route = require('./Routes/Search')
@@ -81,7 +121,10 @@ app.get('/Mark', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
-    res.render('Mark',{usercheck: req.session.user,cart_total:req.session.cart.length})
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    res.render('Mark', { usercheck: req.session.user, cart_total: req.session.cart.length })
 })
 //
 // var bcrypt = require('bcrypt')

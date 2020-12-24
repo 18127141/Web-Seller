@@ -109,8 +109,44 @@ module.exports = {
         updatedAt: Sequelize.literal('NOW()'),
         ProductId: 'A6T003',
       },
+      {
+        size: "S",
+        stock: 3,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+      },
+      {
+        size: "L",
+        stock: 1,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+      },
+      {
+        size: "XL",
+        stock: 9,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+      },
+      {
+        size: "43",
+        stock: 0,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+      },
+      {
+        size: "42",
+        stock: 9,
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61012',
+      },
+    
     ], {});
-
+   
   },
 
   down: async (queryInterface, Sequelize) => {

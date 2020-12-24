@@ -2,6 +2,12 @@ var express = require('express')
 var router = express.Router()
 
 router.get('/', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
     let size_controller = require('../controllers/size')
     let product_controller = require('../controllers/product')
     var congrats = req.session.congrats

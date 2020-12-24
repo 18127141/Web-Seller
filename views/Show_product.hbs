@@ -343,10 +343,11 @@
                 if (parseInt(relative_product[product_left].stock) != 0) {
                     relative_item += `
                         <a class="btn" href ="/Cart/UpdateCart?id=${relative_product[product_left].id}&returnPath={{returnPath}}&submit=product_submit"><i class="fa fa-shopping-cart fa-2x"></i></a>`
-                    relative_item += `
+                }
+                relative_item += `
                     </div>
                 </div>`
-                }
+
 
                 Product_cal[count].insertAdjacentHTML("beforeend", relative_item)
             }
@@ -447,7 +448,7 @@
     }
     function check() {
         var size_quantity = document.getElementById("size_quantity")
-        
+
         if (set_quanity == undefined && set_size == undefined) {
             Swal.fire({
                 position: 'center',

@@ -235,6 +235,147 @@ module.exports = {
         ProductId: 'A6T003',
 
       },
+      {
+        img_src: 'img/pro_AHO0010_1-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_AHO0010_2-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_AHO0010_3-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_AHO0010_4-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_AHO0010_5-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_AHO0010_6-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_AHO0010_7-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_AHO0010_8-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AHO0010',
+
+      },
+      {
+        img_src: 'img/pro_A61113_1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/pro_A61113_2.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/pro_A61113_3.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/pro_A61113_4.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/pro_A61113_5.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/pro_A61113_6.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/pro_A61113_13.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/pro_A61113_7.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61113',
+
+      },
+      {
+        img_src: 'img/Nike_6/img1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61012',
+
+      },
+      {
+        img_src: 'img/Nike_6/img10.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61012',
+
+      },
+      {
+        img_src: 'img/Nike_6/img20.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61012',
+
+      },
+      {
+        img_src: 'img/Nike_6/img28.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A61012',
+
+      },
+      
     ], {});
 
   },

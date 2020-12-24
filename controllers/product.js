@@ -16,6 +16,14 @@ controller.getById = (ele) => {
     raw: true
   })
 }
+controller.getByType = (ele) => {
+  return models.Product.findAll({
+    where: {
+      type: ele, 
+    },
+    raw: true
+  })
+}
 controller.getExceptId = (ele) => {
   return models.Product.findAll({
     where: {

@@ -5,6 +5,9 @@ router.get('/:id', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
     var select_id = req.params.id
     var congrats = req.session.congrats
     req.session.congrats = undefined
@@ -38,7 +41,6 @@ router.get('/:id', function (req, res) {
                 }
             }
         }
-        console.log(products.length)
         product = product[0]
         var size = await size_controller.getById(select_id)
         var sizes = await size_controller.getAll()

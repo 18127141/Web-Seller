@@ -7,6 +7,9 @@ router.get('/', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
     getdata()
     async function getdata() {
         var cart = []
