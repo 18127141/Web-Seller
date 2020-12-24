@@ -22,17 +22,17 @@
 </div>
 <div class="container travel hldash pt-3">
     <ul class="d-inline-flex row ">
-      <li class="d-flex align-items-end">
-        <a class="mr-2" href="#">Trang chủ</a>
-      </li>
-      <li class="d-flex align-items-end">
-        <a class="mr-2" href="#">Link</a>
-      </li>
-      <li class="d-flex align-items-end font-weight-bold">
-        CÁI CUỐI LÀ
-      </li>
+        <li class="d-flex align-items-end">
+            <a class="mr-2" href="/">Trang chủ</a>
+        </li>
+        <li class="d-flex align-items-end">
+            <a class="mr-2" href="/Product">Sản phẩm</a>
+        </li>
+        <li class="d-flex align-items-end font-weight-bold">
+            {{product.id}}
+        </li>
     </ul>
-  </div>
+</div>
 <div class="container-fluid hldash" style="">
     <div class="contaier-fluid container-lg pt-4  ">
         <div class="row ">
@@ -47,11 +47,13 @@
 
 
                         </div>
-                        <a class="carousel-control-prev text-dark" href="#product_aspect" role="button" data-slide="prev">
+                        <a class="carousel-control-prev text-dark" href="#product_aspect" role="button"
+                            data-slide="prev">
                             <i class="fa fa-chevron-left" style="font-size: 30px;"></i>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next text-dark" href="#product_aspect" role="button" data-slide="next">
+                        <a class="carousel-control-next text-dark" href="#product_aspect" role="button"
+                            data-slide="next">
                             <i class="fa fa-chevron-right" style="font-size: 30px;"></i>
                             <span class="sr-only">Next</span>
                         </a>
@@ -99,23 +101,23 @@
                                 </div>
                             </div>
 
-                        </div >
+                        </div>
                         {{!-- <div id="Show_stock" class="align-self-end">LOng</div> --}}
                         <div class="text-center">
-                             <h4 class="font-weight-bold">Số lượng</h4>
+                            <h4 class="font-weight-bold">Số lượng</h4>
                             <span>
-                                 <button id="subtract_quantity" class="text-light bg-dark"
-                                style="width: 35px;height: 35px; border-top-left-radius:20px; border-bottom-left-radius:20px;font-size:large">-</button>
-                               
-                                <span class=" text-dark font-weight-bolder border border-5 border-dark p-1" type="button" id="quantity"
-                                    style="width: 100px;">
+                                <button id="subtract_quantity" class="text-light bg-dark"
+                                    style="width: 35px;height: 35px; border-top-left-radius:20px; border-bottom-left-radius:20px;font-size:large">-</button>
+
+                                <span class=" text-dark font-weight-bolder border border-5 border-dark p-1"
+                                    type="button" id="quantity" style="width: 100px;">
                                     0
                                 </span>
 
-                                    <button id="add_quantity" class="text-light bg-dark"
+                                <button id="add_quantity" class="text-light bg-dark"
                                     style="width: 35px;height: 35px;border-top-right-radius:20px; border-bottom-right-radius:20px;font-size:larger;">+</button>
                             </span>
-                           
+
                         </div>
                         <!--  -->
 
@@ -134,13 +136,14 @@
                             <button type="submit" name="submit" value="Add_cart"
                                 class="confirm_btn my-3 py-3 bg-dark text-light col-9 font-weight-bolder ">
                                 THÊM VÀO GIỎ HÀNG</button>
-                            <div class="confirm_btn my-3 py-3 bg-dark text-light font-weight-bolder col-2" ><i
+                            <div class="confirm_btn my-3 py-3 bg-dark text-light font-weight-bolder col-2"><i
                                     class="fa fa-heart"></i>
                             </div>
                         </div>
                         <div class="col d-inline-flex justify-content-between text-center">
                             <button id="Pay" type="submit" name="submit" value="Pay"
-                                class="confirm_btn col text-light font-weight-bolder py-3 mb-5" style="background-color:rgb(241,94,44);">THANH TOÁN</button>
+                                class="confirm_btn col text-light font-weight-bolder py-3 mb-5"
+                                style="background-color:rgb(241,94,44);">THANH TOÁN</button>
                         </div>
                     </form>
                 </div>
@@ -198,7 +201,7 @@
         <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next text-dark" href="#SPLIENQUAN" role="button" data-slide="next">
-      <i class="fa fa-chevron-right" style="font-size: 40px;"></i>
+        <i class="fa fa-chevron-right" style="font-size: 40px;"></i>
         <span class="sr-only">Next</span>
     </a>
 </div>
@@ -349,8 +352,6 @@
             }
         }
         count++
-        console.log(count)
-        console.log(product_left)
         check_cal = true
     }
     // money format ----------------------------------------------------
@@ -386,7 +387,7 @@
     }
     // menu_size
     var size_menu = document.getElementById("size_menu")
-    
+
 </script>
 
 {{#each size_stock}}
@@ -446,6 +447,7 @@
     }
     function check() {
         var size_quantity = document.getElementById("size_quantity")
+        
         if (set_quanity == undefined && set_size == undefined) {
             Swal.fire({
                 position: 'center',

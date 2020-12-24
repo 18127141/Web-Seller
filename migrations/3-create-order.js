@@ -17,6 +17,18 @@ module.exports = {
       totalProduct: {
         type: Sequelize.INTEGER
       },
+      name: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -34,16 +46,7 @@ module.exports = {
         onDelete: 'cascade',
         onUpdate: 'cascade'
       },
-      order_addressId: {
-        type: Sequelize.STRING,
-        references: {
-          model: 'order_addresses',
-          key: 'id'
-        },
-        onDelete: 'cascade',
-        onUpdate: 'cascade'
-      }
-
+     
     });
   },
   down: async (queryInterface, Sequelize) => {

@@ -371,9 +371,6 @@ router.get("/DeleteUser",function(req,res){
             models.order.destroy({
                 where: { UserId: req.query.Enter_id }
             })
-            models.order_address.destroy({
-                where: { UserId: req.query.Enter_id }
-            })
             models.User.destroy({
                 where: { id: req.query.Enter_id }
             })
