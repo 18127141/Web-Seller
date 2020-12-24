@@ -1,0 +1,36 @@
+.ProductSelect *{
+    color: gray;
+    background-color: none !important;
+}
+.ProductSelect button{
+    border: none;
+
+}
+.ProductSelect a:hover{
+    color: black!important;
+    font-weight: bold;
+}
+.ProductSelect .bottomline{
+    border-bottom: 2px solid black;
+}
+.ProductSelect .listSelect .row:hover{
+    background-color: rgb(230, 230, 230);
+}
+.ProductSelect h5{
+    color: orange;
+    font-weight: bolder;
+}
+.ProductSelect h5{
+    color: orange;
+    font-weight: bolder;
+}
+.ProductSelect .listSelect{
+    font-size: 16px;
+}
+
+.ProductSelect .checked *{
+    color: black;
+}
+.ProductSelect .listSelect .checked{
+    background-color: rgb(230, 230, 230);
+}

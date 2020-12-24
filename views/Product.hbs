@@ -9,8 +9,22 @@
       timer: 1500
     })
   }
+  function CheckOnclick(){
+    var INPUT = document.getElementsByTagName("input")
+    for( let i=1; i<INPUT.length;i++ )
+    {
+      if(INPUT[i].checked == true)
+      {
+        console.log(INPUT[i].parentElement.parentElement.classList.add("checked"))  
+      }else{
+          console.log(INPUT[i].parentElement.parentElement.classList.remove("checked"))  
+      }
+    }
+    console.log(INPUT)
+  }
 </script>
 <link rel="stylesheet" href="/CSS/Travel.css">
+<link rel="stylesheet" href="/CSS/ProductSelect.css">
 
 <div class="container travel hldash pt-3">
     <ul class="d-inline-flex row ">
@@ -24,90 +38,130 @@
 </div>
 <div class="container">
   <div class="row bg-light" id="NAV_LEFT">
-    <div class="col-md-3 col-sm-12 justify-content-center  box-dash p-2 mb-3" style="border-color:white">
-      <div class=" card-header   text-center pb-0 ">
-        <div class="row  vl2 hl2dash justify-content-center " data-toggle="collapse" href="#DT">
-          <h5 class=" p-0 m-0 font-weight-bold" style="cursor: pointer;"> ĐỐI TƯỢNG </h5>
-        </div>
+    <div class="ProductSelect col-lg-3 col-sm-12 justify-content-center  box-dash p-2 mb-3" style="border-color:white">
+      <div class="bottomline text-center p-0 pb-2 pt-2 ">
         <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
-          <div class="card-body ">
-            <ul class=" justify-content-center  ">
-              <li class="row text-light   justify-content-center">
-                <a href="/Product/?Gender=Male,Female">UNISET</a>
+        
+            <ul class="list-inline justify-content-center">
+              <li class="list-inline-item checked">
+                <label><input type="radio" name="SEX"  value="All" onclick="CheckOnclick()" class="invisible">TẤT CẢ</input></label>
+              </li>
+              <li class="list-inline-item">
+                <label><input type="radio" name="SEX"  value="Male" onclick="CheckOnclick()" class="invisible">NAM</input></label>
+              </li>
+              <li class="list-inline-item">
+                <label> <input type="radio" name="SEX"  value="Famale" onclick="CheckOnclick()" class="invisible">NỮ</a></label>
+               
+              </li>
+            </ul>
+  
+        </div>
+      </div>
+      <div class="bottomline text-dark text-center p-2">
+        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Loai">
+          <h5 class="font-weight-bold " style="cursor: pointer;">LOẠI</h5>
+        </div>
+        <div id="Loai" class="collapse show  row font-weight-bold" data-parent="#Loai">
+            <ul class=" text-dark card-body listSelect">
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Quần<input name ="Loai"  value="pant" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
+              </li>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Áo<input name = "Loai"  value="shirt" class="invisible"  type="checkbox" onclick="CheckOnclick()"></input></label>
+              </li>
+              <li class="row py-1 px-3 mb-1 justify-content-center checked">
+                <label class="col">Giày<input name = "Loai" value="shoe" class="invisible"  type="checkbox" onclick="CheckOnclick()" checked="true" ></input></label>
+              </li>
+            </ul>
+        </div>
+      </div>
+         <div class="bottomline text-dark text-center p-2">
+        <div class="row justify-content-center text-center" data-toggle="collapse" href="#category">
+          <h5 class="font-weight-bold " style="cursor: pointer;">KIỂU</h5>
+        </div>
+        <div id="category" class="collapse show  row font-weight-bold" data-parent="#category">
+            <ul class=" text-dark card-body listSelect">
+              <li class="row py-1 px-3 mb-1 checked justify-content-center">
+               <label class="col">Tất Cả<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
+              </li>
+               <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Hút đi<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
+              </li>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                 <label class="col">Hai tốp<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
+              </li>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+               <label class="col">Bốt<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
+              </li>
+            </ul>
 
-              </li>
-              <li class="row text-dark   justify-content-center">
-                <a href="/Product/?Gender=Male">GENTELMENT</a>
-              </li>
-              <li class="row text-dark     justify-content-center">
-                <a href="/Product/?Gender=Female">LADY</a>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
-      <div class=" card-header   text-dark text-center pb-0 ">
-        <div class="row  vl2  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
-          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> LOAI </h5>
+       <div class="bottomline text-dark text-center p-2">
+        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Trangthai">
+          <h5 class="font-weight-bold " style="cursor: pointer;">TRẠNG THÁI</h5>
         </div>
-        <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
-          <div class="card-body ">
-            <ul class=" justify-content-center  ">
-              <li class="row text-dark  justify-content-center">
-                <a href="#">QUẦN</a>
+        <div id="Trangthai" class="collapse show  row font-weight-bold" data-parent="#Trangthai">
+            <ul class=" text-dark card-body listSelect">
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Tất cả<input name ="TrangThai"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
-              <li class="row text-dark   justify-content-center">
-                <a href="#">ÁO</a>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Best sell<input name ="TrangThai"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
-              <li class="row text-dark     justify-content-center">
-                <a href="#">GIÀY</a>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Sale off<input name ="TrangThai"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
             </ul>
-          </div>
+
         </div>
       </div>
-      <div class=" card-header    text-center pb-0  ">
-        <div class="row  vl2   hl2dash justify-content-center" data-toggle="collapse" href="#TH">
-          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> THƯƠNG HIỆU </h5>
+       <div class="bottomline text-dark text-center p-2">
+        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Gia">
+          <h5 class="font-weight-bold " style="cursor: pointer;">GIÁ TIỀN</h5>
         </div>
-        <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
-          <div class="card-body ">
-            <ul class=" justify-content-center  ">
-              <li class="row text-dark   justify-content-center">
-                <a href="#">ADIDASPHAS</a>
+        <div id="Gia" class="collapse show  row font-weight-bold" data-parent="#Gia">
+            <ul class=" text-dark card-body listSelect">
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Tất cả<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
-              <li class="row text-dark   justify-content-center">
-                <a href="#">NIKE</a>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Under 500k<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
-              <li class="row text-dark     justify-content-center">
-                <a href="#">BUMMA</a>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">500k - 1M<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
+              </li>
+               <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">1M-3M<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
             </ul>
-          </div>
+
         </div>
       </div>
-      <div class=" card-header   text-dark text-center pb-0 ">
-        <div class="row  vl2   hl2dash justify-content-center" data-toggle="collapse" href="#UPDATE">
-          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> UPDATE </h5>
+      <div class="bottomline text-dark text-center p-2">
+        <div class="row justify-content-center text-center" data-toggle="collapse" href="#TH">
+          <h5 class="font-weight-bold " style="cursor: pointer;">THƯƠNG HIỆU</h5>
         </div>
-        <div id="UPDATE" class="collapse show  font-weight-bold" data-parent="#UPDATE">
-          <div class="card-body ">
-            <ul class=" justify-content-center  ">
-              <li class="row text-dark   justify-content-center">
-                <a href="#">UPDATE</a>
+        <div id="TH" class="collapse show  row font-weight-bold" data-parent="#TH">
+            <ul class=" text-dark card-body listSelect">
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Tất cả<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
-              <li class="row text-dark   justify-content-center">
-                <a href="#">UPDATE</a>
+               <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Adidas<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
-              <li class="row text-dark     justify-content-center">
-                <a href="#">UPDATE</a>
+              <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Nike<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
+              </li>
+             <li class="row py-1 px-3 mb-1 justify-content-center">
+                <label class="col">Punmma<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
               </li>
             </ul>
-          </div>
+
         </div>
       </div>
     </div>
-    <div class="col-md-9 col-sm-12"  >
+    <div class="col-lg-9 col-sm-12"  >
      
       <div class="row justify-content-center mt-2">
         {{#each products}}

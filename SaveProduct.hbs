@@ -1,0 +1,165 @@
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script>
+  if ("{{congrats}}" != "") {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: '{{congrats}}',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+</script>
+<link rel="stylesheet" href="/CSS/Travel.css">
+
+<div class="container travel hldash pt-3">
+    <ul class="d-inline-flex row ">
+        <li class="d-flex align-items-end">
+            <a class="mr-2" href="/">Trang chủ</a>
+        </li>
+        <li class="d-flex align-items-end font-weight-bold">
+            Sản phẩm
+        </li>
+    </ul>
+</div>
+<div class="container">
+  <div class="row bg-light" id="NAV_LEFT">
+    <div class="col-md-3 col-sm-12 justify-content-center  box-dash p-2 mb-3" style="border-color:white">
+      <div class=" card-header   text-center pb-0 ">
+        <div class="row  vl2 hl2dash justify-content-center " data-toggle="collapse" href="#DT">
+          <h5 class=" p-0 m-0 font-weight-bold" style="cursor: pointer;"> ĐỐI TƯỢNG </h5>
+        </div>
+        <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
+          <div class="card-body ">
+            <ul class=" justify-content-center  ">
+              <li class="row text-light   justify-content-center">
+                <a href="/Product/?Gender=Male,Female">UNISET</a>
+
+              </li>
+              <li class="row text-dark   justify-content-center">
+                <a href="/Product/?Gender=Male">GENTELMENT</a>
+              </li>
+              <li class="row text-dark     justify-content-center">
+                <a href="/Product/?Gender=Female">LADY</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class=" card-header   text-dark text-center pb-0 ">
+        <div class="row  vl2  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
+          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> LOAI </h5>
+        </div>
+        <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
+          <div class="card-body ">
+            <ul class=" justify-content-center  ">
+              <li class="row text-dark  justify-content-center">
+                <a href="#">QUẦN</a>
+              </li>
+              <li class="row text-dark   justify-content-center">
+                <a href="#">ÁO</a>
+              </li>
+              <li class="row text-dark     justify-content-center">
+                <a href="#">GIÀY</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class=" card-header    text-center pb-0  ">
+        <div class="row  vl2   hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> THƯƠNG HIỆU </h5>
+        </div>
+        <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
+          <div class="card-body ">
+            <ul class=" justify-content-center  ">
+              <li class="row text-dark   justify-content-center">
+                <a href="#">ADIDASPHAS</a>
+              </li>
+              <li class="row text-dark   justify-content-center">
+                <a href="#">NIKE</a>
+              </li>
+              <li class="row text-dark     justify-content-center">
+                <a href="#">BUMMA</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class=" card-header   text-dark text-center pb-0 ">
+        <div class="row  vl2   hl2dash justify-content-center" data-toggle="collapse" href="#UPDATE">
+          <h5 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> UPDATE </h5>
+        </div>
+        <div id="UPDATE" class="collapse show  font-weight-bold" data-parent="#UPDATE">
+          <div class="card-body ">
+            <ul class=" justify-content-center  ">
+              <li class="row text-dark   justify-content-center">
+                <a href="#">UPDATE</a>
+              </li>
+              <li class="row text-dark   justify-content-center">
+                <a href="#">UPDATE</a>
+              </li>
+              <li class="row text-dark     justify-content-center">
+                <a href="#">UPDATE</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-12"  >
+     
+      <div class="row justify-content-center mt-2">
+        {{#each products}}
+
+        <div class="col-6 col-md-4 col-lg-4 col-xl-4 ITEM ">
+          <a href="/Show-product/{{id}}"><img src="/{{main_img}}" alt="" class="img-fluid card-img-top "></a>
+          <div class="product_item card-body  text-center  ">
+            <div class=" text-center m-0">
+              <h5>
+                <a class="product_name" href="/Show-product/{{id}}">{{name}}</a>
+              </h5>
+              <p class="p-0 m-0">{{category}}</p>
+            </div>
+            <p class="Money_format" class="Price m-0"></p>
+            <script>
+              //Money fommat----------------------------------------------------- 
+              var m_format = document.getElementsByClassName("Money_format")
+              var index = {{@index}}
+              var price = {{ price }}
+              price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+              m_format[index].innerHTML = price + " VND"
+            </script>
+            <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+            <script>
+              //check out of stock---------------------------------------------
+              var product_item = document.getElementsByClassName('product_item')
+              var product_name = document.getElementsByClassName('product_name')
+              var product_id = '{{id}}'
+              var total_products = 0 
+            </script>
+            {{#each ../size_stock}}
+            <script>
+
+              if ("{{ProductId}}" == product_id) {
+                total_products += parseInt("{{ stock }}")
+              }
+            </script>
+            {{/each}}
+            <script>
+              if (total_products == 0) {
+
+                product_name[index].insertAdjacentHTML('beforeend', `<span class="text-danger"> - Hết hàng</span>`)
+              }
+              else {
+                product_item[index].insertAdjacentHTML('beforeend', `<a href="/Cart/UpdateCart?id={{id}}&returnPath={{../returnPath}}&submit=product_submit" class="btn"><i class="fa fa-shopping-cart fa-2x"></i></a>`)
+              }
+            </script>
+
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
