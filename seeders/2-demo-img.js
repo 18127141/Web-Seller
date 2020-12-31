@@ -375,6 +375,30 @@ module.exports = {
         ProductId: 'A61012',
 
       },
+      {
+        img_src: 'img/pro_AGT0020_1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0020',
+      },
+      {
+        img_src: 'img/pro_AGT0020_2-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0020',
+      },
+      {
+        img_src: 'img/pro_AGT0020_3-2.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0020',
+      },
+      {
+        img_src: 'img/pro_AGT0020_4-1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0020',
+      },
       
     ], {});
 

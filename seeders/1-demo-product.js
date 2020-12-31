@@ -122,6 +122,19 @@ module.exports = {
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
       },
+      {
+        id: 'AGT0020',
+        type: 3,
+        category: "T-shirt",
+        name: "Graphic Pocket Tee 50 YEARS - Cloud Dance",
+        brand: "Ananas",
+        info: "Ananas Graphic Tee sở hữu phom dáng rộng thoải mái với chất vải 100% cotton dày vừa phải. Kết hợp chi tiết từ bộ truyện Doraemon cùng Typo đặc trưng kỉ niệm 50 năm tạo nên chiếc Pocket cá tính bên ngực trái. Chiếc áo là mảnh ghép phù hợp cho những bạn yêu thích Doraemon và muốn lưu dấu cột mốc đặc biệt này.",
+        price: 600000,
+        main_img: 'img/pro_AGT0020_1.jpg',
+        gender: "Female",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
     ], {});
 
   },
