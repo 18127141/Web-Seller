@@ -399,9 +399,85 @@ module.exports = {
         updatedAt: Sequelize.literal('NOW()'),
         ProductId: 'AGT0020',
       },
+      {
+        img_src: 'img/pro_A11111_1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A11111',
+      },
+      {
+        img_src: 'img/pro_A11111_2.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'A11111',
+      },
+      {
+        img_src: 'img/AGT0013_1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0013',
+      },
+      {
+        img_src: 'img/AGT0013_2.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0013',
+      },
+      {
+        img_src: 'img/AGT0013_3.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0013',
+      },
+      {
+        img_src: 'img/AGT0013_4.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0013',
+      },
+      {
+        img_src: 'img/AGT0016_1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0016',
+      },
+      {
+        img_src: 'img/AGT0016_2.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0016',
+      },    {
+        img_src: 'img/AGT0016_3.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0016',
+      },    {
+        img_src: 'img/AGT0016_4.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0016',
+      },
+      {
+        img_src: 'img/AGT0014_1.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0014',
+      },
+      {
+        img_src: 'img/AGT0014_2.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0014',
+      },
+      {
+        img_src: 'img/AGT0014_3.jpg',
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+        ProductId: 'AGT0014',
+      },
       
     ], {});
-
+    
   },
 
   down: async (queryInterface, Sequelize) => {

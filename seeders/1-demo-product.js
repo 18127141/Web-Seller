@@ -135,10 +135,61 @@ module.exports = {
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
       },
+      {
+        id: 'A11111',
+        type: 2,
+        category: "Long pants",
+        name: "DADDY-SWEATPANTS",
+        brand: "Uniq",
+        info: "DADDY-SWEATPANTS sở hữu phom dáng rộng thoải mái với chất vải 100% cotton dày vừa phải. ",
+        price: 900000,
+        main_img: 'img/pro_A11111_1.jpg',
+        gender: "Female",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AGT0013',
+        type: 3,
+        category: "T-shirt",
+        name: "GRAPHIC TEE - LUCKY LUKE COMICS - CAVIAR BLACK",
+        brand: "Ananas",
+        info: "Những chiếc áo Ananas Graphic Tee có phom dáng thoải mái, rộng linh hoạt được kết hợp cùng hoạ tiết lấy cảm hứng từ bộ truyện tuổi thơ Lucky Luke. Đây sẽ là một mảnh ghép cho những outfit thú vị, dù đủ bộ hay mặc riêng lẻ vẫn khẳng định cá tính riêng biệt, ghi dấu ấn cho lần hợp tác quốc tế đầu tiên của Ananas.",
+        price: 365000,
+        main_img: "img/AGT0013_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AGT0016',
+        type: 3,
+        category: "T-shirt",
+        name: "GRAPHIC TEE - LUCKY LUKE TYPO - BANANA CREPE",
+        brand: "Ananas",
+        info: "Những chiếc áo Ananas Graphic Tee có phom dáng thoải mái, rộng linh hoạt được kết hợp cùng hoạ tiết lấy cảm hứng từ bộ truyện tuổi thơ Lucky Luke. Đây sẽ là một mảnh ghép cho những outfit thú vị, dù đủ bộ hay mặc riêng lẻ vẫn khẳng định cá tính riêng biệt, ghi dấu ấn cho lần hợp tác quốc tế đầu tiên của Ananas.",
+        price: 365000,
+        main_img: "img/AGT0016_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AGT0014',
+        type: 3,
+        category: "T-shirt",
+        name: "GRAPHIC TEE - MOST WANTED DALTON - CAVIAR BLACK",
+        brand: "Ananas",
+        info: "Những chiếc áo Ananas Graphic Tee có phom dáng thoải mái, rộng linh hoạt được kết hợp cùng hoạ tiết lấy cảm hứng từ bộ truyện tuổi thơ Lucky Luke. Đây sẽ là một mảnh ghép cho những outfit thú vị, dù đủ bộ hay mặc riêng lẻ vẫn khẳng định cá tính riêng biệt, ghi dấu ấn cho lần hợp tác quốc tế đầu tiên của Ananas.",
+        price: 365000,
+        main_img: "img/AGT0014_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
     ], {});
-
   },
-
+  
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('Products', null, {});
   }
