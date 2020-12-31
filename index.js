@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
     getdata();
     async function getdata() {
         var products
-        var size_stock = await size_controller.getAll()
+
         if (req.query.type == undefined || parseInt(req.query.type) == 0) {
             products = await product_controller.getAll()
         }
@@ -66,17 +66,67 @@ app.get('/', function (req, res) {
             }
             products = temp
         }
-
+        for (let i = 0; i < products.length; i++) {
+            var size_stock = await size_controller.getById(products[i].id)
+            var total_product = 0
+            for (let j = 0; j < size_stock.length; j++) {
+                total_product += size_stock[j].stock
+            }
+            products[i].stock = total_product
+        }
         res.render('Home',
             {
-                returnPath:req.originalUrl,
-                size_stock: size_stock,
+                returnPath: req.originalUrl,
                 usercheck: req.session.user,
                 cart_total: req.session.cart.length,
                 products: products,
             })
     }
 })
+//Best product
+app.get("/BestProduct", function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    getdata();
+    async function getdata() {
+        var products
+
+        if (req.query.type == undefined || parseInt(req.query.type) == 0) {
+            products = await product_controller.getAll()
+        }
+        else {
+            products = await product_controller.getByType(parseInt(req.query.type))
+        }
+        var count = 0
+        var temp = []
+
+        if (products.length > 6) {
+            while (count != 6) {
+                var random_index = Math.floor(Math.random() * products.length)
+
+                if (temp.find(ele => ele.id == products[random_index].id) == undefined) {
+                    temp.push(products[random_index])
+                    count++
+                }
+            }
+            products = temp
+        }
+        for (let i = 0; i < products.length; i++) {
+            var size_stock = await size_controller.getById(products[i].id)
+            var total_product = 0
+            for (let j = 0; j < size_stock.length; j++) {
+                total_product += size_stock[j].stock
+            }
+            products[i].stock = total_product
+        }
+        res.json(products)
+    }
+})
+
 //Find us
 app.get('/Find-us', function (req, res) {
     if (req.session.cart == undefined) {

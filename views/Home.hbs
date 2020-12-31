@@ -183,75 +183,117 @@
 
 
 <!-- BEST SELLER -->
-<div  class="container-fluid mt-2 justify-content-center m-0">
+<div class="container-fluid mt-2 justify-content-center m-0">
   <h1 class=" text-center font-weight-bold">TOP SẢN PHẨM</h1>
 
-  <div id="bestsell" class="row justify-content-center ">
-    <div  class="col-12">
+  <div class="row justify-content-center ">
+    <div id="type-chose" class="col-12">
       <ul class="list-inline text-center mb-3 ">
         <li class="list-inline-item">
-          <a href="/?type=0" class="text-dark font-weight-bold">TẤT CẢ</a>
+          <a style ="cursor:pointer" jobs="0" class="text-dark font-weight-bold">TẤT CẢ</a>
         </li>
         <li class="list-inline-item">
-          <a href="/?type=2" class="text-dark font-weight-bold">QUẦN</a>
+          <a style ="cursor:pointer" jobs="2" class="text-dark font-weight-bold">QUẦN</a>
         </li>
         <li class="list-inline-item">
-          <a href="/?type=3" class="text-dark font-weight-bold">ÁO</a>
+          <a style ="cursor:pointer" jobs="3" class="text-dark font-weight-bold">ÁO</a>
         </li>
         <li class="list-inline-item">
-          <a href="/?type=1" class="text-dark font-weight-bold">GIÀY</a>
+          <a style ="cursor:pointer" jobs="1" class="text-dark font-weight-bold">GIÀY</a>
         </li>
       </ul>
     </div>
-    <script>
-      var bestsell = document.getElementById("bestsell")
-    </script>
-    {{#each products}}
-    <script>
-      var product_id = '{{id}}'
-      var total_products = 0 
-    </script>
-    {{#each ../size_stock}}
+  </div>
+</div>
+<div class="container-fluid mt-2 justify-content-center m-0">
+  <div id ="bestsell"class=" row justify-content-center ">
+
+
     <script>
 
-      if ("{{ProductId}}" == product_id) {
-        total_products += parseInt("{{ stock }}")
-      }
-    </script>
-    {{/each}}
-    <script>
-      var price = parseFloat("{{price}}")
-      price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
-      var relative_item = `
-      <div class="col-6 col-md-4 col-lg-3 col-xl-2 ITEM">
-      <a href="/Show-product/{{id}}"><img src="/{{main_img}}" alt="" class="img-fluid card-img-top"></a>
-      <div class="card-body  text-center  ">
-        <div class=" text-center m-0 p-0">
-          <h5><a href="/Show-product/{{id}}">{{name}}
-      `
-      if (parseInt(total_products) == 0) {
-        relative_item += `<span class="text-danger"> - Hết hàng</span>`
-      }
-      relative_item += `</a>
+      var bestsell = document.getElementById("bestsell")
+      var type_chose = document.getElementById("type-chose")
+
+      //First best sell
+      fetch(`/BestProduct?type=0`).then(response => response.json()).then(data => {
+        data.forEach((item, index) => {
+          //console.log(item)
+          var price = parseFloat(item.price)
+          price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+          var relative_item = `
+                  <div class="col-6 col-md-4 col-lg-3 col-xl-2 ITEM">
+                    <a href="/Show-product/${item.id}"><img src="/${item.main_img}" alt="" class="img-fluid card-img-top"></a>
+                  <div class="card-body  text-center  ">
+                  <div class=" text-center m-0 p-0">
+                   <h5><a href="/Show-product/${item.id}}">${item.name}
+                    `
+          if (parseInt(item.stock) == 0) {
+            relative_item += `<span class="text-danger"> - Hết hàng</span>`
+          }
+          relative_item += `</a>
                             </h5>
-                            <p class="p-0 m-0">{{category}}</p>
+                            <p class="p-0 m-0">${item.category}</p>
                         </div>
                         <p class="Price m-0">${price} VND</p>
                         <a class="btn"><i class="fa fa-heart fa-2x"></i></a>`
-      if (parseInt(total_products) != 0) {
-        relative_item += `
-                        <a class="btn" href ="/Cart/UpdateCart?id={{id}}&returnPath={{../returnPath}}&submit=product_submit"><i class="fa fa-shopping-cart fa-2x"></i></a>`
-      }
-      relative_item += `
+          if (parseInt(item.stock) != 0) {
+            relative_item += `
+                        <a class="btn" href ="/Cart/UpdateCart?id=${item.id}&returnPath={{returnPath}}&submit=product_submit"><i class="fa fa-shopping-cart fa-2x"></i></a>`
+          }
+
+          relative_item += `
                     </div>
                 </div>`
-      bestsell.insertAdjacentHTML("beforeend",relative_item)
-    </script>
-    {{/each}}
+          bestsell.insertAdjacentHTML("beforeend", relative_item)
+        })
+      })
+      //
+      type_chose.addEventListener("click", function (ToDo) {
+        while (bestsell.hasChildNodes()) {
+          bestsell.removeChild(bestsell.firstChild)
+        }
+        const child = ToDo.target
+        var job = child.attributes.jobs
+        if (job != undefined) {
+          job = job.value
+          fetch(`/BestProduct?type=${job}`).then(response => response.json()).then(data => {
+            data.forEach((item, index) => {
+              //console.log(item)
+              var price = parseFloat(item.price)
+              price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+              var relative_item = `
+                  <div class="col-6 col-md-4 col-lg-3 col-xl-2 ITEM">
+                    <a href="/Show-product/${item.id}"><img src="/${item.main_img}" alt="" class="img-fluid card-img-top"></a>
+                  <div class="card-body  text-center  ">
+                  <div class=" text-center m-0 p-0">
+                   <h5><a href="/Show-product/${item.id}}">${item.name}
+                    `
+              if (parseInt(item.stock) == 0) {
+                relative_item += `<span class="text-danger"> - Hết hàng</span>`
+              }
+              relative_item += `</a>
+                            </h5>
+                            <p class="p-0 m-0">${item.category}</p>
+                        </div>
+                        <p class="Price m-0">${price} VND</p>
+                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>`
+              if (parseInt(item.stock) != 0) {
+                relative_item += `
+                        <a class="btn" href ="/Cart/UpdateCart?id=${item.id}&returnPath={{returnPath}}&submit=product_submit"><i class="fa fa-shopping-cart fa-2x"></i></a>`
+              }
 
+              relative_item += `
+                    </div>
+                </div>`
+              bestsell.insertAdjacentHTML("beforeend", relative_item)
+            })
+          })
+        }
+      })
+    </script>
   </div>
 </div>
-</div>
+
 
 <div class="overflow-hidden py-5 "
   style="background-image:url(../img/carousel3.jpg); -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-size: cover;">
