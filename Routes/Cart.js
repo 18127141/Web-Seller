@@ -111,6 +111,9 @@ router.get('/DeleteProduct', function (req, res) {
             break
         }
     }
+    if (submit == "mark"){
+        res.redirect(`/Mark/UpdateMark?id=${id}&returnPath=${returnPath}`)
+    }
     res.redirect(returnPath)
 })
 module.exports = router

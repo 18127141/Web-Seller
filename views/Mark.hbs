@@ -1,62 +1,100 @@
 <link rel="stylesheet" href="/CSS/Travel.css">
 <div class="container travel hldash pt-3">
-    <ul class="d-inline-flex row ">
-        <li class="d-flex align-items-end">
-            <a class="mr-2" href="/">Trang chủ</a>
-        </li>
-        <li class="d-flex align-items-end font-weight-bold">
-            Yêu thích
-    </ul>
+  <ul class="d-inline-flex row ">
+    <li class="d-flex align-items-end">
+      <a class="mr-2" href="/">Trang chủ</a>
+    </li>
+    <li class="d-flex align-items-end font-weight-bold">
+      Yêu thích
+  </ul>
 </div>
 <h1 class="container text-center bg-warning font-weight-bold p-2">SẢN PHẨM CỦA BẠN</h1>
-<div class="container mt-3 mb-3">  
-            
-          <div class="row jusify-content-center">
-            <div class="col-12 mt-3">
-            <!--ITEM-->
-              <div class="container mb-3 bg-light">
-                <div class="row">
-                  <div class="col-md-4 text-center p-0 m-0">
-                    <img src="./img/pro_A61107_2.jpg" alt="Item" height= "215px">
-                  </div>
-                  <div class="col">
-                      <div class="row p-1 justify-content-center  ">
-                        <h5 class="col p-0 m-0 hldash text-center">GIÀY CƠ ĐỘNG</h5>
+<div class="container mt-3 mb-3">
 
-                      </div>
-                      <div class="row p-1">
-                        <p class="p-0 m-0">Tăng 10% tốc độ di chuyển, 50% sưc bền và 100% sự quyến rũ.</p>
-                      </div>
-                      <div class="row p-1 text-warning">
-                        <p class="p-0 m-0">Chỉ còn 12 sản phẩm</p>
-                      </div>
+  <div class="row jusify-content-center">
+    <div id="mark_list" class="col-12 mt-3">
+      <!--ITEM-->
+      {{#each mark}}
+      <div class="container mb-3 bg-light">
+        <div class="row">
+          <div class="col-md-4 text-center p-0 m-0">
+            <img src="./{{main_img}}" alt="Item" height="215px" width="215px">
+          </div>
+          <div class="col">
+            <div class="row p-1 justify-content-center  ">
+              <h5 class="col p-0 m-0 hldash text-center">{{name}}</h5>
 
-                      <div class="row p-1 justify-content-between ">
-                       
-                        <div class="col p-0 m-0">
-                          <div class="row">
-                            <div class="col">
-                                <div class="row justify-content p-0 m-0">
-                                  <button class="pr-2  bg-light text-primary font-weight-bolder p-0 pr-4" onclick="" style="border:none">XÓA</button>
-                                  <button class="  bg-light text-primary  font-weight-bolder" onclick="" style="border:none; ">THÊM VÀO GIỎ</button>
-                                </div>
-                            </div>
-                          
-                            <p id="Number" class=" col-3 text-center align-content-center p-0 m-0" style="border-radius:1000px; font-size: 15px;">250 000 VND</p>
-                          </div>
-                       
-                        
-                        </div>
-                     
-                      </div>
-                  </div>
-                  
-                </div>
-                
-              </div>
             </div>
-           
+            <div class="row p-1">
+              <p class="p-0 m-0">{{info}}</p>
+            </div>
+            <div class="row p-1 text-warning">
+              <p class="p-0 m-0">{{id}}
+                {{#if oos}}
+                <span class="text-danger"> - Hết hàng</span>
+                {{/if}}
+              </p>
+            </div>
+
+            <div class="row p-1 justify-content-between ">
+
+              <div class="col p-0 m-0">
+                <div class="row">
+                  <div class="col">
+                    <div class="row justify-content p-0 m-0">
+                      <button value="{{id}}" class="pr-2  bg-light text-primary font-weight-bolder p-0 pr-4"
+                        job="delete" style="border:none">XÓA</button>
+                      {{#unless oos}}
+
+                      <button value="{{id}}" class="bg-light text-primary  font-weight-bolder" job="add"
+                        style="border:none; ">THÊM
+                        VÀO GIỎ</button>
+
+                      {{/unless}}
+                    </div>
+                  </div>
+
+                  <p class="Money_format col-3 text-center align-content-center p-0 m-0"
+                    style="border-radius:1000px; font-size: 15px;"></p>
+                  <script>
+                    var index = {{@index}}
+                    var m_format = document.getElementsByClassName("Money_format")
+                    var price = {{ price }}
+                    price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                    m_format[index].innerHTML = price + " VND"
+                  </script>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
+      </div>
+      {{/each}}
+    </div>
+
+  </div>
+
 </div>
-  
+<script>
+  var mark_list = document.getElementById("mark_list")
+  mark_list.addEventListener("click", function (ToDo) {
+    const child = ToDo.target
+    var job = child.attributes.job
+    console.log(job)
+    if (job != undefined) {
+      job = job.value
+      var value = child.attributes.value.value
+      if (job == "delete") {
+        window.location.href = `/Mark/DeleteProduct?returnPath={{returnPath}}&id=${value}&submit=delete`
+      }
+      else {
+        window.location.href = `/Mark/DeleteProduct?returnPath={{returnPath}}&id=${value}&submit=cart`
+      }
+    }
+  })
+</script>

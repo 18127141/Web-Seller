@@ -16,6 +16,15 @@ controller.getById = (ele) => {
     raw: true
   })
 }
+controller.getByGender = (ele) => {
+  return models.Product.findAll({
+    where: {
+      gender: { [Op.like]: ele }
+
+    },
+    raw: true
+  })
+}
 controller.getByType = (ele) => {
   return models.Product.findAll({
     where: {
