@@ -11,8 +11,7 @@
     </ul>
 </div>
 
-<h1 class="container text-center bg-warning  font-weight-bold p-2">GIỎ CỦA BẠN </h1>
-<div class="container mt-3 mb-3">
+<div class="container mt-3 mb-4 pb-5">
 
   <div class="row jusify-content-between">
     <div id="cart-content" class="col-lg-8 mt-3 p-0">
@@ -155,7 +154,23 @@
 </div>
 <script>
   var cart_content = document.getElementById("cart-content")
-
+    if(cart_content.childNodes[1] == undefined){
+          var parent = cart_content.parentNode.parentNode;
+        
+          while(parent.hasChildNodes() == true){
+            parent.removeChild(parent.childNodes[0]);
+          }
+            parent.insertAdjacentHTML("afterbegin",`<div class="container-fluid d-flex align-items-center flex-column">
+                      <i class="fa fa-shopping-cart" style="font-size: 200px;"></i>
+                      <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+                      <form action="/Product" class="row">
+                        <button class="btn btn-primary bg-primary">
+                          Quẹo lựa ngay
+                        </button>
+                      </form>
+                    </div>
+                    `) 
+  }
   cart_content.addEventListener("click", function (ToDo) {
     const child = ToDo.target
     var job = child.attributes.job
