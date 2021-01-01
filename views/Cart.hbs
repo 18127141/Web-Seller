@@ -16,7 +16,6 @@
   <div class="row jusify-content-between">
     <div id="cart-content" class="col-lg-8 mt-3 p-0">
       {{#each cart}}
-      <!--ITEM-->
       <div class="container mb-3 bg-light">
         <div class="row">
           <div class="col-md-4 text-center p-0 m-0">
@@ -154,6 +153,7 @@
 </div>
 <script>
   var cart_content = document.getElementById("cart-content")
+  console.log(cart_content.childNodes)
     if(cart_content.childNodes[1] == undefined){
           var parent = cart_content.parentNode.parentNode;
         

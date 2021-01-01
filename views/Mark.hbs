@@ -8,12 +8,10 @@
       Yêu thích
   </ul>
 </div>
-<h1 class="container text-center bg-warning font-weight-bold p-2">SẢN PHẨM CỦA BẠN</h1>
 <div class="container mt-3 mb-3">
 
   <div class="row jusify-content-center">
     <div id="mark_list" class="col-12 mt-3">
-      <!--ITEM-->
       {{#each mark}}
       <div class="container mb-3 bg-light">
         <div class="row">
@@ -76,12 +74,25 @@
       </div>
       {{/each}}
     </div>
-
   </div>
 
 </div>
 <script>
   var mark_list = document.getElementById("mark_list")
+  console.log(mark_list.childNodes)
+  if(mark_list.childNodes[1] == undefined){
+   
+    mark_list.insertAdjacentHTML("afterbegin",`<div class="container-fluid d-flex align-items-center flex-column">
+                      <i class="fa fa-heart" style="font-size: 200px;"></i>
+                      <p>Bạn chưa yêu thích sản phẩm nào</p>
+                      <form action="/Product" class="row">
+                        <button class="btn btn-primary bg-primary">
+                          Quẹo lựa ngay
+                        </button>
+                      </form>
+                    </div>
+`) 
+  }
   mark_list.addEventListener("click", function (ToDo) {
     const child = ToDo.target
     var job = child.attributes.job
