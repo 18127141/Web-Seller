@@ -9,52 +9,98 @@
       timer: 1500
     })
   }
-  function CheckOnclick(){
+  //
+
+  function CheckOnclick() {
+    var gender = "", price_zone = "", brand = "", category = "", type = ""
     var INPUT = document.getElementsByTagName("input")
-    for( let i=1; i<INPUT.length;i++ )
-    {
-      if(INPUT[i].checked == true)
-      {
-        console.log(INPUT[i].parentElement.parentElement.classList.add("checked"))  
-      }else{
-          console.log(INPUT[i].parentElement.parentElement.classList.remove("checked"))  
+    for (let i = 1; i < INPUT.length; i++) {
+
+      if (INPUT[i].checked == true) {
+        INPUT[i].parentElement.parentElement.classList.add("checked")
+        if (INPUT[i].attributes.name.value == "Gender") {
+          if (gender == "") {
+            gender += INPUT[i].attributes.value.value
+          } else {
+            gender += "," + INPUT[i].attributes.value.value
+          }
+        }
+        else if (INPUT[i].attributes.name.value == "Type") {
+          if (type == "") {
+            type += INPUT[i].attributes.value.value
+          } else {
+            type += "," + INPUT[i].attributes.value.value
+          }
+        }
+        else if (INPUT[i].attributes.name.value == "Category") {
+          if (category == "") {
+            category += INPUT[i].attributes.value.value
+          } else {
+            category += "," + INPUT[i].attributes.value.value
+          }
+        }
+        else if (INPUT[i].attributes.name.value == "Brand") {
+          if (brand == "") {
+            brand += INPUT[i].attributes.value.value
+          } else {
+            brand += "," + INPUT[i].attributes.value.value
+          }
+        }
+        else {
+          if (price_zone == "") {
+            price_zone += INPUT[i].attributes.value.value
+          } else {
+            price_zone += "," + INPUT[i].attributes.value.value
+          }
+        }
+
+      }
+      else {
+        INPUT[i].parentElement.parentElement.classList.remove("checked")
       }
     }
-    console.log(INPUT)
+    window.location.href = `/Product?Gender=${gender}&Type=${type}&Category=${category}&Brand=${brand}&Price=${price_zone}`
+
+
   }
 </script>
+
 <link rel="stylesheet" href="/CSS/Travel.css">
 <link rel="stylesheet" href="/CSS/ProductSelect.css">
 
 <div class="container travel hldash pt-3">
-    <ul class="d-inline-flex row ">
-        <li class="d-flex align-items-end">
-            <a class="mr-2" href="/">Trang chủ</a>
-        </li>
-        <li class="d-flex align-items-end font-weight-bold">
-            Sản phẩm
-        </li>
-    </ul>
+  <ul class="d-inline-flex row ">
+    <li class="d-flex align-items-end">
+      <a class="mr-2" href="/">Trang chủ</a>
+    </li>
+    <li class="d-flex align-items-end font-weight-bold">
+      Sản phẩm
+    </li>
+  </ul>
 </div>
 <div class="container">
   <div class="row bg-light" id="NAV_LEFT">
     <div class="ProductSelect col-lg-3 col-sm-12 justify-content-center  box-dash p-2 mb-3" style="border-color:white">
       <div class="bottomline text-center p-0 pb-2 pt-2 ">
         <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
-        
-            <ul class="list-inline justify-content-center">
-              <li class="list-inline-item ">
-                <label><input type="radio" name="SEX"  value="All" onclick="CheckOnclick()" class="invisible">TẤT CẢ</input></label>
-              </li>
-              <li class="list-inline-item">
-                <label><input type="radio" name="SEX"  value="Male" onclick="CheckOnclick()" class="invisible">NAM</input></label>
-              </li>
-              <li class="list-inline-item">
-                <label> <input type="radio" name="SEX"  value="Famale" onclick="CheckOnclick()" class="invisible">NỮ</a></label>
-               
-              </li>
-            </ul>
-  
+
+          <ul class="list-inline justify-content-center">
+            <li class="list-inline-item ">
+              <label><input type="radio" name="Gender" value="Male,Female" onclick="CheckOnclick()"
+                  class="invisible">TẤT
+                CẢ</input></label>
+            </li>
+            <li class="list-inline-item">
+              <label><input type="radio" name="Gender" value="Male" onclick="CheckOnclick()"
+                  class="invisible">NAM</input></label>
+            </li>
+            <li class="list-inline-item">
+              <label> <input type="radio" name="Gender" value="Female" onclick="CheckOnclick()"
+                  class="invisible">NỮ</a></label>
+
+            </li>
+          </ul>
+
         </div>
       </div>
       <div class="bottomline text-dark text-center p-2">
@@ -62,79 +108,37 @@
           <h5 class="font-weight-bold " style="cursor: pointer;">LOẠI</h5>
         </div>
         <div id="Loai" class="collapse show  row font-weight-bold" data-parent="#Loai">
-            <ul class=" text-dark card-body listSelect">
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Quần<input name ="Loai"  value="pant" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Áo<input name = "Loai"  value="shirt" class="invisible"  type="checkbox" onclick="CheckOnclick()"></input></label>
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center ">
-                <label class="col">Giày<input name = "Loai" value="shoe" class="invisible"  type="checkbox" onclick="CheckOnclick()"  ></input></label>
-              </li>
-            </ul>
+          <ul class=" text-dark card-body listSelect">
+
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">Quần<input name="Type" value="2" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">Áo<input name="Type" value="3" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            <li class="row py-1 px-3 mb-1 justify-content-center ">
+              <label class="col">Giày<input name="Type" value="1" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+          </ul>
         </div>
       </div>
-         <div class="bottomline text-dark text-center p-2">
+      <div class="bottomline text-dark text-center p-2">
         <div class="row justify-content-center text-center" data-toggle="collapse" href="#category">
           <h5 class="font-weight-bold " style="cursor: pointer;">KIỂU</h5>
         </div>
         <div id="category" class="collapse show  row font-weight-bold" data-parent="#category">
-            <ul class=" text-dark card-body listSelect">
-              <li class="row py-1 px-3 mb-1  justify-content-center">
-               <label class="col">Tất Cả<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-               <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Hút đi<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                 <label class="col">Hai tốp<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-               <label class="col">Bốt<input name ="Kieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-            </ul>
-
-        </div>
-      </div>
-       <div class="bottomline text-dark text-center p-2">
-        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Trangthai">
-          <h5 class="font-weight-bold " style="cursor: pointer;">TRẠNG THÁI</h5>
-        </div>
-        <div id="Trangthai" class="collapse show  row font-weight-bold" data-parent="#Trangthai">
-            <ul class=" text-dark card-body listSelect">
+          <ul class=" text-dark card-body listSelect">
+            {{#each category_nav}}
             <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Tất cả<input name ="TrangThai"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Best sell<input name ="TrangThai"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Sale off<input name ="TrangThai"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-            </ul>
-
-        </div>
-      </div>
-       <div class="bottomline text-dark text-center p-2">
-        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Gia">
-          <h5 class="font-weight-bold " style="cursor: pointer;">GIÁ TIỀN</h5>
-        </div>
-        <div id="Gia" class="collapse show  row font-weight-bold" data-parent="#Gia">
-            <ul class=" text-dark card-body listSelect">
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Tất cả<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Under 500k<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">500k - 1M<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-               <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">1M-3M<input name ="Gia"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-            </ul>
+              <label class="col">{{id}}<input name="Category" value="{{id}}" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            
+            {{/each}}
+          </ul>
 
         </div>
       </div>
@@ -143,26 +147,70 @@
           <h5 class="font-weight-bold " style="cursor: pointer;">THƯƠNG HIỆU</h5>
         </div>
         <div id="TH" class="collapse show  row font-weight-bold" data-parent="#TH">
-            <ul class=" text-dark card-body listSelect">
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Tất cả<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-               <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Adidas<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-              <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Nike<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-             <li class="row py-1 px-3 mb-1 justify-content-center">
-                <label class="col">Punmma<input name ="ThuongHieu"  value="All" class="invisible" type="checkbox" onclick="CheckOnclick()"></input></label> 
-              </li>
-            </ul>
+          <ul class=" text-dark card-body listSelect">
+            {{#each brand_nav}}
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">{{id}}<input name="Brand" value="{{id}}" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            
+            {{/each}}
+          </ul>
 
         </div>
       </div>
+      {{!-- <div class="bottomline text-dark text-center p-2">
+        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Trangthai">
+          <h5 class="font-weight-bold " style="cursor: pointer;">TRẠNG THÁI</h5>
+        </div>
+        <div id="Trangthai" class="collapse show  row font-weight-bold" data-parent="#Trangthai">
+          <ul class=" text-dark card-body listSelect">
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">Tất cả<input name="TrangThai" value="All" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">Best sell<input name="TrangThai" value="All" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">Sale off<input name="TrangThai" value="All" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+          </ul>
+
+        </div>
+      </div> --}}
+      <div class="bottomline text-dark text-center p-2">
+        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Gia">
+          <h5 class="font-weight-bold " style="cursor: pointer;">GIÁ TIỀN</h5>
+        </div>
+        <div id="Gia" class="collapse show  row font-weight-bold" data-parent="#Gia">
+          <ul class=" text-dark card-body listSelect">
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">Tất cả<input name="Price" value="All" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">Under 500k<input name="Price" value="All" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">500k - 1M<input name="Price" value="All" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+            <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label class="col">1M-3M<input name="Price" value="All" class="invisible" type="checkbox"
+                  onclick="CheckOnclick()"></input></label>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
     </div>
-    <div class="col-lg-9 col-sm-12"  >
-     
+    <div class="col-lg-9 col-sm-12">
+
       <div class="row justify-content-center mt-2">
         {{#each products}}
 
@@ -184,13 +232,15 @@
               price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
               m_format[index].innerHTML = price + " VND"
             </script>
-            <a class="btn"><i class="fa fa-heart fa-2x"></i></a>
+            <a href="/Mark/UpdateMark?id={{id}}&returnPath={{../returnPath}}" class="btn"><i
+                class="fa fa-heart fa-2x"></i></a>
             <script>
               //check out of stock---------------------------------------------
               var product_item = document.getElementsByClassName('product_item')
               var product_name = document.getElementsByClassName('product_name')
               var product_id = '{{id}}'
-              var total_products = 0 
+              var total_products = 0
+
             </script>
             {{#each ../size_stock}}
             <script>
@@ -217,3 +267,77 @@
     </div>
   </div>
 </div>
+{{#each type_display}}
+<script>
+
+</script>
+{{/each}}
+<script>
+  type_display = "{{type_display}}"
+  type_display = type_display.split(",")
+  category_display = "{{category_display}}"
+  category_display = category_display.split(",")
+  brand_display = "{{brand_display}}"
+  brand_display = brand_display.split(",")
+  price_display = "{{price_display}}"
+  price_display = price_display.split(",")
+
+  var INPUT = document.getElementsByTagName("input")
+  if ("{{gender_display}}" == "All") {
+    INPUT[1].checked = true
+    INPUT[1].parentElement.parentElement.classList.add("checked")
+
+  }
+  else if ("{{gender_display}}" == "Male") {
+    INPUT[2].checked = true
+    INPUT[2].parentElement.parentElement.classList.add("checked")
+
+  }
+  else {
+    INPUT[3].checked = true
+    INPUT[3].parentElement.parentElement.classList.add("checked")
+  }
+  for (let i = 4; i < INPUT.length; i++) {
+
+    if (INPUT[i].getAttribute("name") == "Type") {
+      for (let j = 0; j < type_display.length; j++) {
+
+        if (parseInt(INPUT[i].attributes.value.value) == parseInt(type_display[j])) {
+          INPUT[i].checked = true
+          INPUT[i].parentElement.parentElement.classList.add("checked")
+          break
+        }
+      }
+    }
+    else if (INPUT[i].getAttribute("name") == "Category") {
+      for (let j = 0; j < category_display.length; j++) {
+
+
+        if (INPUT[i].attributes.value.value == category_display[j]) {
+          INPUT[i].checked = true
+          INPUT[i].parentElement.parentElement.classList.add("checked")
+          break
+        }
+      }
+    }
+    else if (INPUT[i].getAttribute("name") == "Brand") {
+      for (let j = 0; j < brand_display.length; j++) {
+        if (INPUT[i].attributes.value.value == brand_display[j]) {
+          INPUT[i].checked = true
+          INPUT[i].parentElement.parentElement.classList.add("checked")
+          break
+        }
+      }
+    }
+    else {
+      for (let j = 0; j < price_display.length; j++) {
+        if (INPUT[i].attributes.value.value == price_display[j]) {
+          INPUT[i].checked = true
+          INPUT[i].parentElement.parentElement.classList.add("checked")
+          break
+        }
+      }
+    }
+  }
+
+</script>

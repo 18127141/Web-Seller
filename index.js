@@ -166,16 +166,10 @@ app.use('/Show-product', Showproduct_route)
 var Cart_route = require('./Routes/Cart')
 app.use('/Cart', Cart_route)
 
+//Mart route-------
+var Mark_route = require('./Routes/Mark')
+app.use('/Mark', Mark_route)
 
-app.get('/Mark', function (req, res) {
-    if (req.session.cart == undefined) {
-        req.session.cart = []
-    }
-    if (req.session.mark == undefined) {
-        req.session.mark = []
-    }
-    res.render('Mark', { usercheck: req.session.user, cart_total: req.session.cart.length })
-})
 //
 // var bcrypt = require('bcrypt')
 // bcrypt.genSalt(10,function(err,salt){
