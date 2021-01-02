@@ -86,16 +86,16 @@
 
           <ul class="list-inline justify-content-center">
             <li class="list-inline-item ">
-              <label><input type="radio" name="Gender" value="Male,Female" onclick="CheckOnclick()"
+              <label style="cursor: pointer;"><input type="radio" name="Gender" value="Male,Female" onclick="CheckOnclick()"
                   class="invisible">TẤT
                 CẢ</input></label>
             </li>
             <li class="list-inline-item">
-              <label><input type="radio" name="Gender" value="Male" onclick="CheckOnclick()"
+              <label style="cursor: pointer;"><input type="radio" name="Gender" value="Male" onclick="CheckOnclick()"
                   class="invisible">NAM</input></label>
             </li>
             <li class="list-inline-item">
-              <label> <input type="radio" name="Gender" value="Female" onclick="CheckOnclick()"
+              <label style="cursor: pointer;"> <input type="radio" name="Gender" value="Female" onclick="CheckOnclick()"
                   class="invisible">NỮ</a></label>
 
             </li>
@@ -111,15 +111,15 @@
           <ul class=" text-dark card-body listSelect">
 
             <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">Quần<input name="Type" value="2" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col">Quần<input name="Type" value="2" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
             <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">Áo<input name="Type" value="3" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col">Áo<input name="Type" value="3" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
             <li class="row py-1 px-3 mb-1 justify-content-center ">
-              <label class="col">Giày<input name="Type" value="1" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col">Giày<input name="Type" value="1" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
           </ul>
@@ -133,7 +133,7 @@
           <ul class=" text-dark card-body listSelect">
             {{#each category_nav}}
             <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">{{id}}<input name="Category" value="{{id}}" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col">{{id}}<input name="Category" value="{{id}}" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
             
@@ -150,7 +150,7 @@
           <ul class=" text-dark card-body listSelect">
             {{#each brand_nav}}
             <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">{{id}}<input name="Brand" value="{{id}}" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col">{{id}}<input name="Brand" value="{{id}}" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
             
@@ -159,28 +159,7 @@
 
         </div>
       </div>
-      {{!-- <div class="bottomline text-dark text-center p-2">
-        <div class="row justify-content-center text-center" data-toggle="collapse" href="#Trangthai">
-          <h5 class="font-weight-bold " style="cursor: pointer;">TRẠNG THÁI</h5>
-        </div>
-        <div id="Trangthai" class="collapse show  row font-weight-bold" data-parent="#Trangthai">
-          <ul class=" text-dark card-body listSelect">
-            <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">Tất cả<input name="TrangThai" value="All" class="invisible" type="checkbox"
-                  onclick="CheckOnclick()"></input></label>
-            </li>
-            <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">Best sell<input name="TrangThai" value="All" class="invisible" type="checkbox"
-                  onclick="CheckOnclick()"></input></label>
-            </li>
-            <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">Sale off<input name="TrangThai" value="All" class="invisible" type="checkbox"
-                  onclick="CheckOnclick()"></input></label>
-            </li>
-          </ul>
-
-        </div>
-      </div> --}}
+      
       <div class="bottomline text-dark text-center p-2">
         <div class="row justify-content-center text-center" data-toggle="collapse" href="#Gia">
           <h5 class="font-weight-bold " style="cursor: pointer;">GIÁ TIỀN</h5>
@@ -188,19 +167,19 @@
         <div id="Gia" class="collapse show  row font-weight-bold" data-parent="#Gia">
           <ul class=" text-dark card-body listSelect">
             <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">Tất cả<input name="Price" value="All" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col"> < 500k <input name="Price" value="0-500" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
             <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">Under 500k<input name="Price" value="All" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col">500k - 1tr<input name="Price" value="500-1000" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
             <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">500k - 1M<input name="Price" value="All" class="invisible" type="checkbox"
+              <label style="cursor: pointer;" class="col">1tr - 3tr<input name="Price" value="1000-3000" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
-            <li class="row py-1 px-3 mb-1 justify-content-center">
-              <label class="col">1M-3M<input name="Price" value="All" class="invisible" type="checkbox"
+             <li class="row py-1 px-3 mb-1 justify-content-center">
+              <label style="cursor: pointer;" class="col"> > 3tr<input name="Price" value="3000" class="invisible" type="checkbox"
                   onclick="CheckOnclick()"></input></label>
             </li>
           </ul>

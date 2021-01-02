@@ -25,6 +25,24 @@ controller.getByGender = (ele) => {
     raw: true
   })
 }
+controller.getByCategory = (ele) => {
+  return models.Product.findAll({
+    where: {
+      category: { [Op.like]: ele }
+
+    },
+    raw: true
+  })
+}
+controller.getByBrand = (ele) => {
+  return models.Product.findAll({
+    where: {
+      brand: { [Op.like]: ele }
+
+    },
+    raw: true
+  })
+}
 controller.getByType = (ele) => {
   return models.Product.findAll({
     where: {
@@ -43,6 +61,27 @@ controller.getExceptId = (ele) => {
     raw: true
   })
 }
+controller.getbyPriceBetween = (ele1,ele2) =>{
+  return models.Product.findAll({
+    where: {
+      price:{
+        [Op.between]: [ele1,ele2]
+      }
+    },
+    raw:true
+  })
+  };
+  controller.getbyPriceGreater = (ele1) =>{
+    return models.Product.findAll({
+      where: {
+        price:{
+          [Op.gte]: ele1
+        }
+      },
+      raw:true
+    })
+    };
+    
 controller.searchByNameAndId = (ele) => {
   return models.Product.findAll({
     where: {
@@ -54,4 +93,5 @@ controller.searchByNameAndId = (ele) => {
     raw: true
   })
 }
+
 module.exports = controller
