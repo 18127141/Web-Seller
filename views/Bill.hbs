@@ -1,0 +1,178 @@
+<link rel="stylesheet" href="/CSS/Travel.css">
+
+<div class="container travel hldash pt-3">
+    <ul class="d-inline-flex row ">
+        <li class="d-flex align-items-end">
+            <a class="mr-2" href="/">Trang chủ</a>
+        </li>
+        <li class="d-flex align-items-end">
+            <a class="mr-2" href="/Cart">Đơn hàng</a>
+        </li>
+        <li class="d-flex align-items-end font-weight-bold">
+            ABCXYZ
+        </li>
+    </ul>
+</div>
+
+
+<div class="container mt-3 mb-4 pb-5">
+    <div class="row container-fluid ">
+        <h4 class="col-4 text-center py-2 text-light bg-success">TIẾP NHẬN ĐƠN HÀNG</h4>
+        <h4 class="col-4 text-center py-2 text-light bg-secondary">VẬN CHUYỂN</h4>
+        <h4 class="col-4 text-center py-2 text-light bg-secondary">ĐÃ GIAO</h4>
+    </div>
+    <div class=" justify-content-center mt">
+
+        <form action="/Cart/Bill">
+            <div class="row">
+                <div class="col-lg-7 mt-3">
+                    <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Thông tin giao dịch</h3>
+                    <div class="container mt-3 justify-content-center">
+
+                        <div class="row hl2dash vl2 bg-secondary justify-content-center">
+                            <p class=" m-1 text-light font-weight-bold">Địa chỉ</p>
+
+                        </div>
+                        <div class="row vl2 p-0 ">
+                            <input class="col-6  p-0 m-0 text-center  " type="text" id="CName" value="Trần Phi Phụng"
+                                disabled="true">
+                            </input>
+
+                            <input class="col-6  p-0 m-0 text-center " type="text" id="CPhone" value="091231231"
+                                disabled="true">
+                            </input>
+                        </div>
+                        <div class="row box-dash p-0" style="font-size: 16px;">
+                            <input class="col    p-0 m-0 text-center" type="text" id="CAddress"
+                                value="112/15 Thành Thái, Quận Tân Bình, TpHCM" disabled="true">
+                            </input>
+                        </div>
+
+
+                    </div>
+                    <div class="container mt-4">
+
+                        <div class="row hl2dash vl2 bg-secondary justify-content-center">
+                            <p class=" m-1 text-light font-weight-bold">Mã khuyến mãi</p>
+
+                        </div>
+                        <div class="row vl2 p-0 ">
+                            <div class="col p-0 m-0 text-center font-weight-bolder ">
+                                <input class="col p-0 m-0 text-center " type="text" id="CVoucher"
+                                    value="#NoNameNoNumber" disabled="true">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="row box-dash p-1 text-center font-weight-bolder text-primary"
+                            style="font-size: 16px;">
+                            <p class="col p-1 m-0" class="PriceVoucher">-100 000 VND </p>
+                        </div>
+                    </div>
+                    <div class="container mt-4">
+                        <div class="row hl2dash vl2 bg-secondary justify-content-center">
+                            <p class=" m-1 text-light font-weight-bold">Hình thức vận chuyển</p>
+                        </div>
+                        <label
+                            class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
+                            style="font-size: 16px;">
+                            <input type="radio" name="delivery" value="Trả tiền khi lấy hàng" checked>Giao hàng tiêu
+                            chuẩn
+                            </input>
+                        </label>
+                    </div>
+                    <div class="container mt-4 ">
+                        <div class="row hl2dash vl2 bg-secondary justify-content-center">
+                            <p class=" m-1 text-light font-weight-bold">Hình thức thanh toán</p>
+                        </div>
+                        <label
+                            class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
+                            style="font-size: 16px;">
+                            <input type="radio" name="Pay" value="Trả tiền khi lấy hàng" checked>Thanh toán khi nhận
+                            hàng
+                            </input>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="col-lg-5 mt-3 sticky-top">
+                    <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Giá Tiền</h3>
+                    <div class="container mt-3 ">
+
+                        <div class="row hl2dash vl2 bg-secondary justify-content-center">
+                            <p class=" m-1 text-light font-weight-bold">THANH TOÁN</p>
+                        </div>
+                        <div class="row hldash vl2  justify-content-between">
+                            <p class=" m-1 text-dark font-weight-bold">TỔNG TIỀN</p>
+                            <p class=" m-1 text-danger font-weight-bold" id="TotalCost">500 000 VND</p>
+                        </div>
+                        <div class="row vl2 p-0 hldash  justify-content-between">
+                            <p class=" m-1 text-dark font-weight-bold">VOUCHER</p>
+                            <p class=" m-1  font-weight-bold text-primary" class="PriceVoucher">-100 000 VND</p>
+                        </div>
+                        <div class="row vl2 p-0 hldash  justify-content-between">
+                            <p class=" m-1 text-dark font-weight-bold">THÀNH TIỀN</p>
+                            <h4 class=" m-1  font-weight-bold text-primary " id="RemainCost">400 000 VND</h4>
+                        </div>
+                    </div>
+                    <div class="container mt-3 justify-content-center">
+                        <div class="row  justify-content-center">
+
+                            <button type="submit" class="btn col btn-warning bg-warning p-3" style="border-radius: 0px">
+                                <h3 class="p-0 m-0 font-weight-bold">Hủy đơn hàng</h3>
+                            </button>
+
+
+                        </div>
+                    </div>
+                    <div class="container mt-3 justify-content-center">
+                        <div class="row  justify-content-center">
+
+                            <button type="submit" class="btn col btn-warning bg-warning p-3" style="border-radius: 0px">
+                                <h3 class="p-0 m-0 font-weight-bold">Đánh giá đơn hàng</h3>
+                            </button>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </form>
+
+    </div>
+    <h3 class="p-2 font-weight-bolder text-center mt-3" style="background-color: #f1f1f1;">Danh sách sản phẩm</h3>
+    <div id="cart-content" class=" container mt-3 p-0">
+        <table class="table mt-3">
+            <thead>
+                <th scope="col">Tên</th>
+                <th scope="col">Hãng</th>
+                <th scope="col">Size</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Giá</th>
+
+
+
+            </thead>
+            <tbody>
+                {{#each cart}}
+                <tr>
+                    <td scope="col">{{name}}</td>
+                    <td scope="col">{{brand}}</td>
+                    <td scope="col">{{size}}</td>
+                    <td scope="col">{{quantity}}</td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>

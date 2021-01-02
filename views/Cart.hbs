@@ -63,7 +63,6 @@
                   var index = {{@index}}
                   var m_format = document.getElementsByClassName("Money_format")
                   var quantity_div = document.getElementsByClassName("quantity")
-
                   if (parseInt(quantity_div[index].attributes.value.value) == parseInt(quantity_div[index].innerHTML)) {
                     quantity_div[index].style.color = "red"
                   }
@@ -83,51 +82,7 @@
     </div>
 
     <div class="col-lg-4 justify-content-center">
-      <form action="/">
-        <div class="container mt-3 justify-content-center" >
-
-          <div class="row hl2dash vl2 bg-secondary justify-content-center">
-            <p class=" m-1 text-light font-weight-bold">Địa chỉ</p>
-            <button type="button" class="btn btn-secondary bg-secondary" onclick="AddresbtnModify()"><i
-                class="fa fa-edit"></i></button>
-            <script>
-              var AddresbtnModify = function () {
-                let ArrTemp = ["CName","CPhone","CAddress"];
-                for (let i=0; i<ArrTemp.length;i++){
-                  document.getElementById(ArrTemp[i]).disabled=false;
-                }
-                document.getElementById("AcceptInfo").classList.replace("invisible","visible");
-              }
-            </script>
-          </div>
-          <div class="row vl2 p-0 ">
-            <input class="col-6  p-0 m-0 text-center  " type="text"id="CName"
-              value="Trần Phi Phụng" disabled="true">
-            </input>
-
-            <input class="col-6  p-0 m-0 text-center " type="text"  id="CPhone" value="091231231"
-              disabled="true">
-            </input>
-          </div>
-          <div class="row box-dash p-0" style="font-size: 16px;">
-            <input class="col    p-0 m-0 text-center" type="text"  id="CAddress"
-              value="112/15 Thành Thái, Quận Tân Bình, TpHCM" disabled="true">
-            </input>
-          </div>
-          <div class="row justify-content-center">
-            <button  type ="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptInfo" onclick="AddresbtnComplete()">Hoàn tất</button> 
-            <script>
-            var AddresbtnComplete = function () {
-                let ArrTemp = ["CName","CPhone","CAddress"];
-                for (let i=0; i<ArrTemp.length;i++){
-                  document.getElementById(ArrTemp[i]).disabled=true;
-                }
-                document.getElementById("AcceptInfo").classList.replace("visible","invisible");
-              }
-            </script>
-          </div>
-          
-        </div>
+      <form action="/Cart/Payment">
         <div class="container mt-3">
 
           <div class="row hl2dash vl2 bg-secondary justify-content-center">
@@ -186,8 +141,8 @@
 
         <div class="container mt-3 justify-content-center">
           <div class="row  justify-content-center">
-            <button type="submit" class="btn col btn-warning bg-warning">
-              <p class="p-0 m-0 font-weight-bold">ĐẶT HÀNG</p>
+            <button type="submit" class="btn col btn-warning bg-warning" style="border-radius: 0px;">
+              <h1 class="p-0 m-0 font-weight-bold">ĐẶT HÀNG</h1>
             </button>
           </div>
       </form>
@@ -202,7 +157,6 @@
   console.log(cart_content.childNodes)
   if (cart_content.childNodes[1] == undefined) {
     var parent = cart_content.parentNode.parentNode;
-
     while (parent.hasChildNodes() == true) {
       parent.removeChild(parent.childNodes[0]);
     }
@@ -236,13 +190,9 @@
       else {
         var stock = parseInt(child.parentNode.childNodes[3].attributes.value.value)
         let temp = parseInt(child.parentNode.childNodes[3].innerHTML)
-
         if (job == "add_quantity") {
-
           if (temp < stock) {
-
             temp++
-
             child.parentNode.childNodes[3].innerHTML = temp
             if (temp == stock) {
               child.parentNode.childNodes[3].style.color = "red"
@@ -257,15 +207,10 @@
           }
         }
         var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
-
         price = parseInt(price) * parseInt(child.parentNode.childNodes[3].innerHTML)
         price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
-
         child.parentNode.parentNode.parentNode.childNodes[5].innerHTML = price + " VND"
       }
-
     }
-
   })
-
 </script>

@@ -1,0 +1,268 @@
+<link rel="stylesheet" href="/CSS/Travel.css">
+
+<div class="container travel hldash pt-3">
+  <ul class="d-inline-flex row ">
+    <li class="d-flex align-items-end">
+      <a class="mr-2" href="/">Trang chủ</a>
+    </li>
+    <li class="d-flex align-items-end">
+      <a class="mr-2" href="/Cart">Giỏ hàng</a>
+    </li>
+    <li class="d-flex align-items-end font-weight-bold">
+      Thanh toán
+    </li>
+  </ul>
+</div>
+
+
+<div class="container mt-3 mb-4 pb-5">
+
+  <div class=" justify-content-center">
+    
+    <form action="/Cart/Bill">
+      <div class="row">
+        <div class="col-lg-7 mt-3">
+          <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Thông tin giao dịch</h3>
+          <div class="container mt-3 justify-content-center">
+
+            <div class="row hl2dash vl2 bg-secondary justify-content-center">
+              <p class=" m-1 text-light font-weight-bold">Địa chỉ</p>
+              <button type="button" class="btn btn-secondary bg-secondary" onclick="AddresbtnModify()"><i
+                  class="fa fa-edit"></i></button>
+              <script>
+                var AddresbtnModify = function () {
+                  let ArrTemp = ["CName", "CPhone", "CAddress"];
+                  for (let i = 0; i < ArrTemp.length; i++) {
+                    document.getElementById(ArrTemp[i]).disabled = false;
+                  }
+                  document.getElementById("AcceptInfo").classList.replace("invisible", "visible");
+                }
+              </script>
+            </div>
+            <div class="row vl2 p-0 ">
+              <input class="col-6  p-0 m-0 text-center  " type="text" id="CName" value="Trần Phi Phụng" disabled="true">
+              </input>
+
+              <input class="col-6  p-0 m-0 text-center " type="text" id="CPhone" value="091231231" disabled="true">
+              </input>
+            </div>
+            <div class="row box-dash p-0" style="font-size: 16px;">
+              <input class="col    p-0 m-0 text-center" type="text" id="CAddress"
+                value="112/15 Thành Thái, Quận Tân Bình, TpHCM" disabled="true">
+              </input>
+            </div>
+            <div class="row justify-content-center">
+              <button type="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptInfo"
+                onclick="AddresbtnComplete()">Hoàn tất</button>
+              <script>
+                var AddresbtnComplete = function () {
+                  let ArrTemp = ["CName", "CPhone", "CAddress"];
+                  for (let i = 0; i < ArrTemp.length; i++) {
+                    document.getElementById(ArrTemp[i]).disabled = true;
+                  }
+                  document.getElementById("AcceptInfo").classList.replace("visible", "invisible");
+                }
+              </script>
+            </div>
+
+          </div>
+          <div class="container">
+
+            <div class="row hl2dash vl2 bg-secondary justify-content-center">
+              <p class=" m-1 text-light font-weight-bold">Mã khuyến mãi</p>
+              <button type="button" class="btn btn-secondary bg-secondary" onclick="VoucherModify()"><i
+                  class="fa fa-edit"></i></button>
+              <script>
+                var VoucherModify = function () {
+                  document.getElementById("CVoucher").disabled = false;
+
+                  document.getElementById("AcceptVoucher").classList.replace("invisible", "visible");
+                }
+              </script>
+            </div>
+            <div class="row vl2 p-0 ">
+              <div class="col p-0 m-0 text-center font-weight-bolder ">
+                <input class="col p-0 m-0 text-center " type="text" id="CVoucher" value="#NoNameNoNumber"
+                  disabled="true">
+                </input>
+              </div>
+            </div>
+            <div class="row box-dash p-1 text-center font-weight-bolder text-primary" style="font-size: 16px;">
+              <p class="col p-1 m-0" class="PriceVoucher">-100 000 VND </p>
+            </div>
+            <div class="row justify-content-center">
+              <button type="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptVoucher"
+                onclick="AcceptVoucherBtn()">Hoàn tất</button>
+              <script>
+                var AcceptVoucherBtn = function () {
+                  document.getElementById("CVoucher").disabled = true;
+
+                  document.getElementById("AcceptVoucher").classList.replace("visible", "invisible");
+                }
+              </script>
+            </div>
+          </div>
+          <div class="container ">
+            <div class="row hl2dash vl2 bg-secondary justify-content-center">
+              <p class=" m-1 text-light font-weight-bold">Hình thức vận chuyển</p>
+            </div>
+            <label class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
+              style="font-size: 16px;">
+              <input type="radio" name="delivery" value="Trả tiền khi lấy hàng">Giao hàng tiêu chuẩn </input>
+            </label>
+          </div>
+          <div class="container mt-4 ">
+            <div class="row hl2dash vl2 bg-secondary justify-content-center">
+              <p class=" m-1 text-light font-weight-bold">Hình thức thanh toán</p>
+            </div>
+            <label class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
+              style="font-size: 16px;">
+              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng">Thanh toán khi nhận hàng </input>
+            </label>
+            <label class="row my-0 vl2 hldash p-1 text-center font-weight-bolder text-primary justify-content-center"
+              style="font-size: 16px;">
+              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng" disabled="true">Thanh toán bằng chuyển
+              khoản </input>
+            </label>
+            <label class="row my-0 vl2 hldash p-1 text-center font-weight-bolder text-primary justify-content-center"
+              style="font-size: 16px;">
+              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng" disabled="true">Thanh toán bằng thẻ ngân
+              hàng </input>
+            </label>
+            <label class="row my-0 vl2 hldash p-1 text-center font-weight-bolder text-primary justify-content-center"
+              style="font-size: 16px;">
+              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng" disabled="true">Thanh toán bằng ví
+              Momoland
+              </input>
+            </label>
+
+          </div>
+        </div>
+        <div class="col-lg-5 sticky-top">
+          <div id="cart-content" class=" container mt-3 p-0">
+            <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Giỏ hàng</h3>
+            <table class="table mt-3">
+              <thead>
+                <th scope="col">Tên</th>
+                <th scope="col">Hãng</th>
+                <th scope="col">Size</th>
+                <th scope="col">SL</th>
+
+
+              </thead>
+              <tbody>
+                {{#each cart}}
+                <tr>
+                  <td scope="col">{{name}}</td>
+                  <td scope="col">{{brand}}</td>
+                  <td scope="col">{{size}}</td>
+                  <td scope="col">{{quantity}}</td>
+
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+            
+              <a href="/Cart" class="btn col btn-warning bg-primary p-3" style="border-radius: 0px">
+                <h3 class="p-0 m-0 font-weight-bold text-light">Thay đổi</h3>
+              </a>
+      
+          </div>
+          <div class="container mt-3 ">
+            <div class="row hl2dash vl2 bg-secondary justify-content-center">
+              <p class=" m-1 text-light font-weight-bold">THANH TOÁN</p>
+            </div>
+            <div class="row hldash vl2  justify-content-between">
+              <p class=" m-1 text-dark font-weight-bold">TỔNG TIỀN</p>
+              <p class=" m-1 text-danger font-weight-bold" id="TotalCost">500 000 VND</p>
+            </div>
+            <div class="row vl2 p-0 hldash  justify-content-between">
+              <p class=" m-1 text-dark font-weight-bold">VOUCHER</p>
+              <p class=" m-1  font-weight-bold text-primary" class="PriceVoucher">-100 000 VND</p>
+            </div>
+            <div class="row vl2 p-0 hldash  justify-content-between">
+              <p class=" m-1 text-dark font-weight-bold">THÀNH TIỀN</p>
+              <h4 class=" m-1  font-weight-bold text-primary " id="RemainCost">400 000 VND</h4>
+            </div>
+          </div>
+          <div class="container mt-3 justify-content-center">
+            <div class="row  justify-content-center">
+              <button type="submit" class="btn col btn-warning bg-warning p-3" style="border-radius: 0px">
+                <h3 class="p-0 m-0 font-weight-bold">ĐẶT HÀNG</h3>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+
+
+</div>
+
+<script>
+  var cart_content = document.getElementById("cart-content")
+  console.log(cart_content.childNodes)
+  if (cart_content.childNodes[1] == undefined) {
+    var parent = cart_content.parentNode.parentNode;
+    while (parent.hasChildNodes() == true) {
+      parent.removeChild(parent.childNodes[0]);
+    }
+    parent.insertAdjacentHTML("afterbegin", `<div class="container-fluid d-flex align-items-center flex-column">
+                      <i class="fa fa-shopping-cart" style="font-size: 200px;"></i>
+                      <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+                      <form action="/Product" class="row">
+                        <button class="btn btn-primary bg-primary" type="submit">
+                          Quẹo lựa ngay
+                        </button>
+                      </form>
+                    </div>
+                    `)
+  }
+  cart_content.addEventListener("click", function (ToDo) {
+    const child = ToDo.target
+    var job = child.attributes.job
+    if (job != undefined) {
+      job = child.attributes.job.value
+      //delete product from cart
+      if (job == "delete" || job == "mark") {
+        var work_id = child.attributes.value.value
+        if (job == "delete") {
+          window.location.href = `/Cart/DeleteProduct?returnPath={{returnPath}}&id=${work_id}&submit=delete`
+        }
+        else {
+          window.location.href = `/Cart/DeleteProduct?returnPath={{returnPath}}&id=${work_id}&submit=mark`
+        }
+      }
+      //change quantity
+      else {
+        var stock = parseInt(child.parentNode.childNodes[3].attributes.value.value)
+        let temp = parseInt(child.parentNode.childNodes[3].innerHTML)
+        if (job == "add_quantity") {
+          if (temp < stock) {
+            temp++
+            child.parentNode.childNodes[3].innerHTML = temp
+            if (temp == stock) {
+              child.parentNode.childNodes[3].style.color = "red"
+            }
+          }
+        }
+        else {
+          if (temp > 1) {
+            temp--
+            child.parentNode.childNodes[3].innerHTML = temp
+            child.parentNode.childNodes[3].style.color = "black"
+          }
+        }
+        var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
+        price = parseInt(price) * parseInt(child.parentNode.childNodes[3].innerHTML)
+        price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+        child.parentNode.parentNode.parentNode.childNodes[5].innerHTML = price + " VND"
+      }
+    }
+  })
+</script>
