@@ -18,7 +18,7 @@
 <div class="container mt-3 mb-4 pb-5">
 
   <div class=" justify-content-center">
-    
+
     <form action="/Cart/Bill">
       <div class="row">
         <div class="col-lg-7 mt-3">
@@ -40,15 +40,17 @@
               </script>
             </div>
             <div class="row vl2 p-0 ">
-              <input class="col-6  p-0 m-0 text-center  " type="text" id="CName" value="Trần Phi Phụng" disabled="true">
+              <input class="user_input col-6  p-0 m-0 text-center  " type="text" id="CName" value="{{user_pay.name}}"
+                disabled="true">
               </input>
 
-              <input class="col-6  p-0 m-0 text-center " type="text" id="CPhone" value="091231231" disabled="true">
+              <input class="user_input col-6  p-0 m-0 text-center " type="text" id="CPhone" value="{{user_pay.phone}}"
+                disabled="true">
               </input>
             </div>
             <div class="row box-dash p-0" style="font-size: 16px;">
-              <input class="col    p-0 m-0 text-center" type="text" id="CAddress"
-                value="112/15 Thành Thái, Quận Tân Bình, TpHCM" disabled="true">
+              <input class="user_input col  p-0 m-0 text-center" type="text" id="CAddress" value="{{user_pay.address}}"
+                disabled="true">
               </input>
             </div>
             <div class="row justify-content-center">
@@ -82,7 +84,7 @@
             </div>
             <div class="row vl2 p-0 ">
               <div class="col p-0 m-0 text-center font-weight-bolder ">
-                <input class="col p-0 m-0 text-center " type="text" id="CVoucher" value="#NoNameNoNumber"
+                <input class="user_input col p-0 m-0 text-center " type="text" id="CVoucher" value="{{user_pay.discount}}"
                   disabled="true">
                 </input>
               </div>
@@ -108,7 +110,8 @@
             </div>
             <label class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
               style="font-size: 16px;">
-              <input type="radio" name="delivery" value="Trả tiền khi lấy hàng">Giao hàng tiêu chuẩn </input>
+              <input class="user_input" type="radio" name="delivery" value="Trả tiền khi lấy hàng">Giao hàng tiêu chuẩn
+              </input>
             </label>
           </div>
           <div class="container mt-4 ">
@@ -162,11 +165,11 @@
                 {{/each}}
               </tbody>
             </table>
-            
-              <a href="/Cart" class="btn col btn-warning bg-primary p-3" style="border-radius: 0px">
+            <form action="/Cart">
+              <a onclick=returnCart() class="btn col btn-warning bg-primary p-3" style="border-radius: 0px">
                 <h3 class="p-0 m-0 font-weight-bold text-light">Thay đổi</h3>
               </a>
-      
+            </form>
           </div>
           <div class="container mt-3 ">
             <div class="row hl2dash vl2 bg-secondary justify-content-center">
@@ -205,10 +208,20 @@
 </div>
 
 <script>
+  function returnCart() {
+    var user_input = document.getElementsByClassName("user_input")
+    var discount = user_input[3].value
+    discount = discount.split('')
+    discount.splice(0, 1)
+    discount = discount.join('')
+    
+    window.location.href = `/Cart/ChangeCart?name=${user_input[0].value}&phone=${user_input[1].value}&address=${user_input[2].value}&discount=${discount}`
+  }
   var cart_content = document.getElementById("cart-content")
-  console.log(cart_content.childNodes)
+
   if (cart_content.childNodes[1] == undefined) {
     var parent = cart_content.parentNode.parentNode;
+
     while (parent.hasChildNodes() == true) {
       parent.removeChild(parent.childNodes[0]);
     }

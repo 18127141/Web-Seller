@@ -177,6 +177,7 @@ router.get('/', function (req, res) {
 
 
         }
+        
         var size = await size_controller.getAll()
         res.render('Product',
             {

@@ -234,7 +234,7 @@
                             <p class="p-0 m-0">${item.category}</p>
                         </div>
                         <p class="Price m-0">${price} VND</p>
-                        <a class="btn"><i class="fa fa-heart fa-2x"></i></a>`
+                        <a href ="/Mark/UpdateMark?id=${item.id}&returnPath={{returnPath}}" class="btn"><i class="fa fa-heart fa-2x"></i></a>`
           if (parseInt(item.stock) != 0) {
             relative_item += `
                         <a class="btn" href ="/Cart/UpdateCart?id=${item.id}&returnPath={{returnPath}}&submit=product_submit"><i class="fa fa-shopping-cart fa-2x"></i></a>`

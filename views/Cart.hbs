@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/CSS/Travel.css">
-
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <div class="container travel hldash pt-3">
   <ul class="d-inline-flex row ">
     <li class="d-flex align-items-end">
@@ -10,7 +10,10 @@
     </li>
   </ul>
 </div>
+<script>
+  var total_price = 0
 
+</script>
 <div class="container mt-3 mb-4 pb-5">
 
   <div class="row jusify-content-between">
@@ -68,6 +71,7 @@
                   }
                   var price = {{ price }}
                   price = parseInt(price) * parseInt(quantity_div[index].innerHTML)
+                  total_price += price
                   price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
                   m_format[index].innerHTML = price + " VND"
                 </script>
@@ -82,37 +86,38 @@
     </div>
 
     <div class="col-lg-4 justify-content-center">
-      <form action="/Cart/Payment">
+      <form action="/Cart/Payment" method="GET" onsubmit="return check()">
         <div class="container mt-3">
 
           <div class="row hl2dash vl2 bg-secondary justify-content-center">
             <p class=" m-1 text-light font-weight-bold">Mã khuyến mãi</p>
-            <button type="button" class="btn btn-secondary bg-secondary" onclick="VoucherModify()"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-secondary bg-secondary" onclick="VoucherModify()"><i
+                class="fa fa-edit"></i></button>
             <script>
-                 var VoucherModify = function () {
-                  document.getElementById("CVoucher").disabled=false;
-                
-                document.getElementById("AcceptVoucher").classList.replace("invisible","visible");
+              var VoucherModify = function () {
+                document.getElementById("CVoucher").disabled = false;
+
+                document.getElementById("AcceptVoucher").classList.replace("invisible", "visible");
               }
             </script>
           </div>
           <div class="row vl2 p-0 ">
             <div class="col p-0 m-0 text-center font-weight-bolder ">
-              <input class="col p-0 m-0 text-center " type="text" id="CVoucher"
-                value="#NoNameNoNumber" disabled="true">
+              <input class="col p-0 m-0 text-center " name ="CVoucher" type="text" id="CVoucher" value="#NoNameNoNumber" disabled="true">
               </input>
             </div>
           </div>
           <div class="row box-dash p-1 text-center font-weight-bolder text-primary" style="font-size: 16px;">
-            <p class="col p-1 m-0" class="PriceVoucher">-100 000 VND </p>
+            <p class="PriceVoucher col p-1 m-0" value="-100000"></p>
           </div>
-         <div class="row justify-content-center">
-            <button  type ="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptVoucher" onclick="AcceptVoucherBtn()">Hoàn tất</button> 
+          <div class="row justify-content-center">
+            <button type="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptVoucher"
+              onclick="AcceptVoucherBtn()">Hoàn tất</button>
             <script>
-                 var AcceptVoucherBtn = function () {
-                  document.getElementById("CVoucher").disabled = true;
-                
-                document.getElementById("AcceptVoucher").classList.replace("visible","invisible");
+              var AcceptVoucherBtn = function () {
+                document.getElementById("CVoucher").disabled = true;
+
+                document.getElementById("AcceptVoucher").classList.replace("visible", "invisible");
               }
             </script>
           </div>
@@ -127,15 +132,15 @@
           </div>
           <div class="row hldash vl2  justify-content-between">
             <p class=" m-1 text-dark font-weight-bold">TỔNG TIỀN</p>
-            <p class=" m-1 text-danger font-weight-bold" id="TotalCost">500 000 VND</p>
+            <p class=" m-1 text-danger font-weight-bold" id="TotalCost"></p>
           </div>
           <div class="row vl2 p-0 hldash  justify-content-between">
             <p class=" m-1 text-dark font-weight-bold">VOUCHER</p>
-            <p class=" m-1  font-weight-bold text-primary" class="PriceVoucher">-100 000 VND</p>
+            <p class="PriceVoucher m-1  font-weight-bold text-primary"></p>
           </div>
           <div class="row vl2 p-0 hldash  justify-content-between">
             <p class=" m-1 text-dark font-weight-bold">THÀNH TIỀN</p>
-            <h4 class=" m-1  font-weight-bold text-primary " id="RemainCost">400 000 VND</h4>
+            <h4 class=" m-1  font-weight-bold text-primary " id="RemainCost"></h4>
           </div>
         </div>
 
@@ -153,13 +158,31 @@
 
 </div>
 <script>
-  var cart_content = document.getElementById("cart-content")
-  console.log(cart_content.childNodes)
+  var discount = 0;
+  var PriceVoucher = document.getElementsByClassName("PriceVoucher");
+
+  if (PriceVoucher[0].attributes.value.value == "") {
+    discount = 0;
+    PriceVoucher[0].innerHTML = "0 VND";
+    PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
+  }
+  else {
+    discount = parseInt(PriceVoucher[0].attributes.value.value)
+
+    PriceVoucher[0].innerHTML = discount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+    PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
+  }
+
+  var RemainCost = document.getElementById("RemainCost");
+  var TotalCost = document.getElementById("TotalCost");
+  var cart_content = document.getElementById("cart-content");
+
   if (cart_content.childNodes[1] == undefined) {
     var parent = cart_content.parentNode.parentNode;
     while (parent.hasChildNodes() == true) {
       parent.removeChild(parent.childNodes[0]);
     }
+
     parent.insertAdjacentHTML("afterbegin", `<div class="container-fluid d-flex align-items-center flex-column">
                       <i class="fa fa-shopping-cart" style="font-size: 200px;"></i>
                       <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
@@ -171,6 +194,7 @@
                     </div>
                     `)
   }
+
   cart_content.addEventListener("click", function (ToDo) {
     const child = ToDo.target
     var job = child.attributes.job
@@ -192,8 +216,10 @@
         let temp = parseInt(child.parentNode.childNodes[3].innerHTML)
         if (job == "add_quantity") {
           if (temp < stock) {
+            var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
             temp++
             child.parentNode.childNodes[3].innerHTML = temp
+            total_price += parseInt(price)
             if (temp == stock) {
               child.parentNode.childNodes[3].style.color = "red"
             }
@@ -201,16 +227,55 @@
         }
         else {
           if (temp > 1) {
+            var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
             temp--
+            total_price -= parseInt(price)
             child.parentNode.childNodes[3].innerHTML = temp
             child.parentNode.childNodes[3].style.color = "black"
           }
         }
         var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
         price = parseInt(price) * parseInt(child.parentNode.childNodes[3].innerHTML)
+
         price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
         child.parentNode.parentNode.parentNode.childNodes[5].innerHTML = price + " VND"
+        var remain = total_price + discount;
+        
+        RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+        TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
       }
     }
   })
+  // money fomat on total and discount
+  var remain = total_price + discount;
+  if (remain < 0){
+    remain = 0
+  }
+  RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+  TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+  function check() {
+
+    if ("{{usercheck}}" == "") {
+      Swal.fire({
+        title: 'Bạn cần đăng nhập để tiếp tục, bạn có muốn đăng nhập không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tiếp tục',
+        cancelButtonText: 'Hủy'
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          window.location.href = `/User/Login?returnURL={{returnPath}}`
+        }
+      })
+      return false
+    }
+    document.getElementById("CVoucher").disabled = false;
+    return true
+  } 
 </script>

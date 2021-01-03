@@ -30,21 +30,44 @@ router.get('/', function (req, res) {
             })
 
         }
-
+        var discount;
+        if (req.session.user_pay != undefined) {
+            discount = req.session.user_pay.discount
+        }
         res.render('Cart',
             {
                 cart: cart,
+                discount: discount,
                 usercheck: req.session.user,
                 cart_total: req.session.cart.length,
                 returnPath: req.originalUrl,
             })
     }
 })
+router.get("/ChangeCart", function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    var user_pay = {
+        name: req.query.name,
+        phone: req.query.phone,
+        address: req.query.address,
+        discount: "#" + req.query.discount,
+    }
+
+    req.session.user_pay = user_pay
+    res.redirect("/Cart")
+})
 router.get("/UpdateCart", function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
-
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
 
     getdata();
     async function getdata() {
@@ -70,7 +93,7 @@ router.get("/UpdateCart", function (req, res) {
         // check if the product is already in the cart
         var check = false
         for (let i = 0; i < req.session.cart.length; i++) {
-            if (req.session.cart[i].id == req.query.id && parseInt(req.session.cart[i].size) == size) {
+            if (req.session.cart[i].id == req.query.id && req.session.cart[i].size == size) {
                 check = true
                 if (quantity + req.session.cart[i].quantity >= stock) {
                     req.session.cart[i].quantity = stock
@@ -93,6 +116,7 @@ router.get("/UpdateCart", function (req, res) {
         }
         else {
             req.session.congrats = "Thêm sản phẩm vào giỏ hàng thành công!"
+
             res.redirect(req.query.returnPath)
 
         }
@@ -111,14 +135,17 @@ router.get('/DeleteProduct', function (req, res) {
             break
         }
     }
-    if (submit == "mark"){
+    if (submit == "mark") {
         res.redirect(`/Mark/UpdateMark?id=${id}&returnPath=${returnPath}`)
     }
     res.redirect(returnPath)
 })
 
-//Paymen
+//Payment
 router.get('/Payment', function (req, res) {
+    if (req.session.user == undefined){
+        res.redirect('/')
+    }
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
@@ -145,10 +172,21 @@ router.get('/Payment', function (req, res) {
             })
 
         }
-
+        if (req.session.user_pay == undefined){
+            req.session.user_pay = {
+                name:req.session.user.name,
+                phone:req.session.user.phone,
+                address:req.session.user.address,
+                discount: "",
+            }
+        }
+        if (req.query.CVoucher != undefined && req.query.CVoucher != "") {
+            req.session.user_pay.discount = req.query.CVoucher
+        }
         res.render('Payment',
             {
                 cart: cart,
+                user_pay: req.session.user_pay,
                 usercheck: req.session.user,
                 cart_total: req.session.cart.length,
                 returnPath: req.originalUrl,

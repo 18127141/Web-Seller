@@ -1,5 +1,6 @@
 <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script>
+
   if ("{{congrats}}" != "") {
     Swal.fire({
       position: 'center',
@@ -193,7 +194,7 @@
     <div class="col-lg-9 col-sm-12">
 
       <div class="row justify-content-center mt-2 " id="ContentSearch">
-       
+
 
         {{#each products}}
 
@@ -266,21 +267,26 @@
   price_display = price_display.split(",")
 
   var INPUT = document.getElementsByTagName("input")
+  var input_start = 1
+  if ("{{congrats}}" != "") {
+    input_start = 5
+  }
+
   if ("{{gender_display}}" == "All") {
-    INPUT[1].checked = true
-    INPUT[1].parentElement.parentElement.classList.add("checked")
+    INPUT[input_start].checked = true
+    INPUT[input_start].parentElement.parentElement.classList.add("checked")
 
   }
   else if ("{{gender_display}}" == "Male") {
-    INPUT[2].checked = true
-    INPUT[2].parentElement.parentElement.classList.add("checked")
+    INPUT[input_start + 1].checked = true
+    INPUT[input_start + 1].parentElement.parentElement.classList.add("checked")
 
   }
   else {
-    INPUT[3].checked = true
-    INPUT[3].parentElement.parentElement.classList.add("checked")
+    INPUT[input_start + 2].checked = true
+    INPUT[input_start + 2].parentElement.parentElement.classList.add("checked")
   }
-  for (let i = 4; i < INPUT.length; i++) {
+  for (let i = input_start + 3; i < INPUT.length; i++) {
 
     if (INPUT[i].getAttribute("name") == "Type") {
       for (let j = 0; j < type_display.length; j++) {
@@ -324,7 +330,7 @@
   }
   var Check = "{{products}}";
   if (Check.length == 0) {
-     
+
     document.getElementById("ContentSearch").insertAdjacentHTML("afterbegin", ` <div class=" text-center  justify-content-center align-items-center">
           <i class="fa fa-search mb-3" style="font-size:150px"></i>
           <p class="">Không tìm được sản phẩm phù hợp</p>
@@ -333,5 +339,5 @@
     document.getElementById("ContentSearch").parentNode.classList.add("align-items-center")
     document.getElementById("ContentSearch").parentNode.classList.add("justify-content-center")
   }
-  
+
 </script>
