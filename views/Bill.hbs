@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/CSS/Travel.css">
+<link rel="stylesheet" href="/CSS/Review.css">
 
 <div class="container travel hldash pt-3">
     <ul class="d-inline-flex row ">
@@ -14,16 +15,16 @@
     </ul>
 </div>
 
+<form action="/Cart/Bill">
+    <div class="container mt-3 mb-4 pb-5">
+        <div class="row container-fluid ">
+            <h4 class="col-4 text-center py-2 text-light bg-success">TIẾP NHẬN ĐƠN HÀNG</h4>
+            <h4 class="col-4 text-center py-2 text-light bg-secondary">VẬN CHUYỂN</h4>
+            <h4 class="col-4 text-center py-2 text-light bg-secondary">ĐÃ GIAO</h4>
+        </div>
+        <div class=" justify-content-center mt">
 
-<div class="container mt-3 mb-4 pb-5">
-    <div class="row container-fluid ">
-        <h4 class="col-4 text-center py-2 text-light bg-success">TIẾP NHẬN ĐƠN HÀNG</h4>
-        <h4 class="col-4 text-center py-2 text-light bg-secondary">VẬN CHUYỂN</h4>
-        <h4 class="col-4 text-center py-2 text-light bg-secondary">ĐÃ GIAO</h4>
-    </div>
-    <div class=" justify-content-center mt">
 
-        <form action="/Cart/Bill">
             <div class="row">
                 <div class="col-lg-7 mt-3">
                     <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Thông tin giao dịch</h3>
@@ -94,6 +95,7 @@
                     </div>
 
                 </div>
+
                 <div class="col-lg-5 mt-3">
                     <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Giá Tiền</h3>
                     <div class="container mt-3 ">
@@ -143,36 +145,87 @@
 
 
 
-        </form>
+
+
+        </div>
+        <h3 class="p-2 font-weight-bolder text-center mt-3" style="background-color: #f1f1f1;">Danh sách sản phẩm</h3>
+        <div id="cart-content" class=" container mt-3 p-0">
+            <table class="table mt-3">
+                <thead>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Hãng</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Chất lượng</th>
+                    <th scope="col">Bình Luận</th>
+
+
+
+                </thead>
+                <tbody>
+                    {{#each cart}}
+                    <tr>
+                        <td scope="col">{{name}}</td>
+                        <td scope="col">{{brand}}</td>
+                        <td scope="col">{{size}}</td>
+                        <td scope="col">
+                            <label class="ReviewStar">
+                                 1<i class="fa fa-star" aria-hidden="true"></i>
+                                <input type="radio" name="star" value="1" class="" id ="1star"  onclick="Star()">
+                                </input>
+                            </label>
+                           <label class="ReviewStar pl-1">
+                                 2<i class="fa fa-star" aria-hidden="true"></i>
+                                <input type="radio" name="star" value="2" class="" id="2star" onclick="Star()">
+                                </input>
+                            </label>
+                            <label class="ReviewStar pl-1">
+                                 3<i class="fa fa-star" aria-hidden="true"></i>
+                                <input type="radio" name="star" value="3" class="" id="3star" onclick="Star()">
+                                </input>
+                            </label>
+                            <label class="ReviewStar pl-1">
+                                 4<i class="fa fa-star" aria-hidden="true"></i>
+                                <input type="radio" name="star" value="4" class="" id="4star" onclick="Star()">
+                                </input>
+                            </label>
+                            <label class="ReviewStar pl-1">
+                                 5<i class="fa fa-star" aria-hidden="true"></i>
+                                <input type="radio" name="star" value="5" class="" id="5star" onclick="Star()" >
+                                </input>
+                            </label >
+                        </td>
+                        <td scope="col">
+                            <input type="text" name="coment" >
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+    <script>
+        var Star = function(){
+            let StarCheck= ["1star","2star","3star","4star","5star"];
+            for (let i=0; i< StarCheck.length;i++){
+                
+                if(document.getElementById(StarCheck[i]).getAttribute("checked") == true)
+                {
+                     for (let j=0; j<i;j++){
+                         console.log(document.getElementById(StarCheck[j]).parentNode)
+                        document.getElementById(StarCheck[j]).parentNode.classList.add("ReviewStar")
+                        document.getElementById(StarCheck[j]).parentNode.classList.remove("ReviewStar-None")
+                        console.log(document.getElementById(StarCheck[j]))
+                        
+                    }
+                    for (let j=i+1; j<StarCheck.length;j++){
+                        document.getElementById(StarCheck[j]).parentNode.classList.add("ReviewStar-None")
+                        document.getElementById(StarCheck[j]).parentNode.classList.remove("ReviewStar")
+                    }
+                }
+            }
+        }
+    </script>
+
 
     </div>
-    <h3 class="p-2 font-weight-bolder text-center mt-3" style="background-color: #f1f1f1;">Danh sách sản phẩm</h3>
-    <div id="cart-content" class=" container mt-3 p-0">
-        <table class="table mt-3">
-            <thead>
-                <th scope="col">Tên</th>
-                <th scope="col">Hãng</th>
-                <th scope="col">Size</th>
-                <th scope="col">Số lượng</th>
-                <th scope="col">Giá</th>
-
-
-
-            </thead>
-            <tbody>
-                {{#each cart}}
-                <tr>
-                    <td scope="col">{{name}}</td>
-                    <td scope="col">{{brand}}</td>
-                    <td scope="col">{{size}}</td>
-                    <td scope="col">{{quantity}}</td>
-
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
-
-
-
-</div>
+</form>
