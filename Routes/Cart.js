@@ -124,15 +124,25 @@ router.get("/UpdateCart", function (req, res) {
         }
     }
 })
+router.get('/UpdateQuantity', function (req, res) {
+    for (let i = 0; i < req.session.cart.length; i++) {
+        if (req.session.cart[i].id == req.query.id && req.session.cart[i].size == req.query.size){
+            req.session.cart[i].quantity = req.query.quantity
+            break
+        }
+    }
+    res.json(req.session.cart)
+})
 router.get('/DeleteProduct', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
     var id = req.query.id
+    var size = req.query.size
     var submit = req.query.submit
     var returnPath = req.query.returnPath
     for (let i = 0; i < req.session.cart.length; i++) {
-        if (req.session.cart[i].id == id) {
+        if (req.session.cart[i].id == id && req.session.cart[i].size == size) {
             req.session.cart.splice(i, 1)
             break
         }
@@ -206,11 +216,11 @@ router.get('/Payment', function (req, res) {
 })
 router.get("/GetVoucher", function (req, res) {
     getdata();
-    
+
     async function getdata() {
-        var user_voucher = await voucher_detail_controller.checkValidVoucher("#"+req.query.voucher, req.session.user.id)
-        
-        
+        var user_voucher = await voucher_detail_controller.checkValidVoucher("#" + req.query.voucher, req.session.user.id)
+
+
         var voucher = []
         if (user_voucher[0] != undefined) {
             var voucher_info = await voucher_controller.getById(user_voucher[0].voucherId)
@@ -231,7 +241,7 @@ router.get("/GetVoucher", function (req, res) {
 
                 voucher.push(
                     {
-                        id: "#"+voucher_info[0].id,
+                        id: "#" + voucher_info[0].id,
                         startDay: voucher_info[0].startDay,
                         expireDay: voucher_info[0].expireDay,
                         value: voucher_info[0].value,

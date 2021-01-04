@@ -41,20 +41,24 @@
                 <div class="row">
                   <div class="col">
                     <div class="row justify-content p-0 m-0">
-                      <button value="{{id}}" class="delete_cart pr-2  bg-light text-primary font-weight-bolder p-0 pr-4"
-                        job="delete" style="border:none">XÓA</button>
-                      <button value="{{id}}" class="mark_cart  bg-light text-primary  font-weight-bolder" job="mark"
+                      <button value="{{id}}" size_val="{{size}}"
+                        class="delete_cart pr-2  bg-light text-primary font-weight-bolder p-0 pr-4" job="delete"
+                        style="border:none">XÓA</button>
+                      <button value="{{id}}" size_val="{{size}}"
+                        class="mark_cart  bg-light text-primary  font-weight-bolder" job="mark"
                         style="border:none; ">MUA
                         SAU</button>
                     </div>
                   </div>
                   <div class="col-3">
                     <div class="row">
-                      <button class="add_quantity bg-primary text-light font-weight-bolder" job="delete_quantity"
+                      <button value="{{id}}" size_val="{{size}}"
+                        class="add_quantity bg-primary text-light font-weight-bolder" job="delete_quantity"
                         style="border-radius:1000px; height: 25px;">-</button>
                       <p value="{{stock}}" class="quantity text-center align-content-center p-0 m-0"
                         style="border-radius:1000px; height: 15px; width: 15px;">{{quantity}}</p>
-                      <button class="delete_quantity bg-primary text-light font-weight-bolder" job="add_quantity"
+                      <button value="{{id}}" size_val="{{size}}"
+                        class="delete_quantity bg-primary text-light font-weight-bolder" job="add_quantity"
                         style="border-radius:1000px; height: 25px;">+</button>
                     </div>
                   </div>
@@ -275,14 +279,16 @@
     var job = child.attributes.job
     if (job != undefined) {
       job = child.attributes.job.value
+      var work_id = child.attributes.value.value
+      var size = child.attributes.size_val.value
       //delete product from cart
       if (job == "delete" || job == "mark") {
-        var work_id = child.attributes.value.value
+
         if (job == "delete") {
-          window.location.href = `/Cart/DeleteProduct?returnPath={{returnPath}}&id=${work_id}&submit=delete`
+          window.location.href = `/Cart/DeleteProduct?size=${size}&returnPath={{returnPath}}&id=${work_id}&submit=delete`
         }
         else {
-          window.location.href = `/Cart/DeleteProduct?returnPath={{returnPath}}&id=${work_id}&submit=mark`
+          window.location.href = `/Cart/DeleteProduct?size=${size}&returnPath={{returnPath}}&id=${work_id}&submit=mark`
         }
       }
       //change quantity
@@ -309,9 +315,13 @@
             child.parentNode.childNodes[3].style.color = "black"
           }
         }
+
         var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
         price = parseInt(price) * parseInt(child.parentNode.childNodes[3].innerHTML)
-
+        
+        fetch(`/Cart/UpdateQuantity?size=${size}&id=${work_id}&quantity=${temp}`).then(response => response.json()).then(data => {
+        
+        })
         price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
         child.parentNode.parentNode.parentNode.childNodes[5].innerHTML = price + " VND"
         var remain = total_price + discount;
@@ -333,10 +343,10 @@
 
   TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
   // init fetch
-   var voucher = "{{discount}}"
-                voucher = voucher.split('')
-                voucher.splice(0, 1)
-                voucher = voucher.join('')
+  var voucher = "{{discount}}"
+  voucher = voucher.split('')
+  voucher.splice(0, 1)
+  voucher = voucher.join('')
   if ("{{discount}}" != "") {
     fetch(`/Cart/GetVoucher?voucher=${voucher}`).then(response => response.json()).then(data => {
 
@@ -407,7 +417,7 @@
       return false
     }
     document.getElementById("CVoucher").disabled = false;
-    document.getElementById("CVoucher").insertAdjacentHTML("afterend",`<input class="col p-0 m-0 text-center " name="total" type="text"  value="${total_price}">`)
+    document.getElementById("CVoucher").insertAdjacentHTML("afterend", `<input class="col p-0 m-0 text-center " name="total" type="text"  value="${total_price}">`)
     return true
   } 
 </script>
