@@ -136,7 +136,7 @@
                     <form class="row  justify-content-center">
 
                             <button type="submit" class="btn col btn-warning bg-warning p-3" style="border-radius: 0px">
-                                <h3 class="p-0 m-0 font-weight-bold">Đã Nhận Hàng</h3>
+                                <h3 class="p-0 m-0 font-weight-bold">Giao Hàng</h3>
                             </button>
                       
                     </form>
@@ -153,7 +153,7 @@
 
     </div>
     <h3 class="p-2 font-weight-bolder text-center mt-3" style="background-color: #f1f1f1;">Danh sách sản phẩm</h3>
-    <form id="cart-content" class=" container mt-3 p-0" action="/Review">
+    <div id="cart-content" class=" container mt-3 p-0" action="/Review">
         <table class="table mt-3 container">
             <thead>
                 <th scope="col">Sẩn phẩm</th>
@@ -192,7 +192,7 @@
                         </label>
                         <label class="ReviewStar pl-1">
                             5<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="5" class="" id="5star" onclick="Star()">
+                            <input type="radio" name="star" value="5" class="" id="5star" onclick="Star()" checked>
                             </input>
                         </label>
                     </td>
@@ -203,12 +203,7 @@
                 {{/each}}
             </tbody>
         </table>
-        <div class="row justify-content-center">
-            <button type="submit" class="btn btn-primary bg-primary">
-                    Hoàn tất đánh giá
-            </button>
-        </div>
-    </form>
+    </div>
 
     <script>
         var Star = function () {
