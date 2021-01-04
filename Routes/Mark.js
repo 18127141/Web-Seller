@@ -81,7 +81,7 @@ router.get("/UpdateMark", function (req, res) {
             })
         }
 
-        
+        console.log("Hi")
         req.session.congrats = "Thêm sản phẩm vào yêu thích thành công!"
         res.redirect(req.query.returnPath)
 

@@ -3,6 +3,8 @@ var router = express.Router()
 var user_controller = require('../controllers/user')
 var size_controller = require('../controllers/size')
 var product_controller = require('../controllers/product')
+var voucher_controller = require('../controllers/voucher')
+var voucher_detail_controller = require('../controllers/voucher_detail')
 router.get('/', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
@@ -135,15 +137,19 @@ router.get('/DeleteProduct', function (req, res) {
             break
         }
     }
+
     if (submit == "mark") {
+
         res.redirect(`/Mark/UpdateMark?id=${id}&returnPath=${returnPath}`)
     }
-    res.redirect(returnPath)
+    else {
+        res.redirect(returnPath)
+    }
 })
 
 //Payment
 router.get('/Payment', function (req, res) {
-    if (req.session.user == undefined){
+    if (req.session.user == undefined) {
         res.redirect('/')
     }
     if (req.session.cart == undefined) {
@@ -172,17 +178,22 @@ router.get('/Payment', function (req, res) {
             })
 
         }
-        if (req.session.user_pay == undefined){
+        if (req.session.user_pay == undefined) {
             req.session.user_pay = {
-                name:req.session.user.name,
-                phone:req.session.user.phone,
-                address:req.session.user.address,
+                name: req.session.user.name,
+                phone: req.session.user.phone,
+                address: req.session.user.address,
                 discount: "",
+                total: 0,
             }
         }
         if (req.query.CVoucher != undefined && req.query.CVoucher != "") {
             req.session.user_pay.discount = req.query.CVoucher
         }
+        else {
+            req.session.user_pay.discount = ""
+        }
+        req.session.user_pay.total = parseInt(req.query.total)
         res.render('Payment',
             {
                 cart: cart,
@@ -193,7 +204,49 @@ router.get('/Payment', function (req, res) {
             })
     }
 })
+router.get("/GetVoucher", function (req, res) {
+    getdata();
+    
+    async function getdata() {
+        var user_voucher = await voucher_detail_controller.checkValidVoucher("#"+req.query.voucher, req.session.user.id)
+        
+        
+        var voucher = []
+        if (user_voucher[0] != undefined) {
+            var voucher_info = await voucher_controller.getById(user_voucher[0].voucherId)
+            if (voucher_info[0] != undefined) {
+                var today = new Date();
+                var status
+                var startDay = new Date(voucher_info[0].startDay);
+                var expireDay = new Date(voucher_info[0].expireDay)
+                var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+                today = new Date(date)
 
+                if ((today.getTime() - startDay.getTime()) >= 0 && (today.getTime() - expireDay.getTime()) <= 0) {
+                    status = true
+                }
+                else {
+                    status = false
+                }
+
+                voucher.push(
+                    {
+                        id: "#"+voucher_info[0].id,
+                        startDay: voucher_info[0].startDay,
+                        expireDay: voucher_info[0].expireDay,
+                        value: voucher_info[0].value,
+                        number: user_voucher[0].number,
+                        status: status
+                    }
+                )
+
+            }
+
+        }
+        res.json(voucher)
+    }
+
+})
 router.get('/Bill', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []

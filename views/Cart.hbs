@@ -12,7 +12,7 @@
 </div>
 <script>
   var total_price = 0
-
+  var discount = 0;
 </script>
 <div class="container mt-3 mb-4 pb-5">
 
@@ -95,6 +95,24 @@
                 class="fa fa-edit"></i></button>
             <script>
               var VoucherModify = function () {
+                if ("{{usercheck}}" == "") {
+                  Swal.fire({
+                    title: 'Bạn cần đăng nhập để tiếp tục, bạn có muốn đăng nhập không?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Tiếp tục',
+                    cancelButtonText: 'Hủy'
+
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+
+                      window.location.href = `/User/Login?returnURL={{returnPath}}`
+                    }
+                  })
+
+                }
                 document.getElementById("CVoucher").disabled = false;
 
                 document.getElementById("AcceptVoucher").classList.replace("invisible", "visible");
@@ -103,19 +121,76 @@
           </div>
           <div class="row vl2 p-0 ">
             <div class="col p-0 m-0 text-center font-weight-bolder ">
-              <input class="col p-0 m-0 text-center " name ="CVoucher" type="text" id="CVoucher" value="#NoNameNoNumber" disabled="true">
+              <input class="col p-0 m-0 text-center " name="CVoucher" type="text" id="CVoucher" value="{{discount}}"
+                disabled="true">
               </input>
             </div>
           </div>
           <div class="row box-dash p-1 text-center font-weight-bolder text-primary" style="font-size: 16px;">
-            <p class="PriceVoucher col p-1 m-0" value="-100000"></p>
+            <p class="PriceVoucher col p-1 m-0" value=""></p>
           </div>
           <div class="row justify-content-center">
             <button type="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptVoucher"
               onclick="AcceptVoucherBtn()">Hoàn tất</button>
             <script>
               var AcceptVoucherBtn = function () {
+                var PriceVoucher = document.getElementsByClassName("PriceVoucher")
                 document.getElementById("CVoucher").disabled = true;
+                if (document.getElementById("CVoucher").value[0] != '#') {
+                  document.getElementById("CVoucher").value = '#' + document.getElementById("CVoucher").value
+                }
+                var voucher = document.getElementById("CVoucher").value
+                voucher = voucher.split('')
+                voucher.splice(0, 1)
+                voucher = voucher.join('')
+
+                fetch(`/Cart/GetVoucher?voucher=${voucher}`).then(response => response.json()).then(data => {
+
+                  if (data[0] != undefined) {
+
+                    if (data[0].status == false) {
+
+                      discount = 0;
+                      var remain = total_price + discount;
+                      if (remain < 0) {
+                        remain = 0
+                      }
+                      RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                      TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+                      PriceVoucher[0].innerHTML = "Voucher hết hạn sử dụng";
+                      PriceVoucher[1].innerHTML = "0 VND";
+                    }
+                    else {
+
+                      PriceVoucher[0].attributes.value.value = data[0].value
+                      discount = parseInt(PriceVoucher[0].attributes.value.value)
+                      //
+                      var remain = total_price + discount;
+                      if (remain < 0) {
+                        remain = 0
+                      }
+                      RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                      TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+                      PriceVoucher[0].innerHTML = discount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                      PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
+                    }
+
+                  }
+                  else {
+                    discount = 0;
+                    var remain = total_price + discount;
+                    if (remain < 0) {
+                      remain = 0
+                    }
+                    RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                    TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+                    PriceVoucher[0].innerHTML = "Voucher không tồn tại";
+                    PriceVoucher[1].innerHTML = "0 VND";
+                  }
+                })
 
                 document.getElementById("AcceptVoucher").classList.replace("visible", "invisible");
               }
@@ -158,7 +233,7 @@
 
 </div>
 <script>
-  var discount = 0;
+
   var PriceVoucher = document.getElementsByClassName("PriceVoucher");
 
   if (PriceVoucher[0].attributes.value.value == "") {
@@ -240,7 +315,9 @@
         price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
         child.parentNode.parentNode.parentNode.childNodes[5].innerHTML = price + " VND"
         var remain = total_price + discount;
-        
+        if (remain < 0) {
+          remain = 0
+        }
         RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
 
         TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
@@ -249,12 +326,66 @@
   })
   // money fomat on total and discount
   var remain = total_price + discount;
-  if (remain < 0){
+  if (remain < 0) {
     remain = 0
   }
   RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
 
   TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+  // init fetch
+   var voucher = "{{discount}}"
+                voucher = voucher.split('')
+                voucher.splice(0, 1)
+                voucher = voucher.join('')
+  if ("{{discount}}" != "") {
+    fetch(`/Cart/GetVoucher?voucher=${voucher}`).then(response => response.json()).then(data => {
+
+      if (data[0] != undefined) {
+
+        if (data[0].status == false) {
+
+          discount = 0;
+          var remain = total_price + discount;
+          if (remain < 0) {
+            remain = 0
+          }
+          RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+          TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+          PriceVoucher[0].innerHTML = "Voucher hết hạn sử dụng";
+          PriceVoucher[1].innerHTML = "0 VND";
+        }
+        else {
+
+          PriceVoucher[0].attributes.value.value = data[0].value
+          discount = parseInt(PriceVoucher[0].attributes.value.value)
+          //
+          var remain = total_price + discount;
+          if (remain < 0) {
+            remain = 0
+          }
+          RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+          TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+          PriceVoucher[0].innerHTML = discount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+          PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
+        }
+
+      }
+      else {
+        discount = 0;
+        var remain = total_price + discount;
+        if (remain < 0) {
+          remain = 0
+        }
+        RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+        TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+        PriceVoucher[0].innerHTML = "Voucher không tồn tại";
+        PriceVoucher[1].innerHTML = "0 VND";
+      }
+    })
+  }
   function check() {
 
     if ("{{usercheck}}" == "") {
@@ -276,6 +407,7 @@
       return false
     }
     document.getElementById("CVoucher").disabled = false;
+    document.getElementById("CVoucher").insertAdjacentHTML("afterend",`<input class="col p-0 m-0 text-center " name="total" type="text"  value="${total_price}">`)
     return true
   } 
 </script>

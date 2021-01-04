@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="/CSS/Travel.css">
-
+<script>
+  var total_price = "{{user_pay.total}}"
+  total_price = parseInt(total_price)
+  discount = 0
+</script>
 <div class="container travel hldash pt-3">
   <ul class="d-inline-flex row ">
     <li class="d-flex align-items-end">
@@ -84,13 +88,13 @@
             </div>
             <div class="row vl2 p-0 ">
               <div class="col p-0 m-0 text-center font-weight-bolder ">
-                <input class="user_input col p-0 m-0 text-center " type="text" id="CVoucher" value="{{user_pay.discount}}"
-                  disabled="true">
+                <input class="user_input col p-0 m-0 text-center " type="text" id="CVoucher"
+                  value="{{user_pay.discount}}" disabled="true">
                 </input>
               </div>
             </div>
             <div class="row box-dash p-1 text-center font-weight-bolder text-primary" style="font-size: 16px;">
-              <p class="col p-1 m-0" class="PriceVoucher">-100 000 VND </p>
+              <p class="PriceVoucher col p-1 m-0" value="">-100 000 VND </p>
             </div>
             <div class="row justify-content-center">
               <button type="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptVoucher"
@@ -98,7 +102,61 @@
               <script>
                 var AcceptVoucherBtn = function () {
                   document.getElementById("CVoucher").disabled = true;
+                  if (document.getElementById("CVoucher").value[0] != '#') {
+                    document.getElementById("CVoucher").value = '#' + document.getElementById("CVoucher").value
+                  }
+                  var voucher = document.getElementById("CVoucher").value
+                  voucher = voucher.split('')
+                  voucher.splice(0, 1)
+                  voucher = voucher.join('')
 
+                  fetch(`/Cart/GetVoucher?voucher=${voucher}`).then(response => response.json()).then(data => {
+
+                    if (data[0] != undefined) {
+
+                      if (data[0].status == false) {
+
+                        discount = 0;
+                        var remain = total_price + discount;
+                        if (remain < 0) {
+                          remain = 0
+                        }
+                        RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                        TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+                        PriceVoucher[0].innerHTML = "Voucher hết hạn sử dụng";
+                        PriceVoucher[1].innerHTML = "0 VND";
+                      }
+                      else {
+
+                        PriceVoucher[0].attributes.value.value = data[0].value
+                        discount = parseInt(PriceVoucher[0].attributes.value.value)
+                        //
+                        var remain = total_price + discount;
+                        if (remain < 0) {
+                          remain = 0
+                        }
+                        RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                        TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+                        PriceVoucher[0].innerHTML = discount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                        PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
+                      }
+
+                    }
+                    else {
+                      discount = 0;
+                      var remain = total_price + discount;
+                      if (remain < 0) {
+                        remain = 0
+                      }
+                      RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+                      TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+                      PriceVoucher[0].innerHTML = "Voucher không tồn tại";
+                      PriceVoucher[1].innerHTML = "0 VND";
+                    }
+                  })
                   document.getElementById("AcceptVoucher").classList.replace("visible", "invisible");
                 }
               </script>
@@ -177,15 +235,15 @@
             </div>
             <div class="row hldash vl2  justify-content-between">
               <p class=" m-1 text-dark font-weight-bold">TỔNG TIỀN</p>
-              <p class=" m-1 text-danger font-weight-bold" id="TotalCost">500 000 VND</p>
+              <p class=" m-1 text-danger font-weight-bold" id="TotalCost"></p>
             </div>
             <div class="row vl2 p-0 hldash  justify-content-between">
               <p class=" m-1 text-dark font-weight-bold">VOUCHER</p>
-              <p class=" m-1  font-weight-bold text-primary" class="PriceVoucher">-100 000 VND</p>
+              <p class="PriceVoucher m-1  font-weight-bold text-primary"></p>
             </div>
             <div class="row vl2 p-0 hldash  justify-content-between">
               <p class=" m-1 text-dark font-weight-bold">THÀNH TIỀN</p>
-              <h4 class=" m-1  font-weight-bold text-primary " id="RemainCost">400 000 VND</h4>
+              <h4 class=" m-1  font-weight-bold text-primary " id="RemainCost"></h4>
             </div>
           </div>
           <div class="container mt-3 justify-content-center">
@@ -214,68 +272,81 @@
     discount = discount.split('')
     discount.splice(0, 1)
     discount = discount.join('')
-    
+
     window.location.href = `/Cart/ChangeCart?name=${user_input[0].value}&phone=${user_input[1].value}&address=${user_input[2].value}&discount=${discount}`
   }
-  var cart_content = document.getElementById("cart-content")
 
-  if (cart_content.childNodes[1] == undefined) {
-    var parent = cart_content.parentNode.parentNode;
+  // init fetch
+  var PriceVoucher = document.getElementsByClassName("PriceVoucher")
+  var RemainCost = document.getElementById("RemainCost");
+  var TotalCost = document.getElementById("TotalCost");
 
-    while (parent.hasChildNodes() == true) {
-      parent.removeChild(parent.childNodes[0]);
-    }
-    parent.insertAdjacentHTML("afterbegin", `<div class="container-fluid d-flex align-items-center flex-column">
-                      <i class="fa fa-shopping-cart" style="font-size: 200px;"></i>
-                      <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
-                      <form action="/Product" class="row">
-                        <button class="btn btn-primary bg-primary" type="submit">
-                          Quẹo lựa ngay
-                        </button>
-                      </form>
-                    </div>
-                    `)
+  TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+  var voucher = "{{user_pay.discount}}"
+  // init voucher
+  if (PriceVoucher[0].attributes.value.value == "") {
+    discount = 0;
+    PriceVoucher[0].innerHTML = "0 VND";
+    PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
   }
-  cart_content.addEventListener("click", function (ToDo) {
-    const child = ToDo.target
-    var job = child.attributes.job
-    if (job != undefined) {
-      job = child.attributes.job.value
-      //delete product from cart
-      if (job == "delete" || job == "mark") {
-        var work_id = child.attributes.value.value
-        if (job == "delete") {
-          window.location.href = `/Cart/DeleteProduct?returnPath={{returnPath}}&id=${work_id}&submit=delete`
+  else {
+    discount = parseInt(PriceVoucher[0].attributes.value.value)
+
+    PriceVoucher[0].innerHTML = discount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+    PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
+  }
+  // fetch
+  voucher = voucher.split('')
+  voucher.splice(0, 1)
+  voucher = voucher.join('')
+  if ("{{user_pay.discount}}" != "") {
+
+    fetch(`/Cart/GetVoucher?voucher=${voucher}`).then(response => response.json()).then(data => {
+      
+      if (data[0] != undefined) {
+
+        if (data[0].status == false) {
+
+          discount = 0;
+          var remain = total_price + discount;
+          if (remain < 0) {
+            remain = 0
+          }
+          RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+          TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+          PriceVoucher[0].innerHTML = "Voucher hết hạn sử dụng";
+          PriceVoucher[1].innerHTML = "0 VND";
         }
         else {
-          window.location.href = `/Cart/DeleteProduct?returnPath={{returnPath}}&id=${work_id}&submit=mark`
+
+          PriceVoucher[0].attributes.value.value = data[0].value
+          discount = parseInt(PriceVoucher[0].attributes.value.value)
+          //
+          var remain = total_price + discount;
+          if (remain < 0) {
+            remain = 0
+          }
+          RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+          TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+          PriceVoucher[0].innerHTML = discount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+          PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
         }
+
       }
-      //change quantity
       else {
-        var stock = parseInt(child.parentNode.childNodes[3].attributes.value.value)
-        let temp = parseInt(child.parentNode.childNodes[3].innerHTML)
-        if (job == "add_quantity") {
-          if (temp < stock) {
-            temp++
-            child.parentNode.childNodes[3].innerHTML = temp
-            if (temp == stock) {
-              child.parentNode.childNodes[3].style.color = "red"
-            }
-          }
+        discount = 0;
+        var remain = total_price + discount;
+        if (remain < 0) {
+          remain = 0
         }
-        else {
-          if (temp > 1) {
-            temp--
-            child.parentNode.childNodes[3].innerHTML = temp
-            child.parentNode.childNodes[3].style.color = "black"
-          }
-        }
-        var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
-        price = parseInt(price) * parseInt(child.parentNode.childNodes[3].innerHTML)
-        price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
-        child.parentNode.parentNode.parentNode.childNodes[5].innerHTML = price + " VND"
+        RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+        TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+
+        PriceVoucher[0].innerHTML = "Voucher không tồn tại";
+        PriceVoucher[1].innerHTML = "0 VND";
       }
-    }
-  })
+    })
+  }
 </script>
