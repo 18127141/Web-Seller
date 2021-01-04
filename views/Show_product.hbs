@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/CSS/Sell.css">
 <link rel="stylesheet" href="/CSS/Show1Product.css">
 <link rel="stylesheet" href="/CSS/Travel.css">
+<link rel="stylesheet" href="/CSS/Review.css">
 <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script>
     if ("{{congrats}}" != "") {
@@ -33,8 +34,8 @@
         </li>
     </ul>
 </div>
-<div class="container-fluid hldash" style="">
-    <div class="contaier-fluid container-lg pt-4  ">
+<div class="container-fluid ">
+    <div class="contaier-fluid container-lg pt-4 " style="background-color: white;">
         <div class="row ">
             <div class="col-lg mr-3">
 
@@ -136,7 +137,8 @@
                             <button type="submit" name="submit" value="Add_cart"
                                 class="confirm_btn my-3 py-3 bg-dark text-light col-9 font-weight-bolder ">
                                 THÊM VÀO GIỎ HÀNG</button>
-                            <a href ="/Mark/UpdateMark?id={{id}}&returnPath={{../returnPath}}" class="confirm_btn my-3 py-3 bg-dark text-light font-weight-bolder col-2"><i
+                            <a href="/Mark/UpdateMark?id={{id}}&returnPath={{../returnPath}}"
+                                class="confirm_btn my-3 py-3 bg-dark text-light font-weight-bolder col-2"><i
                                     class="fa fa-heart"></i>
                             </a>
                         </div>
@@ -192,6 +194,249 @@
 </script>
 
 {{/each}}
+
+<!--COMMENT-->
+<h1 class=" font-weight-bold container BottomLine my-3">Đánh giá sản phẩm</h1>
+<div class="container p-0" style="background-color: white;">
+
+    <div class="container-fluid py-5">
+        <div class="row">
+            <div class="col-lg-3 d-flex flex-column justify-content-center align-items-center">
+                <h1>5</h1>
+                <ul class="list-inline ReviewStar">
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                </ul>
+                <p>1000 đánh giá</p>
+            </div>
+            
+            <div class="col-lg">
+                <div id="5star" class="ReviewStar">
+
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <input class="MyRange" type="range" id="points" name="points" min="0" max="1000"
+                                value="1000" disabled>
+                        </li>
+                        <li class="list-inline-item">
+                            1000
+                        </li>
+                    </ul>
+
+                </div>
+                <div id="4star" class="ReviewStar">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <input class="MyRange" type="range" id="points" name="points" min="0" max="1000" value="10"
+                                disabled>
+                        </li>
+                        <li class="list-inline-item">
+                            0
+                        </li>
+                    </ul>
+
+
+
+                </div>
+                <div id="3star" class="ReviewStar">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-Noner" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <input class="MyRange" type="range" id="points" name="points" min="0" max="10" value="0"
+                                disabled>
+                        </li>
+                        <li class="list-inline-item">
+                            0
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div id="2star" class="ReviewStar">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <input class="MyRange" type="range" id="points" name="points" min="0" max="10" value="0"
+                                disabled>
+                        </li>
+                        <li class="list-inline-item">
+                            0
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div id="1star" class="ReviewStar">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-star " aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None " aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <input class="MyRange" type="range" id="points" name="points" min="0" max="10" value="0"
+                                disabled>
+                        </li>
+                        <li class="list-inline-item">
+                            0
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h2 class="px-5">Bình luận (1000)</h2>
+    <div class="container px-5 ChatList">
+
+        <div class="row px-5 my-3 ">
+            <div class="container DevidedCmt ">
+                <div class="row">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item">
+                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> Trần Phi Long - 094291xxx</h4>
+                        </li>
+                        <li class="list-inline-item ">
+                           <i>Đánh giá ngày 20 tháng 11 năm 2020</i> 
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="list-inline">
+                        <li class="list-inline-item ReviewStar">
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                           
+                        </li>
+                        <li class="list-inline-item ">
+                           <i class="font-weight-bold">Sản phẩm vô cùng tuyệt vời </i>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="row p-3">
+                    Trời ơi tôi mang giày đi chơi với bồ và cô ấy đồng ý làm vợ tôi ngay buổi đầu tiên trước mặt 2 đứa con của chúng tôi
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row px-5 my-3 ">
+            <div class="container DevidedCmt ">
+                <div class="row">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item">
+                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> Trần Phi Long - 094291xxx</h4>
+                        </li>
+                        <li class="list-inline-item ">
+                           <i>Đánh giá ngày 20 tháng 11 năm 2020</i> 
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="list-inline">
+                        <li class="list-inline-item ReviewStar">
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                           
+                        </li>
+                        <li class="list-inline-item ">
+                           <i class="font-weight-bold">Sản phẩm vô cùng tuyệt vời </i>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="row p-3">
+                    Trời ơi tôi mang giày đi chơi với bồ và cô ấy đồng ý làm vợ tôi ngay buổi đầu tiên trước mặt 2 đứa con của chúng tôi
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row px-5 my-3 ">
+            <div class="container DevidedCmt ">
+                <div class="row">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item">
+                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> Trần Phi Long - 094291xxx</h4>
+                        </li>
+                        <li class="list-inline-item ">
+                           <i>Đánh giá ngày 20 tháng 11 năm 2020</i> 
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="list-inline">
+                        <li class="list-inline-item ReviewStar">
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                           
+                        </li>
+                        <li class="list-inline-item ">
+                           <i class="font-weight-bold">Sản phẩm vô cùng tuyệt vời </i>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="row p-3">
+                    Trời ơi tôi mang giày đi chơi với bồ và cô ấy đồng ý làm vợ tôi ngay buổi đầu tiên trước mặt 2 đứa con của chúng tôi
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+   <button type="button" class=" btn bg-primary text-light">
+               Tải thêm 997 bình luận
+        </button>
+        </div>
+     
+        
+    </div>
+</div>
+<!---->
 <h1 class="container-fluid text-center mt-5 mb-5 font-weight-bold p-2">SẢN PHẨM LIÊN QUAN</h1>
 <div id="SPLIENQUAN" class="carousel slide text-center mb-5" data-ride="carousel">
     <div id="relative_carousel" class="carousel-inner ">

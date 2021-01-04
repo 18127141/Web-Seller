@@ -1,0 +1,18 @@
+.ReviewStar{
+    color: rgb(255, 153, 0)       ;
+}
+.ReviewStar-None{
+    color: rgb(207, 203, 203)    ;
+}
+.MyRange::-webkit-slider-thumb {
+    width: 0px;
+    height: 0px;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  .BottomLine{
+    border-bottom:3px solid black;
+}
+.DevidedCmt{
+    border-bottom: 2px solid gray;
+}
