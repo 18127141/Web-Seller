@@ -5,17 +5,17 @@ module.exports = {
 
     await queryInterface.bulkInsert('order_details', [
       {
-        orderId: 'OR12345678',
+        orderId: 'OR123456789',
         quantity: 1,
-        size: 44,
+        size: "44",
         ProductId: 'A12345',
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
       },
       {
-        orderId: 'OR12345678',
+        orderId: 'OR123456789',
         quantity: 1,
-        size: 45,
+        size: "45",
         ProductId: 'A12345',
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),

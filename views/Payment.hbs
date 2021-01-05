@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="/CSS/Travel.css">
+<script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script>
   var total_price = "{{user_pay.total}}"
   total_price = parseInt(total_price)
   discount = 0
+  var remain = 0
 </script>
 <div class="container travel hldash pt-3">
   <ul class="d-inline-flex row ">
@@ -23,7 +25,7 @@
 
   <div class=" justify-content-center">
 
-    <form action="/Cart/Bill">
+    <form action="/Cart/GenerateOrder" onsubmit="return check()">
       <div class="row">
         <div class="col-lg-7 mt-3">
           <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Thông tin giao dịch</h3>
@@ -44,17 +46,17 @@
               </script>
             </div>
             <div class="row vl2 p-0 ">
-              <input class="user_input col-6  p-0 m-0 text-center  " type="text" id="CName" value="{{user_pay.name}}"
-                disabled="true">
+              <input class="user_input col-6  p-0 m-0 text-center " name="name" type="text" id="CName"
+                value="{{user_pay.name}}" disabled="true">
               </input>
 
-              <input class="user_input col-6  p-0 m-0 text-center " type="text" id="CPhone" value="{{user_pay.phone}}"
-                disabled="true">
+              <input class="user_input col-6  p-0 m-0 text-center " name="phone" type="text" id="CPhone"
+                value="{{user_pay.phone}}" disabled="true">
               </input>
             </div>
             <div class="row box-dash p-0" style="font-size: 16px;">
-              <input class="user_input col  p-0 m-0 text-center" type="text" id="CAddress" value="{{user_pay.address}}"
-                disabled="true">
+              <input class="user_input col  p-0 m-0 text-center" type="text" name="address" id="CAddress"
+                value="{{user_pay.address}}" disabled="true">
               </input>
             </div>
             <div class="row justify-content-center">
@@ -94,8 +96,10 @@
               </div>
             </div>
             <div class="row box-dash p-1 text-center font-weight-bolder text-primary" style="font-size: 16px;">
-              <p class="PriceVoucher col p-1 m-0" value="">-100 000 VND </p>
+              <p class="PriceVoucher col p-1 m-0" value=""></p>
+
             </div>
+            <input type="text" name="voucher" value="" id="returnVoucher" class="invisible">
             <div class="row justify-content-center">
               <button type="button" class="mt-1 btn bg-primary text-light  text-center invisible" id="AcceptVoucher"
                 onclick="AcceptVoucherBtn()">Hoàn tất</button>
@@ -168,7 +172,7 @@
             </div>
             <label class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
               style="font-size: 16px;">
-              <input class="user_input" type="radio" name="delivery" value="Trả tiền khi lấy hàng">Giao hàng tiêu chuẩn
+              <input class="user_input" type="radio" name="delivery" value="1" required>Giao hàng tiêu chuẩn
               </input>
             </label>
           </div>
@@ -178,21 +182,21 @@
             </div>
             <label class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
               style="font-size: 16px;">
-              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng">Thanh toán khi nhận hàng </input>
+              <input type="radio" name="Pay" value="1" required>Thanh toán khi nhận hàng </input>
             </label>
             <label class="row my-0 vl2 hldash p-1 text-center font-weight-bolder text-primary justify-content-center"
               style="font-size: 16px;">
-              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng" disabled="true">Thanh toán bằng chuyển
+              <input type="radio" name="Pay" value="2" required>Thanh toán bằng chuyển
               khoản </input>
             </label>
             <label class="row my-0 vl2 hldash p-1 text-center font-weight-bolder text-primary justify-content-center"
               style="font-size: 16px;">
-              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng" disabled="true">Thanh toán bằng thẻ ngân
+              <input type="radio" name="Pay" value="3" required>Thanh toán bằng thẻ ngân
               hàng </input>
             </label>
             <label class="row my-0 vl2 hldash p-1 text-center font-weight-bolder text-primary justify-content-center"
               style="font-size: 16px;">
-              <input type="radio" name="Pay" value="Trả tiền khi lấy hàng" disabled="true">Thanh toán bằng ví
+              <input type="radio" name="Pay" value="4" required>Thanh toán bằng ví
               Momoland
               </input>
             </label>
@@ -276,12 +280,13 @@
     window.location.href = `/Cart/ChangeCart?name=${user_input[0].value}&phone=${user_input[1].value}&address=${user_input[2].value}&discount=${discount}`
   }
 
-  // init fetch
+  // init fetch and init money
   var PriceVoucher = document.getElementsByClassName("PriceVoucher")
   var RemainCost = document.getElementById("RemainCost");
   var TotalCost = document.getElementById("TotalCost");
-
+  remain = total_price - discount
   TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
+  RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
   var voucher = "{{user_pay.discount}}"
   // init voucher
   if (PriceVoucher[0].attributes.value.value == "") {
@@ -295,6 +300,8 @@
     PriceVoucher[0].innerHTML = discount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
     PriceVoucher[1].innerHTML = PriceVoucher[0].innerHTML;
   }
+  RemainCost
+
   // fetch
   voucher = voucher.split('')
   voucher.splice(0, 1)
@@ -302,7 +309,7 @@
   if ("{{user_pay.discount}}" != "") {
 
     fetch(`/Cart/GetVoucher?voucher=${voucher}`).then(response => response.json()).then(data => {
-      
+
       if (data[0] != undefined) {
 
         if (data[0].status == false) {
@@ -348,5 +355,29 @@
         PriceVoucher[1].innerHTML = "0 VND";
       }
     })
+  }
+  // submit 
+  function check() {
+    if (document.getElementById("CName").value == "" || document.getElementById("CAddress").value == "" || document.getElementById("CPhone").value == "") {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Xin nhập đầy đủ thông tin liên lạc',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      return false
+    }
+    document.getElementById("CName").disabled = false
+    document.getElementById("CPhone").disabled = false
+    document.getElementById("CAddress").disabled = false
+    var discount = document.getElementById("CVoucher").value
+
+    discount = discount.split('')
+    discount.splice(0, 1)
+    discount = discount.join('')
+
+    document.getElementById("returnVoucher").value = discount
+    return true
   }
 </script>

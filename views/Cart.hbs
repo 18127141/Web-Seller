@@ -159,15 +159,17 @@
                       if (remain < 0) {
                         remain = 0
                       }
+
                       RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
                       TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
-
+                      PriceVoucher[0].attributes.value.value =""
                       PriceVoucher[0].innerHTML = "Voucher hết hạn sử dụng";
                       PriceVoucher[1].innerHTML = "0 VND";
                     }
                     else {
 
                       PriceVoucher[0].attributes.value.value = data[0].value
+                      PriceVoucher[0].attributes.value.value
                       discount = parseInt(PriceVoucher[0].attributes.value.value)
                       //
                       var remain = total_price + discount;
@@ -190,12 +192,12 @@
                     }
                     RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
                     TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
-
+                    PriceVoucher[0].attributes.value.value =""
                     PriceVoucher[0].innerHTML = "Voucher không tồn tại";
                     PriceVoucher[1].innerHTML = "0 VND";
                   }
                 })
-
+                
                 document.getElementById("AcceptVoucher").classList.replace("visible", "invisible");
               }
             </script>
@@ -318,9 +320,9 @@
 
         var price = parseInt(child.parentNode.parentNode.parentNode.childNodes[5].attributes.value.value)
         price = parseInt(price) * parseInt(child.parentNode.childNodes[3].innerHTML)
-        
+
         fetch(`/Cart/UpdateQuantity?size=${size}&id=${work_id}&quantity=${temp}`).then(response => response.json()).then(data => {
-        
+
         })
         price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
         child.parentNode.parentNode.parentNode.childNodes[5].innerHTML = price + " VND"
@@ -417,7 +419,7 @@
       return false
     }
     document.getElementById("CVoucher").disabled = false;
-    document.getElementById("CVoucher").insertAdjacentHTML("afterend", `<input class="col p-0 m-0 text-center " name="total" type="text"  value="${total_price}">`)
+    
     return true
   } 
 </script>

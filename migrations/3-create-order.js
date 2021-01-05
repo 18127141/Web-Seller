@@ -11,7 +11,16 @@ module.exports = {
       totalPrice: {
         type: Sequelize.DECIMAL
       },
+      discountPrice: {
+        type: Sequelize.DECIMAL
+      },
       status: {
+        type: Sequelize.STRING
+      },
+      delivery: {
+        type: Sequelize.STRING
+      },
+      pay: {
         type: Sequelize.STRING
       },
       totalProduct: {

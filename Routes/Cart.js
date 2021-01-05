@@ -5,6 +5,9 @@ var size_controller = require('../controllers/size')
 var product_controller = require('../controllers/product')
 var voucher_controller = require('../controllers/voucher')
 var voucher_detail_controller = require('../controllers/voucher_detail')
+var order_controller = require('../controllers/order')
+var order_detail_controller = require('../controllers/order_detail')
+var models = require('../models')
 router.get('/', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
@@ -76,9 +79,11 @@ router.get("/UpdateCart", function (req, res) {
         //default size and quantity
 
         var size_stock = await size_controller.getById(req.query.id)
+        var product = await product_controller.getById(req.query.id)
         var size = 0
         var stock = 0
         var quantity = 1
+        var price = product[0].price
         for (let i = 0; i < size_stock.length; i++) {
             if (parseInt(size_stock[i].stock) != 0) {
                 size = size_stock[i].size
@@ -109,6 +114,7 @@ router.get("/UpdateCart", function (req, res) {
             req.session.cart.push({
                 id: req.query.id,
                 size: size,
+                price: price,
                 quantity: quantity
             })
         }
@@ -126,7 +132,7 @@ router.get("/UpdateCart", function (req, res) {
 })
 router.get('/UpdateQuantity', function (req, res) {
     for (let i = 0; i < req.session.cart.length; i++) {
-        if (req.session.cart[i].id == req.query.id && req.session.cart[i].size == req.query.size){
+        if (req.session.cart[i].id == req.query.id && req.session.cart[i].size == req.query.size) {
             req.session.cart[i].quantity = req.query.quantity
             break
         }
@@ -203,7 +209,12 @@ router.get('/Payment', function (req, res) {
         else {
             req.session.user_pay.discount = ""
         }
-        req.session.user_pay.total = parseInt(req.query.total)
+        let total_price = 0
+        for (let i = 0; i < req.session.cart.length; i++) {
+
+            total_price += req.session.cart[i].price * req.session.cart[i].quantity
+        }
+        req.session.user_pay.total = total_price
         res.render('Payment',
             {
                 cart: cart,
@@ -256,6 +267,81 @@ router.get("/GetVoucher", function (req, res) {
         res.json(voucher)
     }
 
+})
+router.get('/GenerateOrder', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    getdata()
+    async function getdata() {
+        var generating
+        do {
+            generating = Math.floor(Math.random() * Math.floor(1000000000))
+            generating = generating.toString();
+            while (generating.length < 9) {
+                generating = '0' + generating
+            }
+            generating = 'OR' + generating
+           
+            var order = await order_controller.getById(generating)
+           
+        } while (order[0] != undefined)
+
+        //update_voucher ---------------------------------------------
+        var voucher_detail = await voucher_detail_controller.checkValidVoucher('#' + req.query.voucher, req.session.user.id)
+        var discountPrice = 0
+        if (voucher_detail[0] != undefined) {
+            var voucher = await voucher_controller.getById('#' + req.query.voucher)
+            discountPrice = voucher[0].value
+           
+            if (voucher_detail[0].number == 1) {
+                models.voucher_detail.destroy({
+                    where: { voucherId: '#' + req.query.voucher, UserId: req.session.user.id }
+                })
+
+            }
+            else {
+                var temp = voucher_detail[0].number - 1
+                models.voucher_detail.update({
+                    number: temp,
+                }, {
+                    where: { voucherId: '#' + req.query.voucher, UserId: req.session.user.id }
+                })
+            }
+        }
+        // initiate infomation
+
+        let total_price = 0
+        for (let i = 0; i < req.session.cart.length; i++) {
+
+            total_price += req.session.cart[i].price * req.session.cart[i].quantity
+           
+        }
+        //create order-------------------------------
+        models.order.create({
+            id: generating,
+            totalPrice: total_price,
+            discountPrice: discountPrice,
+            delivery: req.query.delivery,
+            pay: req.query.Pay,
+            status: 'Check',
+            totalProduct: req.session.cart.length,
+            name: req.query.name,
+            email: req.session.user.email,
+            phone: req.query.phone,
+            address: req.query.address,
+            UserId: req.session.user.id,
+        })
+        for (let i = 0; i < req.session.cart.length; i++) {
+            models.order_detail.create({
+                orderId: generating,
+                quantity: req.session.cart[i].quantity,
+                size: req.session.cart[i].size,
+                ProductId: req.session.cart[i].id,
+            })
+        }
+        res.redirect("/Cart/Bill")
+    }
 })
 router.get('/Bill', function (req, res) {
     if (req.session.cart == undefined) {
