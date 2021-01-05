@@ -137,16 +137,10 @@ app.get('/Find-us', function (req, res) {
     }
     res.render('Find_us', { usercheck: req.session.user, cart_total: req.session.cart.length })
 })
-//Check order
-app.get('/Check-order', function (req, res) {
-    if (req.session.cart == undefined) {
-        req.session.cart = []
-    }
-    if (req.session.mark == undefined) {
-        req.session.mark = []
-    }
-    res.render('Check_order', { usercheck: req.session.user, cart_total: req.session.cart.length })
-})
+//Check order route
+var check_order_route = require('./Routes/Check-order')
+app.use('/Check-order', check_order_route)
+
 //Search
 var search_route = require('./Routes/Search')
 app.use('/Search', search_route)

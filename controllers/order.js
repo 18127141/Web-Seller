@@ -7,24 +7,37 @@ const Op = Sequelize.Op;
 controller.getById = (ele) => {
     return models.order.findAll({
         where: {
-            id: {[Op.like] : ele}
-            
+            id: { [Op.like]: ele }
+
         },
-        raw:true
+        raw: true
     })
 }
-controller.getAll = () =>{
+controller.getByInfoAndId = (id, info) => {
     return models.order.findAll({
-        raw:true
+        where: {
+            id: id,
+            [Op.or]: [
+                { phone: info },
+                { email: info },
+            ]
+
+        },
+        raw: true
+    })
+}
+controller.getAll = () => {
+    return models.order.findAll({
+        raw: true
     })
 }
 controller.getByUserId = (ele) => {
     return models.order.findAll({
         where: {
-            UserId: {[Op.like] : ele}
-            
+            UserId: { [Op.like]: ele }
+
         },
-        raw:true
+        raw: true
     })
 }
 module.exports = controller

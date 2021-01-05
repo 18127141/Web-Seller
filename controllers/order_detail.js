@@ -13,6 +13,15 @@ controller.getById = (ele) => {
         raw:true
     })
 }
+controller.getByOrderId = (ele) => {
+    return models.order_detail.findAll({
+        where: {
+            orderId: {[Op.like] : ele}
+            
+        },
+        raw:true
+    })
+}
 controller.getAll = () =>{
     return models.order_detail.findAll({
         raw:true

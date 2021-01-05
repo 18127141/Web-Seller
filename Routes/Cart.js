@@ -340,44 +340,9 @@ router.get('/GenerateOrder', function (req, res) {
                 ProductId: req.session.cart[i].id,
             })
         }
-        res.redirect("/Cart/Bill")
+        //req.session.cart =[]
+        res.redirect(`/Check-order/${generating}`)
     }
 })
-router.get('/Bill', function (req, res) {
-    if (req.session.cart == undefined) {
-        req.session.cart = []
-    }
-    if (req.session.mark == undefined) {
-        req.session.mark = []
-    }
-    getdata()
-    async function getdata() {
-        var cart = []
 
-        for (let i = 0; i < req.session.cart.length; i++) {
-            var product = await product_controller.getById(req.session.cart[i].id)
-            var size = await size_controller.getStock(req.session.cart[i].id, req.session.cart[i].size)
-            cart.push({
-                id: product[0].id,
-                name: product[0].name,
-                brand: product[0].brand,
-                price: product[0].price,
-                main_img: product[0].main_img,
-                size: size[0].size,
-                stock: size[0].stock,
-                quantity: req.session.cart[i].quantity,
-                info: product[0].info,
-            })
-
-        }
-
-        res.render('Bill',
-            {
-                cart: cart,
-                usercheck: req.session.user,
-                cart_total: req.session.cart.length,
-                returnPath: req.originalUrl,
-            })
-    }
-})
 module.exports = router
