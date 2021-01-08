@@ -333,6 +333,13 @@ router.get('/GenerateOrder', function (req, res) {
             UserId: req.session.user.id,
         })
         for (let i = 0; i < req.session.cart.length; i++) {
+            var size = await size_controller.getStock(req.session.cart[i].id,req.session.cart[i].size,)
+            var size_temp = size[0].stock - req.session.cart[i].quantity
+            models.size_stock.update({
+                stock:size_temp
+            },{
+                where:{ProductId:req.session.cart[i].id, size:req.session.cart[i].size}
+            })
             models.order_detail.create({
                 orderId: generating,
                 quantity: req.session.cart[i].quantity,

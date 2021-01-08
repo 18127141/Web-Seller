@@ -13,6 +13,7 @@ controller.getById = (ele) => {
         raw: true
     })
 }
+
 controller.getByInfoAndId = (id, info) => {
     return models.order.findAll({
         where: {
@@ -31,6 +32,17 @@ controller.getAll = () => {
         raw: true
     })
 }
+controller.getByIdUserId = (id,user) => {
+    return models.order.findAll({
+        where: {
+            id: { [Op.like]: id },
+            UserId: { [Op.like]: user }
+
+        },
+        raw: true
+    })
+}
+module
 controller.getByUserId = (ele) => {
     return models.order.findAll({
         where: {

@@ -70,7 +70,7 @@
                     <label id="delivery"
                         class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
                         style="font-size: 16px;">
-
+                        
                     </label>
                 </div>
                 <div class="container mt-4 ">
@@ -80,7 +80,7 @@
                     <label id="pay"
                         class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
                         style="font-size: 16px;">
-
+                       
                     </label>
                 </div>
 
@@ -106,7 +106,6 @@
                         <h4 class=" m-1  font-weight-bold text-primary " id="RemainCost"></h4>
                     </div>
                 </div>
-                {{#if belong}}
                 <div class="container mt-3 justify-content-center">
                     <form class="row  justify-content-center">
 
@@ -133,7 +132,7 @@
 
                     </form>
                 </div>
-                {{/if}}
+
             </div>
         </div>
         <script>
@@ -144,7 +143,8 @@
             var pay = document.getElementById("pay")
             var discount = parseInt("{{order.discountPrice}}")
             var total_price = parseInt("{{order.totalPrice}}")
-
+           
+           
             if ("{{order.delivery}}" == "1") {
                 delivery.innerHTML = "Giao hàng tiêu chuẩn"
             }
@@ -165,9 +165,7 @@
             TotalCost.innerHTML = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
             RemainCost.innerHTML = remain.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " VND";
         </script>
-
     </div>
-
     <h3 class="p-2 font-weight-bolder text-center mt-3" style="background-color: #f1f1f1;">Danh sách sản phẩm</h3>
     <form id="cart-content" class=" container mt-3 p-0" action="/Review">
         <table class="table mt-3 container">
@@ -188,58 +186,47 @@
                     <td scope="col">
                         <label class="ReviewStar">
                             1<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="1" class="1star review" onclick="Star()">
+                            <input type="radio" name="star" value="1" class="1star" onclick="Star()">
                             </input>
                         </label>
                         <label class="ReviewStar pl-1">
                             2<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="2" class="2star review" onclick="Star()">
+                            <input type="radio" name="star" value="2" class="2star" onclick="Star()">
                             </input>
                         </label>
                         <label class="ReviewStar pl-1">
                             3<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="3" class="3star review" onclick="Star()">
+                            <input type="radio" name="star" value="3" class="3star" onclick="Star()">
                             </input>
                         </label>
                         <label class="ReviewStar pl-1">
                             4<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="4" class="4star review" onclick="Star()">
+                            <input type="radio" name="star" value="4" class="4star" onclick="Star()">
                             </input>
                         </label>
                         <label class="ReviewStar pl-1">
                             5<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="5" class="5star review" onclick="Star()">
+                            <input type="radio" name="star" value="5" class="5star" onclick="Star()">
                             </input>
                         </label>
                     </td>
                     <td scope="col">
-                        <input class="review" type="text" name="coment">
+                        <input type="text" name="coment">
                     </td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
-        {{#if belong}}
         <div class="row justify-content-center">
             <button type="submit" class="btn btn-primary bg-primary">
                 Hoàn tất đánh giá
             </button>
-       
         </div>
-        {{/if}}
-        {{#unless belong}}
-        <script>
-            var review = document.getElementsByClassName("review")
-            for (let i = 0; i <review.length; i++){
-                review[i].disabled = true
-            }
-        </script>
-         {{/unless}}
     </form>
 
     <script>
         var Star = function () {
-            review
+
         }
     </script>
 

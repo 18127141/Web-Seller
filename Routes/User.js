@@ -4,6 +4,10 @@ let user_controller = require('../controllers/user')
 var bcrypt = require('bcrypt')
 var voucher_controller = require('../controllers/voucher')
 var voucher_detail_controller = require('../controllers/voucher_detail')
+var order_controller = require('../controllers/order')
+var order_detail_controller = require('../controllers/order_detail')
+
+var product_controller = require('../controllers/product')
 var checked
 //Login
 router.get('/Login', function (req, res) {
@@ -235,7 +239,51 @@ router.get('/check-order', function (req, res) {
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
-    res.render('user-checkorder', { layout: 'UserProfile', cart_total: req.session.cart.length })
+    getdata();
+    async function getdata() {
+        var orders = await order_controller.getByUserId(req.session.user.id)
+        res.render('user-checkorder', {
+            layout: 'UserProfile',
+            cart_total: req.session.cart.length,
+            usercheck: req.session.user,
+            orders: orders
+        })
+    }
+})
+router.get('/Show-order/:id', function (req, res) {
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    getdata()
+    async function getdata() {
+
+        var order = await order_controller.getById(req.params.id)
+        var products = await order_detail_controller.getByOrderId(req.params.id)
+        var product = []
+
+        for (let i = 0; i < products.length; i++) {
+            var temp = await product_controller.getById(products[i].ProductId)
+            product.push({
+                id: temp[0].id,
+                name: temp[0].name,
+                brand: temp[0].brand,
+                size: products[i].size
+            })
+        }
+
+        res.render('user-showorder',
+            {
+                
+                order: order[0],
+                product: product,
+                usercheck: req.session.user,
+                cart_total: req.session.cart.length,
+                returnPath: req.originalUrl,
+            })
+    }
 })
 router.get('/voucher', function (req, res) {
     if (req.session.user == undefined) {

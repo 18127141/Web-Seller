@@ -46,24 +46,36 @@ router.get('/:id', function (req, res) {
     }
     getdata()
     async function getdata() {
-       
+        var check = []
         var order = await order_controller.getById(req.params.id)
+        if (req.session.user != undefined) {
+            check = await order_controller.getByIdUserId(req.params.id, req.session.user.id)
+        }
+        if (check[0] != undefined) {
+            check = true
+        }
+        else {
+            check = false
+        }
+        console.log(check)
         var products = await order_detail_controller.getByOrderId(req.params.id)
-        var product =[]
-       
-        for (let i = 0 ; i < products.length;i++){
+        var product = []
+
+        for (let i = 0; i < products.length; i++) {
             var temp = await product_controller.getById(products[i].ProductId)
             product.push({
-                id:temp[0].id,
-                name:temp[0].name,
-                brand:temp[0].brand,
-                size:products[i].size
+                
+                id: temp[0].id,
+                name: temp[0].name,
+                brand: temp[0].brand,
+                size: products[i].size
             })
         }
-        
+
         res.render('Bill',
             {
                 order: order[0],
+                belong: check,
                 product: product,
                 usercheck: req.session.user,
                 cart_total: req.session.cart.length,

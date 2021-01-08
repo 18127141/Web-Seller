@@ -1,37 +1,47 @@
- <div class="row  justify-content-center " >
-                  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">Lịch sử giao dịch {{Type}}</h2>
-                </div>
-                <div class="container-fluid ">
-                  <table class="table">
-                      <thead>
-                          <th scope="col">Mã giao dịch</th>
-                          <th scope="col">Ngày giao dịch</th>
-                          <th scope="col">Sản Phẩm</th>
-                          <th scope="col">Tổng Tiền</th>
-                          <th scope="col">Trạng thái</th>
-                      </thead>
-                      <tbody>
-                          <tr id ="111">
-                              <td><a>111</a></td>
-                              <td>11/12</td>
-                              <td>Áo Choàng Lửa</td>
-                              <td>100.000 VND</td>
-                              <td>Đã giao</td>
-                          </tr>
-                          <tr id ="112">
-                            <td><a>112</a></td>
-                            <td>11/12</td>
-                            <td>Giày Ninja</td>
-                            <td>100.000 VND</td>
-                            <td>Đã giao</td>
-                          </tr>
-                          <tr id ="111">
-                            <td><a>113</a></td>
-                            <td>11/12</td>
-                            <td>Mũ Thích Nghi</td>
-                            <td>100.000 VND</td>
-                            <td>Đã giao</td>
-                           </tr>
-                      </tbody>
-                  </table>
-              </div>
+<div class="row  justify-content-center ">
+  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">Lịch sử giao dịch {{Type}}</h2>
+</div>
+<div class="container-fluid ">
+  <table class="table">
+    <thead>
+      <th scope="col">Mã giao dịch</th>
+      <th scope="col">Ngày giao dịch</th>
+      <th scope="col">Tổng Tiền</th>
+      <th scope="col">Trạng thái</th>
+    </thead>
+    <tbody>
+      {{#each orders}}
+      <tr id="{{id}}">
+        <td><a href = "/User/Show-order/{{id}}">{{id}}</a></td>
+        <td class="StartDay"></td>
+        <td class="Money"></td>
+        <td class="Status"></td>
+      </tr>
+      <script>
+        var index = {{@index}}
+        var startday = new Date("{{createdAt}}")
+        var StartDay = document.getElementsByClassName("StartDay")
+        var Money = document.getElementsByClassName("Money")
+        var Status = document.getElementsByClassName("Status")
+        var total_price = parseInt("{{totalPrice}}") + parseInt("{{discountPrice}}")
+        //status
+        if ("{{status}}" == "Check"){
+          Status[index].innerHTML ="Đang lấy hàng"
+        }
+        else if ("{{status}}" == "Shipping"){
+          Status[index].innerHTML ="Đang giao hàng"
+        }
+        else{
+           Status[index].innerHTML ="Hoàn thành"
+        }
+
+        //money
+        total_price = total_price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+        Money[index].innerHTML = total_price + " VND"
+        //day
+        StartDay[index].innerHTML = startday.getDate() + '-' + (startday.getMonth() + 1) + '-' + startday.getFullYear()
+      </script>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
