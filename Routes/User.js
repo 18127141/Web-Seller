@@ -340,6 +340,9 @@ router.get('/voucher', function (req, res) {
         })
     }
 })
+router.get('/review', function (req, res){
+    res.render("user-review")
+})
 //check Admin
 var Admin_route = require('./Admin')
 router.use('/Admin', Admin_route)

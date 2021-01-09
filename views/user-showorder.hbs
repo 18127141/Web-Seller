@@ -70,7 +70,7 @@
                     <label id="delivery"
                         class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
                         style="font-size: 16px;">
-                        
+
                     </label>
                 </div>
                 <div class="container mt-4 ">
@@ -80,7 +80,7 @@
                     <label id="pay"
                         class="row my-0 box-dash p-1 text-center font-weight-bolder text-primary justify-content-center"
                         style="font-size: 16px;">
-                       
+
                     </label>
                 </div>
 
@@ -143,8 +143,8 @@
             var pay = document.getElementById("pay")
             var discount = parseInt("{{order.discountPrice}}")
             var total_price = parseInt("{{order.totalPrice}}")
-           
-           
+
+
             if ("{{order.delivery}}" == "1") {
                 delivery.innerHTML = "Giao hàng tiêu chuẩn"
             }
@@ -171,9 +171,9 @@
         <table class="table mt-3 container">
             <thead>
                 <th scope="col">Sẩn phẩm</th>
-
-                <th scope="col">Chất lượng</th>
-                <th scope="col">Bình Luận</th>
+                <th scope="col">Hãng</th>
+                <th scope="col">Size</th>
+                <th scope="col">Đánh giá</th>
 
 
 
@@ -181,47 +181,20 @@
             <tbody>
                 {{#each product}}
                 <tr>
-                    <td scope="col">{{name}}, Size:{{size}}</td>
-
+                    <td scope="col">{{name}}</td>
+                    <td scope="col">{{brand}}</td>
+                    <th scope="col">{{size}}</th>
+       
                     <td scope="col">
-                        <label class="ReviewStar">
-                            1<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="1" class="1star" onclick="Star()">
-                            </input>
-                        </label>
-                        <label class="ReviewStar pl-1">
-                            2<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="2" class="2star" onclick="Star()">
-                            </input>
-                        </label>
-                        <label class="ReviewStar pl-1">
-                            3<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="3" class="3star" onclick="Star()">
-                            </input>
-                        </label>
-                        <label class="ReviewStar pl-1">
-                            4<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="4" class="4star" onclick="Star()">
-                            </input>
-                        </label>
-                        <label class="ReviewStar pl-1">
-                            5<i class="fa fa-star" aria-hidden="true"></i>
-                            <input type="radio" name="star" value="5" class="5star" onclick="Star()">
-                            </input>
-                        </label>
-                    </td>
-                    <td scope="col">
-                        <input type="text" name="coment">
+                        <a href="/User/review"  class="btn btn-primary bg-primary">
+                            Nổ đánh giá
+                        </a>
                     </td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
-        <div class="row justify-content-center">
-            <button type="submit" class="btn btn-primary bg-primary">
-                Hoàn tất đánh giá
-            </button>
-        </div>
+
     </form>
 
     <script>

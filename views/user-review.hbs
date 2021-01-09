@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="/CSS/Travel.css">
+<link rel="stylesheet" href="/CSS/Review.css">
+
+<div class="container travel hldash pt-3">
+    <ul class="d-inline-flex row ">
+        <li class="d-flex align-items-end">
+            <a class="mr-2" href="/">Trang chủ</a>
+        </li>
+        <li class="d-flex align-items-end">
+            <a class="mr-2" href="/Check-order">Kiểm tra đơn hàng</a>
+        </li>
+        <li class="d-flex align-items-end font-weight-bold">
+            {{order.id}}
+        </li>
+    </ul>
+</div>
+<h1 class="text-center font-weight-bolder mb-5">Nhận xét của bạn</h1>
+<div class="container">
+
+    <form action="">
+        <div class="row">
+            <div class="col-6">
+                <div class="row container d-flex flex-column">
+                    <h3 class="BottomLine font-weight-bold">
+                        Đánh giá sản phấm
+                    </h3>
+                    <div class="d-flex justify-content-center my-3" style="font-size: 30px;">
+                        <label class="ReviewStar">
+                            1<i class="fa fa-star" aria-hidden="true"></i>
+                            <input type="radio" name="star" value="1" class="1star" onclick="Star()">
+                            </input>
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            2<i class="fa fa-star" aria-hidden="true"></i>
+                            <input type="radio" name="star" value="2" class="2star" onclick="Star()">
+                            </input>
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            3<i class="fa fa-star" aria-hidden="true"></i>
+                            <input type="radio" name="star" value="3" class="3star" onclick="Star()">
+                            </input>
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            4<i class="fa fa-star" aria-hidden="true"></i>
+                            <input type="radio" name="star" value="4" class="4star" onclick="Star()">
+                            </input>
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            5<i class="fa fa-star" aria-hidden="true"></i>
+                            <input type="radio" name="star" value="5" class="5star" onclick="Star()">
+                            </input>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row container d-flex flex-column">
+
+                    <h3 class="BottomLine font-weight-bold">Tiêu đề đánh giá</h3>
+                    <div class="justify-content-center my-3">
+                        <input class="col-12" type="text" name="" id="">
+                    </div>
+
+
+                </div>
+                <div class="row container d-flex flex-column">
+
+                    <h3 class="BottomLine font-weight-bold">Đánh giá sản phẩm</h3>
+                    <div class="justify-content-center my-3">
+                        <textarea class="col" name="" id="" rows="10"></textarea>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col ">
+        
+                    <div class="row d-flex flex-column align-items-center"> 
+                        <img src="../img/pro_A61094_8.jpg" alt="" width="200px" height="200px">
+                         <div class="d-flex justify-content-center my-3" style="font-size: 30px;">
+                        <label class="ReviewStar">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                     
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                     
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                    
+                        </label>
+                        <label class="ReviewStar pl-1">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                         
+                        </label>
+                    </div>
+                    </div>
+                    <div class="row my-3">
+                        <h3>TÊN SẢN PHẨM</h3>
+                    </div>
+                    <div class="row">
+                        <p>Hãng ở đây<p>
+                    </div>
+                      <div class="row">
+                        <p>Mô tả ở đây<p>
+                    </div>  
+                    <div class="row d-flex justify-content-center my-1">
+                        <a href="" class="btn btn-primary bg-primary">Mua tiếp liền</a>
+                    </div>
+                    <div class="row d-flex justify-content-center my-1">
+                        <a href="" class="btn btn-primary bg-primary">Nút này đang suy nghĩ</a>
+                    </div>
+       
+            </div>
+        </div>
+        <div class="row justify-content-center my-5">
+            <button type="submit" class="btn btn-primary bg-primary"> <h3>Gởi nhận xét</h3></button>
+        </div>
+    </form>
+
+</div>
