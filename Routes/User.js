@@ -6,8 +6,9 @@ var voucher_controller = require('../controllers/voucher')
 var voucher_detail_controller = require('../controllers/voucher_detail')
 var order_controller = require('../controllers/order')
 var order_detail_controller = require('../controllers/order_detail')
-
+var size_controller = require('../controllers/size')
 var product_controller = require('../controllers/product')
+var models = require('../models')
 var checked
 //Login
 router.get('/Login', function (req, res) {
@@ -78,7 +79,7 @@ router.post('/', function (req, res) {
 
 })
 
-var models = require('../models')
+
 //check register -------------------------------
 router.post('/Login', function (req, res) {
     if (req.session.cart == undefined) {
@@ -250,14 +251,14 @@ router.get('/check-order', function (req, res) {
                     unfinish.push(orders[i])
                 }
                 else {
-                    finish.push(order[i])
+                    finish.push(orders[i])
                 }
             }
         }
         if (req.query.finish == "true") {
             orders = finish
         }
-        else if (req.query.finish == "true") {
+        else if (req.query.finish == "false"){
             orders = unfinish
         }
         res.render('user-checkorder', {
@@ -269,6 +270,7 @@ router.get('/check-order', function (req, res) {
     }
 })
 router.get('/Show-order/:id', function (req, res) {
+    req.session.congrats = undefined
     if (req.session.cart == undefined) {
         req.session.cart = []
     }
@@ -287,8 +289,8 @@ router.get('/Show-order/:id', function (req, res) {
             product.push({
                 id: temp[0].id,
                 name: temp[0].name,
-                brand: temp[0].brand,
-                size: products[i].size
+                size: products[i].size,
+                quantity: products[i].quantity,
             })
         }
 
@@ -301,6 +303,38 @@ router.get('/Show-order/:id', function (req, res) {
                 cart_total: req.session.cart.length,
                 returnPath: req.originalUrl,
             })
+    }
+})
+router.get('/submit/:order/:user', function (req, res) {
+
+    models.comments.create({
+        content: req.query.comment,
+        star: parseInt(req.query.star),
+        ProductId: req.query.id,
+        UserId: req.session.user.id
+    })
+    if (req.params.user == "true") {
+        res.redirect(`/User/Show-order/${req.params.order}`)
+    }
+    else {
+        res.redirect(`/Check-order/${req.params.order}`)
+    }
+})
+router.get('/DeleteOrder', function (req, res) {
+    models.order_detail.destroy({
+        where: { orderId: req.query.order }
+    })
+    models.order.destroy({
+        where: { id: req.query.order }
+    })
+    if (req.query.user == "user"){
+        res.redirect("/User/check-order")
+    }
+    else if (req.query.user == "anonymous"){
+        res.redirect("/Check-order")
+    }
+    else{
+        res.redirect("/Admin/check-order")
     }
 })
 router.get('/voucher', function (req, res) {
@@ -396,8 +430,40 @@ router.get('/voucher', function (req, res) {
         })
     }
 })
-router.get('/review', function (req, res){
-    res.render("user-review")
+router.get('/review', function (req, res) {
+    if (req.session.user == undefined) {
+        res.redirect('/')
+    }
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    getdata();
+    async function getdata() {
+        var product = await product_controller.getById(req.query.id)
+        var size = await size_controller.getById(req.query.id)
+        var stock = 0
+        for (let i = 0; i < size.length; i++) {
+            stock += size[i].stock
+        }
+        var size_check = true
+        if (stock == 0) {
+            size_check = false
+        }
+        var check = true
+        if (req.query.user == undefined) {
+            check = false
+        }
+
+        res.render("user-review", {
+            cart_total: req.session.cart.length,
+            usercheck: req.session.user,
+            product: product[0],
+            check: check,
+            size_check: size_check,
+            order: req.query.order,
+            returnPath: req.originalUrl,
+        })
+    }
 })
 //check Admin
 var Admin_route = require('./Admin')

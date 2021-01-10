@@ -42,7 +42,6 @@ controller.getByIdUserId = (id,user) => {
         raw: true
     })
 }
-module
 controller.getByUserId = (ele) => {
     return models.order.findAll({
         where: {

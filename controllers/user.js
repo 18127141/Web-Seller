@@ -22,14 +22,7 @@ controller.checkUserName = (username) => {
 
     
 }
-controller.checkUserName = (username) => {
-    return models.User.findAll({
-        where:{
-            id : {[Op.like] : username},
-        },
-        raw:true,
-    })
-}
+
 controller.searchByEverything = (ele) => {
     return models.User.findAll({
       where: {

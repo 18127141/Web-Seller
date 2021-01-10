@@ -6,7 +6,7 @@ var img_controller = require('../controllers/img_src')
 var user_controller = require('../controllers/user')
 var models = require('../models')
 var voucher_detail_controller = require('../controllers/voucher_detail')
-
+var order_detail_controller = require('../controllers/order_detail')
 var order_controller = require('../controllers/order')
 var bodyParser = require('body-parser')
 router.use(bodyParser.json())
@@ -329,7 +329,24 @@ router.get("/ManageUser", function (req, res) {
         if (req.query.search != undefined) {
             users = await user_controller.searchByEverything(req.query.search)
         }
-
+        var admin = []
+        var regular = []
+        if (users[0] != undefined) {
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].isAdmin) {
+                    admin.push(users[i])
+                }
+                else {
+                    regular.push(users[i])
+                }
+            }
+        }
+        if (req.query.admin == "true") {
+            users = admin
+        }
+        else if (req.query.admin == "false") {
+            users = regular
+        }
         if (req.session.user != undefined) {
             if (req.session.user.isAdmin == true) {
                 res.render('admin-manageUser',
@@ -359,7 +376,8 @@ router.get("/ProfileUser", function (req, res) {
     async function getdata() {
 
         var user = await user_controller.checkUserName(req.query.id)
-        var orders = await order_controller.getByUserId(req.session.user.id)
+        var orders = await order_controller.getByUserId(req.query.id)
+
         res.render("admin-UserProfileView.hbs",
             {
                 layout: 'Admin',
@@ -413,13 +431,110 @@ router.get("/DeleteUser", function (req, res) {
     }
 })
 router.get("/voucher", function (req, res) {
-    res.render('admin-voucher',{layout:"Admin"})
-  })
+    res.render('admin-voucher', { layout: "Admin" })
+})
 router.get("/add-voucher", function (req, res) {
-    res.render('admin-addAddVoucher',{layout:"Admin"})
+    res.render('admin-addAddVoucher', { layout: "Admin" })
 })
 router.get("/send-voucher", function (req, res) {
-    res.render('admin-sendVoucher',{layout:"Admin"})
-  })
+    res.render('admin-sendVoucher', { layout: "Admin" })
+})
+// order -------------------------------------------
+router.get("/check-order", function (req, res) {
+    if (req.session.user == undefined) {
+        res.redirect('/')
+    }
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    getdata();
+    async function getdata() {
+        var orders = await order_controller.getAll()
+        var finish = []
+        var unfinish = []
+        if (orders[0] != undefined) {
+            for (let i = 0; i < orders.length; i++) {
+                if (orders[i].status == "Check" || orders[i].status == "Shipping") {
+                    unfinish.push(orders[i])
+                }
+                else {
+                    finish.push(orders[i])
+                }
+            }
+        }
+        if (req.query.finish == "true") {
+            orders = finish
+        }
+        else if (req.query.finish == "false") {
+            orders = unfinish
+        }
+        res.render('admin-checkorder', {
+            layout: 'Admin',
+            cart_total: req.session.cart.length,
+            usercheck: req.session.user,
+            orders: orders
+        })
+    }
+})
+router.get('/Show-order/:id', function (req, res) {
+    req.session.congrats = undefined
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    if (req.session.mark == undefined) {
+        req.session.mark = []
+    }
+    getdata()
+    async function getdata() {
+
+        var order = await order_controller.getById(req.params.id)
+        var products = await order_detail_controller.getByOrderId(req.params.id)
+        var product = []
+
+        for (let i = 0; i < products.length; i++) {
+            var temp = await product_controller.getById(products[i].ProductId)
+            product.push({
+                id: temp[0].id,
+                name: temp[0].name,
+                size: products[i].size,
+                quantity: products[i].quantity,
+            })
+        }
+
+        res.render('admin-showorder',
+            {
+
+                order: order[0],
+                product: product,
+                usercheck: req.session.user,
+                cart_total: req.session.cart.length,
+                returnPath: req.originalUrl,
+            })
+    }
+})
+router.get("/ChangeStatus", function (req, res) {
+    getdata()
+    async function getdata() {
+
+        var order = await order_controller.getById(req.query.order)
+        if (order[0] != undefined) {
+            if (order[0].status == "Check") {
+                models.order.update({
+                    status: "Shipping"
+                }, {
+                    where: { id: req.query.order }
+                })
+            }
+            else {
+                models.order.update({
+                    status: "Finish"
+                }, {
+                    where: { id: req.query.order }
+                })
+            }
+        }
+        res.redirect(`/User/Admin/Show-order/${req.query.order}`)
+    }
+})
 module.exports = router
 

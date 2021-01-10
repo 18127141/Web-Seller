@@ -312,8 +312,9 @@ router.get('/GenerateOrder', function (req, res) {
         // initiate infomation
 
         let total_price = 0
+        let totalProduct = 0
         for (let i = 0; i < req.session.cart.length; i++) {
-
+            totalProduct += req.session.cart[i].quantity
             total_price += req.session.cart[i].price * req.session.cart[i].quantity
            
         }
@@ -325,7 +326,7 @@ router.get('/GenerateOrder', function (req, res) {
             delivery: req.query.delivery,
             pay: req.query.Pay,
             status: 'Check',
-            totalProduct: req.session.cart.length,
+            totalProduct: totalProduct,
             name: req.query.name,
             email: req.session.user.email,
             phone: req.query.phone,

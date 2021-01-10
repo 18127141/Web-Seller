@@ -8,7 +8,7 @@
         </li>
 
         <li class="d-flex align-items-end">
-            <a class="mr-2" href="/User/check-order">Đơn mua</a>
+            <a class="mr-2" href="/User/Admin/check-order">Đơn hàng</a>
         </li>
         <li class="d-flex align-items-end font-weight-bold">
             {{order.id}}
@@ -105,7 +105,7 @@
 
             </div>
 
-            <div class="col-lg-5 mt-3">
+            <div id ="list_status" class="col-lg-5 mt-3">
                 <h3 class="p-2 font-weight-bolder" style="background-color: #f1f1f1;">Giá Tiền</h3>
                 <div class="container mt-3 ">
 
@@ -135,15 +135,32 @@
 
                     </div>
                 </div>
-                <div class="container mt-3 justify-content-center">
+                {{!-- <div class="container mt-3 justify-content-center">
                     <div class="row  justify-content-center">
 
-                        <a href="#cart-content" class="btn col btn-warning bg-warning p-3" style="border-radius: 0px">
-                            <h3 class="p-0 m-0 font-weight-bold">Đánh giá đơn hàng</h3>
-                        </a>
+                        <button type="submit" class="btn col btn-warning bg-warning p-3" style="border-radius: 0px">
+                            <h3 class="p-0 m-0 font-weight-bold">Chuyển trạng thái đơn hàng</h3>
+                        </button>
+
+                    </div>
+                </div> --}}
+
+            </div>
+            <script>
+                if ("{{order.status}}" != "Finish"){
+                    document.getElementById("list_status").insertAdjacentHTML("beforeend",`
+                    <div class="container mt-3 justify-content-center">
+                    <div class="row  justify-content-center">
+
+                        <button onclick="changeStatus()" class="btn col btn-warning bg-warning p-3" style="border-radius: 0px">
+                            <h3 class="p-0 m-0 font-weight-bold">Chuyển trạng thái đơn hàng</h3>
+                        </button>
+
                     </div>
                 </div>
-            </div>
+                    `)
+                }
+            </script>
         </div>
         <script>
             var PriceVoucher = document.getElementById("PriceVoucher")
@@ -184,7 +201,7 @@
             <th scope="col">Sẩn phẩm</th>
             <th scope="col">Số lượng</th>
             <th scope="col">Size</th>
-            <th scope="col">Đánh giá</th>
+            
 
 
 
@@ -195,13 +212,7 @@
                 <td scope="col">{{name}}</td>
                 <td scope="col">{{quantity}}</td>
                 <th scope="col">{{size}}</th>
-                {{#if ../usercheck}}
-                <td scope="col">
-                    <a href="/User/review?id={{id}}&user=true&order={{../order.id}}" class="btn btn-primary bg-primary">
-                        Đánh giá
-                    </a>
-                </td>
-                {{/if}}
+                
             </tr>
             {{/each}}
         </tbody>
@@ -222,12 +233,14 @@
             }).then((result) => {
                 if (result.isConfirmed) {
 
-                    window.location.href = `/User/DeleteOrder?order={{order.id}}&user=user`
+                    window.location.href = `/User/DeleteOrder?order={{order.id}}&user=admin`
                 }
             })
         
         }
-        
+        function changeStatus(){
+            window.location.href = `/User/Admin/ChangeStatus?order={{order.id}}`
+        }
     </script>
 
 

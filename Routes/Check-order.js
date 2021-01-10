@@ -57,7 +57,7 @@ router.get('/:id', function (req, res) {
         else {
             check = false
         }
-        console.log(check)
+        
         var products = await order_detail_controller.getByOrderId(req.params.id)
         var product = []
 
@@ -67,8 +67,8 @@ router.get('/:id', function (req, res) {
                 
                 id: temp[0].id,
                 name: temp[0].name,
-                brand: temp[0].brand,
-                size: products[i].size
+                size: products[i].size,
+                quantity: products[i].quantity,
             })
         }
 

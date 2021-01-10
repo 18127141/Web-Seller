@@ -86,16 +86,13 @@
             <div class="card-body ">
               <ul class=" justify-content-center  ">
                 <li class="row  justify-content-center">
-                  <a href="/User/Admin">Tất cả</a>
+                  <a href="/User/Admin/check-order">Tất cả</a>
                 </li>
                 <li class="row   justify-content-center">
-                  <a href="/User/Admin">Tiếp nhận</a>
+                  <a href="/User/Admin/check-order?finish=false">Chưa hoàn thành</a>
                 </li>
                 <li class="row    justify-content-center">
-                  <a href="/User/Admin">Đã giao</a>
-                </li>
-                <li class="row    justify-content-center">
-                  <a href="/User/Admin">Đã hủy</a>
+                  <a href="/User/Admin/check-order?finish=true">Đã hoàn thành</a>
                 </li>
               </ul>
             </div>
@@ -132,10 +129,10 @@
                   <a href="/User/Admin/ManageUser">Tất cả</a>
                 </li>
                 <li class="row   justify-content-center">
-                  <a href="/User/Admin">VIP</a>
+                  <a href="/User/Admin/ManageUser?admin=true">Admin</a>
                 </li>
                 <li class="row   justify-content-center">
-                  <a href="/User/Admin">thường</a>
+                  <a href="/User/Admin/ManageUser?admin=false">thường</a>
                 </li>
 
 

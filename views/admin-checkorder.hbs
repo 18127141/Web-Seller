@@ -1,0 +1,43 @@
+<div class="row  justify-content-center ">
+    <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">Các đơn hàng {{Type}}</h2>
+</div>
+<div class="container-fluid ">
+    <table class="table">
+        <thead>
+            <th scope="col">Mã giao dịch</th>
+            <th scope="col">Ngày giao dịch</th>
+            <th scope="col">Người đặt</th>
+            <th scope="col">Trạng thái</th>
+        </thead>
+        <tbody>
+            {{#each orders}}
+            <tr id="{{id}}">
+                <td><a href="/User/Admin/Show-order/{{id}}">{{id}}</a></td>
+                <td class="StartDay"></td>
+                <td class="User"><a href="/User/Admin/ProfileUser?id={{UserId}}">{{UserId}}</a></td>
+                <td class="Status"></td>
+            </tr>
+            <script>
+                var index = {{@index}}
+                var startday = new Date("{{createdAt}}")
+                var StartDay = document.getElementsByClassName("StartDay")
+              
+                var Status = document.getElementsByClassName("Status")
+                var total_price = parseInt("{{totalPrice}}") + parseInt("{{discountPrice}}")
+                //status
+                if ("{{status}}" == "Check") {
+                    Status[index].innerHTML = "Đang lấy hàng"
+                }
+                else if ("{{status}}" == "Shipping") {
+                    Status[index].innerHTML = "Đang giao hàng"
+                }
+                else {
+                    Status[index].innerHTML = "Hoàn thành"
+                }
+                //day
+                StartDay[index].innerHTML = startday.getDate() + '-' + (startday.getMonth() + 1) + '-' + startday.getFullYear()
+            </script>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
