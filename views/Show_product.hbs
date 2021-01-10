@@ -152,12 +152,17 @@
 
                 <div class="row hldash flex-column my-5">
                     <p>Gender: {{gender}}<br>
+                        {{#if ../check}}
                         Size run: 35 – 46<br>
-                        Upper: Storm Leather<br>
-                        Outsole: Rubber<br>
+                        {{else}}
+                        Size run: S - XXL<br>
+                        {{/if}}
+                        Brand: {{brand}}<br>
+                        Category: {{category}}<br>
                     </p>
-
+                    {{#if ../check}}
                     <img src="/img/Size-chart.jpg" class="img-fluid " alt="size chart">
+                    {{/if}}
                 </div>
             </div>
             {{/with}}
@@ -196,23 +201,46 @@
 {{/each}}
 
 <!--COMMENT-->
+<script>
+    var comments = []
+</script>
+{{#each comment}}
+<script>
+    comments.push({
+        content: "{{content}}",
+        star: "{{star}}",
+        createdAt: "{{createdAt}}",
+        UserId: "{{UserId}}"
+    })
+</script>
+{{/each}}
+
 <h1 class=" font-weight-bold container BottomLine my-3">Đánh giá sản phẩm</h1>
 <div class="container p-0" style="background-color: white;">
 
     <div class="container-fluid py-5">
         <div class="row">
             <div class="col-lg-3 d-flex flex-column justify-content-center align-items-center">
-                <h1>5</h1>
-                <ul class="list-inline ReviewStar">
-                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                <h1>{{star}}</h1>
+                <ul id="total_star" class="list-inline ReviewStar">
+
                 </ul>
-                <p>1000 đánh giá</p>
+                <script>
+                    var star_display = Math.round(parseFloat("{{star}}"))
+                    var star_item = ``
+                    for (let i = 0; i < star_display; i++) {
+                        star_item += `<li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>`
+                    }
+                    if (star_display != 5) {
+                        for (let i = 0; i < 5 - star_display; i++) {
+                            star_item += `<li class="list-inline-item"><i class="fa fa-star ReviewStar-None" aria-hidden="true"></i></li>`
+                        }
+                    }
+                    document.getElementById("total_star").insertAdjacentHTML("beforeend", star_item)
+                </script>
+                <p>{{total_comment}} đánh giá</p>
             </div>
-            
+
             <div class="col-lg">
                 <div id="5star" class="ReviewStar">
 
@@ -225,11 +253,11 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <input class="MyRange" type="range" id="points" name="points" min="0" max="1000"
-                                value="1000" disabled>
+                            <input class="MyRange" type="range" id="points" name="points" min="0"
+                                max="{{total_comment}}" value="star_5" disabled>
                         </li>
                         <li class="list-inline-item">
-                            1000
+                            {{star_5}}
                         </li>
                     </ul>
 
@@ -244,11 +272,11 @@
                             <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <input class="MyRange" type="range" id="points" name="points" min="0" max="1000" value="10"
-                                disabled>
+                            <input class="MyRange" type="range" id="points" name="points" min="0"
+                                max="{{total_comment}}" value="{{star_4}}" disabled>
                         </li>
                         <li class="list-inline-item">
-                            0
+                            {{star_4}}
                         </li>
                     </ul>
 
@@ -261,15 +289,15 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star ReviewStar-Noner" aria-hidden="true"></i>
+                            <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
                             <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <input class="MyRange" type="range" id="points" name="points" min="0" max="10" value="0"
-                                disabled>
+                            <input class="MyRange" type="range" id="points" name="points" min="0"
+                                max="{{total_comment}}" value="{{star_3}}" disabled>
                         </li>
                         <li class="list-inline-item">
-                            0
+                            {{star_3}}
                         </li>
                     </ul>
 
@@ -285,11 +313,11 @@
                             <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <input class="MyRange" type="range" id="points" name="points" min="0" max="10" value="0"
-                                disabled>
+                            <input class="MyRange" type="range" id="points" name="points" min="0"
+                                max="{{total_comment}}" value="{{star_2}}" disabled>
                         </li>
                         <li class="list-inline-item">
-                            0
+                            {{star_2}}
                         </li>
                     </ul>
 
@@ -305,11 +333,11 @@
                             <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>
                         </li>
                         <li class="list-inline-item">
-                            <input class="MyRange" type="range" id="points" name="points" min="0" max="10" value="0"
-                                disabled>
+                            <input class="MyRange" type="range" id="points" name="points" min="0"
+                                max="{{total_comment}}" value="{{star_1}}" disabled>
                         </li>
                         <li class="list-inline-item">
-                            0
+                            {{star_1}}
                         </li>
                     </ul>
 
@@ -319,123 +347,131 @@
 
     </div>
 
-    <h2 class="px-5">Bình luận (1000)</h2>
-    <div class="container px-5 ChatList">
+    <h2 class="px-5">Bình luận ({{total_comment}})</h2>
+    <div id="comment_list" class="container px-5 ChatList">
+    </div>
+    <div class="row justify-content-center">
+        <button id="display_more" type="button" class=" btn bg-primary text-light" onclick=showComment()>
 
-        <div class="row px-5 my-3 ">
-            <div class="container DevidedCmt ">
-                <div class="row">
-                    <ul class="list-inline ">
-                        <li class="list-inline-item">
-                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> Trần Phi Long - 094291xxx</h4>
-                        </li>
-                        <li class="list-inline-item ">
-                           <i>Đánh giá ngày 20 tháng 11 năm 2020</i> 
-                        </li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <ul class="list-inline">
-                        <li class="list-inline-item ReviewStar">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                           
-                        </li>
-                        <li class="list-inline-item ">
-                           <i class="font-weight-bold">Sản phẩm vô cùng tuyệt vời </i>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="row p-3">
-                    Trời ơi tôi mang giày đi chơi với bồ và cô ấy đồng ý làm vợ tôi ngay buổi đầu tiên trước mặt 2 đứa con của chúng tôi
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row px-5 my-3 ">
-            <div class="container DevidedCmt ">
-                <div class="row">
-                    <ul class="list-inline ">
-                        <li class="list-inline-item">
-                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> Trần Phi Long - 094291xxx</h4>
-                        </li>
-                        <li class="list-inline-item ">
-                           <i>Đánh giá ngày 20 tháng 11 năm 2020</i> 
-                        </li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <ul class="list-inline">
-                        <li class="list-inline-item ReviewStar">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                           
-                        </li>
-                        <li class="list-inline-item ">
-                           <i class="font-weight-bold">Sản phẩm vô cùng tuyệt vời </i>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="row p-3">
-                    Trời ơi tôi mang giày đi chơi với bồ và cô ấy đồng ý làm vợ tôi ngay buổi đầu tiên trước mặt 2 đứa con của chúng tôi
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row px-5 my-3 ">
-            <div class="container DevidedCmt ">
-                <div class="row">
-                    <ul class="list-inline ">
-                        <li class="list-inline-item">
-                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> Trần Phi Long - 094291xxx</h4>
-                        </li>
-                        <li class="list-inline-item ">
-                           <i>Đánh giá ngày 20 tháng 11 năm 2020</i> 
-                        </li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <ul class="list-inline">
-                        <li class="list-inline-item ReviewStar">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                           
-                        </li>
-                        <li class="list-inline-item ">
-                           <i class="font-weight-bold">Sản phẩm vô cùng tuyệt vời </i>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="row p-3">
-                    Trời ơi tôi mang giày đi chơi với bồ và cô ấy đồng ý làm vợ tôi ngay buổi đầu tiên trước mặt 2 đứa con của chúng tôi
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row justify-content-center">
-   <button type="button" class=" btn bg-primary text-light">
-               Tải thêm 997 bình luận
         </button>
-        </div>
-     
-        
     </div>
 </div>
+<script>
+    var comment_index = 0
+    var comment_end = 0
+    if (comment_index + 5 >= comments.length) {
+        comment_end = comments.length
+        document.getElementById("display_more").classList.add("d-none")
+    }
+    else {
+        comment_end += 5
+
+        document.getElementById("display_more").innerHTML = `Tải thêm ${comments.length - comment_end} bình luận`
+    }
+    //
+
+    for (comment_index; comment_index < comment_end; comment_index++) {
+        var comment_item = ``
+        comment_item += `
+        <div class="row px-5 my-3 ">
+            <div class="container DevidedCmt ">
+                <div class="row">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item">
+                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> ${comments[comment_index].UserId} </h4>
+                        </li>
+                        <li class="list-inline-item ">`
+        var date = new Date(comments[comment_index].createdAt)
+        comment_item +=
+            `<i>Đánh giá ngày ${date.getDate()} tháng ${date.getMonth() + 1} năm ${date.getFullYear()}</i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="list-inline">
+                        <li class="list-inline-item ReviewStar">`
+
+        for (let i = 0; i < parseInt(comments[comment_index].star); i++) {
+
+            comment_item += `<i class="fa fa-star" aria-hidden="true"></i>`
+        }
+
+        for (let i = 0; i < 5 - parseInt(comments[comment_index].star); i++) {
+            comment_item += ` <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>`
+        }
+
+        comment_item += ` 
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="row p-3">
+                    ${comments[comment_index].content}
+                </div>
+            </div>
+        </div>
+        `
+        document.getElementById("comment_list").insertAdjacentHTML("beforeend", comment_item)
+    }
+    // show-list button
+
+    function showComment() {
+        if (comment_index + 5 >= comments.length) {
+            comment_end = comments.length
+            document.getElementById("display_more").classList.add("d-none")
+        }
+        else {
+            comment_end += 5
+            document.getElementById("display_more").innerHTML = `Tải thêm ${comments.length - comment_end}`
+        }
+        //
+
+        for (comment_index; comment_index < comment_end; comment_index++) {
+            var comment_item = ``
+            comment_item += `
+        <div class="row px-5 my-3 ">
+            <div class="container DevidedCmt ">
+                <div class="row">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item">
+                            <h4 class="font-weight-bold"><i class="fa fa-user"></i> ${comments[comment_index].UserId} </h4>
+                        </li>
+                        <li class="list-inline-item ">`
+            var date = new Date(comments[comment_index].createdAt)
+            comment_item +=
+                `<i>Đánh giá ngày ${date.getDate()} tháng ${date.getMonth() + 1} năm ${date.getFullYear()}</i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <ul class="list-inline">
+                        <li class="list-inline-item ReviewStar">`
+
+            for (let i = 0; i < parseInt(comments[comment_index].star); i++) {
+
+                comment_item += `<i class="fa fa-star" aria-hidden="true"></i>`
+            }
+
+            for (let i = 0; i < 5 - parseInt(comments[comment_index].star); i++) {
+                comment_item += ` <i class="fa fa-star ReviewStar-None" aria-hidden="true"></i>`
+            }
+
+            comment_item += ` 
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="row p-3">
+                    ${comments[comment_index].content}
+                </div>
+            </div>
+        </div>
+        `
+            document.getElementById("comment_list").insertAdjacentHTML("beforeend", comment_item)
+        }
+    }
+
+</script>
 <!---->
 <h1 class="container-fluid text-center mt-5 mb-5 font-weight-bold p-2">SẢN PHẨM LIÊN QUAN</h1>
 <div id="SPLIENQUAN" class="carousel slide text-center mb-5" data-ride="carousel">

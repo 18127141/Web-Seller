@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasMany(models.order)
       User.hasMany(models.voucher_detail)
+      User.hasMany(models.comments)
     }
   };
   User.init({

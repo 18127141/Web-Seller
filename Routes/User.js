@@ -242,6 +242,24 @@ router.get('/check-order', function (req, res) {
     getdata();
     async function getdata() {
         var orders = await order_controller.getByUserId(req.session.user.id)
+        var finish = []
+        var unfinish = []
+        if (orders[0] != undefined) {
+            for (let i = 0; i < orders.length; i++) {
+                if (orders[i].status == "Check" || orders[i].status == "Shipping") {
+                    unfinish.push(orders[i])
+                }
+                else {
+                    finish.push(order[i])
+                }
+            }
+        }
+        if (req.query.finish == "true") {
+            orders = finish
+        }
+        else if (req.query.finish == "true") {
+            orders = unfinish
+        }
         res.render('user-checkorder', {
             layout: 'UserProfile',
             cart_total: req.session.cart.length,
@@ -276,7 +294,7 @@ router.get('/Show-order/:id', function (req, res) {
 
         res.render('user-showorder',
             {
-                
+
                 order: order[0],
                 product: product,
                 usercheck: req.session.user,
@@ -296,6 +314,8 @@ router.get('/voucher', function (req, res) {
     async function getdata() {
         var user_voucher = await voucher_detail_controller.getByUserId(req.session.user.id)
         var voucher = []
+        var available = []
+        var unavailable = []
         if (user_voucher[0] != undefined) {
             for (let i = 0; i < user_voucher.length; i++) {
 
@@ -311,12 +331,42 @@ router.get('/voucher', function (req, res) {
 
                     if ((today.getTime() - startDay.getTime()) < 0) {
                         status = "Chưa dùng được"
+                        unavailable.push(
+                            {
+                                id: voucher_info[0].id,
+                                startDay: voucher_info[0].startDay,
+                                expireDay: voucher_info[0].expireDay,
+                                value: voucher_info[0].value,
+                                number: user_voucher[i].number,
+                                status: status
+                            }
+                        )
                     }
                     else if ((today.getTime() - expireDay.getTime()) > 0) {
                         status = "Quá hạn sử dụng"
+                        unavailable.push(
+                            {
+                                id: voucher_info[0].id,
+                                startDay: voucher_info[0].startDay,
+                                expireDay: voucher_info[0].expireDay,
+                                value: voucher_info[0].value,
+                                number: user_voucher[i].number,
+                                status: status
+                            }
+                        )
                     }
                     else {
                         status = "Có thể dùng"
+                        available.push(
+                            {
+                                id: voucher_info[0].id,
+                                startDay: voucher_info[0].startDay,
+                                expireDay: voucher_info[0].expireDay,
+                                value: voucher_info[0].value,
+                                number: user_voucher[i].number,
+                                status: status
+                            }
+                        )
                     }
                     voucher.push(
                         {
@@ -332,6 +382,12 @@ router.get('/voucher', function (req, res) {
             }
         }
 
+        if (req.query.available == "true") {
+            voucher = available
+        }
+        else if (req.query.available == "false") {
+            voucher = unavailable
+        }
         res.render('user-voucher', {
             layout: 'UserProfile',
             voucher: voucher,

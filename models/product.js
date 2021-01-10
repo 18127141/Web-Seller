@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Product.hasMany(models.size_stock)
       Product.hasMany(models.img_src)
       Product.hasMany(models.order_detail)
+      Product.hasMany(models.comments)
     }
   };
   Product.init({

@@ -6,6 +6,7 @@ var img_controller = require('../controllers/img_src')
 var user_controller = require('../controllers/user')
 var models = require('../models')
 var voucher_detail_controller = require('../controllers/voucher_detail')
+
 var order_controller = require('../controllers/order')
 var bodyParser = require('body-parser')
 router.use(bodyParser.json())
@@ -234,6 +235,9 @@ router.get('/DeleteProduct', function (req, res) {
     if (req.session.user != undefined) {
         if (req.session.user.isAdmin == true) {
 
+            models.comments.destroy({
+                where: { ProductId: req.query.Enter_id }
+            })
             models.order_detail.destroy({
                 where: { ProductId: req.query.Enter_id }
             })
@@ -362,7 +366,7 @@ router.get("/ProfileUser", function (req, res) {
                 user: user[0],
                 cart_total: req.session.cart.length,
                 usercheck: req.session.user,
-                orders:orders,
+                orders: orders,
             })
     }
 })
@@ -373,23 +377,27 @@ router.get("/DeleteUser", function (req, res) {
             async function getdata() {
                 //delete order_detail
                 var order = await order_controller.getByUserId(req.query.Enter_id)
-                for (let i = 0; i < order.length;i++){
+                for (let i = 0; i < order.length; i++) {
                     models.order_detail.destroy({
                         where: { orderId: order[i].id }
                     })
                 }
                 //delete voucher_detail
                 var voucher = await voucher_detail_controller.getByUserId(req.session.user.id)
-                for (let i = 0; i < voucher.length;i++){
+                for (let i = 0; i < voucher.length; i++) {
                     models.voucher_detail.destroy({
                         where: { voucherId: voucher[i].id }
                     })
                 }
+                //delete comment
+                models.comments.destroy({
+                    where: { UserId: req.query.Enter_id }
+                })
                 //delete order
                 models.order.destroy({
                     where: { UserId: req.query.Enter_id }
                 })
-                delete
+                //delete
                 models.User.destroy({
                     where: { id: req.query.Enter_id }
                 })
