@@ -4,8 +4,78 @@
   }
 </style>
 <div class="row  justify-content-center  ">
-  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">Mã Của Bạn {{Type}}</h2>
+  <h2 class=" p-0 m-0 text-center text-dark font-weight-bolder ">Mã khuyến mãi {{Type}}</h2>
 </div>
+<div class="row justify-content-end">
+        <form action="/User/Admin/send-voucher"
+            class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" method="GET">
+            <input name="search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search"
+                aria-label="Search">
+            <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+<div class="container text-center  ">
+  
+  <button id="Add" type="button" onclick=Add_new_product_GUI_checkID()
+    class="btn text-light bg-primary border-dark my-3 p-2 " style="font-size: 20px; border-radius:100px;">
+    Thêm Mã
+  </button>
+  <div id="add_product" class="d-none container hl2dash p-2">
+
+    <form action="/AddVoucher " class="">
+      <div class="row justify-content-around">
+        <div class="row ">
+          <div class="col d-flex flex-column">
+            Mã Khuyến mãi
+            <input type="text">
+          </div>
+
+          <div class="col d-flex flex-column ">
+            Giá trị
+            <input type="text">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex flex-column">
+            Ngày áp dụng
+            <input type="text">
+          </div>
+          <div class="col d-flex flex-column">
+            Ngày kết thúc
+            <input type="text">
+          </div>
+        </div>
+
+      </div>
+      <div class="row  justify-content-center py-3">
+        <button type="submit" class="btn btn-primary bg-primary mr-3">
+          Thêm Mã
+        </button>
+        <button id="Cancel_new_product" class=" btn bg-danger text-light" type="button" onclick=cancel_add_product()>
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  var add_btn = document.getElementById("Add");
+  var add_menu = document.getElementById("add_product")
+  function Add_new_product_GUI_checkID() {
+
+    add_btn.disabled = true;
+    add_btn.classList.add("d-none");
+    add_menu.classList.remove("d-none");
+
+  }
+  function cancel_add_product() {
+    add_btn = document.getElementById("Add");
+    add_btn.disabled = false;
+    add_btn.classList.remove("d-none");
+    add_menu.classList.add("d-none");
+
+  }
+</script>
 <div class="container-fluid ">
   <table class="table">
     <thead>
@@ -14,7 +84,7 @@
       <th scope="col">Ngày áp dụng</th>
       <th scope="col">Ngày kết thúc</th>
       <th scope="col">Trạng thái</th>
-
+      <th scope="col">Chi tiết</th>
     </thead>
     <tbody>
       <tr id="111">
@@ -23,6 +93,7 @@
         <td>1/12</td>
         <td>31/12</td>
         <td>Đã Dùng</td>
+        <td><a href="/User/Admin/send-voucher" class="btn btn-primary bg-primary text-light">Thêm</a></td>
       </tr>
       <tr id="112">
         <td><a href="#">#MungNamMoi</a></td>
@@ -30,6 +101,7 @@
         <td>1/1</td>
         <td>31/11</td>
         <td>Chưa Áp Dụng</td>
+        <td><a href="/User/Admin/send-voucher" class="btn btn-primary bg-primary text-light">Thêm</a></td>
       </tr>
       <tr id="111">
         <td><a href="#">#MuaLanDau</a></td>
@@ -37,39 +109,9 @@
         <td>1/1</td>
         <td>31/12</td>
         <td>Có thể dùng</td>
+        <td><a href="/User/Admin/send-voucher" class="btn btn-primary bg-primary text-light">Thêm</a></td>
       </tr>
     </tbody>
   </table>
-  <form action="/AddVoucher " class="">
-    <div class="row justify-content-around">
-      <div class="row ">
-        <div class="col d-flex flex-column">
-          Mã Khuyến mãi
-          <input type="text">
-        </div>
 
-        <div class="col d-flex flex-column ">
-          Giá trị
-          <input type="text">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col d-flex flex-column">
-          Ngày áp dụng
-          <input type="text">
-        </div>
-        <div class="col d-flex flex-column">
-          Ngày kết thúc
-          <input type="text">
-        </div>
-      </div>
-
-    </div>
-    <div class="row  justify-content-center py-3">
-      <button type="submit" class="btn btn-primary bg-primary">
-        Thêm Mã
-      </button>
-    </div>
-
-  </form>
 </div>

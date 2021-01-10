@@ -412,5 +412,14 @@ router.get("/DeleteUser", function (req, res) {
         res.redirect('/')
     }
 })
+router.get("/voucher", function (req, res) {
+    res.render('admin-voucher',{layout:"Admin"})
+  })
+router.get("/add-voucher", function (req, res) {
+    res.render('admin-addAddVoucher',{layout:"Admin"})
+})
+router.get("/send-voucher", function (req, res) {
+    res.render('admin-sendVoucher',{layout:"Admin"})
+  })
 module.exports = router
 
