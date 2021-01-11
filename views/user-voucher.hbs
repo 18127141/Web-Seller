@@ -25,7 +25,7 @@
         <td class="Day"></td>
         <td class="Day"></td>
         <td>{{number}}</td>
-        <td >{{status}}</td>
+        <td>{{status}}</td>
       </tr>
       <script>
         var m_format = document.getElementsByClassName("Money_format")
@@ -38,11 +38,11 @@
         m_format[index].innerHTML = price + " VND"
         //Date format
         var temp = "{{startDay}}"
-        temp =temp.split("-")
-        day[index * 2].innerHTML = temp[2] + '-' + temp[1] + '-' + temp[0]
+        temp = temp.split("-")
+        day[index * 2].innerHTML = temp[2] + '/' + temp[1] + '/' + temp[0]
         temp = "{{expireDay}}"
         temp = temp.split("-")
-        day[index * 2 + 1].innerHTML = temp[2] + '-' + temp[1] + '-' + temp[0]      
+        day[index * 2 + 1].innerHTML = temp[2] + '/' + temp[1] + '/' + temp[0]      
       </script>
       {{/each}}
     </tbody>

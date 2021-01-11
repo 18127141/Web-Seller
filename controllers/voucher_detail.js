@@ -15,15 +15,24 @@ controller.checkValidVoucher = (voucher, username) => {
         raw: true,
     })
 }
+controller.getByvoucherId = (ele) => {
+    return models.voucher_detail.findAll({
+        where: {
+            voucherId: { [Op.iLike]: ele }
+
+        },
+        raw: true
+    })
+}
 controller.getByUserId = (ele) => {
     return models.voucher_detail.findAll({
-      where: {
-        UserId: { [Op.iLike]: ele }
-  
-      },
-      raw: true
+        where: {
+            UserId: { [Op.iLike]: ele }
+
+        },
+        raw: true
     })
-  }
+}
 controller.getAll = () => {
     return models.voucher_detail.findAll({
         raw: true

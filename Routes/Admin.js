@@ -5,10 +5,12 @@ var size_controller = require('../controllers/size')
 var img_controller = require('../controllers/img_src')
 var user_controller = require('../controllers/user')
 var models = require('../models')
+var voucher_controller = require('../controllers/voucher')
 var voucher_detail_controller = require('../controllers/voucher_detail')
 var order_detail_controller = require('../controllers/order_detail')
 var order_controller = require('../controllers/order')
 var bodyParser = require('body-parser')
+const { compareSync } = require('bcrypt')
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
 
@@ -430,14 +432,270 @@ router.get("/DeleteUser", function (req, res) {
         res.redirect('/')
     }
 })
-router.get("/voucher", function (req, res) {
-    res.render('admin-voucher', { layout: "Admin" })
+router.get('/Promote', function (req, res) {
+    if (req.session.user != undefined) {
+        if (req.session.user.isAdmin == true) {
+            models.User.update({
+                isAdmin: true
+            }, { where: { id: req.query.Enter_id } })
+            res.redirect('/User/Admin/ManageUser')
+        }
+        else {
+            res.redirect('/')
+        }
+    } else {
+        res.redirect('/')
+    }
 })
-router.get("/add-voucher", function (req, res) {
-    res.render('admin-addAddVoucher', { layout: "Admin" })
+router.get("/voucher", function (req, res) {
+    if (req.session.user == undefined) {
+        res.redirect('/')
+    }
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    if (req.session.user != undefined) {
+        if (req.session.user.isAdmin == true) {
+            //
+            getdata();
+            async function getdata() {
+                var voucher_info = await voucher_controller.getAll()
+                var voucher = []
+                var available = []
+                var unavailable = []
+                if (voucher_info[0] != undefined) {
+                    for (let i = 0; i < voucher_info.length; i++) {
+                        var today = new Date();
+                        var status
+                        var startDay = new Date(voucher_info[i].startDay);
+                        var expireDay = new Date(voucher_info[i].expireDay)
+                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+                        today = new Date(date)
+
+                        if ((today.getTime() - startDay.getTime()) < 0) {
+                            status = "Chưa dùng được"
+                            unavailable.push(
+                                {
+                                    id: voucher_info[i].id,
+                                    startDay: voucher_info[i].startDay,
+                                    expireDay: voucher_info[i].expireDay,
+                                    value: voucher_info[i].value,
+                                    status: status
+                                }
+                            )
+                        }
+                        else if ((today.getTime() - expireDay.getTime()) > 0) {
+                            status = "Quá hạn sử dụng"
+                            unavailable.push(
+                                {
+                                    id: voucher_info[i].id,
+                                    startDay: voucher_info[i].startDay,
+                                    expireDay: voucher_info[i].expireDay,
+                                    value: voucher_info[i].value,
+                                    status: status
+                                }
+                            )
+                        }
+                        else {
+                            status = "Có thể dùng"
+                            available.push(
+                                {
+                                    id: voucher_info[i].id,
+                                    startDay: voucher_info[i].startDay,
+                                    expireDay: voucher_info[i].expireDay,
+                                    value: voucher_info[i].value,
+                                    status: status
+                                }
+                            )
+                        }
+                        voucher.push(
+                            {
+                                id: voucher_info[i].id,
+                                startDay: voucher_info[i].startDay,
+                                expireDay: voucher_info[i].expireDay,
+                                value: voucher_info[i].value,
+                                status: status
+                            }
+                        )
+
+                    }
+                }
+
+                if (req.query.available == "true") {
+                    voucher = available
+                }
+                else if (req.query.available == "false") {
+                    voucher = unavailable
+                }
+                var error
+                if (req.session.error != undefined) {
+                    error = req.session.error
+                    req.session.error = undefined
+                }
+                res.render('admin-voucher', {
+                    layout: "Admin",
+                    voucher: voucher,
+                    cart_total: req.session.cart.length,
+                    usercheck: req.session.user,
+                    error: error,
+                })
+            }
+            //
+
+        }
+        else {
+            res.redirect('/')
+        }
+    } else {
+        res.redirect('/')
+    }
+})
+router.get("/AddVoucher", function (req, res) {
+    getdata();
+    async function getdata() {
+        var voucher_id = req.query.id.split("")
+        if (voucher_id[0] != "#") {
+            voucher_id = "#" + req.query.id
+        }
+        else {
+            voucher_id = req.query.id
+        }
+        var voucher = await voucher_controller.getById(voucher_id)
+
+        if (voucher[0] != undefined) {
+            req.session.error = "Voucher đã tồn tại"
+
+        }
+        else {
+            var startDay = new Date(req.query.startDay);
+            var expireDay = new Date(req.query.expireDay)
+            if (expireDay.getTime() - startDay.getTime() < 0) {
+                req.session.error = "Ngày bắt đầu và kết thúc không hợp lệ"
+
+            }
+            else {
+                models.voucher.create({
+                    id: voucher_id,
+                    startDay: req.query.startDay,
+                    expireDay: req.query.expireDay,
+                    value: parseFloat(req.query.value)
+
+                })
+            }
+        }
+
+        res.redirect("/User/Admin/voucher")
+    }
+})
+router.get("/deleteVoucher", function (req, res) {
+    var voucher_id = '#' + req.query.id
+    models.voucher_detail.destroy({
+        where: { voucherId: voucher_id }
+    })
+    models.voucher.destroy({
+        where: { id: voucher_id }
+    })
+    res.redirect("/User/Admin/voucher")
 })
 router.get("/send-voucher", function (req, res) {
-    res.render('admin-sendVoucher', { layout: "Admin" })
+    if (req.session.user == undefined) {
+        res.redirect('/')
+    }
+    if (req.session.cart == undefined) {
+        req.session.cart = []
+    }
+    if (req.session.user != undefined) {
+        if (req.session.user.isAdmin == true) {
+            getdata();
+            async function getdata() {
+                var voucher = await voucher_controller.getById('#' + req.query.id)
+                var vouchers = await voucher_detail_controller.getByvoucherId('#' + req.query.id)
+                var users = await user_controller.getAll()
+                var unvoucher_user = []
+                var voucher_user = []
+
+                for (let i = 0; i < vouchers.length; i++) {
+                    var temp = await user_controller.checkUserName(vouchers[i].UserId)
+
+                    voucher_user.push({
+                        id: temp[0].id,
+                        phone: temp[0].phone,
+                        email: temp[0].email,
+                        number: vouchers[i].number
+                    })
+                }
+                for (let i = 0; i < users.length; i++) {
+                    if (voucher_user.find(
+                        (ele) => {
+                            return ele.id == users[i].id
+                        }) == undefined) {
+                        unvoucher_user.push(
+                            {
+                                id: users[i].id,
+                                phone: users[i].phone,
+                                email: users[i].email,
+                                name: users[i].name
+                            }
+                        )
+                    }
+                }
+
+                res.render('admin-sendVoucher', {
+                    layout: "Admin",
+                    voucher: voucher[0],
+                    voucher_user: voucher_user,
+                    unvoucher_user: unvoucher_user,
+                    voucher_id: req.query.id,
+                    cart_total: req.session.cart.length,
+                    usercheck: req.session.user,
+                })
+            }
+        }
+        else {
+            res.redirect('/')
+        }
+    } else {
+        res.redirect('/')
+    }
+})
+router.get("/DeleteUserVoucher", function (req, res) {
+    if (req.query.id != undefined) {
+        models.voucher_detail.destroy({
+            where: {
+                voucherId: '#' + req.query.voucher,
+                UserId: req.query.id
+            }
+        })
+    } else {
+        models.voucher_detail.destroy({
+            where: {
+                voucherId: '#' + req.query.voucher,
+            }
+        })
+    }
+    res.redirect(`/User/Admin/send-voucher?id=${req.query.voucher}`)
+})
+router.get("/AddUserVoucher", function (req, res) {
+    console.log("Hi")
+    models.voucher_detail.create({
+        number: 1,
+        UserId: req.query.id,
+        voucherId: '#' + req.query.voucher
+    })
+
+    res.redirect(`/User/Admin/send-voucher?id=${req.query.voucher}`)
+})
+router.get("/UpdateQuantityVoucher", function (req, res) {
+    var temp = []
+    models.voucher_detail.update({
+        number: parseInt(req.query.quantity)
+    }, {
+        where: {
+            voucherId: '#' + req.query.voucher,
+            UserId: req.query.id
+        }
+    })
+    res.json(temp)
 })
 // order -------------------------------------------
 router.get("/check-order", function (req, res) {

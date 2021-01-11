@@ -64,6 +64,10 @@
     if ("{{usercheck.id}}" != "{{user.id}}") {
       job.insertAdjacentHTML("beforeend", `<button class="changing btn btn-primary bg-dark " onclick="DeleteUser()">XÓA NGƯỜI DÙNG</button>`)
     }
+    if (  "{{user.isAdmin}}" == "false") {
+      
+      job.insertAdjacentHTML("beforeend", `<button class="changing btn btn-primary bg-dark " onclick="AdminUser()">TĂNG CHỨC ADMIN</button>`)
+    }
   </script>
   <div class="row mt-3 mb-3 justify-content-center">
     <h2 class="container-fluid p-0 m-0 text-center bg-warning text-dark font-weight-bolder ">HỒ SƠ GIAO DỊCH CỦA
@@ -126,7 +130,7 @@
     }
     function DeleteUser() {
       Swal.fire({
-        title: 'Bạn chắc chắn muốn xóa người dùng này không không?',
+        title: 'Bạn chắc chắn muốn xóa người dùng này không?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -137,6 +141,23 @@
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = `/User/Admin/DeleteUser?Enter_id={{user.id}}`
+        }
+      })
+    }
+
+    function AdminUser(){
+      Swal.fire({
+        title: 'Bạn chắc chắn muốn tăng chức admin cho người dùng này không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Tiếp tục',
+        cancelButtonText: 'Hủy'
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `/User/Admin/Promote?Enter_id={{user.id}}`
         }
       })
     }

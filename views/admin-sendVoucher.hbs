@@ -11,105 +11,107 @@
         })
     }
 </script>
-<h1 class="container-fluid text-center  font-weight-bold"> Chi tiết mã </h1>
+<h1 class="container-fluid text-center  font-weight-bold"> CHI TIẾT MÃ KHUYẾN MÃI </h1>
 <div class="container ">
     <div class="row my-3 ">
         <div class="col-4">
             Mã khuyến mãi
         </div>
 
-        <input type="text" value="Mã">
+        <div>{{voucher.id}}</div>
     </div>
-    <div class="row my-3 ">
+    <div id="Money-format" class="row my-3 ">
         <div class="col-4">
             Giá trị
         </div>
-        <input type="text">
+        <script>
+            var price = {{ voucher.value }}
+
+            price = price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+
+            document.getElementById("Money-format").insertAdjacentHTML("beforeend", `<div>${price} VND</div>`)
+        </script>
+
     </div>
-    <div class="row my-3 ">
-        <div class="col-4">
-            Ngày áp dụng
-        </div>
-        <input type="text">
-    </div>
-    <div class="row my-3 ">
-        <div class="col-4">
-            Ngày kết thúc
-        </div>
-        <input type="text">
-    </div>
-    <div class="row my-3 ">
-        <div class="col-4">
-            Trạng thái
-        </div>
-        <input type="text">
-    </div>
+
 </div>
 
 <div class="container">
     <h1 class="container-fluid text-center  font-weight-bold"> Đã áp dụng </h1>
-    <div class="row justify-content-end">
-        <form action="/User/Admin/send-voucher"
-            class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" method="GET">
-            <input name="search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search"
-                aria-label="Search">
-            <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
     <div class="row justify-content-center">
-        <button class="btn btn-danger bg-danger mr-5">
-           Xóa tất cả
-        </button>
+        <a href="/User/Admin/DeleteUserVoucher?voucher={{voucher_id}}" class="btn btn-danger bg-danger mr-5">
+            Xóa tất cả
+        </a>
     </div>
     <!--DO DU LIEU VO DAY-->
     <div class="container-fluid ">
-        <table class="table">
+        <table id="User-list" class="table">
             <thead>
                 <th scope="col">ID</th>
-                <th scope="col">TÊN</th>
                 <th scope="col">Số Điện Thoại</th>
                 <th scope="col">Email</th>
+                <th scope="col">Số lượng</th>
                 <th scope="col"> </th>
 
             </thead>
+            {{#each voucher_user}}
             <tbody>
-                <td>Mẫu</td>
-                <td>Mẫu</td>
-                <td>Mẫu</td>
-                <td>Mẫu</td>
-                <td> <a href="/">Xóa</a> </td>
 
-                {{#each users}}
-                <tr>
-                    <td>{{id}}</td>
-                    <td>{{name}}</td>
-                    <td>{{phone}}</td>
-                    <td>{{email}}</td>
-                    <td> <a href="/User/Admin/ProfileUser?id={{id}}">ÁP DỤNG</a> </td>
+                <td><a href="/User/Admin/ProfileUser?id={{id}}">{{id}}</a></td>
+                <td>{{phone}}</td>
+                <td>{{email}}</td>
+                <td>
+                    <div class="row">
+                        <button voucher="{{../voucher_id}}" value="{{id}}"
+                            class="add_quantity bg-primary text-light font-weight-bolder" job="delete_quantity"
+                            style="border-radius:1000px; height: 25px;">-</button>
+                        <p class="quantity text-center align-content-center p-0 m-0"
+                            style="border-radius:1000px; height: 15px; width: 15px;">{{number}}</p>
+                        <button voucher="{{../voucher_id}}" value="{{id}}"
+                            class="delete_quantity bg-primary text-light font-weight-bolder" job="add_quantity"
+                            style="border-radius:1000px; height: 25px;">+</button>
+                    </div>
+                </td>
+                <td> <a href="/User/Admin/DeleteUserVoucher?voucher={{../voucher_id}}&id={{id}}">Xóa</a> </td>
 
-                </tr>
-                {{/each}}
+
             </tbody>
+            {{/each}}
         </table>
     </div>
 </div>
+<script>
+    document.getElementById("User-list").addEventListener("click", function (ToDo) {
+        const child = ToDo.target
+        var job = child.attributes.job
+        if (job != undefined) {
+            job = child.attributes.job.value
+            var voucher_id = child.attributes.voucher.value
+            var user_id = child.attributes.value.value
+
+            let temp = parseInt(child.parentNode.childNodes[3].innerHTML)
+
+            if (job == "add_quantity") {
+                temp++
+                child.parentNode.childNodes[3].innerHTML = temp
+            }
+            else {
+                if (temp > 1) {
+                    temp--
+                    child.parentNode.childNodes[3].innerHTML = temp
+
+                }
+            }
+            fetch(`/User/Admin/UpdateQuantityVoucher?voucher=${voucher_id}&id=${user_id}&quantity=${temp}`).then(response => response.json()).then(data => {
+            })
+
+        }
+    })
+</script>
 <div class="container">
     <h1 class="container-fluid text-center  font-weight-bold"> Thêm người </h1>
-    <div class="row justify-content-center">
-        <button class="btn btn-primary bg-primary mr-5">
-            Thêm tất cả
-        </button>
-        <button class="btn btn-primary bg-primary">
-            Chỉ cho VIP
-        </button>
-    </div>
+
     <div class="row justify-content-end">
-        <form action="/User/Admin/send-voucher"
-            class="form-inline col-12 search pl-5 pt-1 pl-1 m-2 justify-content-between" method="GET">
-            <input name="search" class="form-control search-text shadow-none col-11" type="search" placeholder=" Search"
-                aria-label="Search">
-            <button class="btn p-0 " type="submit"><i class="fa fa-search"></i></button>
-        </form>
     </div>
 
     <!--DO DU LIEU VO DAY-->
@@ -123,24 +125,18 @@
                 <th scope="col"> </th>
 
             </thead>
+            {{#each unvoucher_user}}
             <tbody>
-                <td>Mẫu</td>
-                <td>Mẫu</td>
-                <td>Mẫu</td>
-                <td>Mẫu</td>
-                <td> <a href="/">Thêm</a> </td>
 
-                {{#each users}}
-                <tr>
-                    <td>{{id}}</td>
-                    <td>{{name}}</td>
-                    <td>{{phone}}</td>
-                    <td>{{email}}</td>
-                    <td> <a href="/User/Admin/ProfileUser?id={{id}}">ÁP DỤNG</a> </td>
+                <td><a href="/User/Admin/ProfileUser?id={{id}}">{{id}}</a></td>
+                <td>{{name}}</td>
+                <td>{{phone}}</td>
+                <td>{{email}}</td>
+                <td> <a href="/User/Admin/AddUserVoucher?voucher={{../voucher_id}}&id={{id}}">Thêm</a> </td>
 
-                </tr>
-                {{/each}}
+
             </tbody>
+            {{/each}}
         </table>
     </div>
 </div>
