@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/CSS/Home.css">
   <link rel="stylesheet" href="/CSS/Sell.css">
   <link rel="stylesheet" href="/CSS/Travel.css">
+  <link rel="stylesheet" href="/CSS/ProductSelect.css">
   <style>
   <style>
     .tr a:link {
@@ -42,11 +43,11 @@
     <div id="modalcontent"></div>
   </div>
   
-  <div class="container">
+  <div class="container mb-5 pb-5">
     <div class="row" id="NAV_LEFT">
-      <div class="col-md-2 col-sm-12 justify-content-center  box-dash p-2 mb-3 " style="border-color:white ">
-        <div class=" card-header text-center pb-0 ">
-          <div class="row   hl2dash  justify-content-center " data-toggle="collapse" href="#back">
+      <div class="col-md-3 col-sm-12 justify-content-center  box-dash p-2 mb-3 " style="border-color:white ">
+        <div class=" card-header text-center py-2 ">
+          <div class="row   bottomline p-1  justify-content-center collapsed " data-toggle="collapse" href="#back" aria-expanded="false">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">Thông tin cá nhân </h4>
           </div>
           <div id="back" class="collapse show  font-weight-bold" data-parent="#back">
@@ -60,8 +61,8 @@
             </div>
           </div>
         </div>
-        <div class=" card-header text-center pb-0 ">
-          <div class="row   hl2dash  justify-content-center " data-toggle="collapse" href="#DT">
+        <div class=" card-header text-center py-2">
+          <div class="row   bottomline  p-1 justify-content-center " data-toggle="collapse" href="#DT">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">Sản phẩm </h4>
           </div>
           <div id="DT" class="collapse show  font-weight-bold" data-parent="#DT">
@@ -78,11 +79,11 @@
           </div>
         </div>
         
-        <div class=" card-header    text-center pb-0 ">
-          <div class="row  hl2dash justify-content-center" data-toggle="collapse" href="#Loai">
+        <div class=" card-header    text-center py-2 ">
+          <div class="row  bottomline p-1 justify-content-center" data-toggle="collapse" href="#Loai">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Đơn hàng </h4>
           </div>
-          <div id="Loai" class="collapse show  font-weight-bold" data-parent="#Loai">
+          <div id="Loai" class="collapse  show font-weight-bold" data-parent="#Loai">
             <div class="card-body ">
               <ul class=" justify-content-center  ">
                 <li class="row  justify-content-center">
@@ -98,8 +99,8 @@
             </div>
           </div>
         </div>
-        <div class=" card-header   text-dar text-center pb-0  ">
-          <div class="row hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+        <div class=" card-header   text-dar text-center py-2  ">
+          <div class="row bottomline p-1 justify-content-center" data-toggle="collapse" href="#TH">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;"> Mã khuyến mãi </h4>
           </div>
           <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
@@ -118,11 +119,11 @@
             </div>
           </div>
         </div>
-        <div class=" card-header   text-dar text-center pb-0  ">
-          <div class="row hl2dash justify-content-center" data-toggle="collapse" href="#TH">
+        <div class=" card-header   text-dar text-center py-2  ">
+          <div class="row bottomline p-1 justify-content-center" data-toggle="collapse" href="#KH">
             <h4 class=" p-0 m-0  font-weight-bold" style="cursor: pointer;">Khách Hàng </h4>
           </div>
-          <div id="TH" class="collapse show  font-weight-bold" data-parent="#TH">
+          <div id="KH" class="collapse show  font-weight-bold" data-parent="#KH">
             <div class="card-body ">
               <ul class=" justify-content-center  ">
                 <li class="row   justify-content-center">
@@ -141,7 +142,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-10 col-sm-12 bg-light ">
+      <div class="col-md-9 col-sm-12 bg-light " style="border-left-width: 2px !important;border-bottom-width: 2px !important;">
         {{{body}}}
       </div>
     </div>

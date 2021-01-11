@@ -13,6 +13,9 @@
 .ProductSelect .bottomline{
     border-bottom: 2px solid black;
 }
+.bottomline{
+    border-bottom: 2px solid black;
+}
 .ProductSelect .listSelect .row:hover{
     background-color: rgb(230, 230, 230);
 }
