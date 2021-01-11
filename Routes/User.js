@@ -334,7 +334,7 @@ router.get('/DeleteOrder', function (req, res) {
         res.redirect("/Check-order")
     }
     else{
-        res.redirect("/Admin/check-order")
+        res.redirect("/User/Admin/check-order")
     }
 })
 router.get('/voucher', function (req, res) {

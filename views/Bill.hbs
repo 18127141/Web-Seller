@@ -18,12 +18,13 @@
 
 <div class="container mt-3 mb-4 pb-5">
     <div class="row container-fluid ">
-        <h4 class="order_status col-4 text-center py-2 text-light bg-success">TIẾP NHẬN ĐƠN HÀNG</h4>
-        <h4 class="order_status col-4 text-center py-2 text-light bg-secondary">VẬN CHUYỂN</h4>
-        <h4 class="order_status col-4 text-center py-2 text-light bg-secondary">ĐÃ GIAO</h4>
+        <h4 class="order_status col-4 text-center py-2 text-light">TIẾP NHẬN ĐƠN HÀNG</h4>
+        <h4 class="order_status col-4 text-center py-2 text-light">VẬN CHUYỂN</h4>
+        <h4 class="order_status col-4 text-center py-2 text-light ">ĐÃ GIAO</h4>
     </div>
     <script>
-        var status = document.getElementsByClassName("order_status")
+        var order_status = document.getElementsByClassName("order_status")
+        
         if ("{{order.status}}" == "Check") {
             order_status[0].classList.add("bg-success")
             order_status[1].classList.add("bg-secondary")

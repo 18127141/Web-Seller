@@ -348,7 +348,7 @@ router.get('/GenerateOrder', function (req, res) {
                 ProductId: req.session.cart[i].id,
             })
         }
-        //req.session.cart =[]
+        req.session.cart =[]
         res.redirect(`/Check-order/${generating}`)
     }
 })
