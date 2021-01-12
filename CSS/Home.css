@@ -1,3 +1,6 @@
+#InsteadNav li:hover{
+    background-color: rgb(51, 134, 243);
+}
 .sticky {
     position: fixed;
     top: 0;

@@ -71,6 +71,7 @@ router.get('/:id', function (req, res) {
         var size = await size_controller.getById(select_id)
         var sizes = await size_controller.getAll()
         var img = await img_controller.getById(select_id)
+        
         var star = 0
         if (comment.length == 0) {
             star = 0

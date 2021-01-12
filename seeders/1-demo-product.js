@@ -187,6 +187,272 @@ module.exports = {
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
       },
+      {
+        id: 'AT11111',
+        type: 2,
+        category: "Jean",
+        name: "Quần jean trơn form straight crop",
+        brand: "Routine",
+        info: `Chất liệu: 98% cotton, 2% spandex.
+
+        Đặc tính: Co giãn, hút ẩm tốt và thấm hút mồ hôi.
+        
+        Hướng dẫn sử dụng:
+        
+        - Giặt ở nhiệt độ bình thường.
+        
+        - Không được dùng hóa chất tẩy, ủi ở nhiệt độ thích hợp.
+        
+        - Hạn chế sử dụng máy sấy.`,
+        price: 500000,
+        main_img: "img/AT11111_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AT11112',
+        type: 2,
+        category: "Jean",
+        name: "Quần jean trơn form straight crop",
+        brand: "Routine",
+        info: `Chất liệu: 98% cotton, 2% spandex.
+
+        Đặc tính: Co giãn, hút ẩm tốt và thấm hút mồ hôi.
+        
+        Hướng dẫn sử dụng:
+        
+        - Giặt ở nhiệt độ bình thường.
+        
+        - Không được dùng hóa chất tẩy, ủi ở nhiệt độ thích hợp.
+        
+        - Hạn chế sử dụng máy sấy.`,
+        price: 700000,
+        main_img: "img/AT11112_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AT11113',
+        type: 2,
+        category: "Jean",
+        name: "Quần Jean rách gối form jogger",
+        brand: "Routine",
+        info: `Chất liệu: 98% cotton, 2% spandex.
+
+        Đặc tính: Co giãn, hút ẩm tốt và thấm hút mồ hôi.
+        
+        Hướng dẫn sử dụng:
+        
+        - Giặt ở nhiệt độ bình thường.
+        
+        - Không được dùng hóa chất tẩy, ủi ở nhiệt độ thích hợp.
+        
+        - Hạn chế sử dụng máy sấy.`,
+        price: 700000,
+        main_img: "img/AT11113_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AT11114',
+        type: 2,
+        category: "Long pants",
+        name: "Quần Tây Nam Xám",
+        brand: "Routine",
+        info: `Quần Tây nam Kenta với form dáng slim fit sang trọng đầy lịch lãm. Thích hợp mặc đi làm, đi chơi, lót trong sắc nét, tạo cảm giác thoải mái khi di chuyển, làm việc. Chất liệu vãi mịn mát, có co giãn nhẹ, họa tiết caro nhuyễn, lên form cực sang.
+
+        Hướng dẫn bảo quản:
+        
+        - Không dùng hóa chất tẩy.
+        
+        - Ủi ở nhiệt độ thích hợp, hạn chế dùng máy sấy.
+        
+        - Giặt ở chế độ bình thường, với đồ có màu tương tự.`,
+        price: 1000000,
+        main_img: "img/AT11114_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AT11115',
+        type: 2,
+        category: "Jogger",
+        name: "Quần Jogger Thun Đen Trơn",
+        brand: "Kenta",
+        info: `Năng động và thoải mái cùng quần Jogger Nỉ, dễ dàng kết hợp đồ.
+
+        Chất liệu: thun nỉ da cá, mát lạnh.
+        
+        Hướng dẫn bảo quản:
+        
+        - Không dùng hóa chất tẩy.
+        
+        - Ủi ở nhiệt độ thích hợp, hạn chế dùng máy sấy.
+        
+        - Giặt ở chế độ bình thường, với đồ có màu tương tự.`,
+        price: 100000,
+        main_img: "img/AT11115_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AT11116',
+        type: 2,
+        category: "Jogger",
+        name: "Quần jogger nam Puma x Tyakasha",
+        brand: "Puma",
+        info: `hành phần vải: Cotton and elastane
+        Thiết kế quần jooger thun nam tính, năng động
+        Phom dáng chuẩn, với phần in hình sắc nét
+        Chất vải thấm hút tốt
+        Gam màu hiện đại dễ dàng phối với nhiều trang phục và phụ kiện
+        Xuất xứ: vui lòng tham khảo tag của sản phẩm`,
+        price: 890000,
+        main_img: "img/AT11116_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AT11117',
+        type: 2,
+        category: "Jogger",
+        name: "Quần jogger nam Tailored for Sport OG",
+        brand: "Puma",
+        info: `Chất liệu: 100% nylon
+        Kiểu dáng quần jogger năng động, thể thao
+        Đậm phong Sporty trẻ trung, cộng hưởng cùng cách phối màu xen kẽ 
+        Chất vải mềm mịn, thấm hút tốt 
+        Gam màu hiện đại dễ dàng phối với nhiều trang phục và phụ kiện
+        Xuất xứ: vui lòng xem trên tag của sản phẩm`,
+        price: 1890000,
+        main_img: "img/AT11117_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AGT1111',
+        type: 3,
+        category: "T-shirt",
+        name: "Áo thun ngắn tay cổ tròn Baby Face",
+        brand: "Puma",
+        info: `Chất liệu: 100% Cotton 
+        Kiểu dáng áo thun phom suông năng động
+        Tay ngắn, cổ tròn
+        Cộng hưởng cùng chi tiết hình in sắc nét ở ngực
+        Lưng in tên thương hiệu nổi bật
+        Chất vải mềm mịn, thấm hút tốt
+        Gam màu hiện đại dễ dàng phối với nhiều trang phục và phụ kiện
+        Xuất xứ thương hiệu: Hàn Quốc`,
+        price: 1490000,
+        main_img: "img/AGT1111_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },{
+      id: 'AGT1112',
+      type: 3,
+      category: "Long-sleeve",
+      name: "Áo Thun Trơn Tay Dài",
+      brand: "Kenta",
+      info: `Áo thun trơn tay dài, sang trọng và lịch lãm
+
+      Chất liệu: cotton 100%, co giãn 4 chiều
+      
+      Hướng dẫn bảo quản:
+      
+      - Không dùng hóa chất tẩy.
+      
+      - Ủi ở nhiệt độ thích hợp, hạn chế dùng máy sấy.
+      
+      - Giặt ở chế độ bình thường, với đồ có màu tương tự.`,
+      price: 490000,
+      main_img: "img/AGT1112_1.jpg",
+      gender: "Unisex",
+      createdAt: Sequelize.literal('NOW()'),
+      updatedAt: Sequelize.literal('NOW()'),
+    },
+      {
+        id: 'AT11118',
+        type: 2,
+        category: "Short-pant",
+        name: "Quần Short Kaki Xanh Đen",
+        brand: "Kenta",
+        info: `Quần Short Kaki năng động trẻ trung, from Slim.
+
+        Chất liệu: vải kaki co giãn, bền màu.
+        
+        Hướng dẫn bảo quản:
+        
+        - Không dùng hóa chất tẩy.
+        
+        - Ủi ở nhiệt độ thích hợp, hạn chế dùng máy sấy.
+        
+        - Giặt ở chế độ bình thường, với đồ có màu tương tự.`,
+        price: 160000,
+        main_img: "img/AT11118_1.jpg",
+        gender: "Male",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AC11111',
+        type: 1,
+        category: "Sneaker",
+        name: "Chuck 70 Explore Roots High Top",
+        brand: "Converse",
+        info: `Chất liệu: Canvas`,
+        price: 5000000,
+        main_img: "img/AC11111_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AC11112',
+        type: 1,
+        category: "Sneaker",
+        name: "Chuck 70 Explore Roots High Top",
+        brand: "Converse",
+        info: `Chất liệu: Canvas`,
+        price: 5000000,
+        main_img: "img/AC11112_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AC11113',
+        type: 1,
+        category: "Sneaker",
+        name: "Chuck Taylor All Star CX Explore Roots Low Top",
+        brand: "Converse",
+        info: `Chất liệu: Canvas`,
+        price: 5600000,
+        main_img: "img/AC11113_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
+      {
+        id: 'AC11114',
+        type: 1,
+        category: "Sneaker",
+        name: "Chuck 70 High-Top Mi Gente",
+        brand: "Converse",
+        info: `Chất liệu: Canvas`,
+        price: 5600000,
+        main_img: "img/AC11114_1.jpg",
+        gender: "Unisex",
+        createdAt: Sequelize.literal('NOW()'),
+        updatedAt: Sequelize.literal('NOW()'),
+      },
     ], {});
   },
   
