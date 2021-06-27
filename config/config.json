@@ -1,15 +1,10 @@
 {
   "development": {
-    "username": "qzcipcnogmtlln",
-    "password": "aae5f4c3551fd19b294d8a4d4a15f5a352ab5db2cf67e2912a83dcf5e82e965b",
-    "database": "d7gdvmocjhs05c",
-    "host": "ec2-3-220-98-137.compute-1.amazonaws.com",
-    "dialect": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "rejectUnauthorized": false
-      }
-    }
+    "username": "postgres",
+    "password": "tlong123",
+    "database": "TripleL",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
   },
   "test": {
     "username": "postgres",

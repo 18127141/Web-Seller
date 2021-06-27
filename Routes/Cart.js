@@ -153,7 +153,7 @@ router.get('/DeleteProduct', function (req, res) {
             break
         }
     }
-
+    
     if (submit == "mark") {
 
         res.redirect(`/Mark/UpdateMark?id=${id}&returnPath=${returnPath}`)
@@ -282,9 +282,9 @@ router.get('/GenerateOrder', function (req, res) {
                 generating = '0' + generating
             }
             generating = 'OR' + generating
-           
+
             var order = await order_controller.getById(generating)
-           
+
         } while (order[0] != undefined)
 
         //update_voucher ---------------------------------------------
@@ -293,7 +293,7 @@ router.get('/GenerateOrder', function (req, res) {
         if (voucher_detail[0] != undefined) {
             var voucher = await voucher_controller.getById('#' + req.query.voucher)
             discountPrice = voucher[0].value
-           
+
             if (voucher_detail[0].number == 1) {
                 models.voucher_detail.destroy({
                     where: { voucherId: '#' + req.query.voucher, UserId: req.session.user.id }
@@ -316,7 +316,7 @@ router.get('/GenerateOrder', function (req, res) {
         for (let i = 0; i < req.session.cart.length; i++) {
             totalProduct += req.session.cart[i].quantity
             total_price += req.session.cart[i].price * req.session.cart[i].quantity
-           
+
         }
         //create order-------------------------------
         models.order.create({
@@ -334,12 +334,12 @@ router.get('/GenerateOrder', function (req, res) {
             UserId: req.session.user.id,
         })
         for (let i = 0; i < req.session.cart.length; i++) {
-            var size = await size_controller.getStock(req.session.cart[i].id,req.session.cart[i].size,)
+            var size = await size_controller.getStock(req.session.cart[i].id, req.session.cart[i].size,)
             var size_temp = size[0].stock - req.session.cart[i].quantity
             models.size_stock.update({
-                stock:size_temp
-            },{
-                where:{ProductId:req.session.cart[i].id, size:req.session.cart[i].size}
+                stock: size_temp
+            }, {
+                where: { ProductId: req.session.cart[i].id, size: req.session.cart[i].size }
             })
             models.order_detail.create({
                 orderId: generating,
@@ -348,7 +348,7 @@ router.get('/GenerateOrder', function (req, res) {
                 ProductId: req.session.cart[i].id,
             })
         }
-        req.session.cart =[]
+        req.session.cart = []
         res.redirect(`/Check-order/${generating}`)
     }
 })
